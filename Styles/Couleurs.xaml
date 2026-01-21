@@ -1,80 +1,59 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <!--
-        ═══════════════════════════════════════════════════════════════════
-        🎨 DICTIONNAIRE DE COULEURS - GESTIONNAIRE DE LOGEMENT
-        ═══════════════════════════════════════════════════════════════════
-        📌 Toutes les couleurs de l'application sont centralisées ici
-        📌 Pour changer une couleur, modifiez uniquement ce fichier
-        ═══════════════════════════════════════════════════════════════════
-    -->
+    <!--  Couleurs principales (Bleu)  -->
+    <SolidColorBrush x:Key="CouleurPrincipale" Color="#3B82F6" />
+    <SolidColorBrush x:Key="CouleurPrincipaleFoncee" Color="#2563EB" />
+    <SolidColorBrush x:Key="CouleurPrincipaleClaire" Color="#60A5FA" />
+    <SolidColorBrush x:Key="CouleurPrincipaleTresClaire" Color="#DBEAFE" />
 
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <!--  🎯 1. COULEURS PRINCIPALES (PRIMARY COLORS)  -->
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <SolidColorBrush x:Key="BleuPrincipal" Color="#3B82F6" />
-    <!--  🔵 Bleu principal  -->
-    <SolidColorBrush x:Key="BleuFonce" Color="#2563EB" />
-    <!--  🔵 Bleu foncé (hover)  -->
-    <SolidColorBrush x:Key="BleuClair" Color="#60A5FA" />
-    <!--  🔵 Bleu clair  -->
+    <!--  Couleurs de succès (Vert)  -->
+    <SolidColorBrush x:Key="CouleurSucces" Color="#10B981" />
+    <SolidColorBrush x:Key="CouleurSuccesFoncee" Color="#059669" />
+    <SolidColorBrush x:Key="CouleurSuccesClaire" Color="#34D399" />
 
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <!--  ✅ 2. COULEURS DE SUCCÈS (SUCCESS COLORS)  -->
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <SolidColorBrush x:Key="VertSucces" Color="#10B981" />
-    <!--  ✅ Vert succès  -->
-    <SolidColorBrush x:Key="VertFonce" Color="#059669" />
-    <!--  ✅ Vert foncé (hover)  -->
+    <!--  Couleurs d'alerte (Orange/Jaune)  -->
+    <SolidColorBrush x:Key="CouleurAlerte" Color="#F59E0B" />
+    <SolidColorBrush x:Key="CouleurAlerteFoncee" Color="#D97706" />
+    <SolidColorBrush x:Key="CouleurAlerteClaire" Color="#FBBF24" />
 
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <!--  ⚠️ 3. COULEURS D'ALERTE (WARNING COLORS)  -->
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <SolidColorBrush x:Key="OrangeAlerte" Color="#F59E0B" />
-    <!--  ⚠️ Orange alerte  -->
-    <SolidColorBrush x:Key="JauneAlerte" Color="#FBBF24" />
-    <!--  ⚠️ Jaune alerte  -->
+    <!--  Couleurs d'erreur (Rouge)  -->
+    <SolidColorBrush x:Key="CouleurErreur" Color="#EF4444" />
+    <SolidColorBrush x:Key="CouleurErreurFoncee" Color="#DC2626" />
+    <SolidColorBrush x:Key="CouleurErreurClaire" Color="#F87171" />
 
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <!--  ❌ 4. COULEURS D'ERREUR (ERROR COLORS)  -->
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <SolidColorBrush x:Key="RougeErreur" Color="#EF4444" />
-    <!--  ❌ Rouge erreur  -->
-    <SolidColorBrush x:Key="RougeFonce" Color="#DC2626" />
-    <!--  ❌ Rouge foncé (hover)  -->
-
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <!--  🌑 5. COULEURS NEUTRES (NEUTRAL COLORS)  -->
-    <!--  ───────────────────────────────────────────────────────────────────  -->
+    <!--  Couleurs neutres (Gris)  -->
     <SolidColorBrush x:Key="Gris50" Color="#F9FAFB" />
-    <!--  ⬜ Gris très clair (background)  -->
     <SolidColorBrush x:Key="Gris100" Color="#F3F4F6" />
-    <!--  ⬜ Gris clair  -->
     <SolidColorBrush x:Key="Gris200" Color="#E5E7EB" />
-    <!--  ⬜ Gris moyen clair (bordures)  -->
     <SolidColorBrush x:Key="Gris300" Color="#D1D5DB" />
-    <!--  ⬜ Gris moyen  -->
     <SolidColorBrush x:Key="Gris400" Color="#9CA3AF" />
-    <!--  ⬜ Gris  -->
     <SolidColorBrush x:Key="Gris500" Color="#6B7280" />
-    <!--  ⬜ Gris foncé (textes secondaires)  -->
     <SolidColorBrush x:Key="Gris600" Color="#4B5563" />
-    <!--  ⬜ Gris très foncé  -->
     <SolidColorBrush x:Key="Gris700" Color="#374151" />
-    <!--  ⬜ Gris sombre  -->
     <SolidColorBrush x:Key="Gris800" Color="#1F2937" />
-    <!--  ⬜ Gris très sombre (textes principaux)  -->
     <SolidColorBrush x:Key="Gris900" Color="#111827" />
-    <!--  ⬛ Noir grisé  -->
 
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <!--  🧾 6. COULEURS SPÉCIFIQUES FACTURES  -->
-    <!--  ───────────────────────────────────────────────────────────────────  -->
-    <SolidColorBrush x:Key="BleuEau" Color="#06B6D4" />
-    <!--  💧 Bleu eau  -->
-    <SolidColorBrush x:Key="JauneElectricite" Color="#FBBF24" />
-    <!--  ⚡ Jaune électricité  -->
-    <SolidColorBrush x:Key="OrangeChauffage" Color="#F97316" />
-    <!--  🔥 Orange chauffage  -->
+    <!--  Couleurs spécifiques par fonctionnalité  -->
+    <SolidColorBrush x:Key="CouleurEau" Color="#06B6D4" />
+    <SolidColorBrush x:Key="CouleurElectricite" Color="#FBBF24" />
+    <SolidColorBrush x:Key="CouleurChauffage" Color="#F97316" />
+    <SolidColorBrush x:Key="CouleurFacture" Color="#8B5CF6" />
+    <SolidColorBrush x:Key="CouleurAchat" Color="#EC4899" />
+
+    <!--  Couleurs de fond  -->
+    <SolidColorBrush x:Key="FondPrincipal" Color="#FFFFFF" />
+    <SolidColorBrush x:Key="FondSecondaire" Color="#F9FAFB" />
+    <SolidColorBrush x:Key="FondCarte" Color="#FFFFFF" />
+
+    <!--  Couleurs de texte  -->
+    <SolidColorBrush x:Key="TextePrincipal" Color="#111827" />
+    <SolidColorBrush x:Key="TexteSecondaire" Color="#6B7280" />
+    <SolidColorBrush x:Key="TexteClair" Color="#9CA3AF" />
+    <SolidColorBrush x:Key="TexteBlanc" Color="#FFFFFF" />
+
+    <!--  Couleurs de bordure  -->
+    <SolidColorBrush x:Key="BordureClaire" Color="#E5E7EB" />
+    <SolidColorBrush x:Key="BordureMoyenne" Color="#D1D5DB" />
+    <SolidColorBrush x:Key="BordureFoncee" Color="#9CA3AF" />
 
 </ResourceDictionary>

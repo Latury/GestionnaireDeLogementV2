@@ -1,36 +1,29 @@
 ﻿# 🗺️ Feuille de Route - Gestionnaire Logement
 
-## 📌 Légende des statuts
+## 📌 Vision du Projet
 
-- 🟢 **Terminé** : Fonctionnalité implémentée et testée
-- 🟡 **En cours** : Développement actif
-- 🔵 **Planifié** : Prochaine étape
-- ⚪ **À faire** : Dans le backlog
-- 🔴 **Bloqué** : Nécessite résolution de problème
+**Objectif** : Créer un gestionnaire complet de logement pour suivre les factures, relevés et achats.
+
+**Versions planifiées** : 1.0 → 2.0 → 3.0
 
 ---
 
-## 🎯 Version 1.0.0 - MVP (Minimum Viable Product)
+## 🎯 Version 1.0.0 - Fondations (Janvier 2026)
 
-**Date cible** : Février 2026  
-**Objectif** : Application fonctionnelle avec les bases
+**Statut** : ✅ **COMPLÉTÉ** (21/01/2026)
+
+**Objectif** : Créer la base du projet avec interface et modèles de données
 
 ### 🏗️ Infrastructure de base
 - 🟢 Structure du projet
-- 🟢 Système de sauvegarde JSON (DataManager)
+- 🟢 Système de sauvegarde JSON (GestionnaireDonnees)
 - 🟢 Architecture des dossiers
 - 🟢 Dictionnaire de couleurs centralisé
-- 🟢 Fichiers de documentation (README, LICENSE)
+- 🟢 Fichiers de documentation (README, LICENSE, etc.)
 - 🟢 Configuration Git (.gitignore)
-
-### 📄 Pages principales
-- 🟡 Page Accueil (Tableau de bord)
-- 🟡 Page Factures
-- 🟡 Page Eau
-- 🟡 Page Électricité
-- ⚪ Page Chauffage
-- ⚪ Page Achats Échelonnés
-- ⚪ Page Paiements
+- 🟢 App.xaml avec import global des couleurs
+- 🟢 MainWindow.xaml avec menu de navigation
+- 🟢 MainWindow.xaml.cs avec gestion des événements
 
 ### 💾 Modèles de données
 - 🟢 Facture.cs
@@ -40,177 +33,229 @@
 - ⚪ Logement.cs
 - ⚪ Paiement.cs
 
-### ⚙️ Fonctionnalités CRUD
-- 🟡 Ajouter une facture
-- 🟡 Modifier une facture
-- 🟡 Supprimer une facture
-- 🟡 Lister les factures
-- ⚪ Ajouter un relevé d'eau
-- ⚪ Modifier un relevé d'eau
-- ⚪ Supprimer un relevé d'eau
-- ⚪ Ajouter un relevé d'électricité
-- ⚪ Modifier un relevé d'électricité
-- ⚪ Supprimer un relevé d'électricité
+### 📄 Pages de base
+- 🟢 MainWindow.xaml (fenêtre principale avec navigation)
+- ⚪ AccueilVue.xaml (tableau de bord)
+- ⚪ FacturesVue.xaml (liste des factures)
+- ⚪ AjouterFactureVue.xaml (formulaire d'ajout)
+
+### 🎨 Design
+- 🟢 Palette de couleurs complète
+- 🟢 Styles de boutons
+- ⚪ Styles de formulaires
+- ⚪ Styles de cartes
+
+**Date de livraison** : ✅ 21 Janvier 2026
 
 ---
 
-## 🚀 Version 1.1.0 - Statistiques et Graphiques
+## 🎯 Version 1.0.1 - CRUD Factures (Février 2026)
 
-**Date cible** : Mars 2026  
-**Objectif** : Ajout de visualisations et analyses
+**Statut** : ⚪ **À FAIRE**
 
-### 📊 Graphiques
-- ⚪ Graphique évolution consommation eau (ligne)
-- ⚪ Graphique évolution consommation électricité (ligne)
-- ⚪ Graphique évolution consommation chauffage (ligne)
-- ⚪ Graphique répartition factures (camembert)
-- ⚪ Graphique comparaison mensuelle (barres)
+**Objectif** : Implémenter la gestion complète des factures
 
-### 📈 Statistiques
-- ⚪ Consommation moyenne mensuelle
-- ⚪ Consommation totale annuelle
-- ⚪ Coût moyen mensuel
-- ⚪ Coût total annuel
-- ⚪ Détection des pics de consommation
-- ⚪ Calcul d'économies réalisées
-- ⚪ Prévisions basées sur l'historique
+### ✅ Fonctionnalités CRUD
+- ⚪ **C**reate : Ajouter une facture
+- ⚪ **R**ead : Afficher la liste des factures
+- ⚪ **U**pdate : Modifier une facture existante
+- ⚪ **D**elete : Supprimer une facture (avec confirmation)
 
-### 🎨 Améliorations visuelles
-- ⚪ Animations de transition entre pages
-- ⚪ Indicateurs visuels (badges, barres de progression)
-- ⚪ Icônes personnalisées pour chaque type de facture
-- ⚪ Thème sombre (mode nuit)
+### 📄 Pages à créer
+- ⚪ AccueilVue.xaml (tableau de bord avec statistiques)
+- ⚪ FacturesVue.xaml (liste complète + filtres)
+- ⚪ AjouterFactureVue.xaml (formulaire d'ajout)
+- ⚪ ModifierFactureVue.xaml (formulaire de modification)
 
----
+### 🔧 Fonctionnalités techniques
+- ⚪ Validation des champs de formulaire
+- ⚪ Messages de confirmation (MessageBox)
+- ⚪ Filtrage par type de facture (Eau/Électricité/Chauffage/Toutes)
+- ⚪ Tri par date/montant
+- ⚪ Recherche par notes
 
-## 💳 Version 1.2.0 - Achats Échelonnés Avancés
+### 📊 Statistiques de base
+- ⚪ Total des factures payées
+- ⚪ Total des factures impayées
+- ⚪ Montant total dépensé ce mois
+- ⚪ Liste des 5 dernières factures
 
-**Date cible** : Avril 2026  
-**Objectif** : Gestion complète des crédits et achats en plusieurs fois
-
-### 💰 Fonctionnalités achats
-- ⚪ Ajouter un achat échelonné
-- ⚪ Modifier un achat échelonné
-- ⚪ Supprimer un achat échelonné
-- ⚪ Marquer une mensualité comme payée
-- ⚪ Calculer le montant restant
-- ⚪ Calculer la prochaine échéance
-- ⚪ Alertes d'échéances proches (7 jours)
-
-### 📅 Calendrier de paiements
-- ⚪ Vue calendrier avec toutes les échéances
-- ⚪ Notifications de paiements à venir
-- ⚪ Récapitulatif mensuel des paiements prévus
+**Date de livraison prévue** : 15 Février 2026
 
 ---
 
-## 📱 Version 2.0.0 - Fonctionnalités Avancées
+## 🎯 Version 1.0.2 - Gestion Eau (Février 2026)
 
-**Date cible** : Mai-Juin 2026  
-**Objectif** : Application professionnelle complète
+**Statut** : ⚪ **À FAIRE**
 
-### 📤 Export et Import
-- ⚪ Export PDF (factures, relevés, statistiques)
-- ⚪ Export Excel (tableaux de données)
-- ⚪ Export CSV (pour analyse externe)
-- ⚪ Import CSV (données existantes)
-- ⚪ Backup automatique quotidien
-- ⚪ Restauration depuis backup
+**Objectif** : Implémenter la gestion de l'eau
 
-### 🔔 Notifications et Alertes
-- ⚪ Alertes de paiements à venir
-- ⚪ Alertes de consommation anormale
-- ⚪ Rappels de relevés de compteur
-- ⚪ Notifications Windows (toasts)
+### 📄 Pages
+- ⚪ EauVue.xaml (liste des relevés)
+- ⚪ AjouterReleveEauVue.xaml (formulaire)
 
-### 🔐 Sécurité
-- ⚪ Mot de passe pour ouvrir l'application
-- ⚪ Chiffrement des données sensibles
-- ⚪ Sauvegarde cloud sécurisée (optionnelle)
+### ✅ Fonctionnalités
+- ⚪ Ajouter un relevé d'eau (froide + chaude)
+- ⚪ Calcul automatique de la consommation
+- ⚪ Estimation du montant
+- ⚪ Graphique d'évolution de la consommation
+- ⚪ Historique des relevés
 
-### 🌐 Multi-logements
+**Date de livraison prévue** : 28 Février 2026
+
+---
+
+## 🎯 Version 1.0.3 - Gestion Électricité (Mars 2026)
+
+**Statut** : ⚪ **À FAIRE**
+
+**Objectif** : Implémenter la gestion de l'électricité
+
+### 📄 Pages
+- ⚪ ElectriciteVue.xaml (liste des relevés)
+- ⚪ AjouterReleveElectriciteVue.xaml (formulaire)
+
+### ✅ Fonctionnalités
+- ⚪ Ajouter un relevé d'électricité (HC + HP)
+- ⚪ Calcul automatique avec tarifs différenciés
+- ⚪ Estimation du montant
+- ⚪ Graphique d'évolution
+- ⚪ Comparaison HC vs HP
+
+**Date de livraison prévue** : 15 Mars 2026
+
+---
+
+## 🎯 Version 1.1.0 - Fonctionnalités Avancées (Mars-Avril 2026)
+
+**Statut** : ⚪ **À FAIRE**
+
+### 🔥 Gestion du chauffage
+- ⚪ Page ChauffageVue.xaml
+- ⚪ Suivi de la consommation de gaz/fioul/électrique
+
+### 💳 Achats échelonnés
+- ⚪ Page AchatsVue.xaml
+- ⚪ Gestion des achats avec mensualités
+- ⚪ Calcul des échéances
+- ⚪ Notifications d'échéances proches
+
+### 📊 Statistiques avancées
+- ⚪ Graphiques interactifs (LiveCharts ou OxyPlot)
+- ⚪ Comparaison mensuelle
+- ⚪ Détection d'économies potentielles
+- ⚪ Prévisions de consommation
+
+### 🌙 Mode sombre
+- ⚪ Thème clair/sombre
+- ⚪ Sauvegarde de la préférence utilisateur
+
+**Date de livraison prévue** : 30 Avril 2026
+
+---
+
+## 🎯 Version 2.0.0 - Export & Multi-logements (Mai-Juin 2026)
+
+**Statut** : ⚪ **À FAIRE**
+
+### 📤 Export de données
+- ⚪ Export PDF (factures + statistiques)
+- ⚪ Export Excel/CSV
+- ⚪ Génération de rapports mensuels
+
+### 📥 Import de données
+- ⚪ Import CSV de factures
+- ⚪ Import de relevés
+
+### 🏘️ Multi-logements
 - ⚪ Gestion de plusieurs logements
 - ⚪ Comparaison entre logements
-- ⚪ Bascule rapide entre logements
+- ⚪ Statistiques par logement
+
+### 💾 Backup automatique
+- ⚪ Backup quotidien automatique
+- ⚪ Restauration depuis backup
+
+### 🎨 Personnalisation
+- ⚪ Thèmes personnalisables
+- ⚪ Choix des couleurs
+- ⚪ Personnalisation des catégories
+
+### 📦 Installation
+- ⚪ Créer un installateur Windows (.msi)
+- ⚪ Distribution sur Microsoft Store (optionnel)
+
+**Date de livraison prévue** : 30 Juin 2026
 
 ---
 
-## 🎨 Version 2.1.0 - Personnalisation
+## 🎯 Version 3.0.0 - Cloud & Mobile (Septembre 2026)
 
-**Date cible** : Juillet 2026  
-**Objectif** : Personnalisation complète de l'interface
+**Statut** : ⚪ **À FAIRE**
 
-### 🖌️ Thèmes
-- ⚪ Thème clair (par défaut)
-- ⚪ Thème sombre
-- ⚪ Thème bleu
-- ⚪ Thème vert
-- ⚪ Thème personnalisé (choix des couleurs)
+### ☁️ Synchronisation cloud
+- ⚪ Intégration OneDrive
+- ⚪ Intégration Google Drive
+- ⚪ Intégration Dropbox
+- ⚪ Synchronisation automatique
 
-### ⚙️ Paramètres
-- ⚪ Choix de la devise (€, $, £, CHF...)
-- ⚪ Langue (FR, EN, DE, ES)
-- ⚪ Format de date (JJ/MM/AAAA, MM/JJ/AAAA...)
-- ⚪ Unités de mesure (m³, L, kWh...)
+### 📱 Application mobile
+- ⚪ Application mobile compagnon (Android)
+- ⚪ Application mobile compagnon (iOS)
+- ⚪ Scan de factures avec OCR
+- ⚪ Notifications push pour échéances
 
----
+### 🔄 Fonctionnalités avancées
+- ⚪ Accès multi-appareils en temps réel
+- ⚪ Partage de données entre utilisateurs
+- ⚪ Mode collaboratif (famille/colocataires)
 
-## 🌟 Version 3.0.0 - Synchronisation Cloud
-
-**Date cible** : Septembre 2026  
-**Objectif** : Accès multi-appareils
-
-### ☁️ Cloud
-- ⚪ Synchronisation avec OneDrive
-- ⚪ Synchronisation avec Google Drive
-- ⚪ Synchronisation avec Dropbox
-- ⚪ Serveur personnel (auto-hébergement)
-
-### 📱 Compagnon Mobile
-- ⚪ Application Android
-- ⚪ Application iOS
-- ⚪ Synchronisation en temps réel
+**Date de livraison prévue** : 30 Septembre 2026
 
 ---
 
-## 🐛 Bugs Connus
+## 📊 Suivi Global
 
-_Aucun bug connu pour le moment_
+### Statut des versions
 
----
+| Version | Statut | Date prévue | Progression |
+|---------|--------|-------------|-------------|
+| 1.0.0 | ✅ Complété | 21/01/2026 | 100% |
+| 1.0.1 | ⚪ À faire | 15/02/2026 | 0% |
+| 1.0.2 | ⚪ À faire | 28/02/2026 | 0% |
+| 1.0.3 | ⚪ À faire | 15/03/2026 | 0% |
+| 1.1.0 | ⚪ À faire | 30/04/2026 | 0% |
+| 2.0.0 | ⚪ À faire | 30/06/2026 | 0% |
+| 3.0.0 | ⚪ À faire | 30/09/2026 | 0% |
 
-## 💡 Idées Futures (Backlog)
-
-- ⚪ Intégration avec API de fournisseurs d'énergie
-- ⚪ Détection automatique de relevés (OCR sur photos)
-- ⚪ Suggestions d'économies basées sur IA
-- ⚪ Communauté : comparaison avec autres utilisateurs
-- ⚪ Gamification : badges, objectifs d'économies
-- ⚪ Widget Windows pour affichage rapide
-- ⚪ Commandes vocales (Cortana/Alexa)
-- ⚪ Mode tablette tactile
-
----
-
-## 📊 Priorités de développement
-
-**P1 (Critique)** : Nécessaire pour MVP
-**P2 (Important)** : Améliore significativement l'expérience
-**P3 (Nice to have)** : Bonus apprécié
-**P4 (Future)** : Vision à long terme
-
-| Fonctionnalité | Priorité | Version |
-|----------------|----------|---------|
-| Structure de base | P1 | 1.0.0 |
-| Gestion factures | P1 | 1.0.0 |
-| Gestion eau/électricité | P1 | 1.0.0 |
-| Graphiques | P2 | 1.1.0 |
-| Achats échelonnés | P2 | 1.2.0 |
-| Export PDF | P2 | 2.0.0 |
-| Notifications | P3 | 2.0.0 |
-| Thèmes | P3 | 2.1.0 |
-| Cloud sync | P4 | 3.0.0 |
+### Légende
+- 🟢 Fonctionnalité terminée
+- 🔵 Fonctionnalité en cours
+- ⚪ Fonctionnalité à faire
+- 🔴 Fonctionnalité bloquée/annulée
 
 ---
 
-**Dernière mise à jour** : 21/01/2026
+## 🎓 Apprentissage Prévu
+
+Au fil des versions, apprentissage de :
+- ✅ WPF et XAML (Version 1.0)
+- ✅ Architecture MVVM (Version 1.0)
+- ⚪ Graphiques interactifs (Version 1.1)
+- ⚪ Export PDF/Excel (Version 2.0)
+- ⚪ Intégration cloud (Version 3.0)
+- ⚪ Développement mobile Xamarin/MAUI (Version 3.0)
+
+---
+
+## 📝 Notes
+
+- Cette feuille de route est **indicative** et peut évoluer
+- Les dates sont des **objectifs**, pas des engagements stricts
+- Les fonctionnalités peuvent être ajoutées/supprimées selon les besoins
+- Ce projet est un **projet d'apprentissage** avant tout
+
+---
+
+**Dernière mise à jour** : 21 Janvier 2026  
+**Auteur** : Latury (latury57@gmail.com)

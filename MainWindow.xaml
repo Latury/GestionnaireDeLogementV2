@@ -5,7 +5,56 @@
     Title="Gestionnaire de Logement"
     Width="1200"
     Height="700"
+    MinWidth="900"
+    MinHeight="600"
+    Background="{StaticResource FondSecondaire}"
     WindowStartupLocation="CenterScreen">
+
+    <Window.Resources>
+        <!--  Style pour les boutons de navigation  -->
+        <Style x:Key="BoutonNavigation" TargetType="Button">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Padding" Value="20,0,0,0" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="Transparent"
+                            BorderThickness="0,0,3,0">
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurPrincipaleTresClaire}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  Style pour le bouton de navigation actif  -->
+        <Style
+            x:Key="BoutonNavigationActif"
+            BasedOn="{StaticResource BoutonNavigation}"
+            TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource CouleurPrincipaleTresClaire}" />
+            <Setter Property="Foreground" Value="{StaticResource CouleurPrincipale}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+    </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,89 +62,120 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!--  MENU DE NAVIGATION (GAUCHE)  -->
         <Border
             Grid.Column="0"
-            Padding="20"
-            Background="#3B82F6">
+            Background="{StaticResource FondCarte}"
+            BorderBrush="{StaticResource BordureClaire}"
+            BorderThickness="0,0,1,0">
             <StackPanel>
-                <TextBlock
-                    FontSize="24"
-                    FontWeight="Bold"
-                    Foreground="White"
-                    Text="MENU" />
+                <!--  En-tête du menu  -->
+                <Border Height="80" Background="{StaticResource CouleurPrincipale}">
+                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                        <TextBlock
+                            FontSize="20"
+                            FontWeight="Bold"
+                            Foreground="White"
+                            Text="🏠 Gestionnaire"
+                            TextAlignment="Center" />
+                        <TextBlock
+                            Margin="0,2,0,0"
+                            FontSize="16"
+                            Foreground="White"
+                            Opacity="0.9"
+                            Text="de Logement"
+                            TextAlignment="Center" />
+                    </StackPanel>
+                </Border>
 
+                <!--  Séparateur  -->
+                <Border Height="1" Background="{StaticResource BordureClaire}" />
+
+                <!--  Boutons de navigation  -->
                 <Button
                     x:Name="BtnAccueil"
-                    Height="40"
-                    Margin="0,20,0,0"
                     Click="BtnAccueil_Click"
-                    Content="Accueil" />
+                    Content="🏠  Accueil"
+                    Style="{StaticResource BoutonNavigationActif}" />
+
                 <Button
                     x:Name="BtnFactures"
-                    Height="40"
-                    Margin="0,10,0,0"
                     Click="BtnFactures_Click"
-                    Content="Factures" />
+                    Content="🧾  Factures"
+                    Style="{StaticResource BoutonNavigation}" />
+
                 <Button
                     x:Name="BtnEau"
-                    Height="40"
-                    Margin="0,10,0,0"
                     Click="BtnEau_Click"
-                    Content="Eau" />
+                    Content="💧  Eau"
+                    Style="{StaticResource BoutonNavigation}" />
+
                 <Button
                     x:Name="BtnElectricite"
-                    Height="40"
-                    Margin="0,10,0,0"
                     Click="BtnElectricite_Click"
-                    Content="Electricite" />
+                    Content="⚡  Électricité"
+                    Style="{StaticResource BoutonNavigation}" />
+
                 <Button
                     x:Name="BtnChauffage"
-                    Height="40"
-                    Margin="0,10,0,0"
                     Click="BtnChauffage_Click"
-                    Content="Chauffage" />
+                    Content="🔥  Chauffage"
+                    Style="{StaticResource BoutonNavigation}" />
+
                 <Button
                     x:Name="BtnAchats"
-                    Height="40"
-                    Margin="0,10,0,0"
                     Click="BtnAchats_Click"
-                    Content="Achats" />
+                    Content="💳  Achats"
+                    Style="{StaticResource BoutonNavigation}" />
+
                 <Button
                     x:Name="BtnStatistiques"
-                    Height="40"
-                    Margin="0,10,0,0"
                     Click="BtnStatistiques_Click"
-                    Content="Stats" />
+                    Content="📊  Statistiques"
+                    Style="{StaticResource BoutonNavigation}" />
+
+                <!--  Séparateur  -->
+                <Border
+                    Height="1"
+                    Margin="0,10"
+                    Background="{StaticResource BordureClaire}" />
+
                 <Button
                     x:Name="BtnParametres"
-                    Height="40"
-                    Margin="0,10,0,0"
                     Click="BtnParametres_Click"
-                    Content="Parametres" />
+                    Content="⚙️  Paramètres"
+                    Style="{StaticResource BoutonNavigation}" />
             </StackPanel>
         </Border>
 
-        <Grid Grid.Column="1" Background="White">
+        <!--  ZONE DE CONTENU PRINCIPAL (DROITE)  -->
+        <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="60" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+            <!--  Barre de titre  -->
             <Border
                 Grid.Row="0"
                 Padding="30,0"
-                Background="#F3F4F6">
+                Background="{StaticResource FondCarte}"
+                BorderBrush="{StaticResource BordureClaire}"
+                BorderThickness="0,0,0,1">
                 <TextBlock
                     x:Name="TitrePage"
                     VerticalAlignment="Center"
                     FontSize="24"
                     FontWeight="Bold"
+                    Foreground="{StaticResource TextePrincipal}"
                     Text="Tableau de bord" />
             </Border>
 
+            <!--  Frame pour afficher les pages  -->
             <Frame
                 x:Name="FramePrincipal"
                 Grid.Row="1"
+                Background="{StaticResource FondSecondaire}"
                 NavigationUIVisibility="Hidden" />
         </Grid>
     </Grid>

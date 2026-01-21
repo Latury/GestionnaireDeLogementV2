@@ -12,11 +12,9 @@ Ce fichier contient les **notes techniques détaillées** de chaque version.
 
 ## Version 1.0.0 - Initialisation du Projet
 
-**Date de sortie** : 21 Janvier 2026  
-**Type** : Version initiale  
-**Statut** : 🟡 En développement
-
----
+**Date** : 21 Janvier 2026 (après-midi)  
+**Type** : Création du projet  
+**Statut** : ✅ Complété
 
 ### 🏗️ Architecture
 
@@ -24,24 +22,22 @@ Ce fichier contient les **notes techniques détaillées** de chaque version.
 
 ```
 GestionnaireLogement/
-├── Assets/          # Ressources visuelles (PNG, SVG, JPEG)
-├── Data/            # Gestionnaire de données
-├── Models/          # Modèles de données (classes C#)
-├── Pages/           # Pages XAML + Code-behind
-├── Styles/          # Dictionnaires de ressources XAML
-├── Utilities/       # Classes utilitaires
-└── Configurations/  # Fichiers JSON (Git ignore)
+├── Ressources/         # Images, Icônes, Emojis
+├── Donnees/            # GestionnaireDonnees.cs
+├── Modeles/            # Classes de données
+├── Vues/               # Pages XAML + Code-behind
+├── Styles/             # Couleurs.xaml, styles
+├── Utilitaires/        # Helpers, Convertisseurs
+└── Configurations/     # Fichiers JSON (ignorés par Git)
 ```
 
-**Raison** : Séparation claire des responsabilités (Separation of Concerns)
+**Raison** : Séparation claire des responsabilités en français
 
 ---
 
-### 💾 Système de Données
+### 💾 Système de Données - GestionnaireDonnees.cs
 
-#### DataManager.cs
-
-**Emplacement** : `Data/DataManager.cs`
+**Emplacement** : `Donnees/GestionnaireDonnees.cs`
 
 **Responsabilités** :
 1. Sauvegarder des listes d'objets en JSON
@@ -51,221 +47,293 @@ GestionnaireLogement/
 
 **Méthodes publiques** :
 ```csharp
-public static void Sauvegarder<T>(List<T> data, string nomFichier)
+public static void Sauvegarder<T>(List<T> donnees, string nomFichier)
 public static List<T> Charger<T>(string nomFichier)
+public static bool FichierExiste(string nomFichier)
+public static void SupprimerFichier(string nomFichier)
 ```
 
 **Format de sauvegarde** : JSON avec indentation (`WriteIndented = true`)
 
 **Gestion d'erreurs** :
 - Si le fichier n'existe pas lors du chargement → retourne liste vide
-- Si erreur lors de la sauvegarde → affiche dans Console.WriteLine()
-
-**Tests effectués** :
-- ✅ Sauvegarde d'une liste vide
-- ✅ Sauvegarde d'une liste avec 1 élément
-- ✅ Sauvegarde d'une liste avec 100 éléments
-- ✅ Chargement d'un fichier inexistant
-- ✅ Chargement d'un fichier vide
-- ✅ Chargement d'un fichier corrompu
+- Si erreur lors de la sauvegarde → affiche dans Console
 
 ---
 
-### 📦 Modèles de Données
+### 📦 Modèles de Données Créés
 
 #### Facture.cs
-
 **Propriétés** :
-```csharp
-public int Id { get; set; }                    // Identifiant unique
-public string Type { get; set; }               // Eau/Électricité/Chauffage/Autre
-public double Montant { get; set; }            // Montant en euros
-public DateTime DateFacture { get; set; }      // Date de la facture
-public DateTime? DateEcheance { get; set; }    // Date limite de paiement (nullable)
-public bool EstPayee { get; set; }             // Statut de paiement
-public DateTime? DatePaiement { get; set; }    // Date de paiement (nullable)
-public string Notes { get; set; }              // Notes optionnelles
-```
-
-**Validation** :
-- `Montant` doit être > 0
-- `DateFacture` ne peut pas être dans le futur
-- `DateEcheance` doit être >= `DateFacture`
-- `DatePaiement` doit être >= `DateFacture`
-
----
+- Id (int) : Identifiant unique
+- Type (string) : Eau/Électricité/Chauffage/Autre
+- Montant (double) : Montant en euros
+- DateFacture (DateTime) : Date de la facture
+- DateEcheance (DateTime?) : Date limite de paiement (nullable)
+- EstPayee (bool) : Statut de paiement
+- DatePaiement (DateTime?) : Date de paiement (nullable)
+- Notes (string) : Notes optionnelles
 
 #### ReleveEau.cs
-
 **Propriétés** :
+- Id (int) : Identifiant unique
+- DateReleve (DateTime) : Date du relevé
+- IndexEauFroide (double) : Index compteur eau froide (m³)
+- IndexEauChaude (double) : Index compteur eau chaude (m³)
+- Consommation (double) : Consommation calculée (m³)
+- MontantEstime (double) : Montant estimé (€)
+- Notes (string) : Notes optionnelles
+
+**Méthode spéciale** :
 ```csharp
-public int Id { get; set; }                    // Identifiant unique
-public DateTime DateReleve { get; set; }       // Date du relevé
-public double IndexEauFroide { get; set; }     // Index compteur eau froide (m³)
-public double IndexEauChaude { get; set; }     // Index compteur eau chaude (m³)
-public double Consommation { get; set; }       // Consommation calculée (m³)
-public double MontantEstime { get; set; }      // Montant estimé (€)
-public string Notes { get; set; }              // Notes optionnelles
+public void CalculerConsommation(ReleveEau relevePrecedent, double prixM3)
 ```
-
-**Calculs automatiques** :
-- `Consommation` = (IndexEauFroide + IndexEauChaude) - relevé précédent
-- `MontantEstime` = Consommation × Prix au m³
-
----
 
 #### ReleveElectricite.cs
-
 **Propriétés** :
+- Id (int) : Identifiant unique
+- DateReleve (DateTime) : Date du relevé
+- IndexHeuresCreuses (double) : Heures Creuses (kWh)
+- IndexHeuresPleines (double) : Heures Pleines (kWh)
+- Consommation (double) : Consommation totale (kWh)
+- MontantEstime (double) : Montant estimé (€)
+- Notes (string) : Notes optionnelles
+
+**Méthode spéciale** :
 ```csharp
-public int Id { get; set; }                    // Identifiant unique
-public DateTime DateReleve { get; set; }       // Date du relevé
-public double IndexHC { get; set; }            // Heures Creuses (kWh)
-public double IndexHP { get; set; }            // Heures Pleines (kWh)
-public double Consommation { get; set; }       // Consommation totale (kWh)
-public double MontantEstime { get; set; }      // Montant estimé (€)
-public string Notes { get; set; }              // Notes optionnelles
+public void CalculerConsommation(ReleveElectricite relevePrecedent, double prixHC, double prixHP)
 ```
-
-**Calculs automatiques** :
-- `Consommation` = (IndexHC + IndexHP) - relevé précédent
-- `MontantEstime` = (IndexHC × PrixHC) + (IndexHP × PrixHP)
 
 ---
 
-### 🎨 Système de Couleurs
+### 🎨 Système de Couleurs - Couleurs.xaml
 
-#### Colors.xaml
+**Emplacement** : `Styles/Couleurs.xaml`
 
-**Emplacement** : `Styles/Colors.xaml`
+**Palette complète** :
+- **Couleurs principales (Bleu)** : 4 nuances
+- **Couleurs de succès (Vert)** : 3 nuances
+- **Couleurs d'alerte (Orange)** : 3 nuances
+- **Couleurs d'erreur (Rouge)** : 3 nuances
+- **Palette de gris** : 10 nuances (Gris50 à Gris900)
+- **Couleurs fonctionnelles** : Eau (Cyan), Électricité (Jaune), Chauffage (Orange), Facture (Violet), Achat (Rose)
+- **Couleurs de fond** : 3 variations
+- **Couleurs de texte** : 4 variations
+- **Couleurs de bordure** : 3 variations
 
-**Palette de couleurs** :
+**Total** : 30+ couleurs définies
+
+**Utilisation** :
 ```xml
-PrimaryBlue       : #3B82F6  (Bleu principal)
-PrimaryBlueDark   : #2563EB  (Bleu foncé - hover)
-SuccessGreen      : #10B981  (Vert succès)
-SuccessGreenDark  : #059669  (Vert foncé - hover)
-WarningOrange     : #F59E0B  (Orange alerte)
-ErrorRed          : #EF4444  (Rouge erreur)
-Gray50-900        : Palette de gris (9 nuances)
+<Button Background="{StaticResource CouleurPrincipale}"/>
 ```
-
-**Utilisation dans XAML** :
-```xml
-<Button Background="{StaticResource PrimaryBlue}"/>
-```
-
-**Avantages** :
-- Changement de toutes les couleurs en un seul endroit
-- Cohérence visuelle garantie
-- Maintenance simplifiée
 
 ---
 
-### 📄 Pages Développées
+### 📚 Documentation Créée
 
-#### AccueilPage.xaml
-
-**Statut** : 🟡 En cours
-
-**Composants** :
-- 3 cartes statistiques (Total factures, Consommation eau, Consommation électricité)
-- Liste des 5 dernières factures
-- Graphique d'évolution mensuelle (à venir)
-
-**Bindings** :
-- `ItemsSource="{Binding DernieresFact ures}"`
-- `Text="{Binding TotalFactures}"`
-
----
-
-#### FacturesPage.xaml
-
-**Statut** : 🟡 En cours
-
-**Composants** :
-- Bouton "➕ Ajouter une facture"
-- ListView avec toutes les factures
-- Boutons "✏️ Modifier" et "🗑️ Supprimer" par facture
-- Filtres par type (Eau/Électricité/Chauffage/Toutes)
-
-**Navigation** :
-- Clic sur "Ajouter" → `AjouterFacturePage.xaml`
-- Clic sur "Modifier" → `ModifierFacturePage.xaml`
-
-**Chargement des données** :
-```csharp
-private void Page_Loaded(object sender, RoutedEventArgs e)
-{
-    ChargerDonnees();
-}
-```
+#### Fichiers de documentation
+1. **README.md** : Vue d'ensemble du projet
+2. **LICENSE.txt** : Licence MIT avec attribution
+3. **CHANGELOG.md** : Historique des versions
+4. **PATCH_NOTES.md** : Notes techniques
+5. **FEUILLE_DE_ROUTE.md** : Roadmap versions 1.0 à 3.0
+6. **GUIDE_GITHUB_DESKTOP.md** : Guide Git pour débutants
+7. **EXEMPLES_COMMITS.md** : Conventions de commit
 
 ---
 
 ### 🔧 Configuration Git
 
 #### .gitignore
-
 **Fichiers ignorés** :
-- `Configurations/` : Données personnelles des utilisateurs
+- `Configurations/` : Données personnelles
 - `.vs/` : Fichiers Visual Studio
 - `bin/`, `obj/` : Fichiers de compilation
-- `*.user`, `*.suo` : Fichiers utilisateur VS
+- `*.user`, `*.suo` : Fichiers utilisateur
 
-**Raison** : Éviter de commit des données personnelles ou des fichiers temporaires
-
----
-
-### 📚 Documentation
-
-#### README.md
-
-**Sections** :
-1. Vue d'ensemble
-2. Fonctionnalités
-3. Installation
-4. Technologies
-5. Roadmap
-6. Licence
-7. Auteur
-
-**Badges** :
-- Version C#
-- Version .NET
-- Statut du projet
-- Licence
+**Raison** : Éviter de commit des données personnelles ou temporaires
 
 ---
 
-#### LICENSE
+## Version 1.0.0 - Suite : Interface Principale Complétée
 
-**Type** : MIT License with Attribution Requirement
-
-**Spécificité** : Attribution obligatoire avec nom + email du créateur
-
----
-
-### 🐛 Bugs Corrigés
-
-_Aucun bug pour la version initiale_
+**Date de finalisation** : 21 Janvier 2026 (soir)  
+**Type** : Développement de l'interface  
+**Statut** : ✅ Fonctionnel
 
 ---
 
-### ⚠️ Problèmes Connus
+### 🪟 MainWindow.xaml
 
-_Aucun problème connu_
+**Emplacement** : `MainWindow.xaml`
+
+**Composants créés** :
+1. **Menu de navigation latéral** (250px de largeur)
+2. **Zone de contenu principal** (Frame)
+3. **Barre de titre dynamique** (80px de hauteur)
+
+#### Structure du menu
+
+```xml
+<Border Grid.Column="0" Background="White">
+    <StackPanel>
+        <!-- En-tête bleu 80px -->
+        <Border Height="80" Background="#3B82F6">
+            <StackPanel>
+                <TextBlock Text="🏠 Gestionnaire"/>
+                <TextBlock Text="de Logement"/>
+            </StackPanel>
+        </Border>
+
+        <!-- 8 Boutons de navigation -->
+        <Button x:Name="BtnAccueil" Content="🏠  Accueil"/>
+        <Button x:Name="BtnFactures" Content="🧾  Factures"/>
+        <Button x:Name="BtnEau" Content="💧  Eau"/>
+        <Button x:Name="BtnElectricite" Content="⚡  Électricité"/>
+        <Button x:Name="BtnChauffage" Content="🔥  Chauffage"/>
+        <Button x:Name="BtnAchats" Content="💳  Achats"/>
+        <Button x:Name="BtnStatistiques" Content="📊  Statistiques"/>
+        <Button x:Name="BtnParametres" Content="⚙️  Paramètres"/>
+    </StackPanel>
+</Border>
+```
+
+#### Styles de boutons
+
+**BoutonNavigation** (style normal) :
+- Hauteur : 50px
+- Background : Transparent
+- Foreground : Gris foncé
+- Padding : 20px à gauche
+- Effet hover : Fond bleu très clair
+
+**BoutonNavigationActif** (style actif) :
+- Background : Bleu très clair
+- Foreground : Bleu
+- FontWeight : Bold
+
+#### Zone de contenu
+
+```xml
+<Grid Grid.Column="1">
+    <Grid.RowDefinitions>
+        <RowDefinition Height="80"/>  <!-- Barre titre -->
+        <RowDefinition Height="*"/>   <!-- Contenu -->
+    </Grid.RowDefinitions>
+
+    <Border Grid.Row="0">
+        <TextBlock x:Name="TitrePage" Text="Tableau de bord"/>
+    </Border>
+
+    <Frame Grid.Row="1" x:Name="FramePrincipal"/>
+</Grid>
+```
 
 ---
 
-### 🔜 Prochaines Étapes (Version 1.0.1)
+### 💻 MainWindow.xaml.cs
 
-1. Terminer `AccueilPage.xaml`
-2. Implémenter `AjouterFacturePage.xaml`
-3. Implémenter `ModifierFacturePage.xaml`
-4. Ajouter validation des champs de formulaire
-5. Ajouter messages de confirmation (MessageBox)
-6. Tests complets du flux CRUD
+**Fonctionnalités implémentées** :
+
+#### 1. Navigation entre sections
+- Méthode `NavigerVers()` (préparée pour futures pages)
+- Méthode `AfficherMessageTemporaire()` (affiche "Page en construction")
+
+#### 2. Gestion visuelle du bouton actif
+- Méthode `ResetStylesBoutons()` : Réinitialise tous les boutons
+- Méthode `DefinirBoutonActif()` : Active le style du bouton cliqué
+
+#### 3. 8 événements de clic
+- `BtnAccueil_Click()`
+- `BtnFactures_Click()`
+- `BtnEau_Click()`
+- `BtnElectricite_Click()`
+- `BtnChauffage_Click()`
+- `BtnAchats_Click()`
+- `BtnStatistiques_Click()`
+- `BtnParametres_Click()`
+
+**Exemple de code** :
+```csharp
+private void BtnAccueil_Click(object sender, RoutedEventArgs e)
+{
+    DefinirBoutonActif(BtnAccueil);
+    TitrePage.Text = "Tableau de bord";
+    AfficherMessageTemporaire();
+}
+```
+
+---
+
+### 🎨 App.xaml (Configuration globale)
+
+**Modification majeure** : Import des couleurs au niveau global
+
+```xml
+<Application.Resources>
+    <ResourceDictionary>
+        <ResourceDictionary.MergedDictionaries>
+            <ResourceDictionary Source="Styles/Couleurs.xaml"/>
+        </ResourceDictionary.MergedDictionaries>
+    </ResourceDictionary>
+</Application.Resources>
+```
+
+**Avantage** : Les couleurs sont maintenant accessibles partout dans l'application sans avoir à les réimporter dans chaque page.
+
+---
+
+### 🐛 Problèmes Rencontrés et Résolus
+
+#### Problème 1 : Ressources introuvables
+**Erreur** : `Impossible de résoudre la ressource "CouleurPrincipale"`  
+**Cause** : Les couleurs n'étaient pas importées dans App.xaml  
+**Solution** : Ajout du `MergedDictionaries` dans App.xaml
+
+#### Problème 2 : Package System.Text.Json manquant
+**Erreur** : `Le nom de type 'Json' n'existe pas`  
+**Cause** : Package NuGet System.Text.Json pas installé  
+**Solution** : Installation via Gestionnaire de packages NuGet
+
+#### Problème 3 : FramePrincipal non reconnu
+**Erreur** : `Le nom 'FramePrincipal' n'existe pas dans le contexte actuel`  
+**Cause** : Visual Studio n'avait pas régénéré les fichiers de liaison  
+**Solution** : Nettoyer + Régénérer la solution + Redémarrer VS
+
+---
+
+### ✅ Tests Effectués
+
+- ✅ Compilation sans erreur
+- ✅ Lancement de l'application
+- ✅ Navigation entre les boutons
+- ✅ Changement du titre de page
+- ✅ Style du bouton actif fonctionne
+- ✅ Effet hover sur les boutons
+- ✅ En-tête centré correctement
+- ✅ Barre de titre alignée avec l'en-tête (80px)
+- ✅ Frame affiche le message temporaire
+
+---
+
+### 📊 Statistiques Finales
+
+**Temps de développement** : ~3 heures  
+**Nombre de fichiers créés** : 12 fichiers de code  
+**Lignes de code XAML** : ~180 lignes (MainWindow.xaml)  
+**Lignes de code C#** : ~150 lignes (MainWindow.xaml.cs)  
+**Nombre de commits** : 2 prévus (Documentation + Interface)
+
+---
+
+### 🔜 Prochaines Étapes
+
+1. Créer `Vues/AccueilVue.xaml` (Tableau de bord)
+2. Créer `Vues/FacturesVue.xaml` (Liste des factures)
+3. Créer `Vues/AjouterFactureVue.xaml` (Formulaire d'ajout)
+4. Implémenter le CRUD complet pour les factures
+5. Tester le système de sauvegarde JSON
 
 ---
 
@@ -276,7 +344,7 @@ _Aucun problème connu_
 **Charge initiale** :
 - Temps de démarrage : < 2 secondes
 - Mémoire utilisée : ~50-70 MB
-- Temps de chargement des factures (100 factures) : < 100ms
+- Temps de chargement des données (100 factures) : < 100ms
 
 ### Compatibilité
 
@@ -284,7 +352,7 @@ _Aucun problème connu_
 - ✅ Windows 10 (version 1903+)
 - ✅ Windows 11
 - ❌ Windows 8.1 (non testé)
-- ❌ Windows 7 (non supporté - .NET 8.0)
+- ❌ Windows 7 (non supporté - .NET 8.0 requis)
 
 **Résolution écran** :
 - ✅ 1920×1080 (optimal)
@@ -293,5 +361,5 @@ _Aucun problème connu_
 
 ---
 
-**Dernière mise à jour** : 21/01/2026  
+**Dernière mise à jour** : 21/01/2026 - 22h25  
 **Auteur des notes** : Latury (latury57@gmail.com)
