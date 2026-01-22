@@ -85,6 +85,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Vues\AccueilVue.xaml.cs">
+      <DependentUpon>AccueilVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ChauffageVue.xaml.cs">
+      <DependentUpon>ChauffageVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\EauVue.xaml.cs">
+      <DependentUpon>EauVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\ElectriciteVue.xaml.cs">
+      <DependentUpon>ElectriciteVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Vues\FacturesVue.xaml.cs">
+      <DependentUpon>FacturesVue.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -98,7 +113,31 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Ressources\Emojis\Emojis.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Styles\Couleurs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vues\AccueilVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vues\ChauffageVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vues\EauVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vues\ElectriciteVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vues\FacturesVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -141,11 +180,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Configurations\" />
-    <Folder Include="Ressources\emojis\" />
-    <Folder Include="Ressources\icônes\" />
+    <Folder Include="Ressources\Icônes\" />
     <Folder Include="Ressources\Images\" />
     <Folder Include="Utilitaires\" />
-    <Folder Include="Vues\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />

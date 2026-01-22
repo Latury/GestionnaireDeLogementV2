@@ -10,6 +10,194 @@ Ce fichier contient les **notes techniques détaillées** de chaque version.
 
 ---
 
+## Version 1.0.0 - Suite : Création des Pages Principales
+
+**Date** : 22 Janvier 2026  
+**Type** : Développement des interfaces utilisateur  
+**Statut** : ✅ Fonctionnel (navigation complète)
+
+---
+
+### 📄 Pages Créées
+
+#### 1. AccueilVue.xaml
+**Emplacement** : `Vues/AccueilVue.xaml`
+
+**Structure** :
+- **Section 1** : 3 cartes statistiques en ligne
+  - Total des factures (2 547,80 €)
+  - Consommation d'eau (15,4 m³)
+  - Électricité (342 kWh)
+- **Section 2** : Titre "Dernières factures"
+- **Section 3** : Liste des factures (vide pour l'instant)
+
+**Techniques utilisées** :
+- `Viewbox` pour adapter automatiquement la taille des cartes
+- `DropShadowEffect` pour les ombres portées
+- `Grid` avec 3 colonnes égales
+- Emojis intégrés via `StaticResource`
+
+**Code-behind** :
+```csharp
+public partial class AccueilVue : Page
+{
+    public AccueilVue()
+    {
+        InitializeComponent();
+    }
+}
+```
+
+---
+
+#### 2. FacturesVue.xaml
+**Emplacement** : `Vues/FacturesVue.xaml`
+
+**Structure** :
+- Cartes statistiques : Total payé / Total impayé
+- Boutons d'action : Ajouter / Modifier / Supprimer
+- Tableau avec colonnes : Date / Type / Montant / Statut
+- Message "Aucune facture pour le moment"
+
+**Événements** :
+- `BtnAjouter_Click` : MessageBox temporaire
+- `BtnModifier_Click` : MessageBox temporaire
+- `BtnSupprimer_Click` : MessageBox temporaire
+
+---
+
+#### 3. EauVue.xaml
+**Emplacement** : `Vues/EauVue.xaml`
+
+**Nouveautés** :
+- **Filtre ComboBox** : "Tous les types / Eau froide / Eau chaude"
+- Cartes statistiques : Consommation (15,4 m³) / Montant (45,80 €)
+- Tableau avec 5 colonnes : Date / **Type** / Index / Consommation / Montant
+
+**Différence avec version précédente** :
+- Ajout d'une ligne `RowDefinition` pour le filtre
+- Ajout de la colonne "Type" dans le tableau
+- Colonnes redimensionnées (0.8* pour Date/Type)
+
+---
+
+#### 4. ElectriciteVue.xaml
+**Emplacement** : `Vues/ElectriciteVue.xaml`
+
+**Structure** :
+- Cartes statistiques : Consommation (342 kWh) / Montant (78,50 €)
+- Boutons d'action : Ajouter / Modifier / Supprimer
+- Tableau : Date / Heures Creuses / Heures Pleines / Consommation / Montant
+- Message "Aucun relevé d'électricité pour le moment"
+
+---
+
+#### 5. ChauffageVue.xaml
+**Emplacement** : `Vues/ChauffageVue.xaml`
+
+**Nouveautés** :
+- **Filtre ComboBox avancé** :
+  - Tous les types
+  - ⛽ Fioul
+  - 🔥 Gaz
+  - ⚡ Électrique
+  - 🪵 Bois
+  - ❄️ Pompe à chaleur
+- Cartes statistiques : Consommation (850 kWh) / Montant (127,50 €)
+- Tableau : Date / Type / **Quantité** / Montant
+
+**Application flexible** :
+- Utilisable par tout type de logement
+- Pas limité au fioul uniquement
+
+---
+
+### 💻 MainWindow.xaml.cs - Navigation Complétée
+
+**Modifications** :
+
+#### Avant (21/01/2026)
+```csharp
+private void BtnElectricite_Click(object sender, RoutedEventArgs e)
+{
+    // TODO : Créer la page ElectriciteVue
+    TitrePage.Text = "Consommation d'électricité";
+    ResetBoutonsNavigation();
+}
+
+private void BtnChauffage_Click(object sender, RoutedEventArgs e)
+{
+    // TODO : Créer la page ChauffageVue
+    TitrePage.Text = "Chauffage";
+    ResetBoutonsNavigation();
+}
+```
+
+#### Après (22/01/2026)
+```csharp
+private void BtnElectricite_Click(object sender, RoutedEventArgs e)
+{
+    ChangerPage(new ElectriciteVue(), "Consommation d'électricité", BtnElectricite);
+}
+
+private void BtnChauffage_Click(object sender, RoutedEventArgs e)
+{
+    ChangerPage(new ChauffageVue(), "Chauffage", BtnChauffage);
+}
+```
+
+**Résultat** : Navigation complète pour Accueil, Factures, Eau, Électricité, Chauffage
+
+---
+
+### 🎨 Styles Réutilisables
+
+**Styles définis dans chaque page** :
+- `BoutonAction` : Boutons bleus standard
+- `BoutonSupprimer` : Bouton rouge pour suppression
+- `Carte` : Bordures avec ombres portées
+- `CarteStatistique` : Cartes avec padding réduit
+- `ComboBoxFiltre` : Style des filtres (Eau, Chauffage)
+
+**Avantage** : Cohérence visuelle sur toutes les pages
+
+---
+
+### 📊 Statistiques de Développement
+
+**Temps de développement** : ~4 heures  
+**Nombre de fichiers créés** :
+- 5 fichiers XAML (AccueilVue, FacturesVue, EauVue, ElectriciteVue, ChauffageVue)
+- 5 fichiers C# code-behind
+
+**Lignes de code** :
+- XAML : ~800 lignes au total
+- C# : ~250 lignes au total
+
+---
+
+### ✅ Tests Effectués
+
+- ✅ Navigation depuis MainWindow vers toutes les pages
+- ✅ Affichage correct des cartes statistiques
+- ✅ Filtres ComboBox fonctionnels (Eau, Chauffage)
+- ✅ Boutons d'action affichent MessageBox
+- ✅ Design responsive (redimensionnement fenêtre)
+- ✅ Emojis s'affichent correctement
+- ✅ Aucune erreur de compilation
+
+---
+
+### 🔜 Prochaines Étapes
+
+1. ⚪ Créer les modèles `ReleveChauffage.cs`
+2. ⚪ Créer les formulaires d'ajout (AjouterFactureVue, AjouterReleveEauVue, etc.)
+3. ⚪ Implémenter le CRUD complet avec sauvegarde JSON
+4. ⚪ Afficher les données réelles au lieu des données statiques
+5. ⚪ Ajouter la validation des formulaires
+
+---
+
 ## Version 1.0.0 - Initialisation du Projet
 
 **Date** : 21 Janvier 2026 (après-midi)  
@@ -361,5 +549,5 @@ private void BtnAccueil_Click(object sender, RoutedEventArgs e)
 
 ---
 
-**Dernière mise à jour** : 21/01/2026 - 22h25  
+**Dernière mise à jour** : 22/01/2026 - 21h12  
 **Auteur des notes** : Latury (latury57@gmail.com)

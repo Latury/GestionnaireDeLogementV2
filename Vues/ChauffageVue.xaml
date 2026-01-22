@@ -1,0 +1,287 @@
+﻿<Page x:Class="GestionnaireDeLogement.Vues.ChauffageVue"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Background="{StaticResource FondSecondaire}">
+
+    <Page.Resources>
+        <!-- Style pour les boutons d'action -->
+        <Style x:Key="BoutonAction" TargetType="Button">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MinWidth" Value="120"/>
+            <Setter Property="Background" Value="{StaticResource CouleurPrincipale}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Margin" Value="5,0"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                CornerRadius="5"
+                                Padding="15,0">
+                            <ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource CouleurPrincipaleClaire}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style pour le bouton Supprimer (rouge) -->
+        <Style x:Key="BoutonSupprimer" TargetType="Button" BasedOn="{StaticResource BoutonAction}">
+            <Setter Property="Background" Value="#E53935"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#C62828"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!-- Style pour les cartes -->
+        <Style x:Key="Carte" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource FondCarte}"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="Padding" Value="20"/>
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect Color="#000000" 
+                                      BlurRadius="10" 
+                                      ShadowDepth="2" 
+                                      Opacity="0.1"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!-- Style pour les cartes statistiques -->
+        <Style x:Key="CarteStatistique" TargetType="Border" BasedOn="{StaticResource Carte}">
+            <Setter Property="Padding" Value="18"/>
+            <Setter Property="Margin" Value="5"/>
+        </Style>
+
+        <!-- Style pour les ComboBox -->
+        <Style x:Key="ComboBoxFiltre" TargetType="ComboBox">
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="MinWidth" Value="180"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Background" Value="{StaticResource FondCarte}"/>
+            <Setter Property="Foreground" Value="{StaticResource TextePrincipal}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BordureClaire}"/>
+            <Setter Property="BorderThickness" Value="1"/>
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <!-- Cartes statistiques -->
+            <RowDefinition Height="Auto"/>
+            <!-- Espacement -->
+            <RowDefinition Height="15"/>
+            <!-- Filtre type de chauffage -->
+            <RowDefinition Height="Auto"/>
+            <!-- Espacement -->
+            <RowDefinition Height="15"/>
+            <!-- Boutons d'action -->
+            <RowDefinition Height="Auto"/>
+            <!-- Espacement -->
+            <RowDefinition Height="15"/>
+            <!-- Tableau des relevés -->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <!-- SECTION 1 : CARTES STATISTIQUES (2 COLONNES)          -->
+        <!-- ══════════════════════════════════════════════════════ -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- CARTE 1 : Consommation totale -->
+            <Border Grid.Column="0" Style="{StaticResource CarteStatistique}">
+                <StackPanel>
+                    <TextBlock Text="Consommation totale"
+                               FontSize="14"
+                               Foreground="{StaticResource TexteSecondaire}"
+                               FontWeight="Medium"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{StaticResource EmojiChauffage}"
+                                   FontSize="32"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,10,0"/>
+                        <TextBlock Text="850 kWh"
+                                   FontSize="32"
+                                   FontWeight="Bold"
+                                   Foreground="#F44336"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Text="Ce mois"
+                               FontSize="12"
+                               Foreground="{StaticResource TexteSecondaire}"
+                               Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+
+            <!-- CARTE 2 : Montant total -->
+            <Border Grid.Column="1" Style="{StaticResource CarteStatistique}">
+                <StackPanel>
+                    <TextBlock Text="Montant total"
+                               FontSize="14"
+                               Foreground="{StaticResource TexteSecondaire}"
+                               FontWeight="Medium"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                        <TextBlock Text="{StaticResource EmojiArgent}"
+                                   FontSize="32"
+                                   VerticalAlignment="Center"
+                                   Margin="0,0,10,0"/>
+                        <TextBlock Text="127,50 €"
+                                   FontSize="32"
+                                   FontWeight="Bold"
+                                   Foreground="{StaticResource CouleurPrincipale}"
+                                   VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <TextBlock Text="Ce mois"
+                               FontSize="12"
+                               Foreground="{StaticResource TexteSecondaire}"
+                               Margin="0,8,0,0"/>
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <!-- SECTION 2 : FILTRE TYPE DE CHAUFFAGE                  -->
+        <!-- ══════════════════════════════════════════════════════ -->
+        <Border Grid.Row="2" Style="{StaticResource Carte}">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <TextBlock Text="Filtrer par type :"
+                           FontSize="14"
+                           FontWeight="Medium"
+                           Foreground="{StaticResource TextePrincipal}"
+                           VerticalAlignment="Center"
+                           Margin="0,0,15,0"/>
+
+                <ComboBox x:Name="CmbTypeChauffage"
+                          Style="{StaticResource ComboBoxFiltre}"
+                          SelectedIndex="0">
+                    <ComboBoxItem Content="Tous les types"/>
+                    <ComboBoxItem Content="⛽ Fioul"/>
+                    <ComboBoxItem Content="🔥 Gaz"/>
+                    <ComboBoxItem Content="⚡ Électrique"/>
+                    <ComboBoxItem Content="🪵 Bois"/>
+                    <ComboBoxItem Content="❄️ Pompe à chaleur"/>
+                </ComboBox>
+            </StackPanel>
+        </Border>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <!-- SECTION 3 : BOUTONS D'ACTION (CENTRÉS)                -->
+        <!-- ══════════════════════════════════════════════════════ -->
+        <StackPanel Grid.Row="4" 
+                    Orientation="Horizontal" 
+                    HorizontalAlignment="Center">
+            <Button x:Name="BtnAjouter"
+                    Style="{StaticResource BoutonAction}"
+                    Click="BtnAjouter_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{StaticResource EmojiAjouter}" Margin="0,0,8,0"/>
+                    <TextBlock Text="Ajouter relevé"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="BtnModifier"
+                    Style="{StaticResource BoutonAction}"
+                    Click="BtnModifier_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{StaticResource EmojiModifier}" Margin="0,0,8,0"/>
+                    <TextBlock Text="Modifier"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="BtnSupprimer"
+                    Style="{StaticResource BoutonSupprimer}"
+                    Click="BtnSupprimer_Click">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{StaticResource EmojiSupprimer}" Margin="0,0,8,0"/>
+                    <TextBlock Text="Supprimer"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!-- ══════════════════════════════════════════════════════ -->
+        <!-- SECTION 4 : TABLEAU DES RELEVÉS                       -->
+        <!-- ══════════════════════════════════════════════════════ -->
+        <Border Grid.Row="6" Style="{StaticResource Carte}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!-- En-tête -->
+                    <RowDefinition Height="Auto"/>
+                    <!-- Séparateur -->
+                    <RowDefinition Height="1"/>
+                    <!-- Liste -->
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <!-- EN-TÊTE DU TABLEAU -->
+                <Grid Grid.Row="0" Margin="10,10,10,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock Grid.Column="0" 
+                               Text="Date"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TexteSecondaire}"/>
+                    <TextBlock Grid.Column="1" 
+                               Text="Type"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TexteSecondaire}"/>
+                    <TextBlock Grid.Column="2" 
+                               Text="Quantité"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TexteSecondaire}"/>
+                    <TextBlock Grid.Column="3" 
+                               Text="Montant"
+                               FontSize="14"
+                               FontWeight="Bold"
+                               Foreground="{StaticResource TexteSecondaire}"/>
+                </Grid>
+
+                <!-- SÉPARATEUR -->
+                <Border Grid.Row="1" Background="{StaticResource BordureClaire}"/>
+
+                <!-- CONTENU (pour l'instant vide) -->
+                <StackPanel Grid.Row="2"
+                            VerticalAlignment="Center"
+                            HorizontalAlignment="Center">
+                    <TextBlock Text="{StaticResource EmojiConstruction}"
+                               FontSize="64"
+                               Opacity="0.3"
+                               HorizontalAlignment="Center"/>
+                    <TextBlock Text="Aucun relevé de chauffage pour le moment"
+                               FontSize="18"
+                               Foreground="{StaticResource TexteSecondaire}"
+                               HorizontalAlignment="Center"
+                               Margin="0,15,0,0"/>
+                    <TextBlock Text="Cliquez sur 'Ajouter relevé' pour enregistrer votre première consommation"
+                               FontSize="14"
+                               Foreground="{StaticResource TexteSecondaire}"
+                               HorizontalAlignment="Center"
+                               Margin="0,8,0,0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

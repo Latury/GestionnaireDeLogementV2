@@ -24,7 +24,7 @@ _Développé par [Latury](https://github.com/Latury)_
 
 **Gestionnaire de Logement** est une application de bureau Windows qui permet de gérer tous les aspects d'un logement : factures, consommations d'eau et d'électricité, chauffage, achats échelonnés, et budget mensuel.
 
-**Version actuelle :** `1.0.0` (21/01/2026)  
+**Version actuelle :** `1.0.0` (22/01/2026)  
 **Statut :** 🟡 **En développement actif**
 
 ---
@@ -59,32 +59,36 @@ Ce projet me permet d'apprendre en pratiquant. Chaque ligne de code est document
 ### **💧 Gestion de l'eau**
 - Suivi des relevés de compteur (eau froide et eau chaude)
 - Calcul automatique de la consommation en m³
+- Filtrage par type (Eau froide / Eau chaude)
 - Historique complet avec dates
-- Graphiques d'évolution mensuelle et annuelle
+- Graphiques d'évolution mensuelle et annuelle _(à venir)_
 - Estimation du montant basé sur le prix au m³
 
 ### **⚡ Gestion de l'électricité**
 - Suivi des relevés de compteur (heures creuses et heures pleines)
 - Calcul de la consommation en kWh
-- Comparaison mensuelle et détection des variations
-- Détection des pics de consommation anormaux
+- Cartes statistiques avec consommation et montant
+- Comparaison mensuelle et détection des variations _(à venir)_
+- Détection des pics de consommation anormaux _(à venir)_
 - Estimation du coût selon le tarif HC/HP
 
 ### **🔥 Gestion du chauffage**
 - Suivi des relevés de consommation
+- Support multi-types : Fioul, Gaz, Électrique, Bois, Pompe à chaleur
+- Filtrage par type de chauffage
 - Calcul des coûts mensuels et annuels
-- Statistiques saisonnières (hiver vs été)
-- Comparaison avec les années précédentes
+- Statistiques saisonnières (hiver vs été) _(à venir)_
+- Comparaison avec les années précédentes _(à venir)_
 
 ### **🧾 Gestion des factures**
 - Ajout, modification et suppression de factures
 - Catégorisation automatique (Eau, Électricité, Chauffage, Autre)
 - Suivi du statut de paiement
-- Alertes pour factures impayées
+- Alertes pour factures impayées _(à venir)_
 - Historique complet avec recherche et filtres
 - Notes personnalisées par facture
 
-### **💳 Achats échelonnés**
+### **💳 Achats échelonnés** _(à venir v1.1.0)_
 - Gestion des achats en plusieurs fois (crédits)
 - Calcul automatique des mensualités
 - Suivi des paiements effectués et restants
@@ -94,13 +98,14 @@ Ce projet me permet d'apprendre en pratiquant. Chaque ligne de code est document
 
 ### **📊 Tableaux de bord et statistiques**
 - Vue d'ensemble des consommations du mois
-- Graphiques interactifs et dynamiques
-- Statistiques mensuelles et annuelles
-- Comparaison avec les périodes précédentes
-- Calcul automatique des économies réalisées
-- Prévisions basées sur l'historique
+- Cartes statistiques par type (Factures, Eau, Électricité, Chauffage)
+- Graphiques interactifs et dynamiques _(à venir)_
+- Statistiques mensuelles et annuelles _(à venir)_
+- Comparaison avec les périodes précédentes _(à venir)_
+- Calcul automatique des économies réalisées _(à venir)_
+- Prévisions basées sur l'historique _(à venir)_
 
-### **🏡 Mon logement**
+### **🏡 Mon logement** _(à venir)_
 - Fiche d'informations du logement
 - Surface, nombre de pièces, type de chauffage
 - Prix de référence pour eau, électricité, chauffage
@@ -112,42 +117,45 @@ Ce projet me permet d'apprendre en pratiquant. Chaque ligne de code est document
 
 ```
 GestionnaireDeLogement/
-├── 📁 Ressources/ # Ressources visuelles centralisées
-│ ├── Icons/ # Icônes (.png, .svg)
-│ ├── Emojis/ # Emojis personnalisés
-│ └── Images/ # Images diverses
+├── 📁 Ressources/              # Ressources visuelles centralisées
+│   ├── Icons/                  # Icônes (.png, .svg)
+│   ├── Emojis/                 # Emojis personnalisés
+│   └── Images/                 # Images diverses
 │
-├── 📁 Donnees/ # Gestion des données
-│ └── GestionnaireDonnees.cs # Gestionnaire de fichiers JSON
+├── 📁 Donnees/                 # Gestion des données
+│   └── GestionnaireDonnees.cs  # Gestionnaire de fichiers JSON
 │
-├── 📁 Modeles/ # Modèles de données
-│ ├── Facture.cs # Modèle Facture
-│ ├── ReleveEau.cs # Modèle Relevé Eau
-│ ├── ReleveElectricite.cs # Modèle Relevé Électricité
-│ ├── AchatEchelonne.cs # Modèle Achat échelonné
-│ └── Logement.cs # Modèle Logement
+├── 📁 Modeles/                 # Modèles de données
+│   ├── Facture.cs              # Modèle Facture
+│   ├── ReleveEau.cs            # Modèle Relevé Eau
+│   ├── ReleveElectricite.cs    # Modèle Relevé Électricité
+│   ├── AchatEchelonne.cs       # Modèle Achat échelonné (à venir)
+│   └── Logement.cs             # Modèle Logement (à venir)
 │
-├── 📁 Vues/ # Vues de l'application (XAML + C#)
-│ ├── AccueilVue.xaml # Page d'accueil (tableau de bord)
-│ ├── FacturesVue.xaml # Gestion des factures
-│ ├── EauVue.xaml # Gestion de l'eau
-│ ├── ElectriciteVue.xaml # Gestion de l'électricité
-│ └── ... # Autres vues
+├── 📁 Vues/                    # Vues de l'application (XAML + C#)
+│   ├── AccueilVue.xaml         # ✅ Page d'accueil (tableau de bord)
+│   ├── FacturesVue.xaml        # ✅ Gestion des factures
+│   ├── EauVue.xaml             # ✅ Gestion de l'eau
+│   ├── ElectriciteVue.xaml     # ✅ Gestion de l'électricité
+│   ├── ChauffageVue.xaml       # ✅ Gestion du chauffage
+│   ├── AchatsVue.xaml          # ⚪ Gestion des achats (à venir)
+│   ├── StatistiquesVue.xaml    # ⚪ Statistiques (à venir)
+│   └── ParametresVue.xaml      # ⚪ Paramètres (à venir)
 │
-├── 📁 Styles/ # Styles et thèmes
-│ ├── Couleurs.xaml # Dictionnaire de couleurs centralisé
-│ ├── StylesBoutons.xaml # Styles pour les boutons
-│ └── StylesTextes.xaml # Styles pour les textes
+├── 📁 Styles/                  # Styles et thèmes
+│   ├── Couleurs.xaml           # Dictionnaire de couleurs centralisé
+│   ├── StylesBoutons.xaml      # Styles pour les boutons (à venir)
+│   └── StylesTextes.xaml       # Styles pour les textes (à venir)
 │
-├── 📁 Utilitaires/ # Utilitaires et helpers
-│ ├── Convertisseurs/ # Convertisseurs XAML
-│ └── Assistants/ # Fonctions helper
+├── 📁 Utilitaires/             # Utilitaires et helpers
+│   ├── Convertisseurs/         # Convertisseurs XAML (à venir)
+│   └── Assistants/             # Fonctions helper (à venir)
 │
-└── 📁 Configurations/ # Fichiers de données (Git ignore)
-├── factures.json
-├── releves_eau.json
-├── releves_electricite.json
-└── logement.json
+└── 📁 Configurations/          # Fichiers de données (Git ignore)
+    ├── factures.json
+    ├── releves_eau.json
+    ├── releves_electricite.json
+    └── logement.json
 ```
 
 ---
@@ -191,15 +199,16 @@ Ce projet contient une documentation complète pour faciliter le développement 
 
 ## 📋 **Roadmap**
 
-### Version 1.0.0 (En cours - Février 2026)
+### Version 1.0.0 (En cours - Janvier 2026)
 - [x] Structure de base du projet
 - [x] Documentation complète
 - [x] Système de sauvegarde JSON
-- [ ] Modèles de données (Facture, ReleveEau, ReleveElectricite)
-- [ ] Gestion des factures (CRUD complet)
-- [ ] Gestion de l'eau
-- [ ] Gestion de l'électricité
-- [ ] Interface d'accueil avec tableau de bord
+- [x] Modèles de données (Facture, ReleveEau, ReleveElectricite)
+- [x] Interface principale avec navigation
+- [x] Page d'accueil avec cartes statistiques
+- [x] Pages de gestion (Factures, Eau, Électricité, Chauffage)
+- [ ] Fonctionnalités CRUD complètes
+- [ ] Connexion au système de sauvegarde
 
 ### Version 1.0.1 (Stabilisation - Février 2026)
 - [ ] Tests complets de toutes les fonctionnalités
@@ -210,7 +219,6 @@ Ce projet contient une documentation complète pour faciliter le développement 
 
 ### Version 1.1.0 (Mars 2026)
 - [ ] Graphiques et statistiques avancées
-- [ ] Gestion du chauffage
 - [ ] Achats échelonnés
 - [ ] Comparaisons mensuelles
 - [ ] Détection automatique des économies
@@ -318,20 +326,22 @@ Les contributions sont les bienvenues ! Consultez [EXEMPLES_COMMITS.md](EXEMPLES
 
 - **Langage principal** : C# (100%)
 - **Framework** : WPF .NET 8.0
-- **Architecture** : MVVM (prévu)
-- **Lignes de code** : En croissance...
+- **Architecture** : MVVM (en cours d'implémentation)
+- **Pages créées** : 5/8 (AccueilVue, FacturesVue, EauVue, ElectriciteVue, ChauffageVue)
+- **Lignes de code** : ~1 200 lignes (XAML + C#)
 - **Documentation** : 7 fichiers markdown complets
-- **Statut** : Projet d'apprentissage actif
+- **Statut** : Projet d'apprentissage actif (70% version 1.0.0)
 
 ---
 
 ## 🎯 **Prochaines étapes de développement**
 
-1. **Phase 1** : Création des modèles de données (Facture, ReleveEau, ReleveElectricite)
-2. **Phase 2** : Implémentation des pages de gestion (Factures, Eau, Électricité)
-3. **Phase 3** : Développement du tableau de bord principal
-4. **Phase 4** : Ajout des graphiques et statistiques
-5. **Phase 5** : Tests, stabilisation et rédaction du guide utilisateur
+1. **Phase 1** : ✅ Création des modèles de données (Facture, ReleveEau, ReleveElectricite)
+2. **Phase 2** : ✅ Implémentation des pages de gestion (Factures, Eau, Électricité, Chauffage)
+3. **Phase 3** : 🔵 Connexion des pages au système de sauvegarde JSON
+4. **Phase 4** : ⚪ Formulaires d'ajout/modification de données
+5. **Phase 5** : ⚪ Ajout des graphiques et statistiques
+6. **Phase 6** : ⚪ Tests, stabilisation et rédaction du guide utilisateur
 
 📖 **Suivez l'avancement dans [FEUILLE_DE_ROUTE.md](FEUILLE_DE_ROUTE.md)**
 
@@ -345,6 +355,6 @@ Les contributions sont les bienvenues ! Consultez [EXEMPLES_COMMITS.md](EXEMPLES
 
 ---
 
-**Version 1.0.0** • **Dernière mise à jour : 21 janvier 2026**
+**Version 1.0.0** • **Dernière mise à jour : 22 janvier 2026**
 
 </div>

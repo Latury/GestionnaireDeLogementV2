@@ -10,9 +10,9 @@
 
 ## 🎯 Version 1.0.0 - Fondations (Janvier 2026)
 
-**Statut** : ✅ **COMPLÉTÉ** (21/01/2026)
+**Statut** : 🔵 **EN COURS** (22/01/2026)
 
-**Objectif** : Créer la base du projet avec interface et modèles de données
+**Objectif** : Créer la base du projet avec interface et pages principales
 
 ### 🏗️ Infrastructure de base
 - 🟢 Structure du projet
@@ -35,17 +35,21 @@
 
 ### 📄 Pages de base
 - 🟢 MainWindow.xaml (fenêtre principale avec navigation)
-- ⚪ AccueilVue.xaml (tableau de bord)
-- ⚪ FacturesVue.xaml (liste des factures)
+- 🟢 AccueilVue.xaml (tableau de bord avec cartes statistiques)
+- 🟢 FacturesVue.xaml (structure de base)
+- 🟢 EauVue.xaml (avec filtre Eau froide/Eau chaude)
+- 🟢 ElectriciteVue.xaml (avec cartes statistiques)
+- 🟢 ChauffageVue.xaml (avec filtre types de chauffage)
 - ⚪ AjouterFactureVue.xaml (formulaire d'ajout)
 
 ### 🎨 Design
 - 🟢 Palette de couleurs complète
 - 🟢 Styles de boutons
+- 🟢 Styles de cartes statistiques
+- 🟢 Emojis intégrés
 - ⚪ Styles de formulaires
-- ⚪ Styles de cartes
 
-**Date de livraison** : ✅ 21 Janvier 2026
+**Date de livraison** : En cours...
 
 ---
 
@@ -62,8 +66,6 @@
 - ⚪ **D**elete : Supprimer une facture (avec confirmation)
 
 ### 📄 Pages à créer
-- ⚪ AccueilVue.xaml (tableau de bord avec statistiques)
-- ⚪ FacturesVue.xaml (liste complète + filtres)
 - ⚪ AjouterFactureVue.xaml (formulaire d'ajout)
 - ⚪ ModifierFactureVue.xaml (formulaire de modification)
 
@@ -73,6 +75,7 @@
 - ⚪ Filtrage par type de facture (Eau/Électricité/Chauffage/Toutes)
 - ⚪ Tri par date/montant
 - ⚪ Recherche par notes
+- ⚪ Connexion au système de sauvegarde JSON
 
 ### 📊 Statistiques de base
 - ⚪ Total des factures payées
@@ -86,12 +89,12 @@
 
 ## 🎯 Version 1.0.2 - Gestion Eau (Février 2026)
 
-**Statut** : ⚪ **À FAIRE**
+**Statut** : 🔵 **EN COURS** (Interface créée)
 
 **Objectif** : Implémenter la gestion de l'eau
 
 ### 📄 Pages
-- ⚪ EauVue.xaml (liste des relevés)
+- 🟢 EauVue.xaml (liste des relevés avec filtre)
 - ⚪ AjouterReleveEauVue.xaml (formulaire)
 
 ### ✅ Fonctionnalités
@@ -100,6 +103,7 @@
 - ⚪ Estimation du montant
 - ⚪ Graphique d'évolution de la consommation
 - ⚪ Historique des relevés
+- ⚪ Filtrage Eau froide/Eau chaude
 
 **Date de livraison prévue** : 28 Février 2026
 
@@ -107,12 +111,12 @@
 
 ## 🎯 Version 1.0.3 - Gestion Électricité (Mars 2026)
 
-**Statut** : ⚪ **À FAIRE**
+**Statut** : 🔵 **EN COURS** (Interface créée)
 
 **Objectif** : Implémenter la gestion de l'électricité
 
 ### 📄 Pages
-- ⚪ ElectriciteVue.xaml (liste des relevés)
+- 🟢 ElectriciteVue.xaml (liste des relevés)
 - ⚪ AjouterReleveElectriciteVue.xaml (formulaire)
 
 ### ✅ Fonctionnalités
@@ -126,13 +130,30 @@
 
 ---
 
-## 🎯 Version 1.1.0 - Fonctionnalités Avancées (Mars-Avril 2026)
+## 🎯 Version 1.0.4 - Gestion Chauffage (Mars 2026)
+
+**Statut** : 🔵 **EN COURS** (Interface créée)
+
+**Objectif** : Implémenter la gestion du chauffage
+
+### 📄 Pages
+- 🟢 ChauffageVue.xaml (liste des relevés avec filtre types)
+- ⚪ AjouterReleveChauffageVue.xaml (formulaire)
+
+### ✅ Fonctionnalités
+- ⚪ Ajouter un relevé de chauffage (Fioul/Gaz/Électrique/Bois/Pompe à chaleur)
+- ⚪ Calcul automatique de la consommation
+- ⚪ Estimation du montant
+- ⚪ Graphique d'évolution
+- ⚪ Filtrage par type de chauffage
+
+**Date de livraison prévue** : 20 Mars 2026
+
+---
+
+## 🎯 Version 1.1.0 - Fonctionnalités Avancées (Avril 2026)
 
 **Statut** : ⚪ **À FAIRE**
-
-### 🔥 Gestion du chauffage
-- ⚪ Page ChauffageVue.xaml
-- ⚪ Suivi de la consommation de gaz/fioul/électrique
 
 ### 💳 Achats échelonnés
 - ⚪ Page AchatsVue.xaml
@@ -220,10 +241,11 @@
 
 | Version | Statut | Date prévue | Progression |
 |---------|--------|-------------|-------------|
-| 1.0.0 | ✅ Complété | 21/01/2026 | 100% |
+| 1.0.0 | 🔵 En cours | 22/01/2026 | 70% |
 | 1.0.1 | ⚪ À faire | 15/02/2026 | 0% |
-| 1.0.2 | ⚪ À faire | 28/02/2026 | 0% |
-| 1.0.3 | ⚪ À faire | 15/03/2026 | 0% |
+| 1.0.2 | 🔵 En cours | 28/02/2026 | 30% |
+| 1.0.3 | 🔵 En cours | 15/03/2026 | 30% |
+| 1.0.4 | 🔵 En cours | 20/03/2026 | 30% |
 | 1.1.0 | ⚪ À faire | 30/04/2026 | 0% |
 | 2.0.0 | ⚪ À faire | 30/06/2026 | 0% |
 | 3.0.0 | ⚪ À faire | 30/09/2026 | 0% |
@@ -241,6 +263,7 @@
 Au fil des versions, apprentissage de :
 - ✅ WPF et XAML (Version 1.0)
 - ✅ Architecture MVVM (Version 1.0)
+- 🔵 Gestion d'événements et navigation (Version 1.0)
 - ⚪ Graphiques interactifs (Version 1.1)
 - ⚪ Export PDF/Excel (Version 2.0)
 - ⚪ Intégration cloud (Version 3.0)
@@ -257,5 +280,5 @@ Au fil des versions, apprentissage de :
 
 ---
 
-**Dernière mise à jour** : 21 Janvier 2026  
+**Dernière mise à jour** : 22 Janvier 2026  
 **Auteur** : Latury (latury57@gmail.com)

@@ -6,9 +6,30 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 
 ---
 
-## [1.0.0] - 2026-01-21
+## [1.0.0] - 2026-01-22 (En cours)
 
 ### ✨ Ajouté
+- 🏠 Pages principales de l'application :
+  - **AccueilVue.xaml** : Tableau de bord avec 3 cartes statistiques (Factures, Eau, Électricité)
+  - **FacturesVue.xaml** : Structure de base pour la gestion des factures
+  - **EauVue.xaml** : Gestion de l'eau avec filtre Froide/Chaude
+  - **ElectriciteVue.xaml** : Gestion de l'électricité avec cartes statistiques
+  - **ChauffageVue.xaml** : Gestion du chauffage avec filtre multi-types (Fioul, Gaz, Électrique, Bois, Pompe à chaleur)
+- 🎨 Cartes statistiques avec :
+  - Emojis personnalisés par type
+  - Effets de survol
+  - Design moderne avec ombres portées
+- 🔄 Navigation fonctionnelle entre toutes les pages
+- 📊 Messages temporaires pour pages en construction
+- 🎯 Filtres avancés :
+  - Eau : Froide / Chaude
+  - Chauffage : 6 types différents
+
+---
+
+## [1.0.0] - 2026-01-21
+
+### ✨ Ajouté (Infrastructure)
 - 🏠 Structure de base du projet WPF .NET 8.0
 - 💾 Système de sauvegarde JSON (GestionnaireDonnees.cs)
 - 🎨 Dictionnaire de couleurs centralisé (Couleurs.xaml)
@@ -59,25 +80,20 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 ## [Non publié] - À venir en version 1.0.1 (Février 2026)
 
 ### ✨ Prévu
-- 📄 Pages de gestion :
-  - AccueilVue.xaml (tableau de bord)
-  - FacturesVue.xaml (gestion des factures)
-  - EauVue.xaml (gestion de l'eau)
-  - ElectriciteVue.xaml (gestion de l'électricité)
 - ⚙️ Fonctionnalités CRUD complètes pour les factures
-- 📊 Affichage des listes de données
 - ➕ Formulaires d'ajout/modification
 - 🗑️ Suppression avec confirmation
+- 📊 Connexion au système de sauvegarde JSON
+- 💾 Chargement et affichage des données réelles
 - 📝 Guide utilisateur simplifié (GUIDE_UTILISATEUR.md)
 - ✅ Tests et stabilisation
 
 ---
 
-## [Non publié] - À venir en version 1.1.0 (Mars 2026)
+## [Non publié] - À venir en version 1.1.0 (Mars-Avril 2026)
 
 ### ✨ Prévu
 - 📊 Graphiques interactifs et statistiques avancées
-- 🔥 Gestion du chauffage
 - 💳 Achats échelonnés avec échéancier
 - 🌙 Mode sombre (thème nuit)
 - 📈 Comparaisons mensuelles et détection d'économies
@@ -122,5 +138,5 @@ Le format est basé sur [Keep a Changelog](https://keepachangelog.com/fr/1.0.0/)
 
 ---
 
-**Dernière mise à jour** : 21 janvier 2026  
+**Dernière mise à jour** : 22 janvier 2026  
 **Mainteneur** : Latury (latury57@gmail.com)

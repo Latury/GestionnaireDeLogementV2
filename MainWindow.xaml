@@ -76,8 +76,10 @@
                             FontSize="20"
                             FontWeight="Bold"
                             Foreground="White"
-                            Text="🏠 Gestionnaire"
-                            TextAlignment="Center" />
+                            TextAlignment="Center">
+                            <Run Text="{StaticResource EmojiMaison}" />
+                            <Run Text=" Gestionnaire" />
+                        </TextBlock>
                         <TextBlock
                             Margin="0,2,0,0"
                             FontSize="16"
@@ -95,44 +97,73 @@
                 <Button
                     x:Name="BtnAccueil"
                     Click="BtnAccueil_Click"
-                    Content="🏠  Accueil"
-                    Style="{StaticResource BoutonNavigationActif}" />
+                    Style="{StaticResource BoutonNavigationActif}">
+                    
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiAccueil}" />
+                        <Run Text="  Accueil" />
+                    </TextBlock>
+                </Button>
 
                 <Button
                     x:Name="BtnFactures"
                     Click="BtnFactures_Click"
-                    Content="🧾  Factures"
-                    Style="{StaticResource BoutonNavigation}" />
+                    Style="{StaticResource BoutonNavigation}">
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiFactures}" />
+                        <Run Text="  Factures" />
+                    </TextBlock>
+                </Button>
 
                 <Button
                     x:Name="BtnEau"
                     Click="BtnEau_Click"
-                    Content="💧  Eau"
-                    Style="{StaticResource BoutonNavigation}" />
+                    Style="{StaticResource BoutonNavigation}">
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiEau}" />
+                        <Run Text="  Eau" />
+                    </TextBlock>
+                </Button>
 
                 <Button
                     x:Name="BtnElectricite"
                     Click="BtnElectricite_Click"
-                    Content="⚡  Électricité"
-                    Style="{StaticResource BoutonNavigation}" />
+                    Style="{StaticResource BoutonNavigation}">
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiElectricite}" />
+                        <Run Text="  Électricité" />
+                    </TextBlock>
+                </Button>
 
                 <Button
                     x:Name="BtnChauffage"
                     Click="BtnChauffage_Click"
-                    Content="🔥  Chauffage"
-                    Style="{StaticResource BoutonNavigation}" />
+                    Style="{StaticResource BoutonNavigation}">
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiChauffage}" />
+                        <Run Text="  Chauffage" />
+                    </TextBlock>
+                </Button>
 
                 <Button
                     x:Name="BtnAchats"
                     Click="BtnAchats_Click"
-                    Content="💳  Achats"
-                    Style="{StaticResource BoutonNavigation}" />
+                    Style="{StaticResource BoutonNavigation}">
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiAchats}" />
+                        <Run Text="  Achats" />
+                    </TextBlock>
+                </Button>
 
                 <Button
                     x:Name="BtnStatistiques"
                     Click="BtnStatistiques_Click"
-                    Content="📊  Statistiques"
-                    Style="{StaticResource BoutonNavigation}" />
+                    Style="{StaticResource BoutonNavigation}">
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiStatistiques}" />
+                        <Run Text="  Statistiques" />
+                    </TextBlock>
+                </Button>
 
                 <!--  Séparateur  -->
                 <Border
@@ -143,8 +174,12 @@
                 <Button
                     x:Name="BtnParametres"
                     Click="BtnParametres_Click"
-                    Content="⚙️  Paramètres"
-                    Style="{StaticResource BoutonNavigation}" />
+                    Style="{StaticResource BoutonNavigation}">
+                    <TextBlock>
+                        <Run Text="{StaticResource EmojiParametres}" />
+                        <Run Text="  Paramètres" />
+                    </TextBlock>
+                </Button>
             </StackPanel>
         </Border>
 

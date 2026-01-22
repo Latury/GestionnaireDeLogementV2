@@ -1,0 +1,275 @@
+﻿<Page
+    x:Class="GestionnaireDeLogement.Vues.EauVue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Background="{StaticResource FondSecondaire}">
+
+    <Page.Resources>
+        <!--  Style pour les boutons d'action  -->
+        <Style x:Key="BoutonAction" TargetType="Button">
+            <Setter Property="Height" Value="40" />
+            <Setter Property="MinWidth" Value="120" />
+            <Setter Property="Background" Value="{StaticResource CouleurPrincipale}" />
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Margin" Value="5,0" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Padding="15,0"
+                            Background="{TemplateBinding Background}"
+                            CornerRadius="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource CouleurPrincipaleClaire}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--  Style pour le bouton Supprimer (rouge)  -->
+        <Style
+            x:Key="BoutonSupprimer"
+            BasedOn="{StaticResource BoutonAction}"
+            TargetType="Button">
+            <Setter Property="Background" Value="#E53935" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#C62828" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--  Style pour les cartes  -->
+        <Style x:Key="Carte" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource FondCarte}" />
+            <Setter Property="CornerRadius" Value="10" />
+            <Setter Property="Padding" Value="20" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        BlurRadius="10"
+                        Opacity="0.1"
+                        ShadowDepth="2"
+                        Color="#000000" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  Style pour les cartes statistiques  -->
+        <Style
+            x:Key="CarteStatistique"
+            BasedOn="{StaticResource Carte}"
+            TargetType="Border">
+            <Setter Property="Padding" Value="18" />
+            <Setter Property="Margin" Value="5" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="20">
+        <Grid.RowDefinitions>
+            <!--  Cartes statistiques  -->
+            <RowDefinition Height="Auto" />
+            <!--  Espacement  -->
+            <RowDefinition Height="15" />
+            <!--  Boutons d'action  -->
+            <RowDefinition Height="Auto" />
+            <!--  Espacement  -->
+            <RowDefinition Height="15" />
+            <!--  Tableau des relevés  -->
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  ══════════════════════════════════════════════════════  -->
+        <!--  SECTION 1 : CARTES STATISTIQUES (2 COLONNES)  -->
+        <!--  ══════════════════════════════════════════════════════  -->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <!--  CARTE 1 : Consommation totale  -->
+            <Border Grid.Column="0" Style="{StaticResource CarteStatistique}">
+                <StackPanel>
+                    <TextBlock
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Consommation totale" />
+                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0,0,10,0"
+                            VerticalAlignment="Center"
+                            FontSize="32"
+                            Text="{StaticResource EmojiEau}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="32"
+                            FontWeight="Bold"
+                            Foreground="#2196F3"
+                            Text="15,4 m³" />
+                    </StackPanel>
+                    <TextBlock
+                        Margin="0,8,0,0"
+                        FontSize="12"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Ce mois" />
+                </StackPanel>
+            </Border>
+
+            <!--  CARTE 2 : Montant total  -->
+            <Border Grid.Column="1" Style="{StaticResource CarteStatistique}">
+                <StackPanel>
+                    <TextBlock
+                        FontSize="14"
+                        FontWeight="Medium"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Montant total" />
+                    <StackPanel Margin="0,10,0,0" Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0,0,10,0"
+                            VerticalAlignment="Center"
+                            FontSize="32"
+                            Text="{StaticResource EmojiArgent}" />
+                        <TextBlock
+                            VerticalAlignment="Center"
+                            FontSize="32"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource CouleurPrincipale}"
+                            Text="45,80 €" />
+                    </StackPanel>
+                    <TextBlock
+                        Margin="0,8,0,0"
+                        FontSize="12"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Ce mois" />
+                </StackPanel>
+            </Border>
+        </Grid>
+
+        <!--  ══════════════════════════════════════════════════════  -->
+        <!--  SECTION 2 : BOUTONS D'ACTION (CENTRÉS)  -->
+        <!--  ══════════════════════════════════════════════════════  -->
+        <StackPanel
+            Grid.Row="2"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                x:Name="BtnAjouter"
+                Click="BtnAjouter_Click"
+                Style="{StaticResource BoutonAction}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiAjouter}" />
+                    <TextBlock Text="Ajouter relevé" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="BtnModifier"
+                Click="BtnModifier_Click"
+                Style="{StaticResource BoutonAction}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiModifier}" />
+                    <TextBlock Text="Modifier" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="BtnSupprimer"
+                Click="BtnSupprimer_Click"
+                Style="{StaticResource BoutonSupprimer}">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiSupprimer}" />
+                    <TextBlock Text="Supprimer" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!--  ══════════════════════════════════════════════════════  -->
+        <!--  SECTION 3 : TABLEAU DES RELEVÉS  -->
+        <!--  ══════════════════════════════════════════════════════  -->
+        <Border Grid.Row="4" Style="{StaticResource Carte}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <!--  En-tête  -->
+                    <RowDefinition Height="Auto" />
+                    <!--  Séparateur  -->
+                    <RowDefinition Height="1" />
+                    <!--  Liste  -->
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!--  EN-TÊTE DU TABLEAU  -->
+                <Grid Grid.Row="0" Margin="10,10,10,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Date" />
+                    <TextBlock
+                        Grid.Column="1"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Index" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Consommation" />
+                    <TextBlock
+                        Grid.Column="3"
+                        FontSize="14"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Montant" />
+                </Grid>
+
+                <!--  SÉPARATEUR  -->
+                <Border Grid.Row="1" Background="{StaticResource BordureClaire}" />
+
+                <!--  CONTENU (pour l'instant vide)  -->
+                <StackPanel
+                    Grid.Row="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        FontSize="64"
+                        Opacity="0.3"
+                        Text="{StaticResource EmojiConstruction}" />
+                    <TextBlock
+                        Margin="0,15,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="18"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Aucun relevé d'eau pour le moment" />
+                    <TextBlock
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="14"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Cliquez sur 'Ajouter relevé' pour enregistrer votre première consommation" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>
