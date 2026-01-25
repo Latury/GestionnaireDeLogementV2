@@ -1,0 +1,473 @@
+﻿<Page
+    x:Class="GestionnaireDeLogement.Vues.AjouterFactureVue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:GestionnaireDeLogement.Vues"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="AjouterFactureVue"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    Background="{StaticResource FondSecondaire}"
+    mc:Ignorable="d">
+
+    <!--  ══════════════════════════════════════════════════════════  -->
+    <!--  RESSOURCES LOCALES  -->
+    <!--  ══════════════════════════════════════════════════════════  -->
+    <Page.Resources>
+        <!--  Style pour les labels  -->
+        <Style x:Key="Label" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="17" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+            <Setter Property="Margin" Value="0,0,0,8" />
+        </Style>
+
+        <!--  Style pour les champs de saisie  -->
+        <Style x:Key="ChampSaisie" TargetType="TextBox">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Padding" Value="15,0" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BordureClaire}" />
+            <Setter Property="BorderThickness" Value="2" />
+        </Style>
+
+        <!--  Style pour les ComboBox avec alignement à gauche  -->
+        <Style x:Key="ChampCombo" TargetType="ComboBox">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Padding" Value="12,0" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BordureClaire}" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <!--  Style pour les DatePicker avec icône calendrier à droite centrée  -->
+        <Style x:Key="ChampDate" TargetType="DatePicker">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+            <Setter Property="BorderBrush" Value="{StaticResource BordureClaire}" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="DatePicker">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            CornerRadius="4">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="50" />
+                                </Grid.ColumnDefinitions>
+
+                                <!--  TextBox pour afficher la date  -->
+                                <DatePickerTextBox
+                                    x:Name="PART_TextBox"
+                                    Grid.Column="0"
+                                    Padding="15,0"
+                                    VerticalContentAlignment="Center"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    FontSize="16"
+                                    Foreground="{TemplateBinding Foreground}" />
+
+                                <!--  Bouton calendrier avec emoji centré  -->
+                                <Button
+                                    x:Name="PART_Button"
+                                    Grid.Column="1"
+                                    Background="Transparent"
+                                    BorderThickness="0"
+                                    Cursor="Hand">
+                                    <TextBlock
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center"
+                                        FontSize="20"
+                                        Text="📅" />
+                                </Button>
+
+                                <!--  Popup pour le calendrier  -->
+                                <Popup
+                                    x:Name="PART_Popup"
+                                    AllowsTransparency="True"
+                                    Placement="Bottom"
+                                    PlacementTarget="{Binding ElementName=PART_TextBox}"
+                                    StaysOpen="False" />
+                            </Grid>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  Style pour la carte  -->
+        <Style x:Key="Carte" TargetType="Border">
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="40" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        BlurRadius="15"
+                        Direction="270"
+                        Opacity="0.1"
+                        ShadowDepth="3"
+                        Color="Black" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </Page.Resources>
+
+    <!--  ══════════════════════════════════════════════════════════  -->
+    <!--  CONTENU PRINCIPAL (SANS SCROLLVIEWER)  -->
+    <!--  ══════════════════════════════════════════════════════════  -->
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <!--  Titre principal  -->
+            <RowDefinition Height="*" />
+            <!--  Contenu  -->
+        </Grid.RowDefinitions>
+
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <!--  TITRE PRINCIPAL  -->
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,20">
+            <TextBlock
+                FontSize="32"
+                FontWeight="Bold"
+                Foreground="{StaticResource CouleurFacture}">
+                <Run Text="➕" />
+                <Run Text="Ajouter une facture" />
+            </TextBlock>
+            <TextBlock
+                Margin="0,5,0,0"
+                FontSize="15"
+                Foreground="{StaticResource TexteSecondaire}"
+                Text="Remplissez les informations de la nouvelle facture" />
+        </StackPanel>
+
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <!--  CARTE FORMULAIRE PLEINE LARGEUR ET HAUTEUR  -->
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <Border Grid.Row="1" Style="{StaticResource Carte}">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <!--  Formulaire  -->
+                    <RowDefinition Height="Auto" />
+                    <!--  Boutons  -->
+                </Grid.RowDefinitions>
+
+                <!--  ═══════════════════════════════════════════════════════════  -->
+                <!--  FORMULAIRE (2 COLONNES)  -->
+                <!--  ═══════════════════════════════════════════════════════════  -->
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="30" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <!--  Type + Montant  -->
+                        <RowDefinition Height="Auto" />
+                        <!--  Date facture + Date échéance  -->
+                        <RowDefinition Height="Auto" />
+                        <!--  Facture payée  -->
+                        <RowDefinition Height="*" />
+                        <!--  Notes  -->
+                    </Grid.RowDefinitions>
+
+                    <!--  ═══ COLONNE GAUCHE ═══  -->
+
+                    <!--  Type de facture (GAUCHE)  -->
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Margin="0,0,0,20">
+                        <TextBlock Style="{StaticResource Label}">
+                            <Run Text="📋" />
+                            <Run Text="Type de facture" />
+                        </TextBlock>
+                        <ComboBox
+                            x:Name="CmbType"
+                            SelectedIndex="0"
+                            Style="{StaticResource ChampCombo}">
+                            <ComboBoxItem>
+                                <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ComboBox}}">
+                                    <StackPanel
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0,0,12,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="18"
+                                            Text="💧" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Text="Eau" />
+                                    </StackPanel>
+                                </Grid>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ComboBox}}">
+                                    <StackPanel
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0,0,12,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="18"
+                                            Text="⚡" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Text="Électricité" />
+                                    </StackPanel>
+                                </Grid>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ComboBox}}">
+                                    <StackPanel
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0,0,12,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="18"
+                                            Text="🔥" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Text="Chauffage" />
+                                    </StackPanel>
+                                </Grid>
+                            </ComboBoxItem>
+                            <ComboBoxItem>
+                                <Grid Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ComboBox}}">
+                                    <StackPanel
+                                        HorizontalAlignment="Left"
+                                        VerticalAlignment="Center"
+                                        Orientation="Horizontal">
+                                        <TextBlock
+                                            Margin="0,0,12,0"
+                                            VerticalAlignment="Center"
+                                            FontSize="18"
+                                            Text="🛒" />
+                                        <TextBlock
+                                            VerticalAlignment="Center"
+                                            FontSize="16"
+                                            Text="Autre" />
+                                    </StackPanel>
+                                </Grid>
+                            </ComboBoxItem>
+                        </ComboBox>
+                    </StackPanel>
+
+                    <!--  Date de facture (GAUCHE)  -->
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        Margin="0,0,0,20">
+                        <TextBlock Style="{StaticResource Label}">
+                            <Run Text="📅" />
+                            <Run Text="Date de facture" />
+                        </TextBlock>
+                        <DatePicker x:Name="DateFacture" Style="{StaticResource ChampDate}" />
+                    </StackPanel>
+
+                    <!--  Facture payée (GAUCHE - EN DESSOUS DE DATE)  -->
+                    <CheckBox
+                        x:Name="ChkPayee"
+                        Grid.Row="2"
+                        Grid.Column="0"
+                        Margin="0,8,0,20"
+                        VerticalAlignment="Center"
+                        FontSize="17"
+                        Foreground="{StaticResource TextePrincipal}">
+                        <TextBlock>
+                            <Run FontSize="20" Text="✅" />
+                            <Run FontSize="17" Text="Facture payée" />
+                        </TextBlock>
+                    </CheckBox>
+
+                    <!--  ═══ COLONNE DROITE ═══  -->
+
+                    <!--  Montant (DROITE - À COTÉ DE TYPE)  -->
+                    <StackPanel
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,0,0,20">
+                        <TextBlock Style="{StaticResource Label}">
+                            <Run Text="💰" />
+                            <Run Text="Montant (€)" />
+                        </TextBlock>
+                        <TextBox x:Name="TxtMontant" Style="{StaticResource ChampSaisie}" />
+                    </StackPanel>
+
+                    <!--  Date d'échéance (DROITE - À COTÉ DE DATE FACTURE)  -->
+                    <StackPanel
+                        Grid.Row="1"
+                        Grid.Column="2"
+                        Margin="0,0,0,20">
+                        <TextBlock Style="{StaticResource Label}">
+                            <Run Text="⏰" />
+                            <Run Text="Date d'échéance (optionnel)" />
+                        </TextBlock>
+                        <DatePicker x:Name="DateEcheance" Style="{StaticResource ChampDate}" />
+                    </StackPanel>
+
+                    <!--  ═══ TOUTE LA LARGEUR ═══  -->
+
+                    <!--  Notes (TOUTE LA LARGEUR)  -->
+                    <StackPanel
+                        Grid.Row="3"
+                        Grid.Column="0"
+                        Grid.ColumnSpan="3"
+                        Margin="0,0,0,0">
+                        <TextBlock Style="{StaticResource Label}">
+                            <Run Text="📝" />
+                            <Run Text="Notes (optionnel)" />
+                        </TextBlock>
+                        <TextBox
+                            x:Name="TxtNotes"
+                            MinHeight="120"
+                            Padding="15,12"
+                            VerticalContentAlignment="Top"
+                            AcceptsReturn="True"
+                            Background="White"
+                            BorderBrush="{StaticResource BordureClaire}"
+                            BorderThickness="2"
+                            FontSize="16"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto" />
+                    </StackPanel>
+                </Grid>
+
+                <!--  ═══════════════════════════════════════════════════════════  -->
+                <!--  BOUTONS (GROS BOUTONS CENTRÉS)  -->
+                <!--  ═══════════════════════════════════════════════════════════  -->
+                <StackPanel
+                    Grid.Row="1"
+                    Margin="0,30,0,0"
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <!--  Bouton Annuler (Gris)  -->
+                    <Button
+                        x:Name="BtnAnnuler"
+                        Click="BtnAnnuler_Click"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="{StaticResource Gris300}" />
+                                <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+                                <Setter Property="FontSize" Value="18" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Padding" Value="40,20" />
+                                <Setter Property="Margin" Value="0,0,25,0" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="MinWidth" Value="200" />
+                                <Setter Property="Height" Value="70" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}"
+                                                CornerRadius="12">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource Gris400}" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource Gris500}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Center"
+                                FontSize="24"
+                                Text="❌" />
+                            <TextBlock VerticalAlignment="Center" Text="Annuler" />
+                        </StackPanel>
+                    </Button>
+
+                    <!--  Bouton Enregistrer (Vert)  -->
+                    <Button
+                        x:Name="BtnEnregistrer"
+                        Click="BtnEnregistrer_Click"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="{StaticResource CouleurSucces}" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="FontSize" Value="18" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Padding" Value="40,20" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="MinWidth" Value="220" />
+                                <Setter Property="Height" Value="70" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}"
+                                                CornerRadius="12">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurSuccesFoncee}" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurSuccesSombre}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0,0,12,0"
+                                VerticalAlignment="Center"
+                                FontSize="24"
+                                Text="💾" />
+                            <TextBlock VerticalAlignment="Center" Text="Enregistrer" />
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

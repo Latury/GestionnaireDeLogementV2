@@ -2,63 +2,32 @@
     x:Class="GestionnaireDeLogement.Vues.FacturesVue"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    Background="{StaticResource FondSecondaire}">
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:GestionnaireDeLogement.Vues"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="FacturesVue"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    Background="{StaticResource FondSecondaire}"
+    mc:Ignorable="d">
 
+    <!--  ══════════════════════════════════════════════════════════  -->
+    <!--  RESSOURCES LOCALES  -->
+    <!--  ══════════════════════════════════════════════════════════  -->
     <Page.Resources>
-        <!--  Style pour les boutons d'action  -->
-        <Style x:Key="BoutonAction" TargetType="Button">
-            <Setter Property="Height" Value="40" />
-            <Setter Property="MinWidth" Value="120" />
-            <Setter Property="Background" Value="{StaticResource CouleurPrincipale}" />
-            <Setter Property="Foreground" Value="White" />
-            <Setter Property="BorderThickness" Value="0" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="FontWeight" Value="Medium" />
-            <Setter Property="Cursor" Value="Hand" />
-            <Setter Property="Margin" Value="5,0" />
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="Button">
-                        <Border
-                            Padding="15,0"
-                            Background="{TemplateBinding Background}"
-                            CornerRadius="5">
-                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
-                        </Border>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="{StaticResource CouleurPrincipaleClaire}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!--  Style pour le bouton Supprimer (rouge)  -->
-        <Style
-            x:Key="BoutonSupprimer"
-            BasedOn="{StaticResource BoutonAction}"
-            TargetType="Button">
-            <Setter Property="Background" Value="#E53935" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="Background" Value="#C62828" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-
-        <!--  Style pour la carte principale  -->
+        <!--  Style pour les cartes  -->
         <Style x:Key="Carte" TargetType="Border">
-            <Setter Property="Background" Value="{StaticResource FondCarte}" />
-            <Setter Property="CornerRadius" Value="10" />
-            <Setter Property="Padding" Value="20" />
+            <Setter Property="Background" Value="White" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="25" />
+            <Setter Property="Margin" Value="0,0,0,20" />
             <Setter Property="Effect">
                 <Setter.Value>
                     <DropShadowEffect
-                        BlurRadius="10"
+                        BlurRadius="15"
+                        Direction="270"
                         Opacity="0.1"
-                        ShadowDepth="2"
+                        ShadowDepth="3"
                         Color="#000000" />
                 </Setter.Value>
             </Setter>
@@ -66,14 +35,14 @@
 
         <!--  Style pour la barre de recherche  -->
         <Style x:Key="BarreRecherche" TargetType="TextBox">
-            <Setter Property="Height" Value="40" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Padding" Value="35,0,10,0" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Padding" Value="45,0,15,0" />
             <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="Background" Value="{StaticResource FondCarte}" />
+            <Setter Property="Background" Value="White" />
             <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
             <Setter Property="BorderBrush" Value="{StaticResource BordureClaire}" />
-            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderThickness" Value="2" />
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="TextBox">
@@ -81,7 +50,7 @@
                             Background="{TemplateBinding Background}"
                             BorderBrush="{TemplateBinding BorderBrush}"
                             BorderThickness="{TemplateBinding BorderThickness}"
-                            CornerRadius="5">
+                            CornerRadius="8">
                             <ScrollViewer
                                 x:Name="PART_ContentHost"
                                 Margin="{TemplateBinding Padding}"
@@ -94,256 +63,574 @@
 
         <!--  Style pour les ComboBox  -->
         <Style x:Key="ComboBoxFiltre" TargetType="ComboBox">
-            <Setter Property="Height" Value="40" />
-            <Setter Property="MinWidth" Value="150" />
-            <Setter Property="FontSize" Value="14" />
-            <Setter Property="Background" Value="{StaticResource FondCarte}" />
+            <Setter Property="Height" Value="45" />
+            <Setter Property="MinWidth" Value="180" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Background" Value="White" />
             <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
             <Setter Property="BorderBrush" Value="{StaticResource BordureClaire}" />
-            <Setter Property="BorderThickness" Value="1" />
+            <Setter Property="BorderThickness" Value="2" />
+            <Setter Property="Padding" Value="12,8" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+        </Style>
+
+        <!--  Style pour les items de la ListView  -->
+        <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="Padding" Value="15,12" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="BorderThickness" Value="0,0,0,1" />
+            <Setter Property="BorderBrush" Value="{StaticResource BordureClaire}" />
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="{StaticResource Gris50}" />
+                </Trigger>
+                <Trigger Property="IsSelected" Value="True">
+                    <Setter Property="Background" Value="{StaticResource FondInfoClaire}" />
+                    <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <!--  Style pour la ListView  -->
+        <Style x:Key="ListViewFacturesStyle" TargetType="ListView">
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Auto" />
+            <Setter Property="ScrollViewer.VerticalScrollBarVisibility" Value="Auto" />
         </Style>
     </Page.Resources>
 
-    <Grid Margin="20">
-        <Grid.RowDefinitions>
-            <!--  Barre de recherche et filtres  -->
-            <RowDefinition Height="Auto" />
-            <!--  Espacement  -->
-            <RowDefinition Height="15" />
-            <!--  Boutons d'action  -->
-            <RowDefinition Height="Auto" />
-            <!--  Espacement  -->
-            <RowDefinition Height="15" />
-            <!--  Tableau des factures  -->
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
+    <!--  ══════════════════════════════════════════════════════════  -->
+    <!--  CONTENU PRINCIPAL  -->
+    <!--  ══════════════════════════════════════════════════════════  -->
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <!--  Titre  -->
+                <RowDefinition Height="Auto" />
+                <!--  Recherche et filtres  -->
+                <RowDefinition Height="Auto" />
+                <!--  Boutons d'action  -->
+                <RowDefinition Height="Auto" />
+                <!--  Liste des factures  -->
+            </Grid.RowDefinitions>
 
-        <!--  ══════════════════════════════════════════════════════  -->
-        <!--  SECTION 1 : BARRE DE RECHERCHE ET FILTRES  -->
-        <!--  ══════════════════════════════════════════════════════  -->
-        <Border Grid.Row="0" Style="{StaticResource Carte}">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <!--  SECTION 0 : TITRE  -->
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <StackPanel Grid.Row="0" Margin="0,0,0,25">
+                <TextBlock
+                    FontSize="32"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource CouleurFacture}">
+                    <Run Text="📄" />
+                    <Run Text="Gestion des factures" />
+                </TextBlock>
+                <TextBlock
+                    Margin="0,8,0,0"
+                    FontSize="15"
+                    Foreground="{StaticResource TexteSecondaire}"
+                    Text="Suivi et gestion de toutes vos factures" />
+            </StackPanel>
 
-                <!--  Barre de recherche avec icône  -->
-                <Grid Grid.Column="0">
-                    <TextBox
-                        x:Name="TxtRecherche"
-                        Style="{StaticResource BarreRecherche}"
-                        Text=""
-                        ToolTip="Rechercher une facture" />
-
-                    <!--  Icône de recherche  -->
-                    <TextBlock
-                        Margin="10,0,0,0"
-                        HorizontalAlignment="Left"
-                        VerticalAlignment="Center"
-                        FontSize="16"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        IsHitTestVisible="False"
-                        Text="{StaticResource EmojiRechercher}" />
-
-                    <!--  Placeholder text  -->
-                    <TextBlock
-                        Margin="35,0,0,0"
-                        VerticalAlignment="Center"
-                        FontSize="14"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        IsHitTestVisible="False"
-                        Text="Rechercher une facture...">
-                        <TextBlock.Style>
-                            <Style TargetType="TextBlock">
-                                <Setter Property="Visibility" Value="Collapsed" />
-                                <Style.Triggers>
-                                    <DataTrigger Binding="{Binding Text, ElementName=TxtRecherche}" Value="">
-                                        <Setter Property="Visibility" Value="Visible" />
-                                    </DataTrigger>
-                                </Style.Triggers>
-                            </Style>
-                        </TextBlock.Style>
-                    </TextBlock>
-                </Grid>
-
-                <!--  Filtre par type  -->
-                <ComboBox
-                    x:Name="CmbType"
-                    Grid.Column="1"
-                    Margin="10,0,0,0"
-                    SelectedIndex="0"
-                    Style="{StaticResource ComboBoxFiltre}">
-                    <ComboBoxItem Content="Tous les types" />
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiEau}" />
-                            <TextBlock Text="Eau" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiElectricite}" />
-                            <TextBlock Text="Électricité" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiChauffage}" />
-                            <TextBlock Text="Chauffage" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiAchats}" />
-                            <TextBlock Text="Achats" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                </ComboBox>
-
-                <!--  Filtre par statut  -->
-                <ComboBox
-                    x:Name="CmbStatut"
-                    Grid.Column="2"
-                    Margin="10,0,0,0"
-                    SelectedIndex="0"
-                    Style="{StaticResource ComboBoxFiltre}">
-                    <ComboBoxItem Content="Tous les statuts" />
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiSucces}" />
-                            <TextBlock Text="Payée" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                    <ComboBoxItem>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiAlerte}" />
-                            <TextBlock Text="En attente" />
-                        </StackPanel>
-                    </ComboBoxItem>
-                </ComboBox>
-            </Grid>
-        </Border>
-
-        <!--  ══════════════════════════════════════════════════════  -->
-        <!--  SECTION 2 : BOUTONS D'ACTION  -->
-        <!--  ══════════════════════════════════════════════════════  -->
-        <StackPanel Grid.Row="2" Orientation="Horizontal">
-            <Button
-                x:Name="BtnAjouter"
-                Click="BtnAjouter_Click"
-                Style="{StaticResource BoutonAction}">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiAjouter}" />
-                    <TextBlock Text="Ajouter" />
-                </StackPanel>
-            </Button>
-
-            <Button
-                x:Name="BtnModifier"
-                Click="BtnModifier_Click"
-                Style="{StaticResource BoutonAction}">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiModifier}" />
-                    <TextBlock Text="Modifier" />
-                </StackPanel>
-            </Button>
-
-            <Button
-                x:Name="BtnSupprimer"
-                Click="BtnSupprimer_Click"
-                Style="{StaticResource BoutonSupprimer}">
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock Margin="0,0,8,0" Text="{StaticResource EmojiSupprimer}" />
-                    <TextBlock Text="Supprimer" />
-                </StackPanel>
-            </Button>
-        </StackPanel>
-
-        <!--  ══════════════════════════════════════════════════════  -->
-        <!--  SECTION 3 : TABLEAU DES FACTURES  -->
-        <!--  ══════════════════════════════════════════════════════  -->
-        <Border Grid.Row="4" Style="{StaticResource Carte}">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <!--  En-tête  -->
-                    <RowDefinition Height="Auto" />
-                    <!--  Séparateur  -->
-                    <RowDefinition Height="1" />
-                    <!--  Liste  -->
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-
-                <!--  EN-TÊTE DU TABLEAU  -->
-                <Grid Grid.Row="0" Margin="10,10,10,15">
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <!--  SECTION 1 : BARRE DE RECHERCHE ET FILTRES  -->
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <Border Grid.Row="1" Style="{StaticResource Carte}">
+                <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="0.5*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" MinWidth="250" />
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
 
-                    <TextBlock
-                        Grid.Column="0"
-                        FontSize="14"
-                        FontWeight="Bold"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        Text="Type" />
-                    <TextBlock
+                    <!--  Barre de recherche avec icône  -->
+                    <Grid Grid.Column="0">
+                        <TextBox
+                            x:Name="TxtRecherche"
+                            Style="{StaticResource BarreRecherche}"
+                            Text=""
+                            ToolTip="Rechercher une facture" />
+
+                        <!--  Icône de recherche  -->
+                        <TextBlock
+                            Margin="15,0,0,0"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Foreground="{StaticResource TexteSecondaire}"
+                            IsHitTestVisible="False"
+                            Text="🔍" />
+
+                        <!--  Placeholder text  -->
+                        <TextBlock
+                            Margin="45,0,0,0"
+                            VerticalAlignment="Center"
+                            FontSize="15"
+                            Foreground="{StaticResource TexteSecondaire}"
+                            IsHitTestVisible="False"
+                            Text="Rechercher une facture...">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed" />
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, ElementName=TxtRecherche}" Value="">
+                                            <Setter Property="Visibility" Value="Visible" />
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+
+                    <!--  Filtre par type  -->
+                    <ComboBox
+                        x:Name="CmbType"
                         Grid.Column="1"
-                        FontSize="14"
-                        FontWeight="Bold"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        Text="Description" />
-                    <TextBlock
+                        Margin="15,0,0,0"
+                        SelectedIndex="0"
+                        Style="{StaticResource ComboBoxFiltre}">
+                        <ComboBoxItem
+                            HorizontalContentAlignment="Center"
+                            Content="Tous les types"
+                            FontSize="15" />
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="💧" />
+                                <TextBlock FontSize="15" Text="Eau" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="⚡" />
+                                <TextBlock FontSize="15" Text="Électricité" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="🔥" />
+                                <TextBlock FontSize="15" Text="Chauffage" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="🛒" />
+                                <TextBlock FontSize="15" Text="Achats" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
+
+                    <!--  Filtre par statut  -->
+                    <ComboBox
+                        x:Name="CmbStatut"
                         Grid.Column="2"
-                        FontSize="14"
-                        FontWeight="Bold"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        Text="Date" />
-                    <TextBlock
-                        Grid.Column="3"
-                        FontSize="14"
-                        FontWeight="Bold"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        Text="Montant" />
-                    <TextBlock
-                        Grid.Column="4"
-                        FontSize="14"
-                        FontWeight="Bold"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        Text="Statut" />
+                        Margin="15,0,0,0"
+                        SelectedIndex="0"
+                        SelectionChanged="CmbStatut_SelectionChanged"
+                        Style="{StaticResource ComboBoxFiltre}">
+                        <ComboBoxItem
+                            HorizontalContentAlignment="Center"
+                            Content="Tous les statuts"
+                            FontSize="15" />
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="✅" />
+                                <TextBlock FontSize="15" Text="Payées" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="⏳" />
+                                <TextBlock FontSize="15" Text="Non payées" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="⏰" />
+                                <TextBlock FontSize="15" Text="En attente" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                        <ComboBoxItem HorizontalContentAlignment="Center">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock
+                                    Margin="0,0,8,0"
+                                    FontSize="15"
+                                    Text="📧" />
+                                <TextBlock FontSize="15" Text="Relance" />
+                            </StackPanel>
+                        </ComboBoxItem>
+                    </ComboBox>
                 </Grid>
+            </Border>
 
-                <!--  SÉPARATEUR  -->
-                <Border Grid.Row="1" Background="{StaticResource BordureClaire}" />
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <!--  SECTION 2 : BOUTONS D'ACTION  -->
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <Border Grid.Row="2" Style="{StaticResource Carte}">
+                <StackPanel HorizontalAlignment="Center" Orientation="Horizontal">
+                    <!--  Bouton Ajouter (Vert)  -->
+                    <Button Click="BtnAjouter_Click" Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="{StaticResource CouleurSucces}" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="FontSize" Value="18" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Padding" Value="40,20" />
+                                <Setter Property="Margin" Value="0,0,25,0" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="MinWidth" Value="240" />
+                                <Setter Property="Height" Value="70" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}"
+                                                CornerRadius="12">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurSuccesFoncee}" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurSuccesSombre}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                FontSize="26"
+                                Text="➕" />
+                            <TextBlock VerticalAlignment="Center" Text="Ajouter facture" />
+                        </StackPanel>
+                    </Button>
 
-                <!--  CONTENU (pour l'instant vide)  -->
-                <StackPanel
-                    Grid.Row="2"
-                    HorizontalAlignment="Center"
-                    VerticalAlignment="Center">
-                    <TextBlock
-                        HorizontalAlignment="Center"
-                        FontSize="64"
-                        Opacity="0.3"
-                        Text="{StaticResource EmojiConstruction}" />
-                    <TextBlock
-                        Margin="0,15,0,0"
-                        HorizontalAlignment="Center"
-                        FontSize="18"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        Text="Aucune facture pour le moment" />
-                    <TextBlock
-                        Margin="0,8,0,0"
-                        HorizontalAlignment="Center"
-                        FontSize="14"
-                        Foreground="{StaticResource TexteSecondaire}"
-                        Text="Cliquez sur 'Ajouter' pour créer votre première facture" />
+                    <!--  Bouton Modifier (Bleu)  -->
+                    <Button
+                        x:Name="BtnModifier"
+                        Click="BtnModifier_Click"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="{StaticResource CouleurPrincipale}" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="FontSize" Value="18" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Padding" Value="40,20" />
+                                <Setter Property="Margin" Value="0,0,25,0" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="MinWidth" Value="220" />
+                                <Setter Property="Height" Value="70" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}"
+                                                CornerRadius="12">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurPrincipaleInfo}" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurPrincipaleFoncee}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                FontSize="26"
+                                Text="✏️" />
+                            <TextBlock VerticalAlignment="Center" Text="Modifier" />
+                        </StackPanel>
+                    </Button>
+
+                    <!--  Bouton Supprimer (Rouge)  -->
+                    <Button
+                        x:Name="BtnSupprimer"
+                        Click="BtnSupprimer_Click"
+                        Cursor="Hand">
+                        <Button.Style>
+                            <Style TargetType="Button">
+                                <Setter Property="Background" Value="{StaticResource CouleurErreur}" />
+                                <Setter Property="Foreground" Value="White" />
+                                <Setter Property="FontSize" Value="18" />
+                                <Setter Property="FontWeight" Value="Bold" />
+                                <Setter Property="Padding" Value="40,20" />
+                                <Setter Property="BorderThickness" Value="0" />
+                                <Setter Property="MinWidth" Value="220" />
+                                <Setter Property="Height" Value="70" />
+                                <Setter Property="Template">
+                                    <Setter.Value>
+                                        <ControlTemplate TargetType="Button">
+                                            <Border
+                                                x:Name="border"
+                                                Background="{TemplateBinding Background}"
+                                                CornerRadius="12">
+                                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                            </Border>
+                                            <ControlTemplate.Triggers>
+                                                <Trigger Property="IsMouseOver" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurErreurFoncee}" />
+                                                </Trigger>
+                                                <Trigger Property="IsPressed" Value="True">
+                                                    <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurUrgence}" />
+                                                </Trigger>
+                                            </ControlTemplate.Triggers>
+                                        </ControlTemplate>
+                                    </Setter.Value>
+                                </Setter>
+                            </Style>
+                        </Button.Style>
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+                            <TextBlock
+                                Margin="0,0,15,0"
+                                VerticalAlignment="Center"
+                                FontSize="26"
+                                Text="🗑️" />
+                            <TextBlock VerticalAlignment="Center" Text="Supprimer" />
+                        </StackPanel>
+                    </Button>
                 </StackPanel>
-            </Grid>
-        </Border>
-    </Grid>
+            </Border>
+
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <!--  SECTION 3 : LISTE DES FACTURES  -->
+            <!--  ══════════════════════════════════════════════════════════  -->
+            <Border Grid.Row="3" Style="{StaticResource Carte}">
+                <Grid>
+                    <!--  Titre de la section  -->
+                    <TextBlock
+                        Margin="0,0,0,20"
+                        FontSize="20"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TextePrincipal}"
+                        Text="📋 LISTE DES FACTURES" />
+
+                    <ListView
+                        x:Name="ListViewFactures"
+                        Margin="0,40,0,0"
+                        ItemContainerStyle="{StaticResource ListViewItemStyle}"
+                        SelectionChanged="ListViewFactures_SelectionChanged"
+                        Style="{StaticResource ListViewFacturesStyle}">
+                        <ListView.View>
+                            <GridView AllowsColumnReorder="False">
+                                <!--  1. Type  -->
+                                <GridViewColumn Width="120" Header="📦 Type">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+                                            <Setter Property="Padding" Value="10,12" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                FontSize="16"
+                                                FontWeight="SemiBold"
+                                                Foreground="{StaticResource TextePrincipal}"
+                                                Text="{Binding Type}"
+                                                TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <!--  2. Date facture  -->
+                                <GridViewColumn Width="160" Header="📅 Date">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+                                            <Setter Property="Padding" Value="10,12" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                FontSize="15"
+                                                Foreground="{StaticResource TexteSecondaire}"
+                                                Text="{Binding DateFacture, StringFormat='dd/MM/yyyy'}"
+                                                TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <!--  3. Montant  -->
+                                <GridViewColumn Width="140" Header="💰 Montant">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+                                            <Setter Property="Padding" Value="10,12" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                FontSize="16"
+                                                FontWeight="Bold"
+                                                Foreground="{StaticResource CouleurPrincipale}"
+                                                TextAlignment="Center">
+                                                <Run Text="{Binding Montant, StringFormat='{}{0:F2}'}" />
+                                                <Run Text=" €" />
+                                            </TextBlock>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <!--  4. Échéance  -->
+                                <GridViewColumn Width="160" Header="⏰ Échéance">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+                                            <Setter Property="Padding" Value="10,12" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                FontSize="15"
+                                                Foreground="{StaticResource TexteSecondaire}"
+                                                Text="{Binding DateEcheance, StringFormat='dd/MM/yyyy'}"
+                                                TextAlignment="Center" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <!--  5. Statut  -->
+                                <GridViewColumn Width="150" Header="📌 Statut">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+                                            <Setter Property="Padding" Value="10,12" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Border
+                                                Padding="10,6"
+                                                HorizontalAlignment="Center"
+                                                CornerRadius="5">
+                                                <TextBlock
+                                                    x:Name="TxtStatut"
+                                                    FontSize="14"
+                                                    FontWeight="SemiBold"
+                                                    Loaded="TxtStatut_Loaded"
+                                                    Tag="{Binding}"
+                                                    TextAlignment="Center" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+
+                                <!--  6. Notes  -->
+                                <GridViewColumn Width="270" Header="📝 Notes">
+                                    <GridViewColumn.HeaderContainerStyle>
+                                        <Style TargetType="GridViewColumnHeader">
+                                            <Setter Property="FontWeight" Value="Bold" />
+                                            <Setter Property="FontSize" Value="16" />
+                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+                                            <Setter Property="Padding" Value="10,12" />
+                                            <Setter Property="HorizontalContentAlignment" Value="Left" />
+                                        </Style>
+                                    </GridViewColumn.HeaderContainerStyle>
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <TextBlock
+                                                FontSize="14"
+                                                FontStyle="Italic"
+                                                Foreground="{StaticResource TexteClair}"
+                                                Text="{Binding Notes}"
+                                                TextAlignment="Left"
+                                                TextTrimming="CharacterEllipsis"
+                                                ToolTip="{Binding Notes}" />
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+
+                    <!--  Message vide  -->
+                    <StackPanel
+                        x:Name="MessageVide"
+                        Margin="0,40,0,0"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Visibility="Collapsed">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            FontSize="64"
+                            Opacity="0.3"
+                            Text="📄" />
+                        <TextBlock
+                            Margin="0,15,0,0"
+                            HorizontalAlignment="Center"
+                            FontSize="18"
+                            Foreground="{StaticResource TexteSecondaire}"
+                            Text="Aucune facture pour le moment" />
+                        <TextBlock
+                            Margin="0,8,0,0"
+                            HorizontalAlignment="Center"
+                            FontSize="14"
+                            Foreground="{StaticResource TexteSecondaire}"
+                            Text="Cliquez sur 'Ajouter facture' pour créer votre première facture" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
 </Page>

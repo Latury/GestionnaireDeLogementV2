@@ -4,6 +4,9 @@ using GestionnaireDeLogement.Vues;
 
 namespace GestionnaireDeLogement
 {
+    /// <summary>
+    /// Fenêtre principale de l'application
+    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
@@ -20,48 +23,51 @@ namespace GestionnaireDeLogement
 
         private void BtnAccueil_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new AccueilVue(), "Tableau de bord", BtnAccueil);
+            ChangerPage(new AccueilVue(), "🏠", "Tableau de bord", BtnAccueil);
         }
 
         private void BtnFactures_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new FacturesVue(), "Factures", BtnFactures);
+            ChangerPage(new FacturesVue(), "📄", "Factures", BtnFactures);
         }
 
         private void BtnEau_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new EauVue(), "Consommation d'eau", BtnEau);
+            ChangerPage(new EauVue(), "💧", "Consommation d'eau", BtnEau);
         }
 
         private void BtnElectricite_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new ElectriciteVue(), "Consommation d'électricité", BtnElectricite);
+            ChangerPage(new ElectriciteVue(), "⚡", "Consommation d'électricité", BtnElectricite);
         }
 
         private void BtnChauffage_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new ChauffageVue(), "Chauffage", BtnChauffage);
+            ChangerPage(new ChauffageVue(), "🔥", "Chauffage", BtnChauffage);
         }
 
         private void BtnAchats_Click(object sender, RoutedEventArgs e)
         {
             // TODO : Créer la page AchatsVue
-            TitrePage.Text = "Achats";
+            ChangerTitreSeul("🛒", "Achats");
             ResetBoutonsNavigation();
+            BtnAchats.Style = (Style)FindResource("BoutonNavigationActif");
         }
 
         private void BtnStatistiques_Click(object sender, RoutedEventArgs e)
         {
             // TODO : Créer la page StatistiquesVue
-            TitrePage.Text = "Statistiques";
+            ChangerTitreSeul("📊", "Statistiques");
             ResetBoutonsNavigation();
+            BtnStatistiques.Style = (Style)FindResource("BoutonNavigationActif");
         }
 
         private void BtnParametres_Click(object sender, RoutedEventArgs e)
         {
             // TODO : Créer la page ParametresVue
-            TitrePage.Text = "Paramètres";
+            ChangerTitreSeul("⚙️", "Paramètres");
             ResetBoutonsNavigation();
+            BtnParametres.Style = (Style)FindResource("BoutonNavigationActif");
         }
 
         // ═══════════════════════════════════════════════════════════
@@ -71,12 +77,22 @@ namespace GestionnaireDeLogement
         /// <summary>
         /// Change la page affichée et met à jour le titre et le bouton actif
         /// </summary>
-        private void ChangerPage(Page nouvellePage, string titre, Button boutonActif)
+        private void ChangerPage(Page nouvellePage, string emoji, string titre, Button boutonActif)
         {
             FramePrincipal.Navigate(nouvellePage);
-            TitrePage.Text = titre;
+            EmojiTitre.Text = emoji;
+            TexteTitre.Text = titre;
             ResetBoutonsNavigation();
             boutonActif.Style = (Style)FindResource("BoutonNavigationActif");
+        }
+
+        /// <summary>
+        /// Change uniquement le titre sans naviguer (pour pages en construction)
+        /// </summary>
+        private void ChangerTitreSeul(string emoji, string titre)
+        {
+            EmojiTitre.Text = emoji;
+            TexteTitre.Text = titre;
         }
 
         /// <summary>

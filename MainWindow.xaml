@@ -18,8 +18,8 @@
             <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
             <Setter Property="BorderThickness" Value="0" />
             <Setter Property="HorizontalContentAlignment" Value="Left" />
-            <Setter Property="Padding" Value="20,0,0,0" />
-            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Padding" Value="24,0,0,0" />
+            <Setter Property="FontSize" Value="17" />
             <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Template">
@@ -29,7 +29,7 @@
                             x:Name="border"
                             Background="{TemplateBinding Background}"
                             BorderBrush="Transparent"
-                            BorderThickness="0,0,3,0">
+                            BorderThickness="0,0,4,0">
                             <ContentPresenter
                                 Margin="{TemplateBinding Padding}"
                                 HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
@@ -38,6 +38,7 @@
                         <ControlTemplate.Triggers>
                             <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurPrincipaleTresClaire}" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CouleurPrincipaleClaire}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -53,16 +54,33 @@
             <Setter Property="Background" Value="{StaticResource CouleurPrincipaleTresClaire}" />
             <Setter Property="Foreground" Value="{StaticResource CouleurPrincipale}" />
             <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="{StaticResource CouleurPrincipale}"
+                            BorderThickness="0,0,4,0">
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="Center" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Window.Resources>
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="260" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
+        <!--  ══════════════════════════════════════════════════════  -->
         <!--  MENU DE NAVIGATION (GAUCHE)  -->
+        <!--  ══════════════════════════════════════════════════════  -->
         <Border
             Grid.Column="0"
             Background="{StaticResource FondCarte}"
@@ -73,7 +91,7 @@
                 <Border Height="80" Background="{StaticResource CouleurPrincipale}">
                     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                         <TextBlock
-                            FontSize="20"
+                            FontSize="22"
                             FontWeight="Bold"
                             Foreground="White"
                             TextAlignment="Center">
@@ -81,10 +99,10 @@
                             <Run Text=" Gestionnaire" />
                         </TextBlock>
                         <TextBlock
-                            Margin="0,2,0,0"
-                            FontSize="16"
+                            Margin="0,3,0,0"
+                            FontSize="17"
                             Foreground="White"
-                            Opacity="0.9"
+                            Opacity="0.95"
                             Text="de Logement"
                             TextAlignment="Center" />
                     </StackPanel>
@@ -93,14 +111,17 @@
                 <!--  Séparateur  -->
                 <Border Height="1" Background="{StaticResource BordureClaire}" />
 
+                <!--  Espace  -->
+                <Border Height="8" />
+
                 <!--  Boutons de navigation  -->
                 <Button
                     x:Name="BtnAccueil"
                     Click="BtnAccueil_Click"
-                    Style="{StaticResource BoutonNavigationActif}">
-                    
+                    Style="{StaticResource BoutonNavigationActif}"
+                    ToolTip="Tableau de bord principal">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiAccueil}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiAccueil}" />
                         <Run Text="  Accueil" />
                     </TextBlock>
                 </Button>
@@ -108,9 +129,10 @@
                 <Button
                     x:Name="BtnFactures"
                     Click="BtnFactures_Click"
-                    Style="{StaticResource BoutonNavigation}">
+                    Style="{StaticResource BoutonNavigation}"
+                    ToolTip="Gestion des factures">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiFactures}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiFactures}" />
                         <Run Text="  Factures" />
                     </TextBlock>
                 </Button>
@@ -118,9 +140,10 @@
                 <Button
                     x:Name="BtnEau"
                     Click="BtnEau_Click"
-                    Style="{StaticResource BoutonNavigation}">
+                    Style="{StaticResource BoutonNavigation}"
+                    ToolTip="Consommation d'eau">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiEau}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiEau}" />
                         <Run Text="  Eau" />
                     </TextBlock>
                 </Button>
@@ -128,9 +151,10 @@
                 <Button
                     x:Name="BtnElectricite"
                     Click="BtnElectricite_Click"
-                    Style="{StaticResource BoutonNavigation}">
+                    Style="{StaticResource BoutonNavigation}"
+                    ToolTip="Consommation d'électricité">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiElectricite}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiElectricite}" />
                         <Run Text="  Électricité" />
                     </TextBlock>
                 </Button>
@@ -138,9 +162,10 @@
                 <Button
                     x:Name="BtnChauffage"
                     Click="BtnChauffage_Click"
-                    Style="{StaticResource BoutonNavigation}">
+                    Style="{StaticResource BoutonNavigation}"
+                    ToolTip="Consommation de chauffage">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiChauffage}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiChauffage}" />
                         <Run Text="  Chauffage" />
                     </TextBlock>
                 </Button>
@@ -148,9 +173,10 @@
                 <Button
                     x:Name="BtnAchats"
                     Click="BtnAchats_Click"
-                    Style="{StaticResource BoutonNavigation}">
+                    Style="{StaticResource BoutonNavigation}"
+                    ToolTip="Liste des achats">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiAchats}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiAchats}" />
                         <Run Text="  Achats" />
                     </TextBlock>
                 </Button>
@@ -158,9 +184,10 @@
                 <Button
                     x:Name="BtnStatistiques"
                     Click="BtnStatistiques_Click"
-                    Style="{StaticResource BoutonNavigation}">
+                    Style="{StaticResource BoutonNavigation}"
+                    ToolTip="Statistiques et graphiques">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiStatistiques}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiStatistiques}" />
                         <Run Text="  Statistiques" />
                     </TextBlock>
                 </Button>
@@ -168,22 +195,25 @@
                 <!--  Séparateur  -->
                 <Border
                     Height="1"
-                    Margin="0,10"
+                    Margin="0,12"
                     Background="{StaticResource BordureClaire}" />
 
                 <Button
                     x:Name="BtnParametres"
                     Click="BtnParametres_Click"
-                    Style="{StaticResource BoutonNavigation}">
+                    Style="{StaticResource BoutonNavigation}"
+                    ToolTip="Paramètres de l'application">
                     <TextBlock>
-                        <Run Text="{StaticResource EmojiParametres}" />
+                        <Run FontSize="18" Text="{StaticResource EmojiParametres}" />
                         <Run Text="  Paramètres" />
                     </TextBlock>
                 </Button>
             </StackPanel>
         </Border>
 
+        <!--  ══════════════════════════════════════════════════════  -->
         <!--  ZONE DE CONTENU PRINCIPAL (DROITE)  -->
+        <!--  ══════════════════════════════════════════════════════  -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
@@ -200,10 +230,12 @@
                 <TextBlock
                     x:Name="TitrePage"
                     VerticalAlignment="Center"
-                    FontSize="24"
+                    FontSize="28"
                     FontWeight="Bold"
-                    Foreground="{StaticResource TextePrincipal}"
-                    Text="Tableau de bord" />
+                    Foreground="{StaticResource TextePrincipal}">
+                    <Run x:Name="EmojiTitre" Text="🏠" />
+                    <Run x:Name="TexteTitre" Text="Tableau de bord" />
+                </TextBlock>
             </Border>
 
             <!--  Frame pour afficher les pages  -->

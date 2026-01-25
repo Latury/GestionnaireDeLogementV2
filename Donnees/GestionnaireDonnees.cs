@@ -6,27 +6,27 @@ using System.Text.Json;
 namespace GestionnaireDeLogement.Donnees
 {
     /*
-     * ╔═══════════════════════════════════════════════════════════════════╗
-     * ║  📦 GESTIONNAIRE DE DONNÉES - SAUVEGARDE JSON                     ║
-     * ╠═══════════════════════════════════════════════════════════════════╣
-     * ║  📌 Fonction principale : Sauvegarder et charger des données      ║
-     * ║  📌 Format : JSON (JavaScript Object Notation)                    ║
-     * ║  📌 Emplacement : Dossier "Configurations/" à la racine           ║
-     * ╠═══════════════════════════════════════════════════════════════════╣
-     * ║  ✅ Fonctions disponibles :                                       ║
-     * ║     1️⃣ Sauvegarder<T>(List<T> donnees, string nomFichier)       ║
-     * ║     2️⃣ Charger<T>(string nomFichier)                             ║
-     * ║     3️⃣ FichierExiste(string nomFichier)                          ║
-     * ║     4️⃣ SupprimerFichier(string nomFichier)                       ║
-     * ╠═══════════════════════════════════════════════════════════════════╣
-     * ║  🔒 Sécurité :                                                    ║
-     * ║     • Création automatique du dossier Configurations/             ║
-     * ║     • Gestion d'erreurs complète (try/catch)                      ║
-     * ║     • Retour de liste vide si fichier inexistant                  ║
-     * ╠═══════════════════════════════════════════════════════════════════╣
-     * ║  👤 Développeur : Latury (latury57@gmail.com)                    ║
-     * ║  📅 Dernière mise à jour : 21/01/2026                             ║
-     * ╚═══════════════════════════════════════════════════════════════════╝
+     * ╔═══════════════════════════════════════════════════════════════════
+     * ║  📦 GESTIONNAIRE DE DONNÉES - SAUVEGARDE JSON                     
+     * ╠═══════════════════════════════════════════════════════════════════
+     * ║  📌 Fonction principale : Sauvegarder et charger des données      
+     * ║  📌 Format : JSON (JavaScript Object Notation)                    
+     * ║  📌 Emplacement : Dossier "Configurations/" à la racine           
+     * ╠═══════════════════════════════════════════════════════════════════
+     * ║  ✅ Fonctions disponibles :                                       
+     * ║     1️⃣ Sauvegarder<T>(List<T> donnees, string nomFichier)         
+     * ║     2️⃣ Charger<T>(string nomFichier)                              
+     * ║     3️⃣ FichierExiste(string nomFichier)                           
+     * ║     4️⃣ SupprimerFichier(string nomFichier)                        
+     * ╠═══════════════════════════════════════════════════════════════════
+     * ║  🔒 Sécurité :                                                    
+     * ║     • Création automatique du dossier Configurations/             
+     * ║     • Gestion d'erreurs complète (try/catch)                      
+     * ║     • Retour de liste vide si fichier inexistant                  
+     * ╠═══════════════════════════════════════════════════════════════════
+     * ║  👤 Développeur : Latury (latury57@gmail.com)                     
+     * ║  📅 Dernière mise à jour : 21/01/2026                            
+     * ╚═══════════════════════════════════════════════════════════════════
      */
 
     /// <summary>

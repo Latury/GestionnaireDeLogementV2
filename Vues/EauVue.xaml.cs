@@ -8,6 +8,10 @@ namespace GestionnaireDeLogement.Vues
     /// </summary>
     public partial class EauVue : Page
     {
+        // ═══════════════════════════════════════════════════════════
+        // CONSTRUCTEUR
+        // ═══════════════════════════════════════════════════════════
+
         public EauVue()
         {
             InitializeComponent();
@@ -18,7 +22,7 @@ namespace GestionnaireDeLogement.Vues
         // ═══════════════════════════════════════════════════════════
 
         /// <summary>
-        /// Ajouter un nouveau relevé d'eau
+        /// ➕ Ajouter un nouveau relevé d'eau
         /// </summary>
         private void BtnAjouter_Click(object sender, RoutedEventArgs e)
         {
@@ -32,7 +36,7 @@ namespace GestionnaireDeLogement.Vues
         }
 
         /// <summary>
-        /// Modifier le relevé sélectionné
+        /// ✏️ Modifier le relevé sélectionné
         /// </summary>
         private void BtnModifier_Click(object sender, RoutedEventArgs e)
         {
@@ -47,7 +51,7 @@ namespace GestionnaireDeLogement.Vues
         }
 
         /// <summary>
-        /// Supprimer le relevé sélectionné
+        /// 🗑️ Supprimer le relevé sélectionné
         /// </summary>
         private void BtnSupprimer_Click(object sender, RoutedEventArgs e)
         {
@@ -60,6 +64,21 @@ namespace GestionnaireDeLogement.Vues
                 MessageBoxButton.OK,
                 MessageBoxImage.Information
             );
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // GESTION DE LA SÉLECTION
+        // ═══════════════════════════════════════════════════════════
+
+        /// <summary>
+        /// 🔄 Gère le changement de sélection dans la liste
+        /// Active/Désactive les boutons Modifier et Supprimer
+        /// </summary>
+        private void ListViewReleves_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            bool itemSelectionne = ListViewReleves.SelectedItem != null;
+            BtnModifier.IsEnabled = itemSelectionne;
+            BtnSupprimer.IsEnabled = itemSelectionne;
         }
     }
 }
