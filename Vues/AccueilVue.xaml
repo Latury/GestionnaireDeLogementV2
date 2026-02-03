@@ -5,6 +5,17 @@
     x:Name="PageAccueil"
     Background="{StaticResource FondSecondaire}">
 
+    <!--
+        =============================================================
+        Gestionnaire de Logement
+        Module Chauffage
+        
+        Copyright © 2026 Flo
+        Licence : CC BY-NC 4.0
+        Usage commercial interdit
+        =============================================================
+    -->
+
     <Page.Resources>
         <!--  Style pour les cartes statistiques  -->
         <Style x:Key="CarteStatistique" TargetType="Border">

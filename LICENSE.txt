@@ -1,32 +1,34 @@
-﻿MIT License avec Attribution Obligatoire
+﻿Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
 
 Copyright (c) 2026 Latury
 
-Permission est accordée, gratuitement, à toute personne obtenant une copie
-de ce logiciel et des fichiers de documentation associés (le "Logiciel"),
-de traiter le Logiciel sans restriction, y compris, sans limitation, les
-droits d'utiliser, de copier, de modifier, de fusionner, de publier, de
-distribuer, de sous-licencier et/ou de vendre des copies du Logiciel, et
-de permettre aux personnes auxquelles le Logiciel est fourni de le faire,
-sous réserve des conditions suivantes :
+Ce logiciel est mis à disposition gratuitement.
 
-L'avis de copyright ci-dessus et cet avis de permission doivent être inclus
-dans toutes les copies ou parties substantielles du Logiciel.
+Vous êtes autorisé à :
+- Utiliser le logiciel
+- Étudier et modifier le code source
+- Redistribuer le logiciel ou des versions modifiées
+
+Sous les conditions suivantes :
+- Attribution obligatoire de l’auteur original
+- Interdiction formelle de toute utilisation commerciale
+- Interdiction de vendre le logiciel ou toute version dérivée,
+  gratuitement ou non, sans autorisation écrite préalable
 
 ATTRIBUTION OBLIGATOIRE :
 Toute utilisation, modification ou distribution de ce logiciel doit
-conserver les informations suivantes de manière visible :
+conserver de manière visible les informations suivantes :
 
     Créateur original : Latury
     Contact : latury57@gmail.com
     Projet : Gestionnaire de Logement
-    URL : https://github.com/Latury/GestionnaireDeLogement
+    Dépôt GitHub : https://github.com/Latury/GestionnaireDeLogement
 
-LE LOGICIEL EST FOURNI "TEL QUEL", SANS GARANTIE D'AUCUNE SORTE, EXPLICITE
-OU IMPLICITE, Y COMPRIS, MAIS SANS S'Y LIMITER, LES GARANTIES DE
+Le présent avis de copyright et cet avis de licence doivent être inclus
+dans toutes les copies ou parties substantielles du logiciel.
+
+LE LOGICIEL EST FOURNI "TEL QUEL", SANS GARANTIE D'AUCUNE SORTE, EXPRESSE
+OU IMPLICITE, Y COMPRIS MAIS SANS S'Y LIMITER LES GARANTIES DE
 COMMERCIALISATION, D'ADÉQUATION À UN USAGE PARTICULIER ET D'ABSENCE DE
-CONTREFAÇON. EN AUCUN CAS LES AUTEURS OU LES TITULAIRES DU COPYRIGHT NE
-SERONT RESPONSABLES DE TOUTE RÉCLAMATION, DOMMAGE OU AUTRE RESPONSABILITÉ,
-QUE CE SOIT DANS UNE ACTION CONTRACTUELLE, DÉLICTUELLE OU AUTRE, DÉCOULANT
-DE, HORS DE OU EN RELATION AVEC LE LOGICIEL OU L'UTILISATION OU D'AUTRES
-TRANSACTIONS DANS LE LOGICIEL.
+CONTREFAÇON. EN AUCUN CAS L’AUTEUR NE POURRA ÊTRE TENU RESPONSABLE DE
+TOUTE RÉCLAMATION, DOMMAGE OU AUTRE RESPONSABILITÉ.

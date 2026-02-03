@@ -10,8 +10,23 @@
     Background="{StaticResource FondSecondaire}"
     WindowStartupLocation="CenterScreen">
 
+    <!--
+        =============================================================
+        Gestionnaire de Logement
+        Module Chauffage
+        
+        Copyright © 2026 Flo
+        Licence : CC BY-NC 4.0
+        Usage commercial interdit
+        =============================================================
+    -->
+
+    <!--  ═════════════════════════════════════  -->
+    <!--  RESSOURCES DE LA FENÊTRE  -->
+    <!--  ═════════════════════════════════════  -->
     <Window.Resources>
-        <!--  Style pour les boutons de navigation  -->
+
+        <!--  Style bouton navigation standard  -->
         <Style x:Key="BoutonNavigation" TargetType="Button">
             <Setter Property="Height" Value="50" />
             <Setter Property="Background" Value="Transparent" />
@@ -46,7 +61,7 @@
             </Setter>
         </Style>
 
-        <!--  Style pour le bouton de navigation actif  -->
+        <!--  Style bouton navigation actif  -->
         <Style
             x:Key="BoutonNavigationActif"
             BasedOn="{StaticResource BoutonNavigation}"
@@ -70,157 +85,195 @@
                 </Setter.Value>
             </Setter>
         </Style>
+
     </Window.Resources>
 
+    <!--  ═════════════════════════════════════  -->
+    <!--  STRUCTURE PRINCIPALE  -->
+    <!--  ═════════════════════════════════════  -->
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="260" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!--  ══════════════════════════════════════════════════════  -->
+        <!--  ═════════════════════════════════════  -->
         <!--  MENU DE NAVIGATION (GAUCHE)  -->
-        <!--  ══════════════════════════════════════════════════════  -->
+        <!--  ADAPTATIF AUX PETITES HAUTEURS  -->
+        <!--  ═════════════════════════════════════  -->
         <Border
             Grid.Column="0"
             Background="{StaticResource FondCarte}"
             BorderBrush="{StaticResource BordureClaire}"
             BorderThickness="0,0,1,0">
-            <StackPanel>
-                <!--  En-tête du menu  -->
-                <Border Height="80" Background="{StaticResource CouleurPrincipale}">
-                    <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                        <TextBlock
-                            FontSize="22"
-                            FontWeight="Bold"
-                            Foreground="White"
-                            TextAlignment="Center">
-                            <Run Text="{StaticResource EmojiMaison}" />
-                            <Run Text=" Gestionnaire" />
+
+            <!--  Scroll vertical automatique  -->
+            <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+
+                <StackPanel>
+
+                    <!--  EN-TÊTE  -->
+                    <Border Height="80" Background="{StaticResource CouleurPrincipale}">
+                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <TextBlock
+                                FontSize="22"
+                                FontWeight="Bold"
+                                Foreground="White"
+                                TextAlignment="Center">
+                                <Run Text="{StaticResource EmojiMaison}" />
+                                <Run Text=" Gestionnaire" />
+                            </TextBlock>
+                            <TextBlock
+                                Margin="0,3,0,0"
+                                FontSize="17"
+                                Foreground="White"
+                                Opacity="0.95"
+                                Text="de Logement"
+                                TextAlignment="Center" />
+                        </StackPanel>
+                    </Border>
+
+                    <Border Height="12" />
+
+                    <!--  ═════ SUIVI ═════  -->
+                    <TextBlock
+                        Margin="20,0,0,6"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="SUIVI" />
+
+                    <Button
+                        x:Name="BtnAccueil"
+                        Click="BtnAccueil_Click"
+                        Style="{StaticResource BoutonNavigationActif}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiAccueil}" />
+                            <Run Text="  Accueil" />
                         </TextBlock>
-                        <TextBlock
-                            Margin="0,3,0,0"
-                            FontSize="17"
-                            Foreground="White"
-                            Opacity="0.95"
-                            Text="de Logement"
-                            TextAlignment="Center" />
-                    </StackPanel>
-                </Border>
+                    </Button>
 
-                <!--  Séparateur  -->
-                <Border Height="1" Background="{StaticResource BordureClaire}" />
+                    <Button
+                        x:Name="BtnFactures"
+                        Click="BtnFactures_Click"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiFactures}" />
+                            <Run Text="  Factures" />
+                        </TextBlock>
+                    </Button>
 
-                <!--  Espace  -->
-                <Border Height="8" />
+                    <Button
+                        x:Name="BtnEau"
+                        Click="BtnEau_Click"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiEau}" />
+                            <Run Text="  Eau" />
+                        </TextBlock>
+                    </Button>
 
-                <!--  Boutons de navigation  -->
-                <Button
-                    x:Name="BtnAccueil"
-                    Click="BtnAccueil_Click"
-                    Style="{StaticResource BoutonNavigationActif}"
-                    ToolTip="Tableau de bord principal">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiAccueil}" />
-                        <Run Text="  Accueil" />
-                    </TextBlock>
-                </Button>
+                    <Button
+                        x:Name="BtnElectricite"
+                        Click="BtnElectricite_Click"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiElectricite}" />
+                            <Run Text="  Électricité" />
+                        </TextBlock>
+                    </Button>
 
-                <Button
-                    x:Name="BtnFactures"
-                    Click="BtnFactures_Click"
-                    Style="{StaticResource BoutonNavigation}"
-                    ToolTip="Gestion des factures">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiFactures}" />
-                        <Run Text="  Factures" />
-                    </TextBlock>
-                </Button>
+                    <Button
+                        x:Name="BtnChauffage"
+                        Click="BtnChauffage_Click"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiChauffage}" />
+                            <Run Text="  Chauffage" />
+                        </TextBlock>
+                    </Button>
 
-                <Button
-                    x:Name="BtnEau"
-                    Click="BtnEau_Click"
-                    Style="{StaticResource BoutonNavigation}"
-                    ToolTip="Consommation d'eau">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiEau}" />
-                        <Run Text="  Eau" />
-                    </TextBlock>
-                </Button>
+                    <Border
+                        Height="1"
+                        Margin="12,14"
+                        Background="{StaticResource BordureClaire}" />
 
-                <Button
-                    x:Name="BtnElectricite"
-                    Click="BtnElectricite_Click"
-                    Style="{StaticResource BoutonNavigation}"
-                    ToolTip="Consommation d'électricité">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiElectricite}" />
-                        <Run Text="  Électricité" />
-                    </TextBlock>
-                </Button>
+                    <!--  ═════ ANALYSE ═════  -->
+                    <TextBlock
+                        Margin="20,0,0,6"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="ANALYSE" />
 
-                <Button
-                    x:Name="BtnChauffage"
-                    Click="BtnChauffage_Click"
-                    Style="{StaticResource BoutonNavigation}"
-                    ToolTip="Consommation de chauffage">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiChauffage}" />
-                        <Run Text="  Chauffage" />
-                    </TextBlock>
-                </Button>
+                    <Button
+                        x:Name="BtnAchats"
+                        Click="BtnAchats_Click"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiAchats}" />
+                            <Run Text="  Achats" />
+                        </TextBlock>
+                    </Button>
 
-                <Button
-                    x:Name="BtnAchats"
-                    Click="BtnAchats_Click"
-                    Style="{StaticResource BoutonNavigation}"
-                    ToolTip="Liste des achats">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiAchats}" />
-                        <Run Text="  Achats" />
-                    </TextBlock>
-                </Button>
+                    <Button
+                        x:Name="BtnStatistiques"
+                        Click="BtnStatistiques_Click"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiStatistiques}" />
+                            <Run Text="  Statistiques" />
+                        </TextBlock>
+                    </Button>
 
-                <Button
-                    x:Name="BtnStatistiques"
-                    Click="BtnStatistiques_Click"
-                    Style="{StaticResource BoutonNavigation}"
-                    ToolTip="Statistiques et graphiques">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiStatistiques}" />
-                        <Run Text="  Statistiques" />
-                    </TextBlock>
-                </Button>
+                    <Border
+                        Height="1"
+                        Margin="12,14"
+                        Background="{StaticResource BordureClaire}" />
 
-                <!--  Séparateur  -->
-                <Border
-                    Height="1"
-                    Margin="0,12"
-                    Background="{StaticResource BordureClaire}" />
+                    <!--  ═════ APPLICATION ═════  -->
+                    <TextBlock
+                        Margin="20,0,0,6"
+                        FontSize="13"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="APPLICATION" />
 
-                <Button
-                    x:Name="BtnParametres"
-                    Click="BtnParametres_Click"
-                    Style="{StaticResource BoutonNavigation}"
-                    ToolTip="Paramètres de l'application">
-                    <TextBlock>
-                        <Run FontSize="18" Text="{StaticResource EmojiParametres}" />
-                        <Run Text="  Paramètres" />
-                    </TextBlock>
-                </Button>
-            </StackPanel>
+                    <Button
+                        x:Name="BtnParametres"
+                        Click="BtnParametres_Click"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="{StaticResource EmojiParametres}" />
+                            <Run Text="  Paramètres" />
+                        </TextBlock>
+                    </Button>
+
+                    <!--  FUTUR : HISTORIQUE  -->
+                    <Button
+                        IsEnabled="False"
+                        Opacity="0.5"
+                        Style="{StaticResource BoutonNavigation}">
+                        <TextBlock>
+                            <Run FontSize="18" Text="🕒" />
+                            <Run Text="  Historique" />
+                        </TextBlock>
+                    </Button>
+
+                </StackPanel>
+            </ScrollViewer>
         </Border>
 
-        <!--  ══════════════════════════════════════════════════════  -->
-        <!--  ZONE DE CONTENU PRINCIPAL (DROITE)  -->
-        <!--  ══════════════════════════════════════════════════════  -->
+        <!--  ═════════════════════════════════════  -->
+        <!--  ZONE DE CONTENU (DROITE)  -->
+        <!--  ═════════════════════════════════════  -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
-            <!--  Barre de titre  -->
+            <!--  BARRE DE TITRE  -->
             <Border
                 Grid.Row="0"
                 Padding="30,0"
@@ -238,7 +291,7 @@
                 </TextBlock>
             </Border>
 
-            <!--  Frame pour afficher les pages  -->
+            <!--  CONTENU  -->
             <Frame
                 x:Name="FramePrincipal"
                 Grid.Row="1"

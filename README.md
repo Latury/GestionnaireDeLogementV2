@@ -7,7 +7,7 @@
 ![C#](https://img.shields.io/badge/C%23-12.0-239120?style=for-the-badge&logo=csharp&logoColor=white&labelColor=384454)
 ![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white&labelColor=384454)
 ![WPF](https://img.shields.io/badge/WPF-Windows-0078D4?style=for-the-badge&logo=windows&logoColor=white&labelColor=384454)
-![VERSION](https://img.shields.io/badge/VERSION-V1.0.0-F9DC5C?style=for-the-badge&logo=git&logoColor=white&labelColor=384454)
+![VERSION](https://img.shields.io/badge/VERSION-V1.0.0--dev-F9DC5C?style=for-the-badge&logo=git&logoColor=white&labelColor=384454)
 ![STATUT](https://img.shields.io/badge/STATUT-EN%20DÉVELOPPEMENT-FFA500?style=for-the-badge&logo=checkmarx&logoColor=white&labelColor=384454)
 
 _Développé par [Latury](https://github.com/Latury)_
@@ -24,8 +24,8 @@ _Développé par [Latury](https://github.com/Latury)_
 
 **Gestionnaire de Logement** est une application de bureau Windows qui permet de gérer tous les aspects d'un logement : factures, consommations d'eau et d'électricité, chauffage, achats échelonnés, et budget mensuel.
 
-**Version actuelle :** `1.0.0` (22/01/2026)  
-**Statut :** 🟡 **En développement actif**
+**Version actuelle :** `1.0.0-dev` (février 2026)  
+**Statut :** 🟡 **En développement actif (stabilisation UX en cours)**
 
 ---
 
@@ -72,13 +72,23 @@ Ce projet me permet d'apprendre en pratiquant. Chaque ligne de code est document
 - Détection des pics de consommation anormaux _(à venir)_
 - Estimation du coût selon le tarif HC/HP
 
-### **🔥 Gestion du chauffage**
-- Suivi des relevés de consommation
-- Support multi-types : Fioul, Gaz, Électrique, Bois, Pompe à chaleur
+### 🔥 Gestion du chauffage
+- Suivi des relevés de consommation de chauffage
+- Support multi-types :
+  - ⛽ Fioul
+  - 🔥 Gaz
+  - ⚡ Électrique
+  - 🪵 Bois
+- Fenêtre dédiée d’ajout de relevé avec :
+  - Validation visuelle immédiate (bordures rouges)
+  - Adaptation automatique de l’unité selon le type
+  - Désactivation intelligente de certains champs selon le contexte
+  - Résumé en temps réel discret sous le formulaire
+- Interface UX moderne et cohérente avec le reste de l’application
 - Filtrage par type de chauffage
-- Calcul des coûts mensuels et annuels
-- Statistiques saisonnières (hiver vs été) _(à venir)_
-- Comparaison avec les années précédentes _(à venir)_
+- Base prête pour :
+  - Calcul automatique du coût (via paramètres)
+  - Statistiques saisonnières _(à venir)_
 
 ### **🧾 Gestion des factures**
 - Ajout, modification et suppression de factures
@@ -113,49 +123,92 @@ Ce projet me permet d'apprendre en pratiquant. Chaque ligne de code est document
 
 ---
 
+## 🧠 Expérience utilisateur (UX)
+
+Un soin particulier est apporté à l’expérience utilisateur :
+
+- Validation visuelle immédiate des champs (bordures rouges)
+- Feedback en temps réel lors de la saisie
+- Résumé discret et lisible des données avant validation
+- Interfaces non surchargeantes, claires et cohérentes
+- Comportements intelligents selon le contexte (ex : type de chauffage)
+
+🎯 Objectif : une application compréhensible, même sans connaissances techniques.
+
+---
+
 ## 🏗️ **Architecture du projet**
 
 ```
 GestionnaireDeLogement/
-├── 📁 Ressources/              # Ressources visuelles centralisées
-│   ├── Icons/                  # Icônes (.png, .svg)
-│   ├── Emojis/                 # Emojis personnalisés
-│   └── Images/                 # Images diverses
+├── 📁 Ressources/                      # Ressources visuelles centralisées
+│   ├── Icons/                          # Icônes (.png, .svg)
+│   ├── Emojis/                         # Emojis personnalisés
+│   └── Images/                         # Images diverses
 │
-├── 📁 Donnees/                 # Gestion des données
-│   └── GestionnaireDonnees.cs  # Gestionnaire de fichiers JSON
+├── 📁 Donnees/                         # Gestion des données
+│   └── GestionnaireDonnees.cs          # Gestionnaire JSON (chargement / sauvegarde)
 │
-├── 📁 Modeles/                 # Modèles de données
-│   ├── Facture.cs              # Modèle Facture
-│   ├── ReleveEau.cs            # Modèle Relevé Eau
-│   ├── ReleveElectricite.cs    # Modèle Relevé Électricité
-│   ├── AchatEchelonne.cs       # Modèle Achat échelonné (à venir)
-│   └── Logement.cs             # Modèle Logement (à venir)
+├── 📁 Modeles/                         # Modèles de données
+│   ├── Facture.cs                      # Modèle Facture
+│   ├── ReleveEau.cs                    # Modèle Relevé Eau
+│   ├── ReleveElectricite.cs            # Modèle Relevé Électricité
+│   ├── ReleveChauffage.cs              # Modèle Relevé Chauffage
+│   ├── AchatEchelonne.cs               # Modèle Achat échelonné (à venir)
+│   └── Logement.cs                     # Modèle Logement (à venir)
 │
-├── 📁 Vues/                    # Vues de l'application (XAML + C#)
-│   ├── AccueilVue.xaml         # ✅ Page d'accueil (tableau de bord)
-│   ├── FacturesVue.xaml        # ✅ Gestion des factures
-│   ├── EauVue.xaml             # ✅ Gestion de l'eau
-│   ├── ElectriciteVue.xaml     # ✅ Gestion de l'électricité
-│   ├── ChauffageVue.xaml       # ✅ Gestion du chauffage
-│   ├── AchatsVue.xaml          # ⚪ Gestion des achats (à venir)
-│   ├── StatistiquesVue.xaml    # ⚪ Statistiques (à venir)
-│   └── ParametresVue.xaml      # ⚪ Paramètres (à venir)
+├── 📁 Chauffage/                       # Module Chauffage (structuré)
+│   ├── 📁 Vues/
+│   │   ├── ChauffageVue.xaml           # ✅ Vue principale Chauffage
+│   │   ├── ChauffageVue.xaml.cs
+│   │   │
+│   │   └── 📁 RelevesChauffage/        # Fenêtres liées aux relevés
+│   │       ├── AjouterReleveChauffageVue.xaml
+│   │       ├── AjouterReleveChauffageVue.xaml.cs
+│   │       ├── ModifierReleveChauffageVue.xaml      # (prévu / en cours)
+│   │       └── ModifierReleveChauffageVue.xaml.cs
+│   │
+│   └── 📁 VueModeles/
+│       └── ChauffageVueModele.cs       # ViewModel Chauffage (MVVM)
 │
-├── 📁 Styles/                  # Styles et thèmes
-│   ├── Couleurs.xaml           # Dictionnaire de couleurs centralisé
-│   ├── StylesBoutons.xaml      # Styles pour les boutons (à venir)
-│   └── StylesTextes.xaml       # Styles pour les textes (à venir)
+├── 📁 Vues/                            # Vues principales de navigation
+│   ├── AccueilVue.xaml                 # ✅ Page d'accueil (tableau de bord)
+│   ├── AccueilVue.xaml.cs
+│   ├── FacturesVue.xaml                # ✅ Gestion des factures
+│   ├── FacturesVue.xaml.cs
+│   ├── EauVue.xaml                     # ✅ Gestion de l'eau
+│   ├── EauVue.xaml.cs
+│   ├── ElectriciteVue.xaml             # ✅ Gestion de l'électricité
+│   ├── ElectriciteVue.xaml.cs
+│   ├── AchatsVue.xaml                  # ⚪ Achats échelonnés (à venir)
+│   ├── StatistiquesVue.xaml            # ⚪ Statistiques (à venir)
+│   └── ParametresVue.xaml              # ⚪ Paramètres (à venir)
 │
-├── 📁 Utilitaires/             # Utilitaires et helpers
-│   ├── Convertisseurs/         # Convertisseurs XAML (à venir)
-│   └── Assistants/             # Fonctions helper (à venir)
+├── 📁 Styles/                          # Styles et thèmes centralisés
+│   ├── Couleurs.xaml                   # 🎨 Dictionnaire de couleurs global
+│   ├── StylesBoutons.xaml              # Styles boutons (en cours)
+│   └── StylesTextes.xaml               # Styles textes (en cours)
 │
-└── 📁 Configurations/          # Fichiers de données (Git ignore)
-    ├── factures.json
-    ├── releves_eau.json
-    ├── releves_electricite.json
-    └── logement.json
+├── 📁 Utilitaires/                     # Helpers & outils
+│   ├── Convertisseurs/                 # Convertisseurs XAML (à venir)
+│   └── Assistants/                     # Fonctions utilitaires (à venir)
+│
+├── 📁 Configurations/                  # Données utilisateur (ignorées par Git)
+│   ├── factures.json
+│   ├── releves_eau.json
+│   ├── releves_electricite.json
+│   ├── releves_chauffage.json
+│   └── logement.json
+│
+├── 📄 README.md                        # Présentation du projet
+├── 📄 CHANGELOG.md                     # Historique des versions
+├── 📄 PATCH_NOTES.md                   # Notes techniques détaillées
+├── 📄 FEUILLE_DE_ROUTE.md              # Roadmap complète
+├── 📄 GUIDE_GITHUB_DESKTOP.md          # Guide GitHub Desktop
+├── 📄 EXEMPLES_COMMITS.md              # Exemples de commits
+├── 📄 LICENSE.txt                      # Licence CC BY-NC 4.0
+├── 📄 .gitignore
+└── 📄 .gitattributes
 ```
 
 ---
@@ -192,57 +245,132 @@ Ce projet contient une documentation complète pour faciliter le développement 
 - **[GUIDE_GITHUB_DESKTOP.md](GUIDE_GITHUB_DESKTOP.md)** - Guide complet d'utilisation de GitHub Desktop
 - **[EXEMPLES_COMMITS.md](EXEMPLES_COMMITS.md)** - Exemples de messages de commit professionnels
 
-### **⚖️ Licence**
-- **[LICENSE.txt](LICENSE.txt)** - Licence MIT avec attribution obligatoire
+## 📝 **Licence**
+
+Ce projet est distribué sous la licence :
+
+### **Creative Commons Attribution – NonCommercial 4.0 International (CC BY-NC 4.0)**
+
+### ✔️ Autorisé
+- Utilisation personnelle
+- Étude et apprentissage
+- Modification du code source
+- Redistribution non commerciale
+
+### ❌ Interdit
+- Toute utilisation commerciale
+- La vente du logiciel ou d’une version dérivée
+- L’intégration dans un produit payant
+
+### 🔖 Attribution obligatoire
+Toute utilisation, modification ou redistribution doit conserver :
+- **Créateur original** : Flo (Latury)
+- **Projet** : Gestionnaire de Logement
+- **Dépôt GitHub** : https://github.com/Latury/GestionnaireDeLogement
+
+📄 Voir le fichier [LICENSE.txt](LICENSE.txt) pour le texte complet de la licence.
 
 ---
 
 ## 📋 **Roadmap**
 
-### Version 1.0.0 (En cours - Janvier 2026)
-- [x] Structure de base du projet
-- [x] Documentation complète
-- [x] Système de sauvegarde JSON
-- [x] Modèles de données (Facture, ReleveEau, ReleveElectricite)
-- [x] Interface principale avec navigation
-- [x] Page d'accueil avec cartes statistiques
-- [x] Pages de gestion (Factures, Eau, Électricité, Chauffage)
-- [ ] Fonctionnalités CRUD complètes
-- [ ] Connexion au système de sauvegarde
+### Version 1.0.0-dev — Fondations & UX (actuel)
 
-### Version 1.0.1 (Stabilisation - Février 2026)
-- [ ] Tests complets de toutes les fonctionnalités
-- [ ] Corrections de bugs
-- [ ] **Guide utilisateur simplifié (GUIDE_UTILISATEUR.md)**
-- [ ] Tutoriel de prise en main rapide
-- [ ] FAQ (Questions fréquentes)
+**📌 Objectif : poser une base saine, compréhensible et agréable à utiliser**
 
-### Version 1.1.0 (Mars 2026)
-- [ ] Graphiques et statistiques avancées
-- [ ] Achats échelonnés
-- [ ] Comparaisons mensuelles
-- [ ] Détection automatique des économies
-- [ ] Mode sombre (thème nuit)
+✅ **Terminé**
+🔲 **À faire**
 
-### Version 1.2.0 (Avril 2026)
-- [ ] Alertes et notifications
-- [ ] Calendrier des paiements
-- [ ] Rappels d'échéances
-- [ ] Vue calendrier complète
+- ✅ Structure générale du projet WPF (.NET 8)
+- ✅ Organisation claire des dossiers (Modules, Vues, ViewModels)
 
-### Version 2.0.0 (Mai-Juin 2026)
-- [ ] Export PDF des factures et statistiques
-- [ ] Export Excel/CSV pour analyse
-- [ ] Import de données existantes
-- [ ] Backup automatique
-- [ ] Gestion multi-logements
-- [ ] Thèmes personnalisables
-- [ ] **Installateur Windows (.exe / .msi)**
+- ✅ **Modèles de données principaux:**
+- 🔲 Facture
+- 🔲 Relevé Eau
+- 🔲 Relevé Électricité
+- 🔲 Relevé Chauffage
 
-### Version 3.0.0 (Septembre 2026)
-- [ ] Synchronisation cloud (OneDrive, Google Drive)
-- [ ] Application mobile compagnon (Android/iOS)
-- [ ] Accès multi-appareils
+- 🔲 **Pages principales de navigation:**
+- 🔲 Accueil (Tableau de bord)
+- 🔲 Eau
+- 🔲 Électricité
+- 🔲 Chauffage
+- 🔲 Factures
+- ✅ Système de styles centralisé (Couleurs.xaml)
+
+- ✅ **Module **Chauffage** le plus avancé:**
+- 🔲 Fenêtre dédiée d’ajout de relevé
+- 🔲 Validation visuelle immédiate (bordures rouges)
+- 🔲 Adaptation automatique de l’unité selon le type
+- 🔲 Désactivation intelligente de champs
+- 🔲 Résumé en temps réel discret
+
+- ✅ UX cohérente et moderne sur l’ensemble des vues
+- ✅ Documentation complète (README, roadmap, patch notes, etc.)
+- ✅ Licence CC BY-NC 4.0 appliquée à tout le projet
+
+🟠 En cours
+
+- 🔲 Connexion réelle des formulaires au système de sauvegarde JSON
+- 🔲 Finalisation des formulaires d’ajout/modification (Eau / Électricité)
+- 🔲 Harmonisation complète UX entre tous les modules
+
+### 🟢 Version 1.0.1 — Stabilisation (prochaine étape)
+
+**📌 Objectif : fiabilité et cohérence fonctionnelle**
+
+- 🔲 Connexion complète au stockage JSON (CRUD réel)
+- 🔲 Tests manuels de toutes les pages
+- 🔲 Corrections de bugs UX / logique
+- 🔲 Validation utilisateur renforcée (messages + visuel)
+- 🔲 Guide utilisateur simplifié (GUIDE_UTILISATEUR.md)
+- 🔲 Nettoyage et commentaires finaux du code
+
+### 🔵 Version 1.1.0 — Fonctionnalités avancées
+
+**📌 Objectif : commencer l’analyse et la valeur ajoutée:**
+
+- 🔲 Graphiques et statistiques avancées
+- 🔲 Comparaisons avancées mois / mois
+- 🔲 Module avancées **Achats échelonnés**
+- 🔲 Calculs automatiques (coûts, totaux)
+- 🔲 Premiers tableaux de statistiques
+
+### 🟣 Version 1.2.0 — Confort & automatisation
+
+**📌 Objectif : rendre l’application plus intelligente et agréable**	
+
+- 🔲 Alertes (factures, échéances)
+- 🔲 Rappels visuels
+- 🔲 Vue calendrier
+- 🔲 Amélioration des performances
+- 🔲 Début du système de paramètres utilisateur
+
+### 🟠 Version 2.0.0 — Maturité
+
+**📌 Objectif : version stable et complète pour un usage quotidien**	
+
+- 🔲 Export PDF / CSV
+- 🔲 Import de données
+- 🔲 Sauvegarde automatique
+- 🔲 Gestion multi-logements
+- 🔲 Thèmes personnalisables
+- 🔲 Installateur Windows (.exe / .msi) 
+
+### 🔴 Version 3.0.0 — Long terme
+
+**📌 Objectif : fonctionnalités avancées et mobilité**
+
+- 🔲 Synchronisation cloud (optionnelle)
+- 🔲 Application mobile compagnon
+- 🔲 Accès multi-appareils
+
+### 🧭 Philosophie de la roadmap
+
+-Pas de promesses irréalistes
+-Chaque version a un objectif clair
+-Le projet reste pédagogique et évolutif
+-La priorité est donnée à la compréhension et à l’UX, pas à la course aux fonctionnalités
 
 📖 **Voir [FEUILLE_DE_ROUTE.md](FEUILLE_DE_ROUTE.md) pour le détail complet de la roadmap**
 
@@ -250,7 +378,7 @@ Ce projet contient une documentation complète pour faciliter le développement 
 
 ## 🎨 **Système de couleurs**
 
-Le projet utilise un système de couleurs centralisé dans `Styles/Couleurs.xaml` :
+Le projet utilise un système de couleurs centralisé dans `Styles/Couleurs.xaml` afin de garantir une cohérence visuelle globale.
 
 - **Couleurs principales** : Bleu (#3B82F6), Bleu foncé (#2563EB), Bleu clair (#60A5FA)
 - **Succès** : Vert (#10B981)
@@ -259,34 +387,18 @@ Le projet utilise un système de couleurs centralisé dans `Styles/Couleurs.xaml
 - **Neutres** : Palette de gris (Gris50 à Gris900)
 - **Spécifiques** : Bleu eau (#06B6D4), Jaune électricité (#FBBF24), Orange chauffage (#F97316)
 
+🎯 Objectif : lisibilité, contraste suffisant et feedback visuel immédiat.
+
 ---
 
 ## 🔒 **Sécurité des données**
 
-- **Stockage local** : Toutes les données sont stockées localement sur votre machine
-- **Format JSON** : Fichiers lisibles et facilement récupérables
+- **Stockage 100 % local** : Toutes les données sont stockées localement sur votre machine, aucune donnée n’est envoyée sur internet
+- **Format JSON** : fichiers lisibles, récupérables et transparents
+- **Aucune dépendance cloud** : dans la version actuelle
+- **Respect de la vie privée** : aucune télémétrie, aucun tracking
 - **Backup** : Système de sauvegarde automatique (à venir en v2.0)
 - **Aucune connexion externe** : Aucune donnée n'est envoyée sur internet (sauf si synchronisation cloud activée en v3.0)
-
----
-
-## 📝 **Licence**
-
-Ce projet est sous **licence MIT avec attribution obligatoire**.
-
-### **Conditions d'utilisation**
-- ✅ **Utilisation libre** (personnelle uniquement)
-- ✅ **Modification autorisée**
-- ✅ **Distribution autorisée**
-- ⚠️ **Attribution obligatoire** : Vous devez conserver les informations du créateur original
-
-### **Attribution requise**
-Toute utilisation, modification ou distribution doit conserver :
-- Nom du créateur : **Latury**
-- Contact : **latury57@gmail.com**
-- Lien du projet : [**https://github.com/Latury/GestionnaireDeLogement**]
-
-📄 **Voir le fichier [LICENSE.txt](LICENSE.txt) pour le texte complet de la licence**
 
 ---
 
@@ -303,10 +415,10 @@ Toute utilisation, modification ou distribution doit conserver :
 ## 🙏 **Remerciements**
 
 - **Microsoft** pour le framework .NET 8.0 et WPF
-- **La communauté open-source C#** pour les ressources et tutoriels
-- **GitHub** pour l'hébergement du code source
-- **Draw.io** pour le maquettage d'interface
-- **Les outils d'IA** pour l'assistance au développement
+- **La communauté C# / WPF** pour les nombreuses ressources et exemples
+- **GitHub** pour l’hébergement du projet et le versioning
+- **Draw.io** pour le maquettage des interfaces
+- **Jarvis (IA d’assistance) 🤖** Pour l’accompagnement pédagogique, l’aide à la structuration du projet, la réflexion UX et la vulgarisation des concepts complexes tout au long du développement
 
 ---
 
@@ -324,13 +436,24 @@ Les contributions sont les bienvenues ! Consultez [EXEMPLES_COMMITS.md](EXEMPLES
 
 ## 📊 **Statistiques du projet**
 
-- **Langage principal** : C# (100%)
-- **Framework** : WPF .NET 8.0
-- **Architecture** : MVVM (en cours d'implémentation)
-- **Pages créées** : 5/8 (AccueilVue, FacturesVue, EauVue, ElectriciteVue, ChauffageVue)
-- **Lignes de code** : ~1 200 lignes (XAML + C#)
-- **Documentation** : 7 fichiers markdown complets
-- **Statut** : Projet d'apprentissage actif (70% version 1.0.0)
+- **Langage principal** : C# (100 %)
+- **Framework** : WPF (.NET 8.0 LTS)
+- **Architecture** : MVVM hybride (en cours de structuration)
+- **Modules fonctionnels actifs** : 4 (Eau, Électricité, Chauffage, Factures)
+- **Pages / Fenêtres implémentées** : 6
+  - AccueilVue
+  - FacturesVue
+  - EauVue
+  - ElectriciteVue
+  - ChauffageVue
+  - Fenêtres d’ajout / modification de relevés
+- **Formulaires avancés** : Chauffage (validation UX, adaptation contextuelle)
+- **Validation utilisateur** : Visuelle + métier (bordures, contrôles, messages)
+- **Stockage des données** : JSON local (structure prête, liaison progressive)
+- **Lignes de code** : ~1 500 lignes (XAML + C#)
+- **Documentation** : 7 fichiers Markdown maintenus
+- **Licence** : CC BY-NC 4.0 (usage commercial interdit)
+- **Statut global** : Projet d’apprentissage actif – **≈ 75 % de la version 1.0.0**
 
 ---
 
@@ -338,9 +461,9 @@ Les contributions sont les bienvenues ! Consultez [EXEMPLES_COMMITS.md](EXEMPLES
 
 1. **Phase 1** : ✅ Création des modèles de données (Facture, ReleveEau, ReleveElectricite)
 2. **Phase 2** : ✅ Implémentation des pages de gestion (Factures, Eau, Électricité, Chauffage)
-3. **Phase 3** : 🔵 Connexion des pages au système de sauvegarde JSON
-4. **Phase 4** : ⚪ Formulaires d'ajout/modification de données
-5. **Phase 5** : ⚪ Ajout des graphiques et statistiques
+3. **Phase 3** : 🔵 Connexion progressive des pages au système de sauvegarde JSON (lecture / écriture réelle des données)
+4. **Phase 4** : ⚪ Finalisation des formulaires d’ajout / modification (validation UX complète, cohérence entre modules)
+5. **Phase 5** : ⚪ Ajout des graphiques et statistiques (visualisation des consommations et coûts)
 6. **Phase 6** : ⚪ Tests, stabilisation et rédaction du guide utilisateur
 
 📖 **Suivez l'avancement dans [FEUILLE_DE_ROUTE.md](FEUILLE_DE_ROUTE.md)**
@@ -355,6 +478,6 @@ Les contributions sont les bienvenues ! Consultez [EXEMPLES_COMMITS.md](EXEMPLES
 
 ---
 
-**Version 1.0.0** • **Dernière mise à jour : 22 janvier 2026**
+**Version 1.0.0-dev** **• Dernière mise à jour : 03 Février 2026**
 
 </div>

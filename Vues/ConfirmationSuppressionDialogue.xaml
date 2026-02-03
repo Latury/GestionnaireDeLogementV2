@@ -1,0 +1,171 @@
+﻿<Window
+    x:Class="GestionnaireDeLogement.Vues.ConfirmationSuppressionDialogue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="⚠️ CONFIRMATION DE SUPPRESSION"
+    Width="550"
+    Height="360"
+    Background="{StaticResource FondSecondaire}"
+    ResizeMode="NoResize"
+    WindowStartupLocation="CenterScreen">
+
+    <Border
+        Padding="30"
+        Background="White"
+        BorderBrush="{StaticResource CouleurErreur}"
+        BorderThickness="3"
+        CornerRadius="12">
+        <Border.Effect>
+            <DropShadowEffect
+                BlurRadius="25"
+                Direction="270"
+                Opacity="0.3"
+                ShadowDepth="8"
+                Color="Black" />
+        </Border.Effect>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  CONTENU PRINCIPAL  -->
+            <StackPanel
+                Grid.Row="0"
+                Margin="0,10,0,0"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center">
+                <!--  Icône d'alerte  -->
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    FontSize="70"
+                    Text="⚠️" />
+
+                <!--  Titre  -->
+                <TextBlock
+                    Margin="0,15,0,0"
+                    HorizontalAlignment="Center"
+                    FontSize="24"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource CouleurErreur}"
+                    Text="ATTENTION !"
+                    TextAlignment="Center" />
+
+                <!--  Message  -->
+                <TextBlock
+                    x:Name="TxtMessage"
+                    Margin="0,12,0,0"
+                    HorizontalAlignment="Center"
+                    FontSize="16"
+                    Foreground="{StaticResource TextePrincipal}"
+                    Text="Cette action est IRRÉVERSIBLE !"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Margin="0,10,0,0"
+                    HorizontalAlignment="Center"
+                    FontSize="14"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource CouleurAlerteMoyenne}"
+                    Text="Êtes-vous ABSOLUMENT sûr(e) ?"
+                    TextAlignment="Center" />
+            </StackPanel>
+
+            <!--  BOUTONS  -->
+            <StackPanel
+                Grid.Row="1"
+                Margin="0,15,0,0"
+                HorizontalAlignment="Center"
+                Orientation="Horizontal">
+                <!--  Bouton ANNULER (vert)  -->
+                <Button
+                    x:Name="BtnAnnuler"
+                    Width="180"
+                    Height="50"
+                    Margin="0,0,12,0"
+                    Click="BtnAnnuler_Click"
+                    Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="{StaticResource CouleurSucces}" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border
+                                            x:Name="border"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="10">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurSuccesFoncee}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="✅" />
+                        <TextBlock VerticalAlignment="Center" Text="NON, Annuler" />
+                    </StackPanel>
+                </Button>
+
+                <!--  Bouton SUPPRIMER (rouge)  -->
+                <Button
+                    x:Name="BtnConfirmer"
+                    Width="180"
+                    Height="50"
+                    Click="BtnConfirmer_Click"
+                    Cursor="Hand">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="{StaticResource CouleurErreur}" />
+                            <Setter Property="Foreground" Value="White" />
+                            <Setter Property="FontSize" Value="16" />
+                            <Setter Property="FontWeight" Value="Bold" />
+                            <Setter Property="BorderThickness" Value="0" />
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border
+                                            x:Name="border"
+                                            Background="{TemplateBinding Background}"
+                                            CornerRadius="10">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                        </Border>
+                                        <ControlTemplate.Triggers>
+                                            <Trigger Property="IsMouseOver" Value="True">
+                                                <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurErreurFoncee}" />
+                                            </Trigger>
+                                        </ControlTemplate.Triggers>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </Button.Style>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock
+                            Margin="0,0,8,0"
+                            VerticalAlignment="Center"
+                            FontSize="20"
+                            Text="🗑️" />
+                        <TextBlock VerticalAlignment="Center" Text="OUI, Supprimer" />
+                    </StackPanel>
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+</Window>

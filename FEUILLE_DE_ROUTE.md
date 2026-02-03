@@ -1,284 +1,175 @@
-﻿# 🗺️ Feuille de Route - Gestionnaire Logement
+﻿# 🗺️ Feuille de Route – Gestionnaire de Logement
 
-## 📌 Vision du Projet
+## 📌 Vision du projet
 
-**Objectif** : Créer un gestionnaire complet de logement pour suivre les factures, relevés et achats.
+**Objectif**  
+Créer une application WPF claire et pédagogique permettant de gérer :
+- les factures,
+- les relevés (eau, électricité, chauffage),
+- les achats échelonnés,
+tout en mettant l’accent sur l’UX, la compréhension du code et l’apprentissage.
 
-**Versions planifiées** : 1.0 → 2.0 → 3.0
+**Philosophie**
+- Projet d’apprentissage avant tout
+- Priorité à la lisibilité, à la cohérence UX et à la progression étape par étape
+- Pas de promesses irréalistes, chaque version a un objectif clair
 
 ---
 
-## 🎯 Version 1.0.0 - Fondations (Janvier 2026)
+## 🎯 Version 1.0.0-dev — Fondations & UX (actuelle)
 
-**Statut** : 🔵 **EN COURS** (22/01/2026)
+**Statut** : 🔵 **EN COURS**  
+**Période** : Janvier – Février 2026  
+**Objectif** : Poser une base saine, structurée et agréable à utiliser
 
-**Objectif** : Créer la base du projet avec interface et pages principales
-
-### 🏗️ Infrastructure de base
-- 🟢 Structure du projet
-- 🟢 Système de sauvegarde JSON (GestionnaireDonnees)
-- 🟢 Architecture des dossiers
-- 🟢 Dictionnaire de couleurs centralisé
-- 🟢 Fichiers de documentation (README, LICENSE, etc.)
-- 🟢 Configuration Git (.gitignore)
-- 🟢 App.xaml avec import global des couleurs
-- 🟢 MainWindow.xaml avec menu de navigation
-- 🟢 MainWindow.xaml.cs avec gestion des événements
+### 🏗️ Infrastructure
+- 🟢 Structure générale du projet WPF (.NET 8)
+- 🟢 Organisation claire des dossiers (Modules, Vues, ViewModels)
+- 🟢 Configuration Git (.gitignore, .gitattributes)
+- 🟢 Import global des ressources (App.xaml)
+- 🟢 Navigation principale fonctionnelle
+- 🟢 Documentation projet complète (README, LICENSE, etc.)
 
 ### 💾 Modèles de données
-- 🟢 Facture.cs
-- 🟢 ReleveEau.cs
-- 🟢 ReleveElectricite.cs
-- ⚪ AchatEchelonne.cs
-- ⚪ Logement.cs
-- ⚪ Paiement.cs
+- 🟢 Facture
+- 🟢 Relevé Eau
+- 🟢 Relevé Électricité
+- 🟢 Relevé Chauffage
+- ⚪ Achat échelonné (prévu)
+- ⚪ Logement (prévu)
 
-### 📄 Pages de base
-- 🟢 MainWindow.xaml (fenêtre principale avec navigation)
-- 🟢 AccueilVue.xaml (tableau de bord avec cartes statistiques)
-- 🟢 FacturesVue.xaml (structure de base)
-- 🟢 EauVue.xaml (avec filtre Eau froide/Eau chaude)
-- 🟢 ElectriciteVue.xaml (avec cartes statistiques)
-- 🟢 ChauffageVue.xaml (avec filtre types de chauffage)
-- ⚪ AjouterFactureVue.xaml (formulaire d'ajout)
+### 📄 Pages principales
+- 🟢 Accueil (tableau de bord)
+- 🟢 Factures (structure + affichage)
+- 🟢 Eau (structure + filtres)
+- 🟢 Électricité (structure + statistiques de base)
+- 🟢 Chauffage (structure + filtres par type)
 
-### 🎨 Design
-- 🟢 Palette de couleurs complète
-- 🟢 Styles de boutons
-- 🟢 Styles de cartes statistiques
-- 🟢 Emojis intégrés
-- ⚪ Styles de formulaires
+### 🔥 Focus Chauffage (module le plus avancé)
+- 🟢 Fenêtre dédiée d’ajout de relevé
+- 🟢 Validation visuelle immédiate (bordures rouges)
+- 🟢 Adaptation automatique de l’unité selon le type
+- 🟢 Désactivation intelligente de champs
+- 🟢 Résumé en temps réel discret
+- 🟢 UX cohérente et moderne
 
-**Date de livraison** : En cours...
+### 🎨 Design & UX
+- 🟢 Système de couleurs centralisé (Couleurs.xaml)
+- 🟢 Styles cohérents (cartes, boutons, champs)
+- 🟢 Emojis intégrés pour la lisibilité
+- 🟢 Validation utilisateur visuelle et métier
 
----
-
-## 🎯 Version 1.0.1 - CRUD Factures (Février 2026)
-
-**Statut** : ⚪ **À FAIRE**
-
-**Objectif** : Implémenter la gestion complète des factures
-
-### ✅ Fonctionnalités CRUD
-- ⚪ **C**reate : Ajouter une facture
-- ⚪ **R**ead : Afficher la liste des factures
-- ⚪ **U**pdate : Modifier une facture existante
-- ⚪ **D**elete : Supprimer une facture (avec confirmation)
-
-### 📄 Pages à créer
-- ⚪ AjouterFactureVue.xaml (formulaire d'ajout)
-- ⚪ ModifierFactureVue.xaml (formulaire de modification)
-
-### 🔧 Fonctionnalités techniques
-- ⚪ Validation des champs de formulaire
-- ⚪ Messages de confirmation (MessageBox)
-- ⚪ Filtrage par type de facture (Eau/Électricité/Chauffage/Toutes)
-- ⚪ Tri par date/montant
-- ⚪ Recherche par notes
-- ⚪ Connexion au système de sauvegarde JSON
-
-### 📊 Statistiques de base
-- ⚪ Total des factures payées
-- ⚪ Total des factures impayées
-- ⚪ Montant total dépensé ce mois
-- ⚪ Liste des 5 dernières factures
-
-**Date de livraison prévue** : 15 Février 2026
+### 🟠 En cours
+- 🔲 Connexion réelle des formulaires au stockage JSON
+- 🔲 Finalisation des formulaires Eau / Électricité
+- 🔲 Harmonisation UX entre tous les modules
 
 ---
 
-## 🎯 Version 1.0.2 - Gestion Eau (Février 2026)
+## 🎯 Version 1.0.1 — Stabilisation
 
-**Statut** : 🔵 **EN COURS** (Interface créée)
+**Statut** : ⚪ **À FAIRE**  
+**Objectif** : Fiabilité et cohérence fonctionnelle
 
-**Objectif** : Implémenter la gestion de l'eau
-
-### 📄 Pages
-- 🟢 EauVue.xaml (liste des relevés avec filtre)
-- ⚪ AjouterReleveEauVue.xaml (formulaire)
-
-### ✅ Fonctionnalités
-- ⚪ Ajouter un relevé d'eau (froide + chaude)
-- ⚪ Calcul automatique de la consommation
-- ⚪ Estimation du montant
-- ⚪ Graphique d'évolution de la consommation
-- ⚪ Historique des relevés
-- ⚪ Filtrage Eau froide/Eau chaude
-
-**Date de livraison prévue** : 28 Février 2026
+- 🔲 Connexion complète au stockage JSON (CRUD réel)
+- 🔲 Tests manuels de toutes les pages
+- 🔲 Corrections de bugs UX / logique
+- 🔲 Validation utilisateur renforcée (messages + visuel)
+- 🔲 Guide utilisateur simplifié (GUIDE_UTILISATEUR.md)
+- 🔲 Nettoyage et commentaires finaux du code
 
 ---
 
-## 🎯 Version 1.0.3 - Gestion Électricité (Mars 2026)
+## 🎯 Version 1.1.0 — Fonctionnalités avancées
 
-**Statut** : 🔵 **EN COURS** (Interface créée)
+**Statut** : ⚪ **À FAIRE**  
+**Objectif** : Apporter de la valeur via l’analyse des données
 
-**Objectif** : Implémenter la gestion de l'électricité
-
-### 📄 Pages
-- 🟢 ElectriciteVue.xaml (liste des relevés)
-- ⚪ AjouterReleveElectriciteVue.xaml (formulaire)
-
-### ✅ Fonctionnalités
-- ⚪ Ajouter un relevé d'électricité (HC + HP)
-- ⚪ Calcul automatique avec tarifs différenciés
-- ⚪ Estimation du montant
-- ⚪ Graphique d'évolution
-- ⚪ Comparaison HC vs HP
-
-**Date de livraison prévue** : 15 Mars 2026
+- 🔲 Graphiques et statistiques avancées
+- 🔲 Comparaisons mensuelles
+- 🔲 Module Achats échelonnés
+- 🔲 Calculs automatiques (coûts, totaux)
+- 🔲 Premiers tableaux de statistiques exploitables
 
 ---
 
-## 🎯 Version 1.0.4 - Gestion Chauffage (Mars 2026)
+## 🎯 Version 1.2.0 — Confort & automatisation
 
-**Statut** : 🔵 **EN COURS** (Interface créée)
+**Statut** : ⚪ **À FAIRE**  
+**Objectif** : Améliorer le confort d’utilisation
 
-**Objectif** : Implémenter la gestion du chauffage
-
-### 📄 Pages
-- 🟢 ChauffageVue.xaml (liste des relevés avec filtre types)
-- ⚪ AjouterReleveChauffageVue.xaml (formulaire)
-
-### ✅ Fonctionnalités
-- ⚪ Ajouter un relevé de chauffage (Fioul/Gaz/Électrique/Bois/Pompe à chaleur)
-- ⚪ Calcul automatique de la consommation
-- ⚪ Estimation du montant
-- ⚪ Graphique d'évolution
-- ⚪ Filtrage par type de chauffage
-
-**Date de livraison prévue** : 20 Mars 2026
+- 🔲 Alertes (factures, échéances)
+- 🔲 Rappels visuels
+- 🔲 Vue calendrier
+- 🔲 Début du système de paramètres utilisateur
+- 🔲 Optimisations de performances
 
 ---
 
-## 🎯 Version 1.1.0 - Fonctionnalités Avancées (Avril 2026)
+## 🎯 Version 2.0.0 — Maturité
 
-**Statut** : ⚪ **À FAIRE**
+**Statut** : ⚪ **À FAIRE**  
+**Objectif** : Usage quotidien stable
 
-### 💳 Achats échelonnés
-- ⚪ Page AchatsVue.xaml
-- ⚪ Gestion des achats avec mensualités
-- ⚪ Calcul des échéances
-- ⚪ Notifications d'échéances proches
-
-### 📊 Statistiques avancées
-- ⚪ Graphiques interactifs (LiveCharts ou OxyPlot)
-- ⚪ Comparaison mensuelle
-- ⚪ Détection d'économies potentielles
-- ⚪ Prévisions de consommation
-
-### 🌙 Mode sombre
-- ⚪ Thème clair/sombre
-- ⚪ Sauvegarde de la préférence utilisateur
-
-**Date de livraison prévue** : 30 Avril 2026
+- 🔲 Export PDF / CSV
+- 🔲 Import de données
+- 🔲 Sauvegarde automatique
+- 🔲 Gestion multi-logements
+- 🔲 Thèmes personnalisables
+- 🔲 Installateur Windows (.exe / .msi)
 
 ---
 
-## 🎯 Version 2.0.0 - Export & Multi-logements (Mai-Juin 2026)
+## 🎯 Version 3.0.0 — Long terme
 
-**Statut** : ⚪ **À FAIRE**
+**Statut** : ⚪ **À FAIRE**  
+**Objectif** : Mobilité et synchronisation
 
-### 📤 Export de données
-- ⚪ Export PDF (factures + statistiques)
-- ⚪ Export Excel/CSV
-- ⚪ Génération de rapports mensuels
-
-### 📥 Import de données
-- ⚪ Import CSV de factures
-- ⚪ Import de relevés
-
-### 🏘️ Multi-logements
-- ⚪ Gestion de plusieurs logements
-- ⚪ Comparaison entre logements
-- ⚪ Statistiques par logement
-
-### 💾 Backup automatique
-- ⚪ Backup quotidien automatique
-- ⚪ Restauration depuis backup
-
-### 🎨 Personnalisation
-- ⚪ Thèmes personnalisables
-- ⚪ Choix des couleurs
-- ⚪ Personnalisation des catégories
-
-### 📦 Installation
-- ⚪ Créer un installateur Windows (.msi)
-- ⚪ Distribution sur Microsoft Store (optionnel)
-
-**Date de livraison prévue** : 30 Juin 2026
+- 🔲 Synchronisation cloud (optionnelle)
+- 🔲 Application mobile compagnon
+- 🔲 Accès multi-appareils
+- 🔲 Partage de données (famille / colocataires)
 
 ---
 
-## 🎯 Version 3.0.0 - Cloud & Mobile (Septembre 2026)
+## 📊 Suivi global
 
-**Statut** : ⚪ **À FAIRE**
-
-### ☁️ Synchronisation cloud
-- ⚪ Intégration OneDrive
-- ⚪ Intégration Google Drive
-- ⚪ Intégration Dropbox
-- ⚪ Synchronisation automatique
-
-### 📱 Application mobile
-- ⚪ Application mobile compagnon (Android)
-- ⚪ Application mobile compagnon (iOS)
-- ⚪ Scan de factures avec OCR
-- ⚪ Notifications push pour échéances
-
-### 🔄 Fonctionnalités avancées
-- ⚪ Accès multi-appareils en temps réel
-- ⚪ Partage de données entre utilisateurs
-- ⚪ Mode collaboratif (famille/colocataires)
-
-**Date de livraison prévue** : 30 Septembre 2026
-
----
-
-## 📊 Suivi Global
-
-### Statut des versions
-
-| Version | Statut | Date prévue | Progression |
-|---------|--------|-------------|-------------|
-| 1.0.0 | 🔵 En cours | 22/01/2026 | 70% |
-| 1.0.1 | ⚪ À faire | 15/02/2026 | 0% |
-| 1.0.2 | 🔵 En cours | 28/02/2026 | 30% |
-| 1.0.3 | 🔵 En cours | 15/03/2026 | 30% |
-| 1.0.4 | 🔵 En cours | 20/03/2026 | 30% |
-| 1.1.0 | ⚪ À faire | 30/04/2026 | 0% |
-| 2.0.0 | ⚪ À faire | 30/06/2026 | 0% |
-| 3.0.0 | ⚪ À faire | 30/09/2026 | 0% |
+| Version | Statut | Progression |
+|-------|--------|-------------|
+| 1.0.0-dev | 🔵 En cours | ~75 % |
+| 1.0.1 | ⚪ À faire | 0 % |
+| 1.1.0 | ⚪ À faire | 0 % |
+| 1.2.0 | ⚪ À faire | 0 % |
+| 2.0.0 | ⚪ À faire | 0 % |
+| 3.0.0 | ⚪ À faire | 0 % |
 
 ### Légende
-- 🟢 Fonctionnalité terminée
-- 🔵 Fonctionnalité en cours
-- ⚪ Fonctionnalité à faire
-- 🔴 Fonctionnalité bloquée/annulée
+- 🟢 Terminé
+- 🔵 En cours
+- ⚪ À faire
+- 🔴 Abandonné / annulé
 
 ---
 
-## 🎓 Apprentissage Prévu
+## 🎓 Apprentissage visé
 
-Au fil des versions, apprentissage de :
-- ✅ WPF et XAML (Version 1.0)
-- ✅ Architecture MVVM (Version 1.0)
-- 🔵 Gestion d'événements et navigation (Version 1.0)
-- ⚪ Graphiques interactifs (Version 1.1)
-- ⚪ Export PDF/Excel (Version 2.0)
-- ⚪ Intégration cloud (Version 3.0)
-- ⚪ Développement mobile Xamarin/MAUI (Version 3.0)
+- ✅ WPF / XAML
+- ✅ Structuration de projet
+- 🔵 Validation UX et logique métier
+- ⚪ MVVM avancé
+- ⚪ Graphiques et data-viz
+- ⚪ Export / sauvegarde
+- ⚪ Synchronisation et mobilité
 
 ---
 
 ## 📝 Notes
 
-- Cette feuille de route est **indicative** et peut évoluer
-- Les dates sont des **objectifs**, pas des engagements stricts
-- Les fonctionnalités peuvent être ajoutées/supprimées selon les besoins
-- Ce projet est un **projet d'apprentissage** avant tout
+- Cette feuille de route est **évolutive**
+- Les dates sont indicatives
+- La priorité reste l’apprentissage, la compréhension et l’UX
 
 ---
 
-**Dernière mise à jour** : 22 Janvier 2026  
-**Auteur** : Latury (latury57@gmail.com)
+**Dernière mise à jour** : Février 2026  
+**Auteur** : Latury

@@ -1,0 +1,26 @@
+﻿<Window
+    x:Class="GestionnaireDeLogement.Electricite.VueModeles.ModifierReleveElectriciteVue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:GestionnaireDeLogement.Electricite.VueModeles"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="ModifierReleveElectriciteVue"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+
+        <!--
+            =============================================================
+            Gestionnaire de Logement
+            Module Chauffage
+            
+            Copyright © 2026 Flo
+            Licence : CC BY-NC 4.0
+            Usage commercial interdit
+            =============================================================
+        -->
+
+    </Grid>
+</Window>

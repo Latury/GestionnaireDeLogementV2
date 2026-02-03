@@ -1,4 +1,15 @@
-﻿using System;
+﻿/*
+ * =============================================================
+ *  Gestionnaire de Logement
+ *  Module Chauffage
+ *
+ *  Copyright © 2026 Flo
+ *  Licence : CC BY-NC 4.0
+ *  Usage commercial interdit
+ * =============================================================
+ */
+
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;

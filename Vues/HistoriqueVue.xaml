@@ -1,0 +1,367 @@
+﻿<Page
+    x:Class="GestionnaireDeLogement.Vues.HistoriqueVue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="HistoriqueVue"
+    d:DesignHeight="800"
+    d:DesignWidth="1200"
+    Background="{StaticResource FondSecondaire}"
+    mc:Ignorable="d">
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <!--  SECTION 1 : TITRE ET FILTRES  -->
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <Grid Grid.Row="0" Margin="0,0,0,20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="20" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!--  TITRE  -->
+            <StackPanel Grid.Row="0">
+                <TextBlock
+                    FontSize="36"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource CouleurPrincipale}">
+                    <Run Text="📜" />
+                    <Run Text="Historique des modifications" />
+                </TextBlock>
+                <TextBlock
+                    Margin="0,8,0,0"
+                    FontSize="16"
+                    Foreground="{StaticResource TexteSecondaire}"
+                    Text="Toutes les modifications apportées aux relevés et factures" />
+            </StackPanel>
+
+            <!--  FILTRES  -->
+            <StackPanel
+                Grid.Row="2"
+                HorizontalAlignment="Left"
+                Orientation="Horizontal">
+                <TextBlock
+                    Margin="0,0,15,0"
+                    VerticalAlignment="Center"
+                    FontSize="16"
+                    FontWeight="SemiBold"
+                    Foreground="{StaticResource TextePrincipal}"
+                    Text="🔍 Filtrer par :" />
+
+                <RadioButton
+                    x:Name="RbTout"
+                    Margin="0,0,15,0"
+                    VerticalAlignment="Center"
+                    Checked="RbFiltre_Checked"
+                    FontSize="15"
+                    IsChecked="True">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,0,8,0" Text="📋" />
+                        <TextBlock Text="Tout" />
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="RbEau"
+                    Margin="0,0,15,0"
+                    VerticalAlignment="Center"
+                    Checked="RbFiltre_Checked"
+                    FontSize="15">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,0,8,0" Text="💧" />
+                        <TextBlock Text="Eau" />
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="RbElectricite"
+                    Margin="0,0,15,0"
+                    VerticalAlignment="Center"
+                    Checked="RbFiltre_Checked"
+                    FontSize="15">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,0,8,0" Text="⚡" />
+                        <TextBlock Text="Électricité" />
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="RbChauffage"
+                    Margin="0,0,15,0"
+                    VerticalAlignment="Center"
+                    Checked="RbFiltre_Checked"
+                    FontSize="15">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,0,8,0" Text="🔥" />
+                        <TextBlock Text="Chauffage" />
+                    </StackPanel>
+                </RadioButton>
+
+                <RadioButton
+                    x:Name="RbFactures"
+                    VerticalAlignment="Center"
+                    Checked="RbFiltre_Checked"
+                    FontSize="15">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="0,0,8,0" Text="🧾" />
+                        <TextBlock Text="Factures" />
+                    </StackPanel>
+                </RadioButton>
+            </StackPanel>
+        </Grid>
+
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <!--  SECTION 2 : BOUTONS D'ACTION  -->
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <StackPanel
+            Grid.Row="1"
+            Margin="0,0,0,20"
+            HorizontalAlignment="Right"
+            Orientation="Horizontal">
+
+            <Button
+                x:Name="BtnSupprimerCategorie"
+                Width="200"
+                Height="45"
+                Click="BtnSupprimerCategorie_Click"
+                Cursor="Hand"
+                ToolTip="Supprimer tous les éléments de la catégorie sélectionnée">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="{StaticResource CouleurAlerteMoyenne}" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="Margin" Value="0,0,10,0" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        x:Name="border"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurAlerteFoncee}" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Text="🗑️" />
+                    <TextBlock VerticalAlignment="Center" Text="Supprimer catégorie" />
+                </StackPanel>
+            </Button>
+
+            <Button
+                x:Name="BtnSupprimerTout"
+                Width="160"
+                Height="45"
+                Click="BtnSupprimerTout_Click"
+                Cursor="Hand"
+                ToolTip="Supprimer TOUT l'historique">
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="{StaticResource CouleurErreur}" />
+                        <Setter Property="Foreground" Value="White" />
+                        <Setter Property="FontSize" Value="14" />
+                        <Setter Property="FontWeight" Value="Bold" />
+                        <Setter Property="BorderThickness" Value="0" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="Button">
+                                    <Border
+                                        x:Name="border"
+                                        Background="{TemplateBinding Background}"
+                                        CornerRadius="8">
+                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurErreurFoncee}" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Button.Style>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock
+                        Margin="0,0,8,0"
+                        VerticalAlignment="Center"
+                        FontSize="16"
+                        Text="💥" />
+                    <TextBlock VerticalAlignment="Center" Text="Tout supprimer" />
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <!--  SECTION 3 : LISTE DES MODIFICATIONS  -->
+        <!--  ══════════════════════════════════════════════════════════  -->
+        <Border
+            Grid.Row="2"
+            Padding="0"
+            Background="White"
+            CornerRadius="12">
+            <Border.Effect>
+                <DropShadowEffect
+                    BlurRadius="20"
+                    Direction="270"
+                    Opacity="0.15"
+                    ShadowDepth="5"
+                    Color="Black" />
+            </Border.Effect>
+
+            <Grid>
+                <!--  MESSAGE SI VIDE  -->
+                <StackPanel
+                    x:Name="MessageVide"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Visibility="Collapsed">
+                    <TextBlock
+                        HorizontalAlignment="Center"
+                        FontSize="80"
+                        Opacity="0.3"
+                        Text="📜" />
+                    <TextBlock
+                        Margin="0,15,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="20"
+                        FontWeight="SemiBold"
+                        Foreground="{StaticResource TextePrincipal}"
+                        Text="Aucune modification enregistrée" />
+                    <TextBlock
+                        Margin="0,8,0,0"
+                        HorizontalAlignment="Center"
+                        FontSize="15"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Les modifications futures seront affichées ici" />
+                </StackPanel>
+
+                <!--  LISTE AVEC SCROLL  -->
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl x:Name="ListeHistorique" Margin="25">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Margin="0,0,0,12"
+                                    Padding="20"
+                                    Background="{StaticResource FondSecondaire}"
+                                    BorderBrush="{StaticResource BordureClaire}"
+                                    BorderThickness="1"
+                                    CornerRadius="8">
+                                    <Grid>
+                                        <Grid.RowDefinitions>
+                                            <RowDefinition Height="Auto" />
+                                            <RowDefinition Height="8" />
+                                            <RowDefinition Height="Auto" />
+                                        </Grid.RowDefinitions>
+
+                                        <!--  EN-TÊTE (DATE + TYPE + BOUTON SUPPRIMER)  -->
+                                        <Grid Grid.Row="0">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="10" />
+                                                <ColumnDefinition Width="Auto" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <TextBlock
+                                                Grid.Column="0"
+                                                VerticalAlignment="Center"
+                                                FontSize="13"
+                                                Foreground="{StaticResource TexteSecondaire}">
+                                                <Run Text="🕒" />
+                                                <Run Text="{Binding DateModification, StringFormat='dd/MM/yyyy à HH:mm:ss'}" />
+                                            </TextBlock>
+
+                                            <Border
+                                                Grid.Column="1"
+                                                Padding="10,4"
+                                                Background="#E3F2FD"
+                                                CornerRadius="6">
+                                                <TextBlock
+                                                    FontSize="12"
+                                                    FontWeight="SemiBold"
+                                                    Foreground="{StaticResource CouleurPrincipale}"
+                                                    Text="{Binding TypeAction}" />
+                                            </Border>
+
+                                            <!--  🆕 BOUTON SUPPRIMER  -->
+                                            <Button
+                                                Grid.Column="3"
+                                                Width="35"
+                                                Height="35"
+                                                Click="BtnSupprimerLigne_Click"
+                                                Cursor="Hand"
+                                                Tag="{Binding}"
+                                                ToolTip="Supprimer cette entrée">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Setter Property="Background" Value="{StaticResource CouleurErreur}" />
+                                                        <Setter Property="BorderThickness" Value="0" />
+                                                        <Setter Property="Template">
+                                                            <Setter.Value>
+                                                                <ControlTemplate TargetType="Button">
+                                                                    <Border
+                                                                        x:Name="border"
+                                                                        Background="{TemplateBinding Background}"
+                                                                        CornerRadius="6">
+                                                                        <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" />
+                                                                    </Border>
+                                                                    <ControlTemplate.Triggers>
+                                                                        <Trigger Property="IsMouseOver" Value="True">
+                                                                            <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurErreurFoncee}" />
+                                                                        </Trigger>
+                                                                    </ControlTemplate.Triggers>
+                                                                </ControlTemplate>
+                                                            </Setter.Value>
+                                                        </Setter>
+                                                    </Style>
+                                                </Button.Style>
+                                                <TextBlock
+                                                    FontSize="16"
+                                                    Foreground="White"
+                                                    Text="🗑️" />
+                                            </Button>
+                                        </Grid>
+
+                                        <!--  DESCRIPTION  -->
+                                        <TextBlock
+                                            Grid.Row="2"
+                                            FontSize="16"
+                                            FontWeight="SemiBold"
+                                            Foreground="{StaticResource TextePrincipal}"
+                                            Text="{Binding Description}"
+                                            TextWrapping="Wrap" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </ScrollViewer>
+            </Grid>
+        </Border>
+    </Grid>
+</Page>

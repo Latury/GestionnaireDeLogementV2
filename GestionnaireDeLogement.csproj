@@ -86,29 +86,63 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Modeles\ReleveChauffage.cs" />
-    <Compile Include="Utilitaires\Couleurs.cs" />
+    <Compile Include="Chauffage\Modeles\ReleveChauffage.cs" />
+    <Compile Include="Chauffage\Vues\RelevesChauffage\AjouterReleveChauffageVue.xaml.cs">
+      <DependentUpon>AjouterReleveChauffageVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Chauffage\Vues\RelevesChauffage\ModifierReleveChauffageVue.xaml.cs">
+      <DependentUpon>ModifierReleveChauffageVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Eau\VueModeles\EauVueModele.cs" />
+    <Compile Include="Eau\VueModeles\ModifierReleveEauVue.xaml.cs">
+      <DependentUpon>ModifierReleveEauVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Eau\VueModeles\ModifierEauVueModele.cs" />
+    <Compile Include="Electricite\VueModeles\ElectriciteVueModele.cs" />
+    <Compile Include="Electricite\VueModeles\ModifierReleveElectriciteVue.xaml.cs">
+      <DependentUpon>ModifierReleveElectriciteVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Electricite\VueModeles\ModifierElectriciteVueModele.cs" />
+    <Compile Include="Outils\Notifications\BaseNotification.cs" />
+    <Compile Include="Outils\Utilitaires\Couleurs.cs" />
+    <Compile Include="Chauffage\VueModeles\ChauffageVueModele.cs" />
     <Compile Include="Vues\AccueilVue.xaml.cs">
       <DependentUpon>AccueilVue.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vues\AjouterFactureVue.xaml.cs">
+    <Compile Include="Facture\Vues\AjouterFactureVue.xaml.cs">
       <DependentUpon>AjouterFactureVue.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vues\ChauffageVue.xaml.cs">
+    <Compile Include="Chauffage\Vues\ChauffageVue.xaml.cs">
       <DependentUpon>ChauffageVue.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vues\EauVue.xaml.cs">
+    <Compile Include="Eau\Vues\EauVue.xaml.cs">
       <DependentUpon>EauVue.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vues\ElectriciteVue.xaml.cs">
+    <Compile Include="Electricite\Vues\ElectriciteVue.xaml.cs">
       <DependentUpon>ElectriciteVue.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vues\FacturesVue.xaml.cs">
+    <Compile Include="Facture\Vues\FacturesVue.xaml.cs">
       <DependentUpon>FacturesVue.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Vues\ModifierFactureVue.xaml.cs">
+    <Compile Include="Facture\VueModeles\ModifierFactureVue.xaml.cs">
       <DependentUpon>ModifierFactureVue.xaml</DependentUpon>
     </Compile>
+    <Page Include="Chauffage\Vues\RelevesChauffage\AjouterReleveChauffageVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Chauffage\Vues\RelevesChauffage\ModifierReleveChauffageVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Eau\VueModeles\ModifierReleveEauVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Electricite\VueModeles\ModifierReleveElectriciteVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -126,7 +160,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\Couleurs.xaml">
+    <Page Include="Outils\Styles\Couleurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -134,35 +168,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vues\AjouterFactureVue.xaml">
+    <Page Include="Facture\Vues\AjouterFactureVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vues\ChauffageVue.xaml">
+    <Page Include="Chauffage\Vues\ChauffageVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vues\EauVue.xaml">
+    <Page Include="Eau\Vues\EauVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vues\ElectriciteVue.xaml">
+    <Page Include="Electricite\Vues\ElectriciteVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vues\FacturesVue.xaml">
+    <Page Include="Facture\Vues\FacturesVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Vues\ModifierFactureVue.xaml">
+    <Page Include="Facture\VueModeles\ModifierFactureVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Modeles\Facture.cs" />
-    <Compile Include="Modeles\ReleveEau.cs" />
-    <Compile Include="Modeles\ReleveElectricite.cs" />
+    <Compile Include="Facture\Modeles\Facture.cs" />
+    <Compile Include="Eau\Modeles\ReleveEau.cs" />
+    <Compile Include="Electricite\Modeles\ReleveElectricite.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -196,9 +230,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Chauffage\Services\" />
     <Folder Include="Configurations\" />
+    <Folder Include="Eau\Services\" />
+    <Folder Include="Electricite\Services\" />
+    <Folder Include="Facture\Services\" />
     <Folder Include="Ressources\Icônes\" />
     <Folder Include="Ressources\Images\" />
+    <Folder Include="VueModeles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />

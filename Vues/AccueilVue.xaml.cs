@@ -1,9 +1,20 @@
-﻿using System;
+﻿/*
+ * =============================================================
+ *  Gestionnaire de Logement
+ *  Module Chauffage
+ *
+ *  Copyright © 2026 Flo
+ *  Licence : CC BY-NC 4.0
+ *  Usage commercial interdit
+ * =============================================================
+ */
+
+using GestionnaireDeLogement.Donnees;
+using GestionnaireDeLogement.Modeles;
+using System;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
-using GestionnaireDeLogement.Modeles;
-using GestionnaireDeLogement.Donnees;
 
 namespace GestionnaireDeLogement.Vues
 {

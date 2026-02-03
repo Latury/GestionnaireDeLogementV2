@@ -6,7 +6,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="Styles/Couleurs.xaml" />
+                <ResourceDictionary Source="Outils/Styles/Couleurs.xaml" />
                 <ResourceDictionary Source="Ressources/Emojis/Emojis.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
