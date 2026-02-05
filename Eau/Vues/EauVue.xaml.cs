@@ -1,4 +1,15 @@
-﻿using System.Windows;
+﻿/*
+ * =============================================================
+ *  Gestionnaire de Logement
+ *  Module Eau
+ *
+ *  Copyright © 2026 Flo
+ *  Licence : CC BY-NC 4.0
+ *  Usage commercial interdit
+ * =============================================================
+ */
+
+using System.Windows;
 using System.Windows.Controls;
 
 namespace GestionnaireDeLogement.Vues

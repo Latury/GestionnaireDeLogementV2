@@ -14,13 +14,14 @@
     <!--
         =============================================================
         Gestionnaire de Logement
-        Module Chauffage
+        Module Eau
         
         Copyright © 2026 Flo
         Licence : CC BY-NC 4.0
         Usage commercial interdit
         =============================================================
     -->
+
 
     <!--  ══════════════════════════════════════════════════════════  -->
     <!--  RESSOURCES LOCALES  -->
@@ -195,7 +196,7 @@
                             FontSize="24"
                             FontWeight="Bold"
                             Foreground="{StaticResource TextePrincipal}">
-                            <Run x:Name="TxtConsoMois" Text="0" />
+                            <Run Text="--" />
                             <Run FontSize="16" Text=" m³" />
                         </TextBlock>
                     </StackPanel>
@@ -214,7 +215,7 @@
                             FontSize="24"
                             FontWeight="Bold"
                             Foreground="{StaticResource TextePrincipal}">
-                            <Run x:Name="TxtMoyenne" Text="0" />
+                            <Run Text="--" />
                             <Run FontSize="16" Text=" m³" />
                         </TextBlock>
                     </StackPanel>
@@ -233,7 +234,7 @@
                             FontSize="24"
                             FontWeight="Bold"
                             Foreground="{StaticResource CouleurPrincipale}">
-                            <Run x:Name="TxtCout" Text="0,00" />
+                            <Run Text="--" />
                             <Run FontSize="16" Text=" €" />
                         </TextBlock>
                     </StackPanel>
@@ -409,10 +410,7 @@
             <!--  ══════════════════════════════════════════════════════════  -->
             <!--  SECTION 4 : HISTORIQUE DES RELEVÉS D'EAU (RESPONSIVE)  -->
             <!--  ══════════════════════════════════════════════════════════  -->
-            <Border
-                Grid.Row="3"
-                Margin="0,0,0,-373"
-                Style="{StaticResource Carte}">
+            <Border Grid.Row="3" Style="{StaticResource Carte}">
                 <Grid>
                     <!--  Titre de la section  -->
                     <TextBlock
@@ -502,80 +500,87 @@
                                     </GridViewColumn.CellTemplate>
                                 </GridViewColumn>
 
-                                <!--  4. Consommation  -->
-                                <GridViewColumn Width="180" Header="📊 Consommation">
-                                    <GridViewColumn.HeaderContainerStyle>
-                                        <Style TargetType="GridViewColumnHeader">
-                                            <Setter Property="FontWeight" Value="Bold" />
-                                            <Setter Property="FontSize" Value="16" />
-                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
-                                            <Setter Property="Padding" Value="10,12" />
-                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                                        </Style>
-                                    </GridViewColumn.HeaderContainerStyle>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                FontSize="16"
-                                                FontWeight="Bold"
-                                                Foreground="{StaticResource CouleurPrincipale}"
-                                                TextAlignment="Center">
-                                                <Run Text="{Binding Consommation, StringFormat='{}{0:F2}'}" />
-                                                <Run Text=" m³" />
-                                            </TextBlock>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
+                                <!--
+                                    4. Consommation (désactivée temporairement)
+                                    5. Coût estimé (désactivé temporairement)
+                                    6. Notes (désactivées temporairement)
+                                    
+                                    Ces colonnes seront réactivées plus tard
+                                    avec le module Configurations.
+                                -->
 
-                                <!--  5. Coût estimé  -->
-                                <GridViewColumn Width="150" Header="💰 Coût">
-                                    <GridViewColumn.HeaderContainerStyle>
-                                        <Style TargetType="GridViewColumnHeader">
-                                            <Setter Property="FontWeight" Value="Bold" />
-                                            <Setter Property="FontSize" Value="16" />
-                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
-                                            <Setter Property="Padding" Value="10,12" />
-                                            <Setter Property="HorizontalContentAlignment" Value="Center" />
-                                        </Style>
-                                    </GridViewColumn.HeaderContainerStyle>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                FontSize="16"
-                                                FontWeight="Bold"
-                                                Foreground="#4CAF50"
-                                                TextAlignment="Center">
-                                                <Run Text="{Binding MontantEstime, StringFormat='{}{0:F2}'}" />
-                                                <Run Text=" €" />
-                                            </TextBlock>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
+                                <!--
+<GridViewColumn Width="180" Header="📊 Consommation">
+    <GridViewColumn.HeaderContainerStyle>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+            <Setter Property="Padding" Value="10,12" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+    </GridViewColumn.HeaderContainerStyle>
+    <GridViewColumn.CellTemplate>
+        <DataTemplate>
+            <TextBlock
+                FontSize="16"
+                FontWeight="Bold"
+                Foreground="{StaticResource CouleurPrincipale}"
+                TextAlignment="Center">
+                <Run Text="{Binding Consommation, StringFormat='{}{0:F2}'}" />
+                <Run Text=" m³" />
+            </TextBlock>
+        </DataTemplate>
+    </GridViewColumn.CellTemplate>
+</GridViewColumn>
 
-                                <!--  6. Notes  -->
-                                <GridViewColumn Width="300" Header="📝 Notes">
-                                    <GridViewColumn.HeaderContainerStyle>
-                                        <Style TargetType="GridViewColumnHeader">
-                                            <Setter Property="FontWeight" Value="Bold" />
-                                            <Setter Property="FontSize" Value="16" />
-                                            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
-                                            <Setter Property="Padding" Value="10,12" />
-                                            <Setter Property="HorizontalContentAlignment" Value="Left" />
-                                        </Style>
-                                    </GridViewColumn.HeaderContainerStyle>
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <TextBlock
-                                                FontSize="14"
-                                                FontStyle="Italic"
-                                                Foreground="{StaticResource TexteClair}"
-                                                Text="{Binding Notes}"
-                                                TextAlignment="Left"
-                                                TextTrimming="CharacterEllipsis"
-                                                ToolTip="{Binding Notes}" />
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
+<GridViewColumn Width="150" Header="💰 Coût">
+    <GridViewColumn.HeaderContainerStyle>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+            <Setter Property="Padding" Value="10,12" />
+            <Setter Property="HorizontalContentAlignment" Value="Center" />
+        </Style>
+    </GridViewColumn.HeaderContainerStyle>
+    <GridViewColumn.CellTemplate>
+        <DataTemplate>
+            <TextBlock
+                FontSize="16"
+                FontWeight="Bold"
+                Foreground="#4CAF50"
+                TextAlignment="Center">
+                <Run Text="{Binding MontantEstime, StringFormat='{}{0:F2}'}" />
+                <Run Text=" €" />
+            </TextBlock>
+        </DataTemplate>
+    </GridViewColumn.CellTemplate>
+</GridViewColumn>
+
+<GridViewColumn Width="300" Header="📝 Notes">
+    <GridViewColumn.HeaderContainerStyle>
+        <Style TargetType="GridViewColumnHeader">
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+            <Setter Property="Padding" Value="10,12" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+        </Style>
+    </GridViewColumn.HeaderContainerStyle>
+    <GridViewColumn.CellTemplate>
+        <DataTemplate>
+            <TextBlock
+                FontSize="14"
+                FontStyle="Italic"
+                Foreground="{StaticResource TexteClair}"
+                Text="{Binding Notes}"
+                TextAlignment="Left"
+                TextTrimming="CharacterEllipsis"
+                ToolTip="{Binding Notes}" />
+        </DataTemplate>
+    </GridViewColumn.CellTemplate>
+</GridViewColumn>-->
                             </GridView>
                         </ListView.View>
                     </ListView>
