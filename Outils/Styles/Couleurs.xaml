@@ -5,7 +5,7 @@
         Gestionnaire de Logement
         Module Chauffage
         
-        Copyright © 2026 Flo
+        Copyright © 2026 Flo Latury
         Licence : CC BY-NC 4.0
         Usage commercial interdit
         =============================================================
@@ -184,6 +184,18 @@
         <GradientStop Offset="0" Color="#10B981" />
         <GradientStop Offset="1" Color="#059669" />
     </LinearGradientBrush>
+
+    <!--  =====================  -->
+    <!--  PARAMÈTRES  -->
+    <!--  =====================  -->
+    <!--  Couleur de l’en-tête Paramètres (gauche)  -->
+    <SolidColorBrush x:Key="CouleurParametres" Color="#7A90A4" />
+
+    <SolidColorBrush x:Key="CouleurParametreGeneral" Color="#6B7280" />
+    <SolidColorBrush x:Key="CouleurParametreEau" Color="#06B6D4" />
+    <SolidColorBrush x:Key="CouleurParametreElectricite" Color="#FBBF24" />
+    <SolidColorBrush x:Key="CouleurParametreChauffage" Color="#F97316" />
+    <SolidColorBrush x:Key="CouleurParametreAide" Color="#64748B" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <!--  📍 NOTES D'UTILISATION  -->

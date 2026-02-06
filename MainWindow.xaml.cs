@@ -3,7 +3,7 @@
  *  Gestionnaire de Logement
  *  Module Chauffage
  *
- *  Copyright © 2026 Flo
+ *  Copyright © 2026 Flo Latury
  *  Licence : CC BY-NC 4.0
  *  Usage commercial interdit
  * =============================================================
@@ -13,6 +13,7 @@ using GestionnaireDeLogement.Chauffage.Vues;
 using GestionnaireDeLogement.Vues;
 using System.Windows;
 using System.Windows.Controls;
+using GestionnaireDeLogement.Configurations.Vues;
 
 namespace GestionnaireDeLogement
 {
@@ -76,11 +77,14 @@ namespace GestionnaireDeLogement
 
         private void BtnParametres_Click(object sender, RoutedEventArgs e)
         {
-            // TODO : Créer la page ParametresVue
-            ChangerTitreSeul("⚙️", "Paramètres");
-            ResetBoutonsNavigation();
-            BtnParametres.Style = (Style)FindResource("BoutonNavigationActif");
+            var fenetreParametres = new ConfigurationVue
+            {
+                Owner = this
+            };
+
+            fenetreParametres.ShowDialog();
         }
+
 
         // ═══════════════════════════════════════════════════════════
         // MÉTHODES UTILITAIRES

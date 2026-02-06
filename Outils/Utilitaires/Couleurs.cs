@@ -3,7 +3,7 @@
  *  Gestionnaire de Logement
  *  Module Chauffage
  *
- *  Copyright © 2026 Flo
+ *  Copyright © 2026 Flo Latury
  *  Licence : CC BY-NC 4.0
  *  Usage commercial interdit
  * =============================================================
@@ -391,6 +391,34 @@ namespace GestionnaireDeLogement.Utilitaires
         /// <para>📄 Toutes les pages : Titres principaux (TextePrincipal)</para>
         /// </summary>
         public const string Gris900 = "#111827";
+
+        // ═══════════════════════════════════════════════════════════════════════════════════
+        // ⚙️ PARAMÈTRES / CONFIGURATION
+        // ═══════════════════════════════════════════════════════════════════════════════════
+
+        /// <summary>
+        /// ⚙️ Couleur de l’en-tête Paramètres (gauche)
+        /// Utilisé dans : ConfigurationVue.xaml
+        /// </summary>
+        public const string CouleurParametresHeader = "#7A90A4";
+
+        /// <summary>
+        /// ⚙️ Couleur du titre / bouton Général
+        /// Utilisé dans : ConfigurationVue.xaml (bouton actif + barre droite)
+        /// </summary>
+        public const string CouleurParametresGeneral = "#6B7280";
+
+        // ═══════════════════════════════════════════════════════════════
+        // ⚙️ PARAMÈTRES - COULEURS DES CATÉGORIES
+        // ═══════════════════════════════════════════════════════════════
+
+        public const string CouleurParametreGeneral = "#6B7280";
+        public const string CouleurParametreEau = "#06B6D4";
+        public const string CouleurParametreElectricite = "#FBBF24";
+        public const string CouleurParametreChauffage = "#F97316";
+        public const string CouleurParametreAide = "#64748B";
+
+
 
         // ═══════════════════════════════════════════════════════════════════════════════════
         // 💧 PAGE EAU (EauVue.xaml)

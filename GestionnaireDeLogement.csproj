@@ -93,6 +93,12 @@
     <Compile Include="Chauffage\Vues\RelevesChauffage\ModifierReleveChauffageVue.xaml.cs">
       <DependentUpon>ModifierReleveChauffageVue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Configurations\Modeles\ConfigurationGlobale.cs" />
+    <Compile Include="Configurations\Services\ConfigurationService.cs" />
+    <Compile Include="Configurations\VueModeles\ConfigurationVueModele.cs" />
+    <Compile Include="Configurations\Vues\ConfigurationVue.xaml.cs">
+      <DependentUpon>ConfigurationVue.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Eau\VueModeles\EauVueModele.cs" />
     <Compile Include="Eau\VueModeles\ModifierReleveEauVue.xaml.cs">
       <DependentUpon>ModifierReleveEauVue.xaml</DependentUpon>
@@ -132,6 +138,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Chauffage\Vues\RelevesChauffage\ModifierReleveChauffageVue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Configurations\Vues\ConfigurationVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -231,7 +241,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Chauffage\Services\" />
-    <Folder Include="Configurations\" />
     <Folder Include="Eau\Services\" />
     <Folder Include="Electricite\Services\" />
     <Folder Include="Facture\Services\" />

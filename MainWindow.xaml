@@ -15,7 +15,7 @@
         Gestionnaire de Logement
         Module Chauffage
         
-        Copyright © 2026 Flo
+        Copyright © 2026 Flo Latury
         Licence : CC BY-NC 4.0
         Usage commercial interdit
         =============================================================
@@ -113,16 +113,13 @@
                 <StackPanel>
 
                     <!--  EN-TÊTE  -->
-                    <Border Height="80" Background="{StaticResource CouleurPrincipale}">
+                    <Border Height="80" Background="{DynamicResource BordurePrincipale}">
                         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
                             <TextBlock
                                 FontSize="22"
                                 FontWeight="Bold"
                                 Foreground="White"
-                                TextAlignment="Center">
-                                <Run Text="{StaticResource EmojiMaison}" />
-                                <Run Text=" Gestionnaire" />
-                            </TextBlock>
+                                TextAlignment="Center"><Run Text="{StaticResource EmojiMaison}" /><Run Text=" " /><Run Text=" Gestionnaire" /></TextBlock>
                             <TextBlock
                                 Margin="0,3,0,0"
                                 FontSize="17"
@@ -147,50 +144,35 @@
                         x:Name="BtnAccueil"
                         Click="BtnAccueil_Click"
                         Style="{StaticResource BoutonNavigationActif}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiAccueil}" />
-                            <Run Text="  Accueil" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiAccueil}" /><Run Text=" " /><Run Text="  Accueil" /></TextBlock>
                     </Button>
 
                     <Button
                         x:Name="BtnFactures"
                         Click="BtnFactures_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiFactures}" />
-                            <Run Text="  Factures" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiFactures}" /><Run Text=" " /><Run Text="  Factures" /></TextBlock>
                     </Button>
 
                     <Button
                         x:Name="BtnEau"
                         Click="BtnEau_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiEau}" />
-                            <Run Text="  Eau" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiEau}" /><Run Text=" " /><Run Text="  Eau" /></TextBlock>
                     </Button>
 
                     <Button
                         x:Name="BtnElectricite"
                         Click="BtnElectricite_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiElectricite}" />
-                            <Run Text="  Électricité" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiElectricite}" /><Run Text=" " /><Run Text="  Électricité" /></TextBlock>
                     </Button>
 
                     <Button
                         x:Name="BtnChauffage"
                         Click="BtnChauffage_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiChauffage}" />
-                            <Run Text="  Chauffage" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiChauffage}" /><Run Text=" " /><Run Text="  Chauffage" /></TextBlock>
                     </Button>
 
                     <Border
@@ -210,20 +192,14 @@
                         x:Name="BtnAchats"
                         Click="BtnAchats_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiAchats}" />
-                            <Run Text="  Achats" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiAchats}" /><Run Text=" " /><Run Text="  Achats" /></TextBlock>
                     </Button>
 
                     <Button
                         x:Name="BtnStatistiques"
                         Click="BtnStatistiques_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiStatistiques}" />
-                            <Run Text="  Statistiques" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiStatistiques}" /><Run Text=" " /><Run Text="  Statistiques" /></TextBlock>
                     </Button>
 
                     <Border
@@ -243,10 +219,7 @@
                         x:Name="BtnParametres"
                         Click="BtnParametres_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="{StaticResource EmojiParametres}" />
-                            <Run Text="  Paramètres" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="{StaticResource EmojiParametres}" /><Run Text=" " /><Run Text="  Paramètres" /></TextBlock>
                     </Button>
 
                     <!--  FUTUR : HISTORIQUE  -->
@@ -254,10 +227,7 @@
                         IsEnabled="False"
                         Opacity="0.5"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run FontSize="18" Text="🕒" />
-                            <Run Text="  Historique" />
-                        </TextBlock>
+                        <TextBlock><Run FontSize="18" Text="🕒" /><Run Text=" " /><Run Text="  Historique" /></TextBlock>
                     </Button>
 
                 </StackPanel>

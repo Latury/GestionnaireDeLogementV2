@@ -1,0 +1,257 @@
+﻿<Window
+    x:Class="GestionnaireDeLogement.Configurations.Vues.ConfigurationVue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Paramètres"
+    Width="950"
+    Height="625"
+    MinWidth="900"
+    MinHeight="580"
+    Background="{StaticResource FondSecondaire}"
+    WindowStartupLocation="CenterOwner"
+    mc:Ignorable="d">
+
+    <!--
+        =============================================================
+        Gestionnaire de Logement
+        Module Configurations
+        
+        Copyright © 2026 Flo Latury
+        Licence : CC BY-NC 4.0
+        Usage commercial interdit
+        =============================================================
+    -->
+
+    <!--  ═════════════════════════════════════  -->
+    <!--  RESSOURCES  -->
+    <!--  ═════════════════════════════════════  -->
+    <Window.Resources>
+
+        <!--  Style navigation identique au MainWindow  -->
+        <Style x:Key="BoutonNavigationParametre" TargetType="Button">
+            <Setter Property="Height" Value="50" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="HorizontalContentAlignment" Value="Left" />
+            <Setter Property="Padding" Value="24,0,0,0" />
+            <Setter Property="FontSize" Value="16" />
+            <Setter Property="FontWeight" Value="Medium" />
+            <Setter Property="Cursor" Value="Hand" />
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border
+                            x:Name="border"
+                            Background="{TemplateBinding Background}"
+                            BorderBrush="Transparent"
+                            BorderThickness="0,0,4,0">
+                            <ContentPresenter
+                                Margin="{TemplateBinding Padding}"
+                                HorizontalAlignment="Left"
+                                VerticalAlignment="Center" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource CouleurPrincipaleTresClaire}" />
+                                <Setter TargetName="border" Property="BorderBrush" Value="{StaticResource CouleurPrincipaleClaire}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <!--  Style actif  -->
+        <Style
+            x:Key="BoutonNavigationParametreActif"
+            BasedOn="{StaticResource BoutonNavigationParametre}"
+            TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource CouleurPrincipaleTresClaire}" />
+            <Setter Property="Foreground" Value="{StaticResource CouleurPrincipale}" />
+            <Setter Property="FontWeight" Value="Bold" />
+        </Style>
+
+    </Window.Resources>
+
+    <!--  ═════════════════════════════════════  -->
+    <!--  STRUCTURE PRINCIPALE  -->
+    <!--  ═════════════════════════════════════  -->
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="234" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!--  ═════════════════════════════════════  -->
+        <!--  COLONNE GAUCHE  -->
+        <!--  ═════════════════════════════════════  -->
+        <Border
+            Grid.Column="0"
+            Background="{StaticResource FondCarte}"
+            BorderBrush="{StaticResource BordureClaire}"
+            BorderThickness="0,0,1,0">
+
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+
+                <StackPanel>
+
+                    <!--  En-tête  -->
+                    <Border Height="69" Background="{StaticResource CouleurParametres}">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontSize="22"
+                            FontWeight="Bold"
+                            Foreground="White">
+                            ⚙️ Paramètres
+                        </TextBlock>
+                    </Border>
+
+                    <!--  Séparateur  -->
+                    <Border Height="9.5" />
+                    <Border Height="12" />
+
+                    <!--  Section  -->
+                    <TextBlock
+                        Margin="20,0,0,6"
+                        FontSize="13"
+                        FontWeight="Bold"
+                        Text="GÉNÉRAL" />
+
+                    <!--  Section GÉNÉRAL  -->
+                    <Button
+                        x:Name="BtnGeneral"
+                        Width="240"
+                        Click="BtnGeneral_Click"
+                        Style="{StaticResource BoutonNavigationParametreActif}">
+
+                        <TextBlock Foreground="#FF6B7280">
+                            <Run FontSize="18" Text="⚙️" />
+                            <Run Text="  Général" />
+                        </TextBlock>
+                    </Button>
+
+                    <Border
+                        Height="1"
+                        Margin="12,14"
+                        Background="{StaticResource BordureClaire}" />
+
+                    <!--  Section CONSOMMATIONS  -->
+                    <TextBlock
+                        Margin="20,0,0,6"
+                        FontSize="13"
+                        FontWeight="Bold"
+                        Text="RÉGLAGE CONSOMMATIONS" />
+
+                    <!--  Bouton EAU  -->
+                    <Button
+                        x:Name="BtnEau"
+                        Width="240"
+                        Click="BtnEau_Click"
+                        Style="{StaticResource BoutonNavigationParametre}">
+
+                        <TextBlock Foreground="{StaticResource CouleurParametreEau}">
+                            <Run FontSize="18" Text="💧" />
+                            <Run Text="  Eau" />
+                        </TextBlock>
+                    </Button>
+
+                    <!--  Bouton ÉLECTRICITÉ  -->
+                    <Button
+                        x:Name="BtnElectricite"
+                        Width="240"
+                        Click="BtnElectricite_Click"
+                        Style="{StaticResource BoutonNavigationParametre}">
+
+                        <TextBlock Foreground="{StaticResource CouleurElectricite}">
+                            <Run FontSize="18" Text="⚡" />
+                            <Run Text="  Électricité" />
+                        </TextBlock>
+                    </Button>
+
+                    <!--  Bouton CHAUFFAGE  -->
+                    <Button
+                        x:Name="BtnChauffage"
+                        Width="240"
+                        Click="BtnChauffage_Click"
+                        Style="{StaticResource BoutonNavigationParametre}">
+
+                        <TextBlock Foreground="{StaticResource CouleurParametreChauffage}">
+                            <Run FontSize="18" Text="🔥" />
+                            <Run Text="  Chauffage" />
+                        </TextBlock>
+                    </Button>
+
+
+                    <Border
+                        Height="1"
+                        Margin="12,14"
+                        Background="{StaticResource BordureClaire}" />
+
+                    <!--  Section APPLICATION  -->
+                    <TextBlock
+                        Margin="20,0,0,6"
+                        FontSize="13"
+                        FontWeight="Bold"
+                        Text="APPLICATION" />
+
+                    <!--  Bouton À PROPOS / AIDE  -->
+                    <Button
+                        x:Name="BtnAide"
+                        Width="240"
+                        Click="BtnAide_Click"
+                        Style="{StaticResource BoutonNavigationParametre}">
+
+                        <TextBlock Foreground="{StaticResource CouleurParametreAide}">
+                            <Run FontSize="18" Text="ℹ️" />
+                            <Run Text="  À propos / Aide" />
+                        </TextBlock>
+                    </Button>
+
+
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+
+        <!--  ═════════════════════════════════════  -->
+        <!--  COLONNE DROITE  -->
+        <!--  ═════════════════════════════════════  -->
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="70" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!--  Barre de titre droite  -->
+            <Border
+                Grid.Row="0"
+                Padding="30,0"
+                Background="{StaticResource FondCarte}"
+                BorderBrush="{StaticResource BordureClaire}"
+                BorderThickness="0,0,0,1">
+
+                <TextBlock
+                    x:Name="TitreCategorie"
+                    VerticalAlignment="Center"
+                    FontSize="26"
+                    FontWeight="Bold"
+                    Foreground="{StaticResource CouleurParametreGeneral}"
+                    Text="Général" />
+            </Border>
+
+            <!--  Contenu  -->
+            <Border
+                Grid.Row="1"
+                Padding="30"
+                Background="{StaticResource FondSecondaire}">
+                <TextBlock
+                    FontSize="18"
+                    Foreground="{StaticResource TexteSecondaire}"
+                    Text="Configuration générale du logiciel" />
+            </Border>
+        </Grid>
+    </Grid>
+</Window>
