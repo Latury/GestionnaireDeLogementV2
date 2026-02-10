@@ -65,7 +65,11 @@
                 </Trigger>
                 <Trigger Property="IsSelected" Value="True">
                     <Setter Property="Background" Value="{StaticResource FondInfoClaire}" />
-                    <Setter Property="Foreground" Value="{StaticResource TextePrincipal}" />
+                    <Setter Property="BorderBrush" Value="{StaticResource CouleurChauffage}" />
+                    <Setter Property="BorderThickness" Value="4,0,0,0" />
+                </Trigger>
+                <Trigger Property="IsEnabled" Value="False">
+                    <Setter Property="Cursor" Value="Arrow" />
                 </Trigger>
             </Style.Triggers>
         </Style>
@@ -113,19 +117,31 @@
             <!--  SECTION 1 : TITRE  -->
             <!--  ══════════════════════════════════════════════════════════  -->
             <StackPanel Grid.Row="0" Margin="0,0,0,25">
-                <TextBlock
-                    FontSize="32"
-                    FontWeight="Bold"
-                    Foreground="{StaticResource CouleurChauffage}">
-                    <Run Text="🔥" />
-                    <Run Text="Gestion du chauffage" />
-                </TextBlock>
+
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                    <!--  🔥 ICÔNE  -->
+                    <ContentControl
+                        Width="32"
+                        Height="32"
+                        Margin="0,0,10,0"
+                        Content="{StaticResource IconeChauffage}" />
+
+                    <!--  📝 TEXTE  -->
+                    <TextBlock
+                        FontSize="32"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource CouleurChauffage}"
+                        Text="Gestion du chauffage" />
+                </StackPanel>
+
                 <TextBlock
                     Margin="0,8,0,0"
                     FontSize="15"
                     Foreground="{StaticResource TexteSecondaire}"
                     Text="Suivi des relevés et consommations de chauffage" />
             </StackPanel>
+
 
             <!--  ══════════════════════════════════════════════════════════  -->
             <!--  SECTION 2 : STATISTIQUES RESPONSIVE  -->
@@ -543,7 +559,7 @@
                                                 Foreground="{StaticResource CouleurChauffage}"
                                                 TextAlignment="Center">
                                                 <Run Text="{Binding Consommation, StringFormat='{}{0:N0}'}" />
-                                                <Run Text=" kWh" />
+                                                <Run Text="{Binding Unite}" />
                                             </TextBlock>
                                         </DataTemplate>
                                     </GridViewColumn.CellTemplate>

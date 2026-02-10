@@ -99,7 +99,7 @@
                 <StackPanel>
 
                     <!--  En-tête  -->
-                    <Border Height="69" Background="{StaticResource CouleurParametres}">
+                    <Border Height="80" Background="{StaticResource CouleurParametres}">
                         <TextBlock
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
@@ -111,7 +111,6 @@
                     </Border>
 
                     <!--  Séparateur  -->
-                    <Border Height="9.5" />
                     <Border Height="12" />
 
                     <!--  Section  -->
@@ -221,7 +220,7 @@
         <!--  ═════════════════════════════════════  -->
         <Grid Grid.Column="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="70" />
+                <RowDefinition Height="80" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
@@ -238,7 +237,7 @@
                     VerticalAlignment="Center"
                     FontSize="26"
                     FontWeight="Bold"
-                    Foreground="{StaticResource CouleurParametreGeneral}"
+                    Foreground="{StaticResource TextePrincipal}"
                     Text="Général" />
             </Border>
 

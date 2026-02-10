@@ -14,17 +14,18 @@ using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
+using GestionnaireDeLogement.Services;
 
 namespace GestionnaireDeLogement.Chauffage.VueModeles
 {
     /*
      ╔══════════════════════════════════════════════════════════════╗
-     ║ 🔥 VIEWMODEL CHAUFFAGE                                      ║
+     ║  VIEWMODEL CHAUFFAGE                                         ║
      ╠══════════════════════════════════════════════════════════════╣
-     ║ - Source unique des données                                  ║
-     ║ - Filtrage par type                                           ║
-     ║ - Calcul des statistiques                                    ║
-     ║ - AUCUN code graphique                                        ║
+     ║   Source unique des données                                  ║
+     ║   Filtrage par type                                          ║
+     ║   Calcul des statistiques                                    ║
+     ║   AUCUN code graphique                                       ║
      ╚══════════════════════════════════════════════════════════════╝
     */
     public class ChauffageVueModele : INotifyPropertyChanged
@@ -94,29 +95,16 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         // ===============================
         public ChauffageVueModele()
         {
-            Releves = new ObservableCollection<ReleveChauffage>
+            Releves = new ObservableCollection<ReleveChauffage>(
+                GestionnaireJsonChauffage.Charger()
+            );
+
+            Releves.CollectionChanged += (_, __) =>
             {
-                new ReleveChauffage
-                {
-                    DateReleve = DateTime.Now.AddDays(-10),
-                    TypeChauffage = "Gaz",
-                    Consommation = 360,
-                    MontantEstime = 90.5,
-                    Unite = "m³",
-                    Notes = "Test Gaz"
-                },
-                new ReleveChauffage
-                {
-                    DateReleve = DateTime.Now.AddDays(-5),
-                    TypeChauffage = "Fioul",
-                    Consommation = 250,
-                    MontantEstime = 110,
-                    Unite = "L",
-                    Notes = "Test Fioul"
-                }
+                AppliquerFiltre();
+                GestionnaireJsonChauffage.Sauvegarder(Releves);
             };
 
-            Releves.CollectionChanged += (_, __) => AppliquerFiltre();
             AppliquerFiltre();
         }
 

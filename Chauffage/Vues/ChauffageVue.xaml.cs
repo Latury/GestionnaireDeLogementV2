@@ -43,9 +43,18 @@ namespace GestionnaireDeLogement.Chauffage.Vues
         {
             InitializeComponent();
 
+            VueModele.PropertyChanged += (_, __) =>
+            {
+                MessageVide.Visibility =
+                    VueModele.RelevesFiltres.Count == 0
+                    ? Visibility.Visible
+                    : Visibility.Collapsed;
+            };
+
             // Liaison explicite et sûre
             DataContext = new ChauffageVueModele();
         }
+
 
         // =============================================================
         // ➕ AJOUTER UN RELEVÉ

@@ -61,6 +61,8 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
             DpDate.SelectedDateChanged += MettreAJourResume;
 
             MettreAJourChampsSelonType();
+
+            ResumeTexte = "📝 Le résumé du relevé apparaîtra ici au fur et à mesure";
         }
 
         // =============================================================
@@ -173,6 +175,19 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
                 MessageBox.Show(
                     "Veuillez corriger les champs en rouge.",
                     "Erreur de validation",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
+                return;
+            }
+
+            // =====================================================
+            // 🔒 VALEURS POSITIVES UNIQUEMENT
+            // =====================================================
+            if (quantite < 0 || montant < 0)
+            {
+                MessageBox.Show(
+                    "Les valeurs doivent être positives.",
+                    "Valeur incorrecte",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning);
                 return;

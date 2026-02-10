@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Viewbox
+        x:Key="IconeGraphiqueCourbeCroissante"
+        Width="24"
+        Height="24"
+        Stretch="Uniform">
+        <Canvas Width="24" Height="24">   
+            <Path Data="M142.15-258.08 100-300.23l274.08-276.08 160 160 224.54-221.77H640v-60h220v220h-60v-117.84L534.08-330l-160-160-231.93 231.92Z" Fill="{DynamicResource TextePrincipal}" />
+        </Canvas>
+    </Viewbox>
+</ResourceDictionary>

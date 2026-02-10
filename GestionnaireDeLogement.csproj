@@ -87,6 +87,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Chauffage\Modeles\ReleveChauffage.cs" />
+    <Compile Include="Chauffage\Services\GestionnaireJsonChauffage.cs" />
     <Compile Include="Chauffage\Vues\RelevesChauffage\AjouterReleveChauffageVue.xaml.cs">
       <DependentUpon>AjouterReleveChauffageVue.xaml</DependentUpon>
     </Compile>
@@ -166,13 +167,188 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Ressources\Emojis\Emojis.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Outils\Styles\Couleurs.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\ajouter.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\annuler.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\enregistrer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\fermer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\modifier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\rechercher.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\supprimer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\actions_boutons_interactions\valider.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\argent_carte_euro\argent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\argent_carte_euro\cartebancaire.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\argent_carte_euro\economies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\argent_carte_euro\euro.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\consommations\bois.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\consommations\chauffage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\consommations\eau.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\consommations\electricite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\consommations\fioul.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\consommations\gaz.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\donnees_graphiques_tableaux\graphique.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\donnees_graphiques_tableaux\graphique_courbe_croissante.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\donnees_graphiques_tableaux\graphique_courbe_decroissante.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\donnees_graphiques_tableaux\tableau.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\en_tete_maison_logement\logement.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\en_tete_maison_logement\maison.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\icones.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\accueil.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\achats.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\chauffage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\eau.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\electricite.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\factures.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\parametres.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_menu_principal\statistiques.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\filtrer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\precedent.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\suivant.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\trier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\statuts_succès_erreur_info\alerte.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\statuts_succès_erreur_info\construction.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\statuts_succès_erreur_info\erreur.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\statuts_succès_erreur_info\info.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\statuts_succès_erreur_info\succes.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\temps_date_heure\calendrier.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\temps_date_heure\chronometre.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Ressources\Icones\temps_date_heure\horloge.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
     <Page Include="Vues\AccueilVue.xaml">
       <SubType>Designer</SubType>
@@ -225,6 +401,7 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="CHANGELOG.md" />
+    <None Include="Donnees\chauffage.json" />
     <None Include="EXEMPLES_COMMITS.md" />
     <None Include="FEUILLE_DE_ROUTE.md" />
     <None Include="GUIDE_GITHUB_DESKTOP.md" />
@@ -240,11 +417,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Chauffage\Services\" />
     <Folder Include="Eau\Services\" />
     <Folder Include="Electricite\Services\" />
     <Folder Include="Facture\Services\" />
-    <Folder Include="Ressources\Icônes\" />
+    <Folder Include="Ressources\Emojis\" />
     <Folder Include="Ressources\Images\" />
     <Folder Include="VueModeles\" />
   </ItemGroup>

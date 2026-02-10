@@ -51,7 +51,7 @@ namespace GestionnaireDeLogement.Modeles
         /// <summary>
         /// Notes ou observations sur le relevé (optionnel)
         /// </summary>
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
 
         /// <summary>
         /// Constructeur par défaut

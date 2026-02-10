@@ -1,0 +1,12 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Viewbox
+        x:Key="IconeGraphique"
+        Width="24"
+        Height="24"
+        Stretch="Uniform">
+        <Canvas Width="24" Height="24">   
+            <Path Data="M294.62-290h59.99v-190h-59.99v190Zm310.77 0h59.99v-390h-59.99v390ZM450-290h60v-110h-60v110Zm0-190h60v-80h-60v80ZM212.31-140Q182-140 161-161q-21-21-21-51.31v-535.38Q140-778 161-799q21-21 51.31-21h535.38Q778-820 799-799q21 21 21 51.31v535.38Q820-182 799-161q-21 21-51.31 21H212.31Zm0-60h535.38q4.62 0 8.46-3.85 3.85-3.84 3.85-8.46v-535.38q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H212.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v535.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85ZM200-760v560-560Z" Fill="{DynamicResource TextePrincipal}" />
+        </Canvas>
+    </Viewbox>
+</ResourceDictionary>
