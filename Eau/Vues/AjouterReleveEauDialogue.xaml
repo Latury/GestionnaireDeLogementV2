@@ -4,7 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    Title="💧 Ajouter un relevé d'eau"
+    Title="Ajouter un relevé d'eau"
     Width="650"
     Height="650"
     Background="{StaticResource FondSecondaire}"
@@ -66,7 +66,6 @@
                 FontSize="28"
                 FontWeight="Bold"
                 Foreground="{StaticResource CouleurPrincipale}">
-                <Run Text="💧" />
                 <Run Text="Nouveau relevé d'eau" />
             </TextBlock>
             <TextBlock
@@ -96,7 +95,6 @@
             <StackPanel>
                 <!--  Champ 1 : Date du relevé  -->
                 <TextBlock Style="{StaticResource LabelStyle}" Margin="0,0,0,5">
-                    <Run Text="📅" />
                     <Run Text="Date du relevé" />
                     <Run Foreground="{StaticResource CouleurErreur}" Text="*" />
                 </TextBlock>
@@ -108,7 +106,6 @@
 
                 <!--  Champ 2 : Index eau froide  -->
                 <TextBlock Margin="0,0,0,8" Style="{StaticResource LabelStyle}">
-                    <Run Text="💧" />
                     <Run Text="Index eau froide (m³)" />
                     <Run Foreground="{StaticResource CouleurErreur}" Text="*" />
                 </TextBlock>
@@ -119,7 +116,6 @@
 
                 <!--  Champ 3 : Index eau chaude  -->
                 <TextBlock Margin="0,20,0,0" Style="{StaticResource LabelStyle}">
-                    <Run Text="🔥" />
                     <Run Text="Index eau chaude (m³)" />
                     <Run Foreground="{StaticResource CouleurErreur}" Text="*" />
                 </TextBlock>
@@ -133,7 +129,6 @@
                     Margin="0,20,0,0"
                     Cursor="Hand"
                     Style="{StaticResource LabelStyle}">
-                    <Run Text="📝" />
                     <Run Text="Notes (optionnel)" />
                 </TextBlock>
                 <TextBox
@@ -196,11 +191,6 @@
                 </Button.Style>
                 <StackPanel Orientation="Horizontal" Cursor="Hand" Height="18">
                     <TextBlock
-                        Margin="0,0,10,0"
-                        VerticalAlignment="Center"
-                        FontSize="14"
-                        Text="✅" />
-                    <TextBlock
                         VerticalAlignment="Center"
                         FontSize="14"
                         Text="Valider" />
@@ -241,11 +231,6 @@
                     </Style>
                 </Button.Style>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock
-                        Margin="0,0,10,0"
-                        VerticalAlignment="Center"
-                        FontSize="14"
-                        Text="❌" Height="18" />
                     <TextBlock
                         VerticalAlignment="Center"
                         FontSize="14"

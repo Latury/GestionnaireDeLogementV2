@@ -1,4 +1,4 @@
-﻿/*
+/*
  * =============================================================
  *  Gestionnaire de Logement
  *  Module Chauffage

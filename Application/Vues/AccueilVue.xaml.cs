@@ -88,7 +88,7 @@ namespace GestionnaireDeLogement.Vues
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"❌ Erreur lors du chargement des statistiques :\n{ex.Message}",
+                    $"Erreur lors du chargement des statistiques :\n{ex.Message}",
                     "Erreur",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error
@@ -115,13 +115,15 @@ namespace GestionnaireDeLogement.Vues
                 // Si aucune facture, afficher le message par défaut
                 if (dernieresFactures.Count == 0)
                 {
-                    StackPanelVide.Visibility = Visibility.Visible;
                     ScrollFactures.Visibility = Visibility.Collapsed;
                     return;
                 }
 
+                // Afficher la liste
+                ScrollFactures.Visibility = Visibility.Visible;
+
+
                 // Masquer le message vide et afficher la liste
-                StackPanelVide.Visibility = Visibility.Collapsed;
                 ScrollFactures.Visibility = Visibility.Visible;
 
                 // Remplir la liste avec les factures
@@ -130,7 +132,7 @@ namespace GestionnaireDeLogement.Vues
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"❌ Erreur lors du chargement des factures :\n{ex.Message}",
+                    $"Erreur lors du chargement des factures :\n{ex.Message}",
                     "Erreur",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error

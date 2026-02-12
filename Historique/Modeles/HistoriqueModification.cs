@@ -4,7 +4,7 @@ namespace GestionnaireDeLogement.Modeles
 {
     /// <summary>
     /// ═══════════════════════════════════════════════════════════════════
-    /// 📜 HISTORIQUE DES MODIFICATIONS
+    ///  HISTORIQUE DES MODIFICATIONS
     /// ═══════════════════════════════════════════════════════════════════
     /// Enregistre toutes les modifications apportées aux relevés
     /// ═══════════════════════════════════════════════════════════════════

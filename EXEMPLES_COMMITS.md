@@ -563,9 +563,9 @@ Description: (vide)
 
 ---
 
-### Emoji par catégorie
+### Symbole par catégorie
 
-| Emoji | Catégorie | Utilisation |
+| Symbole | Catégorie | Utilisation |
 |-------|-----------|-------------|
 | ✨ | Feature | Nouvelle fonctionnalité |
 | 🐛 | Bugfix | Correction de bug |

@@ -100,20 +100,22 @@
     <Compile Include="Configurations\Vues\ConfigurationVue.xaml.cs">
       <DependentUpon>ConfigurationVue.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Historique\Services\GestionnaireHistorique.cs" />
     <Compile Include="Eau\VueModeles\EauVueModele.cs" />
-    <Compile Include="Eau\VueModeles\ModifierReleveEauVue.xaml.cs">
+    <Compile Include="Eau\Vues\ModifierReleveEauVue.xaml.cs">
       <DependentUpon>ModifierReleveEauVue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Eau\VueModeles\ModifierEauVueModele.cs" />
     <Compile Include="Electricite\VueModeles\ElectriciteVueModele.cs" />
-    <Compile Include="Electricite\VueModeles\ModifierReleveElectriciteVue.xaml.cs">
+    <Compile Include="Electricite\Vues\ModifierReleveElectriciteVue.xaml.cs">
       <DependentUpon>ModifierReleveElectriciteVue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Electricite\VueModeles\ModifierElectriciteVueModele.cs" />
+    <Compile Include="Historique\Modeles\HistoriqueModification.cs" />
     <Compile Include="Outils\Notifications\BaseNotification.cs" />
     <Compile Include="Outils\Utilitaires\Couleurs.cs" />
     <Compile Include="Chauffage\VueModeles\ChauffageVueModele.cs" />
-    <Compile Include="Vues\AccueilVue.xaml.cs">
+    <Compile Include="Application\Vues\AccueilVue.xaml.cs">
       <DependentUpon>AccueilVue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Facture\Vues\AjouterFactureVue.xaml.cs">
@@ -131,8 +133,17 @@
     <Compile Include="Facture\Vues\FacturesVue.xaml.cs">
       <DependentUpon>FacturesVue.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Facture\VueModeles\ModifierFactureVue.xaml.cs">
+    <Compile Include="Facture\Vues\ModifierFactureVue.xaml.cs">
       <DependentUpon>ModifierFactureVue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Eau\Vues\AjouterReleveEauDialogue.xaml.cs">
+      <DependentUpon>AjouterReleveEauDialogue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Application\Vues\ConfirmationSuppressionDialogue.xaml.cs">
+      <DependentUpon>ConfirmationSuppressionDialogue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Historique\Vues\HistoriqueVue.xaml.cs">
+      <DependentUpon>HistoriqueVue.xaml</DependentUpon>
     </Compile>
     <Page Include="Chauffage\Vues\RelevesChauffage\AjouterReleveChauffageVue.xaml">
       <SubType>Designer</SubType>
@@ -146,15 +157,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Eau\VueModeles\ModifierReleveEauVue.xaml">
+    <Page Include="Eau\Vues\ModifierReleveEauVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Electricite\VueModeles\ModifierReleveElectriciteVue.xaml">
+    <Page Include="Electricite\Vues\ModifierReleveElectriciteVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Application\Vues\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -163,7 +174,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Donnees\GestionnaireDonnees.cs" />
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Application\Vues\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -302,39 +313,39 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\filtrer.xaml">
+    <Page Include="Ressources\Icones\navigation_secondaire_precedent_suivant_filtre\filtrer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\precedent.xaml">
+    <Page Include="Ressources\Icones\navigation_secondaire_precedent_suivant_filtre\precedent.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\suivant.xaml">
+    <Page Include="Ressources\Icones\navigation_secondaire_precedent_suivant_filtre\suivant.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\navigation_secondaire_précédent_suivant_filtre\trier.xaml">
+    <Page Include="Ressources\Icones\navigation_secondaire_precedent_suivant_filtre\trier.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\statuts_succès_erreur_info\alerte.xaml">
+    <Page Include="Ressources\Icones\statuts_succes_erreur_info\alerte.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\statuts_succès_erreur_info\construction.xaml">
+    <Page Include="Ressources\Icones\statuts_succes_erreur_info\construction.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\statuts_succès_erreur_info\erreur.xaml">
+    <Page Include="Ressources\Icones\statuts_succes_erreur_info\erreur.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\statuts_succès_erreur_info\info.xaml">
+    <Page Include="Ressources\Icones\statuts_succes_erreur_info\info.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Ressources\Icones\statuts_succès_erreur_info\succes.xaml">
+    <Page Include="Ressources\Icones\statuts_succes_erreur_info\succes.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -350,7 +361,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Vues\AccueilVue.xaml">
+    <Page Include="Application\Vues\AccueilVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -374,9 +385,21 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Facture\VueModeles\ModifierFactureVue.xaml">
+    <Page Include="Facture\Vues\ModifierFactureVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Eau\Vues\AjouterReleveEauDialogue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Application\Vues\ConfirmationSuppressionDialogue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Historique\Vues\HistoriqueVue.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
@@ -420,9 +443,8 @@
     <Folder Include="Eau\Services\" />
     <Folder Include="Electricite\Services\" />
     <Folder Include="Facture\Services\" />
-    <Folder Include="Ressources\Emojis\" />
+    <Folder Include="Facture\VueModeles\" />
     <Folder Include="Ressources\Images\" />
-    <Folder Include="VueModeles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />

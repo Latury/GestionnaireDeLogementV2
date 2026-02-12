@@ -10,7 +10,7 @@ namespace GestionnaireDeLogement.Vues
 {
     /// <summary>
     /// ═══════════════════════════════════════════════════════════════════
-    /// ➕ DIALOGUE D'AJOUT D'UN RELEVÉ D'EAU
+    ///  DIALOGUE D'AJOUT D'UN RELEVÉ D'EAU
     /// ═══════════════════════════════════════════════════════════════════
     /// Permet à l'utilisateur de saisir un nouveau relevé de compteur d'eau
     /// ═══════════════════════════════════════════════════════════════════
@@ -18,7 +18,7 @@ namespace GestionnaireDeLogement.Vues
     public partial class AjouterReleveEauDialogue : Window
     {
         // ═══════════════════════════════════════════════════════════════
-        // 🏗️ CONSTRUCTEUR
+        //  CONSTRUCTEUR
         // ═══════════════════════════════════════════════════════════════
         public AjouterReleveEauDialogue()
         {
@@ -29,7 +29,7 @@ namespace GestionnaireDeLogement.Vues
         }
 
         // ═══════════════════════════════════════════════════════════════
-        // ✅ BOUTON VALIDER
+        //  BOUTON VALIDER
         // ═══════════════════════════════════════════════════════════════
         private void BtnValider_Click(object sender, RoutedEventArgs e)
         {
@@ -38,24 +38,24 @@ namespace GestionnaireDeLogement.Vues
             // ─────────────────────────────────────────────────────────
             if (!DatePicker.SelectedDate.HasValue)
             {
-                MessageBox.Show("⚠️ Veuillez sélectionner une date de relevé.", "Champ manquant", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("Veuillez sélectionner une date de relevé.", "Champ manquant", MessageBoxButton.OK, MessageBoxImage.Warning);
                 DatePicker.Focus(); return;
             }
 
             if (!double.TryParse(TxtEauFroide.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double eauFroide) || eauFroide < 0)
             {
-                MessageBox.Show("⚠️ L'index d'eau froide doit être un nombre valide ≥ 0.", "Valeur invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("L'index d'eau froide doit être un nombre valide ≥ 0.", "Valeur invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
                 TxtEauFroide.Focus(); TxtEauFroide.SelectAll(); return;
             }
 
             if (!double.TryParse(TxtEauChaude.Text.Replace(",", "."), NumberStyles.Any, CultureInfo.InvariantCulture, out double eauChaude) || eauChaude < 0)
             {
-                MessageBox.Show("⚠️ L'index d'eau chaude doit être un nombre valide ≥ 0.", "Valeur invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show("L'index d'eau chaude doit être un nombre valide ≥ 0.", "Valeur invalide", MessageBoxButton.OK, MessageBoxImage.Warning);
                 TxtEauChaude.Focus(); TxtEauChaude.SelectAll(); return;
             }
 
             // ─────────────────────────────────────────────────────────
-            // 🚀 CRÉATION + SAUVEGARDE AUTOMATIQUE
+            //  CRÉATION + SAUVEGARDE AUTOMATIQUE
             // ─────────────────────────────────────────────────────────
             var nouveauReleve = new ReleveEau
             {
@@ -68,12 +68,12 @@ namespace GestionnaireDeLogement.Vues
                 Notes = TxtNotes.Text.Trim()
             };
 
-            // 💾 SAUVEGARDER dans releves-eau.json
+            //  SAUVEGARDER dans releves-eau.json
             var relevesExistants = GestionnaireDonnees.Charger<ReleveEau>("releves-eau.json");
             relevesExistants.Add(nouveauReleve);
             GestionnaireDonnees.Sauvegarder(relevesExistants, "releves-eau.json");
 
-            MessageBox.Show($"✅ Relevé ajouté !\n\n{nouveauReleve}", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+            MessageBox.Show($"Relevé ajouté !\n\n{nouveauReleve}", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
 
             // Fermer avec succès
             DialogResult = true;
@@ -81,7 +81,7 @@ namespace GestionnaireDeLogement.Vues
         }
 
         // ═══════════════════════════════════════════════════════════════
-        // 🔢 UTILITAIRE : PROCHAIN ID
+        //  UTILITAIRE : PROCHAIN ID
         // ═══════════════════════════════════════════════════════════════
         private int ObtenirProchainId()
         {
@@ -90,7 +90,7 @@ namespace GestionnaireDeLogement.Vues
         }
 
         // ═══════════════════════════════════════════════════════════════
-        // ❌ BOUTON ANNULER (IDENTIQUE)
+        //  BOUTON ANNULER (IDENTIQUE)
         // ═══════════════════════════════════════════════════════════════
         private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
         {

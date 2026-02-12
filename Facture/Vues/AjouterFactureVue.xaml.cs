@@ -72,7 +72,7 @@ namespace GestionnaireDeLogement.Vues
 
                 // Message de confirmation
                 MessageBox.Show(
-                    $"✅ Facture de {nouvelleFacture.Montant:F2} € ajoutée avec succès !",
+                    $"Facture de {nouvelleFacture.Montant:F2} € ajoutée avec succès !",
                     "Succès",
                     MessageBoxButton.OK,
                     MessageBoxImage.Information
@@ -84,7 +84,7 @@ namespace GestionnaireDeLogement.Vues
             catch (Exception ex)
             {
                 MessageBox.Show(
-                    $"❌ Erreur lors de l'enregistrement : {ex.Message}",
+                    $"Erreur lors de l'enregistrement : {ex.Message}",
                     "Erreur",
                     MessageBoxButton.OK,
                     MessageBoxImage.Error
@@ -102,7 +102,7 @@ namespace GestionnaireDeLogement.Vues
                 !string.IsNullOrWhiteSpace(TxtNotes.Text))
             {
                 var resultat = MessageBox.Show(
-                    "⚠️ Voulez-vous vraiment annuler ?\nLes données saisies seront perdues.",
+                    "Voulez-vous vraiment annuler ?\nLes données saisies seront perdues.",
                     "Confirmation",
                     MessageBoxButton.YesNo,
                     MessageBoxImage.Question
@@ -131,7 +131,7 @@ namespace GestionnaireDeLogement.Vues
             if (CmbType.SelectedIndex == -1)
             {
                 MessageBox.Show(
-                    "⚠️ Veuillez sélectionner un type de facture.",
+                    "Veuillez sélectionner un type de facture.",
                     "Validation",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning
@@ -144,7 +144,7 @@ namespace GestionnaireDeLogement.Vues
             if (string.IsNullOrWhiteSpace(TxtMontant.Text))
             {
                 MessageBox.Show(
-                    "⚠️ Veuillez saisir un montant.",
+                    "Veuillez saisir un montant.",
                     "Validation",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning
@@ -157,7 +157,7 @@ namespace GestionnaireDeLogement.Vues
             if (!double.TryParse(TxtMontant.Text, out double montant) || montant <= 0)
             {
                 MessageBox.Show(
-                    "⚠️ Le montant doit être un nombre positif valide.",
+                    "Le montant doit être un nombre positif valide.",
                     "Validation",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning
@@ -171,7 +171,7 @@ namespace GestionnaireDeLogement.Vues
             if (DateFacture.SelectedDate == null)
             {
                 MessageBox.Show(
-                    "⚠️ Veuillez sélectionner une date de facture.",
+                    "Veuillez sélectionner une date de facture.",
                     "Validation",
                     MessageBoxButton.OK,
                     MessageBoxImage.Warning
@@ -190,10 +190,10 @@ namespace GestionnaireDeLogement.Vues
         {
             if (CmbType.SelectedItem is ComboBoxItem selectedItem)
             {
-                // Récupérer le StackPanel contenant l'emoji et le texte
+                // Récupérer le StackPanel contenant l'icone et le texte
                 if (selectedItem.Content is StackPanel stackPanel)
                 {
-                    // Le deuxième TextBlock contient le texte (le premier contient l'emoji)
+                    // Le deuxième TextBlock contient le texte (le premier contient l'icone)
                     if (stackPanel.Children.Count >= 2 && stackPanel.Children[1] is TextBlock textBlock)
                     {
                         return textBlock.Text;

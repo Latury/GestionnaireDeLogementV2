@@ -120,14 +120,14 @@
 
                 <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
 
-                    <!--  🔥 ICÔNE  -->
+                    <!--   ICÔNE  -->
                     <ContentControl
                         Width="32"
                         Height="32"
                         Margin="0,0,10,0"
                         Content="{StaticResource IconeChauffage}" />
 
-                    <!--  📝 TEXTE  -->
+                    <!--   TEXTE  -->
                     <TextBlock
                         FontSize="32"
                         FontWeight="Bold"
@@ -161,7 +161,7 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="📅 Dernier relevé" />
+                            Text="Dernier relevé" />
                         <TextBlock
                             Margin="0,8,0,0"
                             FontSize="24"
@@ -178,7 +178,7 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="🔥 Consommation mois" />
+                            Text="Consommation mois" />
                         <TextBlock
                             Margin="0,8,0,0"
                             FontSize="24"
@@ -197,7 +197,7 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="📊 Moyenne mensuelle" />
+                            Text="Moyenne mensuelle" />
                         <TextBlock
                             Margin="0,8,0,0"
                             FontSize="24"
@@ -216,14 +216,14 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="💰 Coût estimé mois" />
+                            Text="Coût estimé mois" />
                         <TextBlock
                             Margin="0,8,0,0"
                             FontSize="24"
                             FontWeight="Bold"
                             Foreground="{StaticResource CouleurPrincipale}">
                             <Run Text="{Binding CoutDernierMois, Mode=OneWay}" />
-                            <Run FontSize="16" Text=" €" />
+                            <Run FontSize="16" Text="" />
                         </TextBlock>
                     </StackPanel>
                 </Border>
@@ -240,7 +240,7 @@
                         FontSize="16"
                         FontWeight="SemiBold"
                         Foreground="{StaticResource TextePrincipal}"
-                        Text="🔍 Filtrer par type :" />
+                        Text="Filtrer par type :" />
 
                     <ComboBox
                         SelectedValue="{Binding TypeFiltreSelectionne, Mode=TwoWay}"
@@ -248,10 +248,10 @@
                         Style="{StaticResource ComboBoxFiltre}">
 
                         <ComboBoxItem Content="Tous les types" Tag="Tous" />
-                        <ComboBoxItem Content="⛽ Fioul" Tag="Fioul" />
-                        <ComboBoxItem Content="🔥 Gaz" Tag="Gaz" />
-                        <ComboBoxItem Content="⚡ Électrique" Tag="Électrique" />
-                        <ComboBoxItem Content="🪵 Bois" Tag="Bois" />
+                        <ComboBoxItem Content="Fioul" Tag="Fioul" />
+                        <ComboBoxItem Content="Gaz" Tag="Gaz" />
+                        <ComboBoxItem Content="Électrique" Tag="Électrique" />
+                        <ComboBoxItem Content="Bois" Tag="Bois" />
                     </ComboBox>
 
                 </StackPanel>
@@ -305,11 +305,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Text="➕" />
                             <TextBlock
                                 VerticalAlignment="Center"
                                 FontSize="20"
@@ -367,11 +362,6 @@
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
                             <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Text="✏️" />
-                            <TextBlock
                                 VerticalAlignment="Center"
                                 FontSize="20"
                                 Text="Modifier" />
@@ -427,11 +417,6 @@
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
                             <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="20"
-                                Text="🗑️" />
-                            <TextBlock
                                 VerticalAlignment="Center"
                                 FontSize="20"
                                 Text="Supprimer" />
@@ -455,7 +440,7 @@
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="{StaticResource TextePrincipal}"
-                        Text="📋 HISTORIQUE DES RELEVÉS DE CHAUFFAGE" />
+                        Text="HISTORIQUE DES RELEVÉS DE CHAUFFAGE" />
 
                     <!--  Liste des relevés  -->
                     <ListView
@@ -469,7 +454,7 @@
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <!--  1. Date relevé  -->
-                                <GridViewColumn Width="150" Header="📅 Date">
+                                <GridViewColumn Width="150" Header="Date">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -492,7 +477,7 @@
                                 </GridViewColumn>
 
                                 <!--  2. Type de chauffage  -->
-                                <GridViewColumn Width="180" Header="🔥 Type">
+                                <GridViewColumn Width="180" Header="Type">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -515,7 +500,7 @@
                                 </GridViewColumn>
 
                                 <!--  3. Quantité  -->
-                                <GridViewColumn Width="180" Header="📦 Quantité">
+                                <GridViewColumn Width="180" Header="Quantité">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -541,7 +526,7 @@
                                 </GridViewColumn>
 
                                 <!--  4. Consommation  -->
-                                <GridViewColumn Width="180" Header="📊 Consommation">
+                                <GridViewColumn Width="180" Header="Consommation">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -566,7 +551,7 @@
                                 </GridViewColumn>
 
                                 <!--  5. Coût  -->
-                                <GridViewColumn Width="150" Header="💰 Coût">
+                                <GridViewColumn Width="150" Header="Coût">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -591,7 +576,7 @@
                                 </GridViewColumn>
 
                                 <!--  6. Notes  -->
-                                <GridViewColumn Width="260" Header="📝 Notes">
+                                <GridViewColumn Width="260" Header="Notes">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -626,11 +611,6 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Visibility="Collapsed">
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            FontSize="64"
-                            Opacity="0.3"
-                            Text="🔥" />
                         <TextBlock
                             Margin="0,15,0,0"
                             HorizontalAlignment="Center"

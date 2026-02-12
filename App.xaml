@@ -12,7 +12,7 @@
                 <ResourceDictionary Source="Outils/Styles/Couleurs.xaml" />
 
                 <!--  Icônes  -->
-                <ResourceDictionary Source="Ressources/Icones/icones.xaml" />
+                <ResourceDictionary Source="/GestionnaireDeLogement;component/Ressources/Icones/icones.xaml" />
 
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>

@@ -1,0 +1,241 @@
+﻿<Page
+    x:Class="GestionnaireDeLogement.Vues.AccueilVue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    x:Name="PageAccueil"
+    Background="{StaticResource FondSecondaire}">
+
+    <Page.Resources>
+        <Style x:Key="CarteStatistique" TargetType="Border">
+            <Setter Property="Background" Value="{StaticResource FondCarte}" />
+            <Setter Property="CornerRadius" Value="12" />
+            <Setter Property="Padding" Value="22" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="Effect">
+                <Setter.Value>
+                    <DropShadowEffect
+                        BlurRadius="12"
+                        Opacity="0.1"
+                        ShadowDepth="2"
+                        Color="#000000" />
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="TitreCarte" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+        </Style>
+
+        <Style x:Key="ValeurCarte" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="36" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Margin" Value="0,10,0,0" />
+        </Style>
+
+        <Style x:Key="SousTexteCarte" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="13" />
+            <Setter Property="Foreground" Value="{StaticResource TexteSecondaire}" />
+            <Setter Property="Margin" Value="0,6,0,0" />
+        </Style>
+    </Page.Resources>
+
+    <Grid Margin="30">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*" MinHeight="180" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="5*" />
+        </Grid.RowDefinitions>
+
+        <!--  SECTION 1  -->
+        <Viewbox Grid.Row="0" Stretch="Uniform">
+            <Grid Width="950" Height="180">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <!--  CARTE 1  -->
+                <Border Grid.Column="0" Style="{StaticResource CarteStatistique}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                            <TextBlock Style="{StaticResource TitreCarte}" Text="Total des factures" />
+                            <TextBlock
+                                x:Name="TxtTotalFactures"
+                                Foreground="{StaticResource CouleurPrincipale}"
+                                Style="{StaticResource ValeurCarte}"
+                                Text="0,00 €" />
+                            <TextBlock Style="{StaticResource SousTexteCarte}" Text="Ce mois" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!--  CARTE 2  -->
+                <Border Grid.Column="1" Style="{StaticResource CarteStatistique}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                            <TextBlock Style="{StaticResource TitreCarte}" Text="Consommation d'eau" />
+                            <TextBlock
+                                x:Name="TxtConsommationEau"
+                                Foreground="#2196F3"
+                                Style="{StaticResource ValeurCarte}"
+                                Text="0,0 m³" />
+                            <TextBlock Style="{StaticResource SousTexteCarte}" Text="Ce mois" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+                <!--  CARTE 3  -->
+                <Border Grid.Column="2" Style="{StaticResource CarteStatistique}">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0" VerticalAlignment="Center">
+                            <TextBlock Style="{StaticResource TitreCarte}" Text="Électricité" />
+                            <TextBlock
+                                x:Name="TxtConsommationElec"
+                                Foreground="#FF9800"
+                                Style="{StaticResource ValeurCarte}"
+                                Text="0 kWh" />
+                            <TextBlock Style="{StaticResource SousTexteCarte}" Text="Ce mois" />
+                        </StackPanel>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Viewbox>
+
+        <!--  TITRE SECTION  -->
+        <TextBlock
+            Grid.Row="2"
+            Margin="10,0"
+            FontSize="22"
+            FontWeight="Bold"
+            Foreground="{StaticResource TextePrincipal}"
+            Text="Dernières factures" />
+
+        <!--  SECTION LISTE  -->
+        <Border
+            Grid.Row="3"
+            Margin="10,10,10,0"
+            Style="{StaticResource CarteStatistique}">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <Grid Grid.Row="0" Margin="10,10,10,18">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock
+                        Grid.Column="0"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Type" />
+                    <TextBlock
+                        Grid.Column="1"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Date" />
+                    <TextBlock
+                        Grid.Column="2"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Montant" />
+                    <TextBlock
+                        Grid.Column="3"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TexteSecondaire}"
+                        Text="Statut" />
+                </Grid>
+
+                <Border Grid.Row="1" Background="{StaticResource BordureClaire}" />
+
+                <ScrollViewer
+                    x:Name="ScrollFactures"
+                    Grid.Row="2"
+                    VerticalScrollBarVisibility="Auto"
+                    Visibility="Collapsed">
+
+                    <ItemsControl x:Name="ListeFactures">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Margin="10,6"
+                                    Padding="12,10"
+                                    Background="Transparent"
+                                    BorderBrush="{StaticResource BordureClaire}"
+                                    BorderThickness="0,0,0,1">
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="*" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <TextBlock
+                                            Grid.Column="0"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{StaticResource TextePrincipal}"
+                                            Text="{Binding Type}" />
+
+                                        <TextBlock
+                                            Grid.Column="1"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            Foreground="{StaticResource TextePrincipal}"
+                                            Text="{Binding DateFacture, StringFormat='{}{0:dd/MM/yyyy}'}" />
+
+                                        <TextBlock
+                                            Grid.Column="2"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            FontWeight="SemiBold"
+                                            Foreground="{StaticResource CouleurPrincipale}"
+                                            Text="{Binding Montant, StringFormat='{}{0:F2} €'}" />
+
+                                        <TextBlock
+                                            Grid.Column="3"
+                                            VerticalAlignment="Center"
+                                            FontSize="14"
+                                            FontWeight="SemiBold"
+                                            Text="{Binding EstPayee}" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                </ScrollViewer>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</Page>

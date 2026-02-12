@@ -137,7 +137,6 @@
                     FontSize="32"
                     FontWeight="Bold"
                     Foreground="{StaticResource CouleurFacture}">
-                    <Run Text="📄" />
                     <Run Text="Gestion des factures" />
                 </TextBlock>
                 <TextBlock
@@ -165,16 +164,6 @@
                             Style="{StaticResource BarreRecherche}"
                             Text=""
                             ToolTip="Rechercher une facture" />
-
-                        <!--  Icône de recherche  -->
-                        <TextBlock
-                            Margin="15,0,0,0"
-                            HorizontalAlignment="Left"
-                            VerticalAlignment="Center"
-                            FontSize="20"
-                            Foreground="{StaticResource TexteSecondaire}"
-                            IsHitTestVisible="False"
-                            Text="🔍" />
 
                         <!--  Placeholder text  -->
                         <TextBlock
@@ -210,37 +199,21 @@
                             FontSize="15" />
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="💧" />
                                 <TextBlock FontSize="15" Text="Eau" />
                             </StackPanel>
                         </ComboBoxItem>
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="⚡" />
                                 <TextBlock FontSize="15" Text="Électricité" />
                             </StackPanel>
                         </ComboBoxItem>
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="🔥" />
                                 <TextBlock FontSize="15" Text="Chauffage" />
                             </StackPanel>
                         </ComboBoxItem>
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="🛒" />
                                 <TextBlock FontSize="15" Text="Achats" />
                             </StackPanel>
                         </ComboBoxItem>
@@ -260,37 +233,21 @@
                             FontSize="15" />
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="✅" />
                                 <TextBlock FontSize="15" Text="Payées" />
                             </StackPanel>
                         </ComboBoxItem>
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="⏳" />
                                 <TextBlock FontSize="15" Text="Non payées" />
                             </StackPanel>
                         </ComboBoxItem>
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="⏰" />
                                 <TextBlock FontSize="15" Text="En attente" />
                             </StackPanel>
                         </ComboBoxItem>
                         <ComboBoxItem HorizontalContentAlignment="Center">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock
-                                    Margin="0,0,8,0"
-                                    FontSize="15"
-                                    Text="📧" />
                                 <TextBlock FontSize="15" Text="Relance" />
                             </StackPanel>
                         </ComboBoxItem>
@@ -342,11 +299,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="26"
-                                Text="➕" />
                             <TextBlock VerticalAlignment="Center" Text="Ajouter facture" />
                         </StackPanel>
                     </Button>
@@ -393,11 +345,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="26"
-                                Text="✏️" />
                             <TextBlock VerticalAlignment="Center" Text="Modifier" />
                         </StackPanel>
                     </Button>
@@ -443,11 +390,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="26"
-                                Text="🗑️" />
                             <TextBlock VerticalAlignment="Center" Text="Supprimer" />
                         </StackPanel>
                     </Button>
@@ -465,7 +407,7 @@
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="{StaticResource TextePrincipal}"
-                        Text="📋 LISTE DES FACTURES" />
+                        Text=" LISTE DES FACTURES" />
 
                     <ListView
                         x:Name="ListViewFactures"
@@ -476,7 +418,7 @@
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <!--  1. Type  -->
-                                <GridViewColumn Width="120" Header="📦 Type">
+                                <GridViewColumn Width="120" Header="Type">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -499,7 +441,7 @@
                                 </GridViewColumn>
 
                                 <!--  2. Date facture  -->
-                                <GridViewColumn Width="160" Header="📅 Date">
+                                <GridViewColumn Width="160" Header="Date">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -521,7 +463,7 @@
                                 </GridViewColumn>
 
                                 <!--  3. Montant  -->
-                                <GridViewColumn Width="140" Header="💰 Montant">
+                                <GridViewColumn Width="140" Header="Montant">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -546,7 +488,7 @@
                                 </GridViewColumn>
 
                                 <!--  4. Échéance  -->
-                                <GridViewColumn Width="160" Header="⏰ Échéance">
+                                <GridViewColumn Width="160" Header="Échéance">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -568,7 +510,7 @@
                                 </GridViewColumn>
 
                                 <!--  5. Statut  -->
-                                <GridViewColumn Width="150" Header="📌 Statut">
+                                <GridViewColumn Width="150" Header="Statut">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -597,7 +539,7 @@
                                 </GridViewColumn>
 
                                 <!--  6. Notes  -->
-                                <GridViewColumn Width="270" Header="📝 Notes">
+                                <GridViewColumn Width="270" Header="Notes">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -631,11 +573,6 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Visibility="Collapsed">
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            FontSize="64"
-                            Opacity="0.3"
-                            Text="📄" />
                         <TextBlock
                             Margin="0,15,0,0"
                             HorizontalAlignment="Center"

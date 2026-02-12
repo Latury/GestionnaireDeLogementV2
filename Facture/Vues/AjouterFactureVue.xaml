@@ -92,19 +92,13 @@
                                     FontSize="16"
                                     Foreground="{TemplateBinding Foreground}" />
 
-                                <!--  Bouton calendrier avec emoji centré  -->
+                                <!--  Bouton calendrier avec icone centré  -->
                                 <Button
                                     x:Name="PART_Button"
                                     Grid.Column="1"
                                     Background="Transparent"
                                     BorderThickness="0"
-                                    Cursor="Hand">
-                                    <TextBlock
-                                        HorizontalAlignment="Center"
-                                        VerticalAlignment="Center"
-                                        FontSize="20"
-                                        Text="📅" />
-                                </Button>
+                                    Cursor="Hand" />
 
                                 <!--  Popup pour le calendrier  -->
                                 <Popup
@@ -157,7 +151,6 @@
                 FontSize="32"
                 FontWeight="Bold"
                 Foreground="{StaticResource CouleurFacture}">
-                <Run Text="➕" />
                 <Run Text="Ajouter une facture" />
             </TextBlock>
             <TextBlock
@@ -207,7 +200,6 @@
                         Grid.Column="0"
                         Margin="0,0,0,20">
                         <TextBlock Style="{StaticResource Label}">
-                            <Run Text="📋" />
                             <Run Text="Type de facture" />
                         </TextBlock>
                         <ComboBox
@@ -221,11 +213,6 @@
                                         VerticalAlignment="Center"
                                         Orientation="Horizontal">
                                         <TextBlock
-                                            Margin="0,0,12,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="18"
-                                            Text="💧" />
-                                        <TextBlock
                                             VerticalAlignment="Center"
                                             FontSize="16"
                                             Text="Eau" />
@@ -238,11 +225,7 @@
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         Orientation="Horizontal">
-                                        <TextBlock
-                                            Margin="0,0,12,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="18"
-                                            Text="⚡" />
+
                                         <TextBlock
                                             VerticalAlignment="Center"
                                             FontSize="16"
@@ -257,11 +240,6 @@
                                         VerticalAlignment="Center"
                                         Orientation="Horizontal">
                                         <TextBlock
-                                            Margin="0,0,12,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="18"
-                                            Text="🔥" />
-                                        <TextBlock
                                             VerticalAlignment="Center"
                                             FontSize="16"
                                             Text="Chauffage" />
@@ -274,11 +252,6 @@
                                         HorizontalAlignment="Left"
                                         VerticalAlignment="Center"
                                         Orientation="Horizontal">
-                                        <TextBlock
-                                            Margin="0,0,12,0"
-                                            VerticalAlignment="Center"
-                                            FontSize="18"
-                                            Text="🛒" />
                                         <TextBlock
                                             VerticalAlignment="Center"
                                             FontSize="16"
@@ -295,7 +268,6 @@
                         Grid.Column="0"
                         Margin="0,0,0,20">
                         <TextBlock Style="{StaticResource Label}">
-                            <Run Text="📅" />
                             <Run Text="Date de facture" />
                         </TextBlock>
                         <DatePicker x:Name="DateFacture" Style="{StaticResource ChampDate}" />
@@ -311,7 +283,6 @@
                         FontSize="17"
                         Foreground="{StaticResource TextePrincipal}">
                         <TextBlock>
-                            <Run FontSize="20" Text="✅" />
                             <Run FontSize="17" Text="Facture payée" />
                         </TextBlock>
                     </CheckBox>
@@ -324,8 +295,7 @@
                         Grid.Column="2"
                         Margin="0,0,0,20">
                         <TextBlock Style="{StaticResource Label}">
-                            <Run Text="💰" />
-                            <Run Text="Montant (€)" />
+                            <Run Text="Montant" />
                         </TextBlock>
                         <TextBox x:Name="TxtMontant" Style="{StaticResource ChampSaisie}" />
                     </StackPanel>
@@ -336,7 +306,6 @@
                         Grid.Column="2"
                         Margin="0,0,0,20">
                         <TextBlock Style="{StaticResource Label}">
-                            <Run Text="⏰" />
                             <Run Text="Date d'échéance (optionnel)" />
                         </TextBlock>
                         <DatePicker x:Name="DateEcheance" Style="{StaticResource ChampDate}" />
@@ -351,7 +320,6 @@
                         Grid.ColumnSpan="3"
                         Margin="0,0,0,0">
                         <TextBlock Style="{StaticResource Label}">
-                            <Run Text="📝" />
                             <Run Text="Notes (optionnel)" />
                         </TextBlock>
                         <TextBox
@@ -419,11 +387,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,12,0"
-                                VerticalAlignment="Center"
-                                FontSize="24"
-                                Text="❌" />
                             <TextBlock VerticalAlignment="Center" Text="Annuler" />
                         </StackPanel>
                     </Button>
@@ -469,11 +432,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,12,0"
-                                VerticalAlignment="Center"
-                                FontSize="24"
-                                Text="💾" />
                             <TextBlock VerticalAlignment="Center" Text="Enregistrer" />
                         </StackPanel>
                     </Button>

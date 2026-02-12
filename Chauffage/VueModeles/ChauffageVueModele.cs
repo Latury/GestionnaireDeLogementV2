@@ -31,12 +31,12 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
     public class ChauffageVueModele : INotifyPropertyChanged
     {
         // ===============================
-        // 📋 LISTE SOURCE (COMPLÈTE)
+        //  LISTE SOURCE (COMPLÈTE)
         // ===============================
         public ObservableCollection<ReleveChauffage> Releves { get; }
 
         // ===============================
-        // 📋 LISTE AFFICHÉE (FILTRÉE)
+        //  LISTE AFFICHÉE (FILTRÉE)
         // ===============================
         private ObservableCollection<ReleveChauffage> _relevesFiltres;
         public ObservableCollection<ReleveChauffage> RelevesFiltres
@@ -51,7 +51,7 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         }
 
         // ===============================
-        // 🔎 FILTRE
+        //  FILTRE
         // ===============================
         private string _typeFiltre = "Tous";
         public string TypeFiltre
@@ -66,7 +66,7 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         }
 
         // ===============================
-        // 📌 SÉLECTION
+        //  SÉLECTION
         // ===============================
         private ReleveChauffage _releveSelectionne;
         public ReleveChauffage ReleveSelectionne
@@ -83,7 +83,7 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         public bool UnReleveEstSelectionne => ReleveSelectionne != null;
 
         // ===============================
-        // 📊 STATISTIQUES
+        //  STATISTIQUES
         // ===============================
         public string DernierReleve { get; private set; } = "-";
         public double ConsommationDernierMois { get; private set; }
@@ -91,7 +91,7 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         public double CoutDernierMois { get; private set; }
 
         // ===============================
-        // 🏗️ CONSTRUCTEUR
+        //  CONSTRUCTEUR
         // ===============================
         public ChauffageVueModele()
         {
@@ -109,7 +109,7 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         }
 
         // ===============================
-        // 🔎 FILTRAGE
+        //  FILTRAGE
         // ===============================
         private void AppliquerFiltre()
         {
@@ -121,7 +121,7 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         }
 
         // ===============================
-        // 📊 STATISTIQUES
+        //  STATISTIQUES
         // ===============================
         private void CalculerStatistiques()
         {
@@ -148,7 +148,7 @@ namespace GestionnaireDeLogement.Chauffage.VueModeles
         }
 
         // ===============================
-        // 🔔 NOTIFICATION
+        //  NOTIFICATION
         // ===============================
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string nom)

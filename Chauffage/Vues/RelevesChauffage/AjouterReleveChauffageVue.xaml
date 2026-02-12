@@ -13,7 +13,7 @@
     mc:Ignorable="d">
 
     <!--  =========================================================  -->
-    <!--  🎨 RESSOURCES  -->
+    <!--   RESSOURCES  -->
     <!--  =========================================================  -->
     <Window.Resources>
 
@@ -36,7 +36,7 @@
     </Window.Resources>
 
     <!--  =========================================================  -->
-    <!--  🧱 CONTENEUR  -->
+    <!--   CONTENEUR  -->
     <!--  =========================================================  -->
     <Border Margin="25" Style="{StaticResource Carte}">
 
@@ -48,14 +48,14 @@
             </Grid.RowDefinitions>
 
             <!--  =================================================  -->
-            <!--  🔥 TITRE  -->
+            <!--   TITRE  -->
             <!--  =================================================  -->
             <StackPanel Grid.Row="0" Margin="0,0,0,25">
                 <TextBlock
                     FontSize="28"
                     FontWeight="Bold"
                     Foreground="{StaticResource CouleurChauffage}">
-                    ➕ Ajouter un relevé de chauffage
+                     Ajouter un relevé de chauffage
                 </TextBlock>
 
                 <TextBlock
@@ -66,7 +66,7 @@
             </StackPanel>
 
             <!--  =================================================  -->
-            <!--  📝 FORMULAIRE  -->
+            <!--   FORMULAIRE  -->
             <!--  =================================================  -->
             <Grid Grid.Row="1" Margin="26,0,-26,0">
                 <Grid.ColumnDefinitions>
@@ -81,9 +81,9 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <!--  📅 DATE  -->
+                <!--   DATE  -->
                 <StackPanel Margin="0,0,15,15">
-                    <TextBlock FontWeight="SemiBold" Text="📅 Date du relevé" />
+                    <TextBlock FontWeight="SemiBold" Text="Date du relevé" />
 
                     <Border
                         Height="44"
@@ -100,9 +100,9 @@
                     </Border>
                 </StackPanel>
 
-                <!--  🔥 TYPE  -->
+                <!--   TYPE  -->
                 <StackPanel Grid.Column="1" Margin="15,0,0,15">
-                    <TextBlock FontWeight="SemiBold" Text="🔥 Type de chauffage" />
+                    <TextBlock FontWeight="SemiBold" Text="Type de chauffage" />
 
                     <Border
                         Height="44"
@@ -118,18 +118,18 @@
                             BorderThickness="0"
                             SelectedIndex="0">
                             <ComboBoxItem Content="— Sélectionner un type —" IsEnabled="False" />
-                            <ComboBoxItem Content="⛽ Fioul" />
-                            <ComboBoxItem Content="🔥 Gaz" />
-                            <ComboBoxItem Content="⚡ Électrique" />
-                            <ComboBoxItem Content="🪵 Bois" />
+                            <ComboBoxItem Content="Fioul" />
+                            <ComboBoxItem Content="Gaz" />
+                            <ComboBoxItem Content="Électrique" />
+                            <ComboBoxItem Content="Bois" />
                         </ComboBox>
 
                     </Border>
                 </StackPanel>
 
-                <!--  📦 QUANTITÉ  -->
+                <!--   QUANTITÉ  -->
                 <StackPanel Grid.Row="1" Margin="0,0,15,15">
-                    <TextBlock FontWeight="SemiBold" Text="📦 Quantité" />
+                    <TextBlock FontWeight="SemiBold" Text="Quantité" />
                     <Border
                         Height="44"
                         Background="White"
@@ -145,12 +145,12 @@
                     </Border>
                 </StackPanel>
 
-                <!--  📐 UNITÉ  -->
+                <!--   UNITÉ  -->
                 <StackPanel
                     Grid.Row="1"
                     Grid.Column="1"
                     Margin="15,0,0,15">
-                    <TextBlock FontWeight="SemiBold" Text="📐 Unité" />
+                    <TextBlock FontWeight="SemiBold" Text="Unité" />
                     <Border
                         Height="44"
                         Background="White"
@@ -166,7 +166,7 @@
                     </Border>
                 </StackPanel>
 
-                <!--  💰 MONTANT (CENTRÉ)  -->
+                <!--   MONTANT (CENTRÉ)  -->
                 <StackPanel
                     Grid.Row="2"
                     Grid.ColumnSpan="2"
@@ -177,7 +177,7 @@
                         Margin="-175,0,0,0"
                         HorizontalAlignment="Center"
                         FontWeight="SemiBold"
-                        Text="💰 Montant estimé (€)" />
+                        Text="Montant estimé" />
                     <Border
                         Height="44"
                         Background="White"
@@ -193,9 +193,9 @@
                     </Border>
                 </StackPanel>
 
-                <!--  📝 NOTES  -->
+                <!--   NOTES  -->
                 <StackPanel Grid.Row="3" Grid.ColumnSpan="2">
-                    <TextBlock FontWeight="SemiBold" Text="📝 Notes" />
+                    <TextBlock FontWeight="SemiBold" Text="Notes" />
                     <Border
                         Height="80"
                         Background="White"
@@ -214,7 +214,7 @@
             </Grid>
 
             <!--  =================================================  -->
-            <!--  📋 RÉSUMÉ TEMPS RÉEL  -->
+            <!--   RÉSUMÉ TEMPS RÉEL  -->
             <!--  =================================================  -->
             <Border
                 Grid.Row="1"
@@ -230,7 +230,7 @@
                         FontSize="14"
                         FontWeight="Bold"
                         Foreground="{StaticResource TexteSecondaire}"
-                        Text="📋 Résumé du relevé" />
+                        Text="Résumé du relevé" />
 
                     <TextBlock
                         x:Name="TxtResume"
@@ -243,7 +243,7 @@
 
 
             <!--  =================================================  -->
-            <!--  🔘 BOUTONS (INCHANGÉS)  -->
+            <!--   BOUTONS (INCHANGÉS)  -->
             <!--  =================================================  -->
             <StackPanel
                 Grid.Row="2"
@@ -296,7 +296,7 @@
                             </Setter>
                         </Style>
                     </Button.Style>
-                    ✔ Valider le relevé
+                     Valider le relevé
                 </Button>
 
             </StackPanel>

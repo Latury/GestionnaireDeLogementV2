@@ -1,7 +1,7 @@
 ﻿/*
  * =============================================================
  *  Gestionnaire de Logement
- *  Module Chauffage
+ *  Fenêtre principale
  *
  *  Copyright © 2026 Flo Latury
  *  Licence : CC BY-NC 4.0
@@ -9,10 +9,11 @@
  * =============================================================
  */
 
-using GestionnaireDeLogement.Chauffage.Vues;
-using GestionnaireDeLogement.Vues;
 using System.Windows;
 using System.Windows.Controls;
+
+using GestionnaireDeLogement.Vues;
+using GestionnaireDeLogement.Chauffage.Vues;
 using GestionnaireDeLogement.Configurations.Vues;
 
 namespace GestionnaireDeLogement
@@ -28,49 +29,67 @@ namespace GestionnaireDeLogement
 
             // Charger la page d'accueil au démarrage
             FramePrincipal.Navigate(new AccueilVue());
+            BtnAccueil.Style = (Style)FindResource("BoutonNavigationActif");
         }
 
         // ═══════════════════════════════════════════════════════════
-        // GESTION DES CLICS SUR LES BOUTONS DE NAVIGATION
+        // NAVIGATION PRINCIPALE
+        // ═══════════════════════════════════════════════════════════
+
+        /// <summary>
+        /// Change la page affichée, met à jour le titre
+        /// et applique le style actif au bouton correspondant
+        /// </summary>
+        private void ChangerPage(Page nouvellePage, string titre, Button boutonActif)
+        {
+            FramePrincipal.Navigate(nouvellePage);
+            TexteTitre.Text = titre;
+
+            ResetBoutonsNavigation();
+            boutonActif.Style = (Style)FindResource("BoutonNavigationActif");
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // HANDLERS DES BOUTONS DE NAVIGATION
         // ═══════════════════════════════════════════════════════════
 
         private void BtnAccueil_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new AccueilVue(), "🏠", "Tableau de bord", BtnAccueil);
+            ChangerPage(new AccueilVue(), "Tableau de bord", BtnAccueil);
         }
 
         private void BtnFactures_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new FacturesVue(), "📄", "Factures", BtnFactures);
+            ChangerPage(new FacturesVue(), "Factures", BtnFactures);
         }
 
         private void BtnEau_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new EauVue(), "💧", "Consommation d'eau", BtnEau);
+            ChangerPage(new EauVue(), "Consommation d'eau", BtnEau);
         }
 
         private void BtnElectricite_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new ElectriciteVue(), "⚡", "Consommation d'électricité", BtnElectricite);
+            ChangerPage(new ElectriciteVue(), "Consommation d'électricité", BtnElectricite);
         }
 
         private void BtnChauffage_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new ChauffageVue(), "🔥", "Chauffage", BtnChauffage);
+            ChangerPage(new ChauffageVue(), "Chauffage", BtnChauffage);
         }
 
         private void BtnAchats_Click(object sender, RoutedEventArgs e)
         {
-            // TODO : Créer la page AchatsVue
-            ChangerTitreSeul("🛒", "Achats");
+            // Page à venir
+            TexteTitre.Text = "Achats";
             ResetBoutonsNavigation();
             BtnAchats.Style = (Style)FindResource("BoutonNavigationActif");
         }
 
         private void BtnStatistiques_Click(object sender, RoutedEventArgs e)
         {
-            // TODO : Créer la page StatistiquesVue
-            ChangerTitreSeul("📊", "Statistiques");
+            // Page à venir
+            TexteTitre.Text = "Statistiques";
             ResetBoutonsNavigation();
             BtnStatistiques.Style = (Style)FindResource("BoutonNavigationActif");
         }
@@ -85,34 +104,13 @@ namespace GestionnaireDeLogement
             fenetreParametres.ShowDialog();
         }
 
-
         // ═══════════════════════════════════════════════════════════
-        // MÉTHODES UTILITAIRES
+        // OUTILS
         // ═══════════════════════════════════════════════════════════
 
         /// <summary>
-        /// Change la page affichée et met à jour le titre et le bouton actif
-        /// </summary>
-        private void ChangerPage(Page nouvellePage, string emoji, string titre, Button boutonActif)
-        {
-            FramePrincipal.Navigate(nouvellePage);
-            EmojiTitre.Text = emoji;
-            TexteTitre.Text = titre;
-            ResetBoutonsNavigation();
-            boutonActif.Style = (Style)FindResource("BoutonNavigationActif");
-        }
-
-        /// <summary>
-        /// Change uniquement le titre sans naviguer (pour pages en construction)
-        /// </summary>
-        private void ChangerTitreSeul(string emoji, string titre)
-        {
-            EmojiTitre.Text = emoji;
-            TexteTitre.Text = titre;
-        }
-
-        /// <summary>
-        /// Réinitialise tous les boutons de navigation au style par défaut
+        /// Réinitialise tous les boutons de navigation
+        /// avec le style par défaut
         /// </summary>
         private void ResetBoutonsNavigation()
         {

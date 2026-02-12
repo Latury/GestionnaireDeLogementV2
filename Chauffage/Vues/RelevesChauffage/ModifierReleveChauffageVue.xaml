@@ -20,7 +20,7 @@
             Margin="0,0,0,20"
             FontSize="22"
             FontWeight="Bold"
-            Text="✏️ Modifier un relevé" />
+            Text="Modifier un relevé" />
 
         <!--  FORMULAIRE  -->
         <StackPanel Grid.Row="1">

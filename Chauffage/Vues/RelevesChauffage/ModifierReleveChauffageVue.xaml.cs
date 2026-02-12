@@ -15,7 +15,7 @@ using System.Windows;
 namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
 {
     /// ╔═══════════════════════════════════════════════════════════════╗
-    /// ║  ✏️ FENÊTRE – MODIFICATION DE RELEVÉ DE CHAUFFAGE              ║
+    /// ║   FENÊTRE – MODIFICATION DE RELEVÉ DE CHAUFFAGE              ║
     /// ╚═══════════════════════════════════════════════════════════════╝
     public partial class ModifierReleveChauffageVue : Window
     {
@@ -29,7 +29,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // ============================
-        // ✅ VALIDER
+        //  VALIDER
         // ============================
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
@@ -38,8 +38,8 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // ============================
-        // ❌ ANNULER
-        // ============================
+        //  ANNULER
+        // ===========================
         private void Annuler_Click(object sender, RoutedEventArgs e)
         {
             DialogResult = false;

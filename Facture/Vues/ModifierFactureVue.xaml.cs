@@ -170,10 +170,10 @@ namespace GestionnaireDeLogement.Vues
 
             return urgence switch
             {
-                0 => ("🔴 URGENT", Couleurs.FondRougeClair, Couleurs.RougeUrgent),
-                1 => ("🟠 7 jours", Couleurs.FondOrangeClair, Couleurs.OrangeSombre),
-                2 => ("🟡 15 jours", Couleurs.FondJauneClair, Couleurs.JauneSombre),
-                3 => ("🟢 OK", Couleurs.FondVertClair, Couleurs.VertSombre),
+                0 => ("URGENT", Couleurs.FondRougeClair, Couleurs.RougeUrgent),
+                1 => ("7 jours", Couleurs.FondOrangeClair, Couleurs.OrangeSombre),
+                2 => ("15 jours", Couleurs.FondJauneClair, Couleurs.JauneSombre),
+                3 => ("OK", Couleurs.FondVertClair, Couleurs.VertSombre),
                 _ => ("", "", "")
             };
         }
@@ -232,50 +232,10 @@ namespace GestionnaireDeLogement.Vues
             AfficherAutresFactures();
         }
 
-        private void BtnEnregistrer_Click(object sender, RoutedEventArgs e)
-        {
-            if (!ValiderFormulaire())
-                return;
-
-            try
-            {
-                var factureExistante = toutesLesFactures.FirstOrDefault(f => f.Id == factureAModifier.Id);
-
-                if (factureExistante != null)
-                {
-                    factureExistante.Type = ExtraireType();
-                    factureExistante.Montant = double.Parse(TxtMontant.Text);
-                    factureExistante.DateFacture = DateFacture.SelectedDate ?? DateTime.Now;
-                    factureExistante.DateEcheance = DateEcheance.SelectedDate;
-                    factureExistante.EstPayee = ChkPayee.IsChecked ?? false;
-                    factureExistante.Notes = TxtNotes.Text.Trim();
-
-                    GestionnaireDonnees.Sauvegarder(toutesLesFactures, "factures.json");
-
-                    MessageBox.Show(
-                        $"✅ Facture modifiée !\n\nType : {factureExistante.Type}\nMontant : {factureExistante.Montant:F2} €",
-                        "Succès",
-                        MessageBoxButton.OK,
-                        MessageBoxImage.Information
-                    );
-
-                    NavigationService?.GoBack();
-                }
-                else
-                {
-                    MessageBox.Show("❌ Facture introuvable.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"❌ Erreur : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
-        }
-
         private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
         {
             var resultat = MessageBox.Show(
-                "⚠️ Annuler les modifications ?",
+                "Annuler les modifications ?",
                 "Confirmation",
                 MessageBoxButton.YesNo,
                 MessageBoxImage.Question
@@ -287,53 +247,8 @@ namespace GestionnaireDeLogement.Vues
             }
         }
 
-        private bool ValiderFormulaire()
+        private void ChkPayee_Checked(object sender, RoutedEventArgs e)
         {
-            if (CmbType.SelectedIndex == -1)
-            {
-                MessageBox.Show("⚠️ Sélectionnez un type.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
-                CmbType.Focus();
-                return false;
-            }
-
-            if (string.IsNullOrWhiteSpace(TxtMontant.Text))
-            {
-                MessageBox.Show("⚠️ Saisissez un montant.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
-                TxtMontant.Focus();
-                return false;
-            }
-
-            if (!double.TryParse(TxtMontant.Text, out double montant) || montant <= 0)
-            {
-                MessageBox.Show("⚠️ Montant invalide.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
-                TxtMontant.Focus();
-                TxtMontant.SelectAll();
-                return false;
-            }
-
-            if (DateFacture.SelectedDate == null)
-            {
-                MessageBox.Show("⚠️ Sélectionnez une date.", "Validation", MessageBoxButton.OK, MessageBoxImage.Warning);
-                DateFacture.Focus();
-                return false;
-            }
-
-            return true;
-        }
-
-        private string ExtraireType()
-        {
-            if (CmbType.SelectedItem is ComboBoxItem selectedItem)
-            {
-                if (selectedItem.Content is StackPanel stackPanel)
-                {
-                    if (stackPanel.Children.Count >= 2 && stackPanel.Children[1] is TextBlock textBlock)
-                    {
-                        return textBlock.Text;
-                    }
-                }
-            }
-            return "Autre";
         }
     }
 }

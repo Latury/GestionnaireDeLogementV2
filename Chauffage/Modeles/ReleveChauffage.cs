@@ -1,68 +1,68 @@
-﻿/*
- * =============================================================
- *  Gestionnaire de Logement
- *  Module Chauffage
- *
- *  Copyright © 2026 Flo Latury
- *  Licence : CC BY-NC 4.0
- *  Usage commercial interdit
- * =============================================================
- */
+﻿     /*
+     *╔=============================================================╗
+     *║                   Gestionnaire de Logement                  ║
+     *║                       Module Chauffage                      ║
+     *║                                                             ║
+     *║                   Usage commercial interdit                 ║
+     *║                    Licence : CC BY-NC  4.0                  ║
+     *║                  Copyright © 2026 Flo Latury                ║
+     *╚=============================================================╝
+     */
 
 using System;
 
 namespace GestionnaireDeLogement.Modeles
 {
     /*
-     * ╔═══════════════════════════════════════════════════════════════════
-     * ║  🔥 MODÈLE RELEVÉ DE CHAUFFAGE                                    
-     * ╠═══════════════════════════════════════════════════════════════════
-     * ║  📌 Fonction principale : Gérer les relevés de chauffage          
-     * ║  📌 Types supportés : Gaz, Bois, Électrique, Fioul               
-     * ║  📌 Utilisé dans : ChauffageVue.xaml                              
-     * ╠═══════════════════════════════════════════════════════════════════
-     * ║  ✅ Propriétés :                                                  
-     * ║     • Id : Identifiant unique                                     
-     * ║     • DateReleve : Date du relevé                                 
-     * ║     • TypeChauffage : Gaz / Bois / Électrique / Fioul            
-     * ║     • IndexCompteur : Index du compteur (Gaz, Électrique)         
-     * ║     • Quantite : Quantité livrée (Bois, Fioul)                   
-     * ║     • Unite : m³, kWh, Stère, L                                   
-     * ║     • Consommation : Consommation calculée                        
-     * ║     • MontantEstime : Coût estimé en €                            
-     * ║     • Notes : Observations                                        
-     * ╠═══════════════════════════════════════════════════════════════════
-     * ║  👤 Développeur : Latury (latury57@gmail.com)                     
-     * ║  📅 Date de création : 24/01/2026                                 
-     * ╚═══════════════════════════════════════════════════════════════════
+     * ╔══════════════════════════════════════════════════════════════╗
+     * ║                  MODÈLE RELEVÉ DE CHAUFFAGE                  ║
+     * ╠══════════════════════════════════════════════════════════════║
+     * ║     Fonction principale : Gérer les relevés de chauffage     ║
+     * ║        Types supportés : Gaz, Bois, Électrique, Fioul        ║
+     * ║              Utilisé  dans :  ChauffageVue.xaml              ║
+     * ╠══════════════════════════════════════════════════════════════╣
+     * ║     Propriétés :                                             ║
+     * ║             Id : Identifiant unique                          ║
+     * ║     DateReleve : Date du relevé                              ║
+     * ║  TypeChauffage : Gaz / Bois / Électrique / Fioul             ║
+     * ║  IndexCompteur : Index du compteur (Gaz, Électrique)         ║
+     * ║       Quantite : Quantité livrée (Bois, Fioul)               ║
+     * ║          Unite : m³, kWh, Stère, L                           ║
+     * ║   Consommation : Consommation calculée                       ║
+     * ║  MontantEstime : Coût estimé en €                            ║
+     * ║          Notes : Observations                                ║
+     * ╠══════════════════════════════════════════════════════════════╣
+     * ║           Développeur :  Latury latury57@gmail.com           ║
+     * ║                Date de création :  24/01/2026                ║
+     * ╚══════════════════════════════════════════════════════════════╝
      */
 
     /// <summary>
     /// ═══════════════════════════════════════════════════════════════════
-    /// 🔥 CLASSE RELEVÉ DE CHAUFFAGE
+    ///  CLASSE RELEVÉ DE CHAUFFAGE
     /// ═══════════════════════════════════════════════════════════════════
     /// Représente un relevé de consommation de chauffage.
     /// 
-    /// 📌 Types de chauffage supportés :
-    ///    • 🔥 Gaz : Compteur en m³
-    ///    • 🪵 Bois : Quantité en stères ou kg
-    ///    • ⚡ Électrique : Compteur en kWh
-    ///    • 🛢️ Fioul : Quantité livrée en litres
+    ///  Types de chauffage supportés :
+    ///     Gaz : Compteur en m³
+    ///     Bois : Quantité en stères ou kg
+    ///     Électrique : Compteur en kWh
+    ///     Fioul : Quantité livrée en litres
+    ///
+    ///  Calcul de consommation :
+    ///    Gaz/Électrique : Différence entre deux index
+    ///     Bois/Fioul : Quantité livrée = consommation
     /// 
-    /// 📌 Calcul de consommation :
-    ///    - Gaz/Électrique : Différence entre deux index
-    ///    - Bois/Fioul : Quantité livrée = consommation
-    /// 
-    /// 📌 Utilisé dans :
-    ///    - ChauffageVue.xaml : Affichage et gestion des relevés
-    ///    - GestionnaireDonnees.cs : Sauvegarde JSON
+    ///  Utilisé dans :
+    ///    ChauffageVue.xaml : Affichage et gestion des relevés
+    ///    GestionnaireDonnees.cs : Sauvegarde JSON
     /// ═══════════════════════════════════════════════════════════════════
     /// </summary>
     public class ReleveChauffage
     {
-        // ═══════════════════════════════════════════════════════════════
-        // 📊 PROPRIÉTÉS DU RELEVÉ
-        // ═══════════════════════════════════════════════════════════════
+        // ╔════════════════════════════════════╗
+        // ║ Fonction : 01  Propriété du relevé ║
+        // ╚════════════════════════════════════╝
 
         /// <summary>
         /// Identifiant unique du relevé
@@ -77,58 +77,58 @@ namespace GestionnaireDeLogement.Modeles
         /// <summary>
         /// Type de chauffage : "Gaz", "Bois", "Électrique", "Fioul"
         /// 
-        /// 📌 Valeurs possibles :
-        ///    • "Gaz" : Chauffage au gaz naturel
-        ///    • "Bois" : Chauffage au bois (bûches, pellets)
-        ///    • "Électrique" : Chauffage électrique
-        ///    • "Fioul" : Chauffage au fioul domestique
+        ///  Valeurs possibles :
+        ///   "Gaz" : Chauffage au gaz naturel
+        ///     "Bois" : Chauffage au bois (bûches, pellets)
+        ///     "Électrique" : Chauffage électrique
+        ///     "Fioul" : Chauffage au fioul domestique
         /// </summary>
         public string TypeChauffage { get; set; }
 
         /// <summary>
         /// Index du compteur (pour Gaz et Électrique)
         /// 
-        /// 📌 Utilisé pour :
-        ///    • Gaz : Index du compteur en m³
-        ///    • Électrique : Index du compteur en kWh
-        ///    • Bois/Fioul : Non utilisé (= 0)
+        ///  Utilisé pour :
+        ///   Gaz : Index du compteur en m³
+        ///     Électrique : Index du compteur en kWh
+        ///     Bois/Fioul : Non utilisé (= 0)
         /// </summary>
         public double IndexCompteur { get; set; }
 
         /// <summary>
         /// Quantité livrée ou consommée (pour Bois et Fioul)
         /// 
-        /// 📌 Utilisé pour :
-        ///    • Bois : Quantité en stères ou kg
-        ///    • Fioul : Quantité livrée en litres
-        ///    • Gaz/Électrique : Calculé automatiquement
+        ///  Utilisé pour :
+        ///     Bois : Quantité en stères ou kg
+        ///    Fioul : Quantité livrée en litres
+        ///     Gaz/Électrique : Calculé automatiquement
         /// </summary>
         public double Quantite { get; set; }
 
         /// <summary>
         /// Unité de mesure : "m³", "kWh", "Stère", "kg", "L"
         /// 
-        /// 📌 Par type de chauffage :
-        ///    • Gaz : "m³" (mètre cube)
-        ///    • Électrique : "kWh" (kilowatt-heure)
-        ///    • Bois : "Stère" ou "kg" (kilogramme)
-        ///    • Fioul : "L" (litre)
+        ///  Par type de chauffage :
+        ///    Gaz : "m³" (mètre cube)
+        ///     Électrique : "kWh" (kilowatt-heure)
+        ///     Bois : "Stère" ou "kg" (kilogramme)
+        ///    Fioul : "L" (litre)
         /// </summary>
         public string Unite { get; set; }
 
         /// <summary>
         /// Consommation totale calculée
         /// 
-        /// 📌 Calcul :
-        ///    • Gaz/Électrique : Différence entre index actuel et précédent
-        ///    • Bois/Fioul : Égal à la quantité livrée
+        ///  Calcul :
+        ///    Gaz/Électrique : Différence entre index actuel et précédent
+        ///    Bois/Fioul : Égal à la quantité livrée
         /// </summary>
         public double Consommation { get; set; }
 
         /// <summary>
         /// Montant estimé en euros (basé sur le prix unitaire)
         /// 
-        /// 📌 Calcul :
+        ///  Calcul :
         ///    MontantEstime = Consommation × PrixUnitaire
         /// </summary>
         public double MontantEstime { get; set; }
@@ -136,16 +136,16 @@ namespace GestionnaireDeLogement.Modeles
         /// <summary>
         /// Notes ou observations sur le relevé (optionnel)
         /// 
-        /// 📌 Exemples :
-        ///    • "Livraison de 500L de fioul"
-        ///    • "Hiver rigoureux, consommation élevée"
-        ///    • "Réglage chaudière effectué"
+        ///  Exemples :
+        ///     "Livraison de 500L de fioul"
+        ///     "Hiver rigoureux, consommation élevée"
+        ///    "Réglage chaudière effectué"
         /// </summary>
         public string Notes { get; set; }
 
-        // ═══════════════════════════════════════════════════════════════
-        // 🏗️ CONSTRUCTEUR PAR DÉFAUT
-        // ═══════════════════════════════════════════════════════════════
+        // ╔═══════════════════════════════════════╗
+        // ║ Fonction : 02 Constructeur par défaut ║
+        // ╚═══════════════════════════════════════╝
 
         /// <summary>
         /// Constructeur par défaut
@@ -154,7 +154,7 @@ namespace GestionnaireDeLogement.Modeles
         public ReleveChauffage()
         {
             // Valeurs par défaut
-            DateReleve = DateTime.Now;
+            DateReleve = DateTime.Now; 
             TypeChauffage = "Gaz";  // Type par défaut
             IndexCompteur = 0;
             Quantite = 0;
@@ -164,28 +164,28 @@ namespace GestionnaireDeLogement.Modeles
             Notes = string.Empty;
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // 🔢 MÉTHODE : CALCULER CONSOMMATION (GAZ / ÉLECTRIQUE)
-        // ═══════════════════════════════════════════════════════════════
+        // ╔════════════════════════════════════════════════════════╗
+        // ║ Fonction : 03 Calculer consommation (Gaz / Électrique) ║
+        // ╚════════════════════════════════════════════════════════╝
 
         /// <summary>
         /// Calcule la consommation par rapport au relevé précédent
         /// (Pour chauffage Gaz ou Électrique avec compteur)
         /// 
-        /// 📝 PARAMÈTRES :
-        ///    - relevePrecedent : Le relevé précédent du même type
-        ///    - prixUnitaire : Prix par unité (€/m³ ou €/kWh)
+        ///  PARAMÈTRES :
+        ///     relevePrecedent : Le relevé précédent du même type
+        ///     prixUnitaire : Prix par unité (€/m³ ou €/kWh)
         /// 
-        /// 🔄 PROCESSUS :
-        ///    1️⃣ Vérifie qu'un relevé précédent existe
-        ///    2️⃣ Calcule : Consommation = IndexActuel - IndexPrécédent
-        ///    3️⃣ Calcule : MontantEstime = Consommation × PrixUnitaire
+        ///  PROCESSUS :
+        ///    1. Vérifie qu'un relevé précédent existe
+        ///    2. Calcule : Consommation = IndexActuel - IndexPrécédent
+        ///    3. Calcule : MontantEstime = Consommation × PrixUnitaire
         /// 
-        /// ⚠️ IMPORTANT :
+        ///  IMPORTANT :
         ///    Cette méthode est utilisée uniquement pour Gaz et Électrique.
         ///    Pour Bois et Fioul, utiliser CalculerConsommationLivraison().
         /// 
-        /// 📌 EXEMPLE D'UTILISATION :
+        ///  EXEMPLE D'UTILISATION :
         ///    ReleveChauffage releve = new ReleveChauffage();
         ///    releve.TypeChauffage = "Gaz";
         ///    releve.IndexCompteur = 15234.5;
@@ -228,28 +228,28 @@ namespace GestionnaireDeLogement.Modeles
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // 📦 MÉTHODE : CALCULER CONSOMMATION (BOIS / FIOUL - LIVRAISON)
-        // ═══════════════════════════════════════════════════════════════
+        // ╔════════════════════════════════════════════════════════════════╗
+        // ║ Fonction : 04 Calculer consommation (Bois / Fioul / Livraison) ║
+        // ╚════════════════════════════════════════════════════════════════╝
 
-        /// <summary>
+        /// <summary> Méthode : Calculer consommation (Bois / Fioul / Livraison)
         /// Calcule le coût d'une livraison de chauffage
         /// (Pour Bois ou Fioul livrés par quantité)
         /// 
-        /// 📝 PARAMÈTRES :
-        ///    - quantiteLivree : Quantité livrée (stères, kg, litres)
-        ///    - prixUnitaire : Prix par unité (€/stère, €/kg, €/L)
+        ///  PARAMÈTRES :
+        ///    quantiteLivree : Quantité livrée (stères, kg, litres)
+        ///    prixUnitaire : Prix par unité (€/stère, €/kg, €/L)
         /// 
-        /// 🔄 PROCESSUS :
-        ///    1️⃣ Enregistre la quantité livrée
-        ///    2️⃣ Consommation = Quantité livrée
-        ///    3️⃣ Calcule : MontantEstime = Quantité × PrixUnitaire
+        ///  PROCESSUS :
+        ///     1.Enregistre la quantité livrée
+        ///     2.Consommation = Quantité livrée
+        ///     3.Calcule : MontantEstime = Quantité × PrixUnitaire
         /// 
-        /// ⚠️ IMPORTANT :
+        ///  IMPORTANT :
         ///    Cette méthode est utilisée uniquement pour Bois et Fioul.
         ///    Pour Gaz et Électrique, utiliser CalculerConsommation().
         /// 
-        /// 📌 EXEMPLE D'UTILISATION :
+        ///  EXEMPLE D'UTILISATION :
         ///    ReleveChauffage releve = new ReleveChauffage();
         ///    releve.TypeChauffage = "Fioul";
         ///    releve.Unite = "L";
@@ -278,25 +278,24 @@ namespace GestionnaireDeLogement.Modeles
             // Pour une livraison, l'index n'est pas utilisé
             IndexCompteur = 0;
         }
+        // ╔════════════════════════════════════════════╗
+        // ║ Fonction : 05 Définir le type de chauffage ║
+        // ╚════════════════════════════════════════════╝
 
-        // ═══════════════════════════════════════════════════════════════
-        // 🔧 MÉTHODE HELPER : DÉFINIR LE TYPE DE CHAUFFAGE
-        // ═══════════════════════════════════════════════════════════════
-
-        /// <summary>
+        /// <summary> Helper : Définir le type de chauffage 
         /// Définit le type de chauffage et configure l'unité correspondante
         /// 
-        /// 📝 PARAMÈTRES :
-        ///    - typeChauffage : "Gaz", "Bois", "Électrique", "Fioul"
+        /// PARAMÈTRES :
+        ///     typeChauffage : "Gaz", "Bois", "Électrique", "Fioul"
         /// 
-        /// 🔄 PROCESSUS :
-        ///    Configure automatiquement l'unité selon le type :
-        ///    • Gaz → "m³"
-        ///    • Électrique → "kWh"
-        ///    • Bois → "Stère"
-        ///    • Fioul → "L"
+        /// PROCESSUS :
+        ///     Configure automatiquement l'unité selon le type :
+        ///     Gaz → "m³"
+        ///     Électrique → "kWh"
+        ///     Bois → "Stère"
+        ///     Fioul → "L"
         /// 
-        /// 📌 EXEMPLE D'UTILISATION :
+        ///  EXEMPLE D'UTILISATION :
         ///    ReleveChauffage releve = new ReleveChauffage();
         ///    releve.DefinirTypeChauffage("Fioul");
         ///    // Résultat : TypeChauffage = "Fioul", Unite = "L"
@@ -330,17 +329,17 @@ namespace GestionnaireDeLogement.Modeles
             }
         }
 
-        // ═══════════════════════════════════════════════════════════════
-        // 📊 MÉTHODE HELPER : OBTENIR UN RÉSUMÉ DU RELEVÉ
-        // ═══════════════════════════════════════════════════════════════
+        // ╔════════════════════════════════════════════╗
+        // ║ Fonction : 06 Obtenir un résumé du relevé  ║
+        // ╚════════════════════════════════════════════╝
 
-        /// <summary>
+        /// <summary>    
         /// Retourne un résumé textuel du relevé
         /// 
-        /// 🔙 RETOUR :
+        ///  RETOUR :
         ///    Chaîne formatée avec les informations principales
         /// 
-        /// 📌 EXEMPLE DE RETOUR :
+        ///  EXEMPLE DE RETOUR :
         ///    "Gaz - 24/01/2026 : 134.5 m³ (114.33 €)"
         ///    "Fioul - 15/12/2025 : 500.0 L (600.00 €)"
         /// </summary>

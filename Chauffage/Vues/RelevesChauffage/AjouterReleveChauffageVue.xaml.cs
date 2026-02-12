@@ -22,28 +22,28 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
      * ╔══════════════════════════════════════════════════════════════╗
      * ║  FENÊTRE : AJOUTER UN RELEVÉ DE CHAUFFAGE                    ║
      * ╠══════════════════════════════════════════════════════════════╣
-     * ║ Rôle :                                                      ║
-     * ║ - Saisie d’un relevé                                        ║
-     * ║ - Validation visuelle immédiate (UX)                        ║
-     * ║ - Adaptation des champs selon le type                       ║
-     * ║ - Retourne un ReleveChauffage valide                        ║
+     * ║ Rôle :                                                       ║
+     * ║      Saisie d’un relevé                                      ║
+     * ║      Validation visuelle immédiate (UX)                      ║
+     * ║      Adaptation des champs selon le type                     ║
+     * ║      Retourne un ReleveChauffage valide                      ║
      * ╚══════════════════════════════════════════════════════════════╝
      */
 
     public partial class AjouterReleveChauffageVue : Window
     {
         // =============================================================
-        // 🔹 RELEVÉ CRÉÉ
+        // Fonction : 01 RELEVÉ CRÉÉ
         // =============================================================
         public ReleveChauffage NouveauReleve { get; private set; }
 
         // =============================================================
-        // 🔹 COULEURS DE VALIDATION
+        // Fonction : 02 COULEURS DE VALIDATION
         // =============================================================
         private readonly Brush _bordureErreur = Brushes.Red;
 
         // =============================================================
-        // 🔹 CONSTRUCTEUR
+        // Fonction : 03 CONSTRUCTEUR
         // =============================================================
         public AjouterReleveChauffageVue()
         {
@@ -62,11 +62,11 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
 
             MettreAJourChampsSelonType();
 
-            ResumeTexte = "📝 Le résumé du relevé apparaîtra ici au fur et à mesure";
+            ResumeTexte = "Le résumé du relevé apparaîtra ici au fur et à mesure";
         }
 
         // =============================================================
-        // 🧾 TEXTE DU RÉSUMÉ (binding simple)
+        // Fonction : 04 TEXTE DU RÉSUMÉ (binding simple)
         // =============================================================
         private string _resumeTexte;
         public string ResumeTexte
@@ -80,7 +80,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // =============================================================
-        // 🧾 RÉSUMÉ TEMPS RÉEL (DISCRET)
+        // Fonction : 05 RÉSUMÉ TEMPS RÉEL (DISCRET)
         // =============================================================
         private void MettreAJourResume(object sender, EventArgs e)
         {
@@ -114,12 +114,12 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
                 ? DpDate.SelectedDate.Value.ToString("dd/MM/yyyy")
                 : "—";
 
-            // 👉 ICI on prépare juste le texte
-            ResumeTexte = $"📅 {date}  |  🔥 {type}  |  📦 {quantite} {unite}  |  💰 {montant}";
+            // ICI on prépare juste le texte
+            ResumeTexte = $"{date}  |  {type}  |  {quantite} {unite}  |  {montant}";
         }
 
         // =============================================================
-        // ❌ ANNULER
+        // Fonction : 06 ANNULER
         // =============================================================
         private void Annuler_Click(object sender, RoutedEventArgs e)
         {
@@ -128,20 +128,20 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // =============================================================
-        // ✔ VALIDER
+        // Fonction : 07 VALIDER
         // =============================================================
         private void Valider_Click(object sender, RoutedEventArgs e)
         {
             bool formulaireValide = true;
 
-            // 🔹 Initialisation OBLIGATOIRE (corrige CS0165)
+            //  Initialisation OBLIGATOIRE (corrige CS0165)
             double quantite = 0;
             double montant = 0;
 
             ResetValidation();
 
             // =====================================================
-            // 🔍 VALIDATION QUANTITÉ
+            // Fonction : 08 VALIDATION QUANTITÉ
             // =====================================================
             if (string.IsNullOrWhiteSpace(TxtQuantite.Text) ||
                 !double.TryParse(TxtQuantite.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out quantite))
@@ -151,7 +151,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
             }
 
             // =====================================================
-            // 🔍 VALIDATION MONTANT
+            // Fonction : 09 VALIDATION MONTANT
             // =====================================================
             if (string.IsNullOrWhiteSpace(TxtMontant.Text) ||
                 !double.TryParse(TxtMontant.Text, NumberStyles.Any, CultureInfo.InvariantCulture, out montant))
@@ -161,7 +161,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
             }
 
             // =====================================================
-            // 🔍 VALIDATION TYPE
+            // Fonction : 10 VALIDATION TYPE
             // =====================================================
             ComboBoxItem typeItem = CmbType.SelectedItem as ComboBoxItem;
             if (typeItem == null || typeItem.IsEnabled == false)
@@ -181,7 +181,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
             }
 
             // =====================================================
-            // 🔒 VALEURS POSITIVES UNIQUEMENT
+            // Fonction : 11 VALEURS POSITIVES UNIQUEMENT
             // =====================================================
             if (quantite < 0 || montant < 0)
             {
@@ -194,7 +194,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
             }
 
             // =====================================================
-            // ✅ CRÉATION DU RELEVÉ
+            // Fonction : 12 CRÉATION DU RELEVÉ
             // =====================================================
             NouveauReleve = new ReleveChauffage
             {
@@ -212,7 +212,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
 
 
         // =============================================================
-        // 🔁 VALIDATION TEMPS RÉEL (MODIFICATION B)
+        // Fonction : 13 VALIDATION TEMPS RÉEL (MODIFICATION B)
         // =============================================================
         private void ChampTexte_Modifie(object sender, TextChangedEventArgs e)
         {
@@ -230,7 +230,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // =============================================================
-        // 🔁 CHANGEMENT DU TYPE
+        // Fonction : 14 CHANGEMENT DU TYPE
         // =============================================================
         private void CmbType_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -239,7 +239,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // =============================================================
-        // 🔧 ADAPTATION SELON TYPE
+        // Fonction : 15 ADAPTATION SELON TYPE
         // =============================================================
         private void MettreAJourChampsSelonType()
         {
@@ -260,7 +260,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // =============================================================
-        // 🎨 GESTION DES BORDURES
+        // Fonction : 16 GESTION DES BORDURES
         // =============================================================
         private void MarquerErreur(Control control)
         {
@@ -277,7 +277,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage
         }
 
         // =============================================================
-        // 🔄 RÉINITIALISATION VISUELLE DES ERREURS
+        // Fonction : 17 RÉINITIALISATION VISUELLE DES ERREURS
         // =============================================================
         private void ResetValidation()
         {

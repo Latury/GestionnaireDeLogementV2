@@ -1,10 +1,14 @@
 ﻿# 📝 PATCH NOTES – Gestionnaire de Logement
 
-Ce fichier contient les **notes techniques détaillées** du projet **Gestionnaire de Logement**.
+Ce fichier contient les **notes techniques détaillées** du projet  
+**Gestionnaire de Logement**.
 
-## Différence avec les autres fichiers
+---
+
+## 📌 Différence avec les autres fichiers
+
 - **README.md** → Présentation générale (utilisateurs & contributeurs)
-- **CHANGELOG.md** → Résumé des changements par version
+- **CHANGELOG.md** → Résumé fonctionnel par version
 - **PATCH_NOTES.md** → Détails techniques (ce qui a été fait, comment, pourquoi)
 
 ---
@@ -12,6 +16,7 @@ Ce fichier contient les **notes techniques détaillées** du projet **Gestionnai
 ## 📌 Convention utilisée
 
 Chaque version contient :
+
 - 📅 **Période**
 - 🎯 **Objectif technique**
 - 🛠️ **Modifications réalisées**
@@ -20,121 +25,206 @@ Chaque version contient :
 
 ---
 
-# 🚀 Version 1.0.0-dev — Fondations & UX (actuelle)
+# 🚀 Version 1.0.0-dev — Fondations, Restructuration & UX
 
 📅 **Période** : Janvier – Février 2026  
-📌 **Statut** : 🟡 En développement actif  
-🎯 **Objectif** : Poser une base propre, pédagogique et agréable à utiliser
+📌 **Statut** : 🟡 Développement actif  
+🎯 **Objectif** : Stabiliser l’architecture, professionnaliser l’interface et préparer la persistance des données
 
 ---
 
 ## 🏗️ Architecture & Structure
 
-### 📁 Organisation du projet
-- Mise en place d’une **structure modulaire claire**
-- Séparation logique :
-  - `Modeles`
-  - `Vues`
-  - `Chauffage` (module dédié)
-  - `Styles`
-  - `Utilitaires`
-  - `Configurations` (ignoré par Git)
+### 📁 Restructuration complète du projet
 
-👉 Objectif : faciliter la compréhension pour un développeur débutant.
+Adoption d’une structure modulaire claire par domaine métier :
+
+- `Chauffage`
+- `Eau`
+- `Electricite`
+- `Facture`
+- `Historique`
+- `Configurations`
+- `Application`
+- `Outils`
+- `Ressources`
+
+Chaque module respecte la séparation :
+
+- `Modeles`
+- `Services`
+- `VueModeles`
+- `Vues`
+
+### 🎯 Objectif technique
+
+- Éviter les dossiers génériques confus
+- Rendre le projet lisible pour un développeur débutant
+- Préparer une montée en puissance vers un MVVM plus strict
 
 ---
 
-## 🎨 Système de styles & couleurs
+## ♻️ Suppression complète des emojis
 
-### Styles/Couleurs.xaml
-- Centralisation complète des couleurs
-- Nommage explicite (Eau / Électricité / Chauffage / Neutres)
-- Palette cohérente et réutilisable
-- Préparation pour futur thème sombre
+### 🔧 Problème
 
-### Choix UX
-- Contraste suffisant
-- Feedback visuel immédiat
-- Lisibilité prioritaire
+Les emojis étaient utilisés directement dans :
+
+- Titres de fenêtres
+- Boutons
+- Messages système
+- Commentaires
+
+### ✅ Solution
+
+- Suppression globale via scripts PowerShell
+- Nettoyage des chaînes C# et XAML
+- Remplacement par icônes vectorielles XAML centralisées
+
+### 🎨 Nouvelle approche
+
+Centralisation des icônes dans :
+
+```
+Ressources/Icones/
+```
+
+Organisation thématique :
+
+- actions_boutons_interactions
+- consommations
+- navigation_menu_principal
+- statuts_succes_erreur_info
+- etc.
+
+👉 Décision :  
+Interface professionnelle > décorations visuelles.
 
 ---
 
-## 🔥 Module Chauffage (le plus avancé)
+## 🔥 Module Chauffage
 
-### 🪟 ChauffageVue
-- Filtrage par type de chauffage :
-  - Fioul
+### ChauffageVue
+
+- Filtrage par type :
   - Gaz
-  - Électrique
+  - Fioul
   - Bois
-- Interface cohérente avec les autres modules
+  - Électrique
+- Structure cohérente avec les autres modules
 
 ---
 
-### ➕ AjouterReleveChauffageVue
+### AjouterReleveChauffageVue
 
-#### Fonctionnalités UX implémentées
-- Validation visuelle immédiate :
-  - Bordure rouge si champ invalide
+#### UX implémentée
+
+- Validation visuelle immédiate (bordures rouges)
 - Adaptation automatique de l’unité :
   - Gaz → m³
   - Fioul → litres
   - Électrique → kWh
   - Bois → stères
-- Désactivation intelligente de certains champs selon le type
-- Résumé **temps réel discret** sous le formulaire
-- Aucune sauvegarde silencieuse (volontaire)
+- Résumé en temps réel
+- Désactivation conditionnelle de champs
 
-#### Choix techniques
-- Validation **côté interface** avant toute logique métier
-- Pas de calcul automatique du coût pour le moment
-- Préparation pour liaison avec paramètres ultérieurs
+#### Décisions techniques
 
----
-
-## 🧾 Modèles de données
-
-### Modèles existants
-- `Facture.cs`
-- `ReleveEau.cs`
-- `ReleveElectricite.cs`
-- `ReleveChauffage.cs`
-
-🔧 Les modèles sont volontairement simples :
-- Propriétés claires
-- Pas de logique complexe embarquée
-- Lisibilité > optimisation
+- Validation côté interface avant logique métier
+- Pas de calcul automatique du coût (volontaire)
+- Préparation à liaison future avec `Configurations`
 
 ---
 
-## 💾 Gestion des données (JSON)
+## 💧 Module Eau
 
-### GestionnaireDonnees.cs
-- Structure prête pour :
-  - Lecture
-  - Écriture
-  - Sérialisation JSON
-- Pas encore branché sur les formulaires
-
-👉 Décision volontaire :
-> Stabiliser l’UX avant de connecter la persistance
+- Ajout de relevé
+- Modification de relevé
+- Structure MVVM partielle
+- Préparation pour persistance JSON
 
 ---
 
-## 🧠 Expérience utilisateur (UX)
+## ⚡ Module Électricité
 
-Principes appliqués :
-- Pas de surcharge visuelle
-- Validation explicite
+- Ajout de relevé
+- Modification de relevé
+- Structure alignée avec Eau
+
+---
+
+## 🧾 Module Facture
+
+- Ajout
+- Modification
+- Suppression
+- Organisation modulaire propre
+- Préparation au suivi via Historique
+
+---
+
+## 📜 Module Historique
+
+### Structure
+
+- `HistoriqueModification.cs`
+- `GestionnaireHistorique.cs`
+- `HistoriqueVue`
+
+### Fonctionnalités techniques
+
+- Enregistrement des actions :
+  - Ajout
+  - Modification
+  - Suppression
+- Filtrage par catégorie
+- Suppression ciblée
+- Suppression globale
+
+### Objectif
+
+Fournir une traçabilité pédagogique et transparente des actions utilisateur.
+
+---
+
+### 💾 Gestion des données (JSON)
+
+## État actuel
+
+- Structure prête via `GestionnaireDonnees`
+- Services dédiés par module
+- Sérialisation JSON prévue
+- Persistance JSON partiellement connectée
+- Intégration complète prévue en 1.0.1
+
+## Décision stratégique
+
+Stabiliser l’UX avant de connecter complètement la persistance.
+
+---
+
+### 🎨 Système de styles
+
+## Couleurs.xaml
+
+- Centralisation complète
+- Palette cohérente
+- Préparation thème sombre
+- Contraste vérifié
+
+## Philosophie UI
+
+- Lisibilité prioritaire
 - Feedback immédiat
+- Pas de surcharge visuelle
 - Comportements prévisibles
-- Lisibilité pour non-techniciens
 
 ---
 
-## 📚 Documentation
+## 📚 Documentation technique
 
 Documents maintenus :
+
 - README.md
 - CHANGELOG.md
 - PATCH_NOTES.md
@@ -143,55 +233,55 @@ Documents maintenus :
 - EXEMPLES_COMMITS.md
 - LICENSE.txt
 
-🎯 Objectif :
-> Un projet compréhensible **sans connaissance préalable**
+Objectif :
+
+> Un projet compréhensible même pour un développeur débutant.
 
 ---
 
-## ⚖️ Licence & conformité
+### ⚖️ Licence & conformité
 
 - Licence : **CC BY-NC 4.0**
 - En-tête obligatoire ajouté dans :
-  - Tous les fichiers `.cs`
-  - Tous les fichiers `.xaml`
-- Usage commercial interdit
+  - Tous les `.cs`
+  - Tous les `.xaml`
 - Attribution obligatoire
+- Usage commercial interdit
 
 ---
 
 ## 📊 État technique global
 
-- Architecture : MVVM hybride (progressif)
-- Lignes de code : ~1 500 (XAML + C#)
-- Modules actifs : 4
-- Formulaires avancés : Chauffage
-- Stockage : JSON local (non encore connecté)
+- Architecture : MVVM hybride évolutif
+- Modules métier : 6 (Eau, Électricité, Chauffage, Facture, Historique, Configurations)
+- Icônes : centralisées et vectorielles (XAML)
+- Emojis : 0
 - Build : Stable
+- Restructuration : stabilisée (évolutive)
+- Persistance JSON : partiellement connectée (finalisation prévue en 1.0.1)
 
 ---
 
-# ⏭️ Prochaines étapes techniques (1.0.1)
+### ⏭️ Prochaines étapes (1.0.1)
 
-- Connexion réelle aux fichiers JSON
-- CRUD fonctionnel (Eau / Électricité / Chauffage)
-- Finalisation des formulaires d’ajout
+- Connexion complète aux fichiers JSON
+- CRUD totalement fonctionnel sur tous les modules
 - Validation métier renforcée
-- Guide utilisateur simplifié
+- Paramètres avancés
+- Optimisation progressive
 
 ---
 
-## 🧭 Philosophie du projet
+### 🧭 Philosophie technique
 
 - Pas de sur-ingénierie
-- Pas de fonctionnalités « gadget »
-- Priorité à :
-  - Compréhension
-  - UX
-  - Apprentissage
-- Chaque étape est validée avant d’avancer
+- Code lisible avant tout
+- Modularité claire
+- Progression maîtrisée
+- Chaque étape validée avant la suivante
 
 ---
 
-📌 **Dernière mise à jour** : 03 février 2026  
-👤 **Auteur** : Latury (Flo)  
-🤖 **Assistance** : Jarvis – IA d’accompagnement pédagogique
+📌 **Dernière mise à jour** : 12 Février 2026  23h49  
+👤 **Auteur** : Flo Latury  
+🤖 Assistance technique : IA pédagogique ChatGPT 5.2 (Alias : "Jarvis")

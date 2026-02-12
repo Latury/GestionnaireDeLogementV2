@@ -31,13 +31,13 @@ namespace GestionnaireDeLogement.Chauffage.Vues
     public partial class ChauffageVue : Page
     {
         // =============================================================
-        // 🔹 ACCÈS PROPRE AU VIEWMODEL
+        //  ACCÈS PROPRE AU VIEWMODEL
         // =============================================================
         private ChauffageVueModele VueModele
             => DataContext as ChauffageVueModele;
 
         // =============================================================
-        // 🔹 CONSTRUCTEUR
+        //  CONSTRUCTEUR
         // =============================================================
         public ChauffageVue()
         {
@@ -57,7 +57,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues
 
 
         // =============================================================
-        // ➕ AJOUTER UN RELEVÉ
+        //  AJOUTER UN RELEVÉ
         // =============================================================
         private void BtnAjouter_Click(object sender, RoutedEventArgs e)
         {
@@ -73,7 +73,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues
         }
 
         // =============================================================
-        // ✏️ MODIFIER UN RELEVÉ
+        //  MODIFIER UN RELEVÉ
         // =============================================================
         private void BtnModifier_Click(object sender, RoutedEventArgs e)
         {
@@ -97,7 +97,7 @@ namespace GestionnaireDeLogement.Chauffage.Vues
         }
 
         // =============================================================
-        // 🗑️ SUPPRIMER UN RELEVÉ
+        //  SUPPRIMER UN RELEVÉ
         // =============================================================
         private void BtnSupprimer_Click(object sender, RoutedEventArgs e)
         {

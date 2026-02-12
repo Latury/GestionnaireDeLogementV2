@@ -8,7 +8,7 @@ namespace GestionnaireDeLogement.Donnees
 {
     /// <summary>
     /// ═══════════════════════════════════════════════════════════════════
-    /// 📜 GESTIONNAIRE D'HISTORIQUE
+    ///  GESTIONNAIRE D'HISTORIQUE
     /// ═══════════════════════════════════════════════════════════════════
     /// Permet d'enregistrer et de consulter l'historique des modifications
     /// ═══════════════════════════════════════════════════════════════════
@@ -20,7 +20,7 @@ namespace GestionnaireDeLogement.Donnees
         private static int _prochainId = 1;
 
         /// <summary>
-        /// 📥 Charge l'historique depuis le fichier
+        /// Charge l'historique depuis le fichier
         /// </summary>
         private static void ChargerHistorique()
         {
@@ -35,7 +35,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 💾 Sauvegarde l'historique dans le fichier
+        ///  Sauvegarde l'historique dans le fichier
         /// </summary>
         private static void SauvegarderHistorique()
         {
@@ -43,7 +43,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// ➕ Enregistre l'ajout d'un relevé d'eau
+        ///  Enregistre l'ajout d'un relevé d'eau
         /// </summary>
         public static void EnregistrerAjoutReleveEau(ReleveEau releve)
         {
@@ -56,7 +56,7 @@ namespace GestionnaireDeLogement.Donnees
                 TypeEntite = "ReleveEau",
                 IdEntite = releve.Id,
                 TypeAction = "Ajout",
-                Description = $"💧 Nouveau relevé d'eau - Date: {releve.DateReleve:dd/MM/yyyy}, Eau froide: {releve.IndexEauFroide:F2} m³, Eau chaude: {releve.IndexEauChaude:F2} m³"
+                Description = $"Nouveau relevé d'eau - Date: {releve.DateReleve:dd/MM/yyyy}, Eau froide: {releve.IndexEauFroide:F2} m³, Eau chaude: {releve.IndexEauChaude:F2} m³"
             };
 
             _historique.Add(entree);
@@ -64,7 +64,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// ✏️ Enregistre la modification d'un relevé d'eau
+        /// ️ Enregistre la modification d'un relevé d'eau
         /// </summary>
         public static void EnregistrerModificationReleveEau(ReleveEau ancien, ReleveEau nouveau)
         {
@@ -83,7 +83,7 @@ namespace GestionnaireDeLogement.Donnees
                     ChampModifie = "DateReleve",
                     AncienneValeur = ancien.DateReleve.ToString("dd/MM/yyyy"),
                     NouvelleValeur = nouveau.DateReleve.ToString("dd/MM/yyyy"),
-                    Description = $"📅 Date modifiée : {ancien.DateReleve:dd/MM/yyyy} → {nouveau.DateReleve:dd/MM/yyyy}"
+                    Description = $"Date modifiée : {ancien.DateReleve:dd/MM/yyyy} → {nouveau.DateReleve:dd/MM/yyyy}"
                 });
             }
 
@@ -99,7 +99,7 @@ namespace GestionnaireDeLogement.Donnees
                     ChampModifie = "IndexEauFroide",
                     AncienneValeur = ancien.IndexEauFroide.ToString("F2", CultureInfo.InvariantCulture),
                     NouvelleValeur = nouveau.IndexEauFroide.ToString("F2", CultureInfo.InvariantCulture),
-                    Description = $"💧 Index eau froide modifié : {ancien.IndexEauFroide:F2} m³ → {nouveau.IndexEauFroide:F2} m³"
+                    Description = $"Index eau froide modifié : {ancien.IndexEauFroide:F2} m³ → {nouveau.IndexEauFroide:F2} m³"
                 });
             }
 
@@ -115,7 +115,7 @@ namespace GestionnaireDeLogement.Donnees
                     ChampModifie = "IndexEauChaude",
                     AncienneValeur = ancien.IndexEauChaude.ToString("F2", CultureInfo.InvariantCulture),
                     NouvelleValeur = nouveau.IndexEauChaude.ToString("F2", CultureInfo.InvariantCulture),
-                    Description = $"🔥 Index eau chaude modifié : {ancien.IndexEauChaude:F2} m³ → {nouveau.IndexEauChaude:F2} m³"
+                    Description = $"Index eau chaude modifié : {ancien.IndexEauChaude:F2} m³ → {nouveau.IndexEauChaude:F2} m³"
                 });
             }
 
@@ -131,7 +131,7 @@ namespace GestionnaireDeLogement.Donnees
                     ChampModifie = "Notes",
                     AncienneValeur = ancien.Notes ?? "(vide)",
                     NouvelleValeur = nouveau.Notes ?? "(vide)",
-                    Description = $"📝 Notes modifiées"
+                    Description = $" Notes modifiées"
                 });
             }
 
@@ -139,7 +139,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 🗑️ Enregistre la suppression d'un relevé d'eau
+        ///  Enregistre la suppression d'un relevé d'eau
         /// </summary>
         public static void EnregistrerSuppressionReleveEau(ReleveEau releve)
         {
@@ -152,7 +152,7 @@ namespace GestionnaireDeLogement.Donnees
                 TypeEntite = "ReleveEau",
                 IdEntite = releve.Id,
                 TypeAction = "Suppression",
-                Description = $"🗑️ Relevé supprimé - Date: {releve.DateReleve:dd/MM/yyyy}, Eau froide: {releve.IndexEauFroide:F2} m³, Eau chaude: {releve.IndexEauChaude:F2} m³"
+                Description = $" Relevé supprimé - Date: {releve.DateReleve:dd/MM/yyyy}, Eau froide: {releve.IndexEauFroide:F2} m³, Eau chaude: {releve.IndexEauChaude:F2} m³"
             };
 
             _historique.Add(entree);
@@ -160,7 +160,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 📋 Récupère tout l'historique
+        ///  Récupère tout l'historique
         /// </summary>
         public static List<HistoriqueModification> ObtenirHistorique()
         {
@@ -169,7 +169,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 📋 Récupère l'historique filtré par type d'entité
+        ///  Récupère l'historique filtré par type d'entité
         /// </summary>
         public static List<HistoriqueModification> ObtenirHistorique(string typeEntite)
         {
@@ -181,7 +181,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 🗑️ Supprime une entrée spécifique de l'historique
+        ///  Supprime une entrée spécifique de l'historique
         /// </summary>
         public static void SupprimerEntree(int id)
         {
@@ -195,7 +195,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 🗑️ Supprime toutes les entrées d'un type spécifique
+        /// Supprime toutes les entrées d'un type spécifique
         /// </summary>
         public static void SupprimerParCategorie(string typeEntite)
         {
@@ -205,7 +205,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 🗑️ Supprime TOUT l'historique
+        /// ️ Supprime TOUT l'historique
         /// </summary>
         public static void SupprimerTout()
         {
@@ -215,7 +215,7 @@ namespace GestionnaireDeLogement.Donnees
         }
 
         /// <summary>
-        /// 📊 Compte le nombre d'entrées par catégorie
+        ///  Compte le nombre d'entrées par catégorie
         /// </summary>
         public static int CompterParCategorie(string typeEntite)
         {

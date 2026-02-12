@@ -140,7 +140,6 @@
                     FontSize="32"
                     FontWeight="Bold"
                     Foreground="{StaticResource CouleurAlerteMoyenne}">
-                    <Run Text="⚡" />
                     <Run Text="Gestion de l'électricité" />
                 </TextBlock>
                 <TextBlock
@@ -169,7 +168,7 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="📅 Dernier relevé" />
+                            Text="Dernier relevé" />
                         <TextBlock
                             x:Name="TxtDernierReleve"
                             Margin="0,8,0,0"
@@ -187,7 +186,7 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="⚡ Consommation mois" />
+                            Text="Consommation mois" />
                         <TextBlock
                             Margin="0,8,0,0"
                             FontSize="24"
@@ -206,7 +205,7 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="📊 Moyenne mensuelle" />
+                            Text="Moyenne mensuelle" />
                         <TextBlock
                             Margin="0,8,0,0"
                             FontSize="24"
@@ -225,14 +224,14 @@
                             FontSize="13"
                             FontWeight="SemiBold"
                             Foreground="{StaticResource TexteSecondaire}"
-                            Text="💰 Coût estimé mois" />
+                            Text="Coût estimé mois" />
                         <TextBlock
                             Margin="0,8,0,0"
                             FontSize="24"
                             FontWeight="Bold"
                             Foreground="{StaticResource CouleurPrincipale}">
                             <Run Text="--" />
-                            <Run FontSize="16" Text=" €" />
+                            <Run FontSize="16" Text=" " />
                         </TextBlock>
                     </StackPanel>
                 </Border>
@@ -282,11 +281,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="26"
-                                Text="➕" />
                             <TextBlock VerticalAlignment="Center" Text="Ajouter un relevé" />
                         </StackPanel>
                     </Button>
@@ -338,11 +332,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="26"
-                                Text="✏️" />
                             <TextBlock VerticalAlignment="Center" Text="Modifier" />
                         </StackPanel>
                     </Button>
@@ -393,11 +382,6 @@
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
                             Orientation="Horizontal">
-                            <TextBlock
-                                Margin="0,0,15,0"
-                                VerticalAlignment="Center"
-                                FontSize="26"
-                                Text="🗑️" />
                             <TextBlock VerticalAlignment="Center" Text="Supprimer" />
                         </StackPanel>
                     </Button>
@@ -415,7 +399,7 @@
                         FontSize="20"
                         FontWeight="Bold"
                         Foreground="{StaticResource TextePrincipal}"
-                        Text="📋 HISTORIQUE DES RELEVÉS D'ÉLECTRICITÉ" />
+                        Text="HISTORIQUE DES RELEVÉS D'ÉLECTRICITÉ" />
 
                     <!--  Liste des relevés  -->
                     <ListView
@@ -427,7 +411,7 @@
                         <ListView.View>
                             <GridView AllowsColumnReorder="False">
                                 <!--  1. Date relevé  -->
-                                <GridViewColumn Width="180" Header="📅 Date">
+                                <GridViewColumn Width="180" Header="Date">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -450,7 +434,7 @@
                                 </GridViewColumn>
 
                                 <!--  2. Index compteur  -->
-                                <GridViewColumn Width="200" Header="🔢 Index">
+                                <GridViewColumn Width="200" Header="Index">
                                     <GridViewColumn.HeaderContainerStyle>
                                         <Style TargetType="GridViewColumnHeader">
                                             <Setter Property="FontWeight" Value="Bold" />
@@ -484,7 +468,7 @@
                                 -->
 
                                 <!--
-<GridViewColumn Width="200" Header="📊 Consommation">
+<GridViewColumn Width="200" Header="Consommation">
     <GridViewColumn.HeaderContainerStyle>
         <Style TargetType="GridViewColumnHeader">
             <Setter Property="FontWeight" Value="Bold" />
@@ -508,7 +492,7 @@
     </GridViewColumn.CellTemplate>
 </GridViewColumn>
 
-<GridViewColumn Width="180" Header="💰 Coût">
+<GridViewColumn Width="180" Header="Coût">
     <GridViewColumn.HeaderContainerStyle>
         <Style TargetType="GridViewColumnHeader">
             <Setter Property="FontWeight" Value="Bold" />
@@ -526,13 +510,13 @@
                 Foreground="#4CAF50"
                 TextAlignment="Center">
                 <Run Text="{Binding MontantEstime, StringFormat='{}{0:F2}'}" />
-                <Run Text=" €" />
+                <Run Text="" />
             </TextBlock>
         </DataTemplate>
     </GridViewColumn.CellTemplate>
 </GridViewColumn>
 
-<GridViewColumn Width="340" Header="📝 Notes">
+<GridViewColumn Width="340" Header="Notes">
     <GridViewColumn.HeaderContainerStyle>
         <Style TargetType="GridViewColumnHeader">
             <Setter Property="FontWeight" Value="Bold" />
@@ -566,11 +550,6 @@
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Visibility="Collapsed">
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            FontSize="64"
-                            Opacity="0.3"
-                            Text="⚡" />
                         <TextBlock
                             Margin="0,15,0,0"
                             HorizontalAlignment="Center"

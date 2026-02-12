@@ -27,7 +27,7 @@ namespace GestionnaireDeLogement.Services
             };
 
         // ===============================
-        // 📥 CHARGER
+        //  CHARGER
         // ===============================
         public static List<ReleveChauffage> Charger()
         {
@@ -41,7 +41,7 @@ namespace GestionnaireDeLogement.Services
         }
 
         // ===============================
-        // 💾 SAUVEGARDER
+        //  SAUVEGARDER
         // ===============================
         public static void Sauvegarder(IEnumerable<ReleveChauffage> releves)
         {

@@ -1,5 +1,4 @@
-﻿
-/*
+﻿/*
  * =============================================================
  *  Gestionnaire de Logement
  *  Module Chauffage
@@ -31,22 +30,21 @@ namespace GestionnaireDeLogement.Vues
             InitializeComponent();
             ChargerFactures();
             this.Loaded += (s, e) => ChargerFactures();
-            this.SizeChanged += FacturesVue_SizeChanged;  // ✅ AJOUTEZ CETTE LIGNE
+            this.SizeChanged += FacturesVue_SizeChanged;
         }
 
-        // ✅ AJOUTEZ CETTE MÉTHODE
         private void FacturesVue_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             if (ListViewFactures.View is GridView gridView && ListViewFactures.ActualWidth > 0)
             {
                 double totalWidth = ListViewFactures.ActualWidth - 30;
 
-                gridView.Columns[0].Width = totalWidth * 0.10;  // Type: 10%
-                gridView.Columns[1].Width = totalWidth * 0.15;  // Date facture: 15%
-                gridView.Columns[2].Width = totalWidth * 0.15;  // Montant: 15%
-                gridView.Columns[3].Width = totalWidth * 0.15;  // Échéance: 15%
-                gridView.Columns[4].Width = totalWidth * 0.15;  // Statut: 15%
-                gridView.Columns[5].Width = totalWidth * 0.30;  // Notes: 30%
+                gridView.Columns[0].Width = totalWidth * 0.10;
+                gridView.Columns[1].Width = totalWidth * 0.15;
+                gridView.Columns[2].Width = totalWidth * 0.15;
+                gridView.Columns[3].Width = totalWidth * 0.15;
+                gridView.Columns[4].Width = totalWidth * 0.15;
+                gridView.Columns[5].Width = totalWidth * 0.30;
             }
         }
 
@@ -59,7 +57,11 @@ namespace GestionnaireDeLogement.Vues
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"❌ Erreur : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show(
+                    "Erreur lors du chargement des factures : " + ex.Message,
+                    "Erreur",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
             }
         }
 
@@ -83,12 +85,15 @@ namespace GestionnaireDeLogement.Vues
             if (sender is TextBlock txtStatut && txtStatut.Tag is Facture facture)
             {
                 var (texte, couleurFond, couleurTexte) = ObtenirStatut(facture);
+
                 txtStatut.Text = texte;
-                txtStatut.Foreground = new SolidColorBrush((Color)ColorConverter.ConvertFromString(couleurTexte));
+                txtStatut.Foreground = new SolidColorBrush(
+                    (Color)ColorConverter.ConvertFromString(couleurTexte));
 
                 if (txtStatut.Parent is Border border)
                 {
-                    border.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(couleurFond));
+                    border.Background = new SolidColorBrush(
+                        (Color)ColorConverter.ConvertFromString(couleurFond));
                 }
             }
         }
@@ -96,16 +101,20 @@ namespace GestionnaireDeLogement.Vues
         private (string texte, string couleurFond, string couleurTexte) ObtenirStatut(Facture facture)
         {
             if (facture.EstPayee)
-                return ("✅ Payée", Couleurs.FondSuccesClaire, Couleurs.VertSombre);
+                return ("Payée", Couleurs.FondSuccesClaire, Couleurs.VertSombre);
+
             else if (NecessiteRelance(facture))
-                return ("📧 Relance", Couleurs.FondRougeClair, Couleurs.RougeUrgentMoyen);
+                return ("Relance", Couleurs.FondRougeClair, Couleurs.RougeUrgentMoyen);
+
             else
-                return ("⏳ En attente", Couleurs.FondOrangeClair, Couleurs.OrangeSombre);
+                return ("En attente", Couleurs.FondOrangeClair, Couleurs.OrangeSombre);
         }
 
         private bool NecessiteRelance(Facture facture)
         {
-            return !facture.EstPayee && facture.DateEcheance.HasValue && facture.DateEcheance.Value.Date < DateTime.Now.Date;
+            return !facture.EstPayee
+                   && facture.DateEcheance.HasValue
+                   && facture.DateEcheance.Value.Date < DateTime.Now.Date;
         }
 
         private void CmbStatut_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -137,7 +146,11 @@ namespace GestionnaireDeLogement.Vues
             }
             else
             {
-                MessageBox.Show("⚠️ Veuillez sélectionner une facture.", "Aucune sélection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    "Veuillez sélectionner une facture.",
+                    "Aucune sélection",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
             }
         }
 
@@ -146,23 +159,31 @@ namespace GestionnaireDeLogement.Vues
             if (ListViewFactures.SelectedItem is Facture factureSelectionnee)
             {
                 var resultat = MessageBox.Show(
-                    $"⚠️ Supprimer : {factureSelectionnee.Type} - {factureSelectionnee.Montant:F2} € ?",
+                    $"Supprimer : {factureSelectionnee.Type} - {factureSelectionnee.Montant:F2} € ?",
                     "Confirmation",
                     MessageBoxButton.YesNo,
-                    MessageBoxImage.Question
-                );
+                    MessageBoxImage.Question);
 
                 if (resultat == MessageBoxResult.Yes)
                 {
                     toutesLesFactures.Remove(factureSelectionnee);
                     GestionnaireDonnees.Sauvegarder(toutesLesFactures, "factures.json");
                     AfficherFactures(toutesLesFactures);
-                    MessageBox.Show("✅ Supprimée !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    MessageBox.Show(
+                        "Facture supprimée.",
+                        "Succès",
+                        MessageBoxButton.OK,
+                        MessageBoxImage.Information);
                 }
             }
             else
             {
-                MessageBox.Show("⚠️ Veuillez sélectionner une facture.", "Aucune sélection", MessageBoxButton.OK, MessageBoxImage.Warning);
+                MessageBox.Show(
+                    "Veuillez sélectionner une facture.",
+                    "Aucune sélection",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Warning);
             }
         }
 
