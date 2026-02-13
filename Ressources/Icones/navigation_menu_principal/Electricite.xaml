@@ -1,12 +1,23 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Viewbox
-        x:Key="IconeElectricite"
-        Width="24"
-        Height="24"
-        Stretch="Uniform">
-        <Canvas Width="24" Height="24">   
-            <Path Data="m422-232 207-248H469l29-227-185 267h139l-30 208Zm-78.92 129.69 40-277.69h-185l329.61-475.77h49.23L537.31-540H757.3L392.31-102.31h-49.23ZM471-470Z" Fill="{DynamicResource TextePrincipal}" />
-        </Canvas>
-    </Viewbox>
+    <DrawingImage x:Key="IconeElectricite">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+
+                <!-- Mise à l’échelle uniforme -->
+                <DrawingGroup.Transform>
+                    <ScaleTransform ScaleX="0.02"
+                                    ScaleY="0.02"/>
+                </DrawingGroup.Transform>
+
+                <!-- Géométrie principale -->
+                <GeometryDrawing
+                    Brush="{DynamicResource TextePrincipal}"
+                    Geometry="m422-232 207-248H469l29-227-185 267h139l-30 208Z"/>
+
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 </ResourceDictionary>

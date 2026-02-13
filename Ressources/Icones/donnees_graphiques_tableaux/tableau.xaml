@@ -1,12 +1,23 @@
-<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
-    <Viewbox
-        x:Key="IconeTableau"
-        Width="24"
-        Height="24"
-        Stretch="Uniform">
-        <Canvas Width="24" Height="24">   
-            <Path Data="M296-93.85 253.85-136 516-398.77l140 140 207-207L905.77-423 656-173.85l-140-140-220 220ZM172.31-140Q142-140 121-161q-21-21-21-51.31v-535.38Q100-778 121-799q21-21 51.31-21h535.38Q738-820 759-799q21 21 21 51.31v168H160v367.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85v60ZM160-639.69h560v-108q0-4.62-3.85-8.46-3.84-3.85-8.46-3.85H172.31q-4.62 0-8.46 3.85-3.85 3.84-3.85 8.46v108Zm0 0V-760v120.31Z" Fill="{DynamicResource TextePrincipal}" />
-        </Canvas>
-    </Viewbox>
+    <DrawingImage x:Key="IconeTableau">
+        <DrawingImage.Drawing>
+            <DrawingGroup>
+
+                <!-- Mise à l’échelle uniforme -->
+                <DrawingGroup.Transform>
+                    <ScaleTransform ScaleX="0.02"
+                                    ScaleY="0.02"/>
+                </DrawingGroup.Transform>
+
+                <!-- Géométrie principale -->
+                <GeometryDrawing
+                    Brush="{DynamicResource TextePrincipal}"
+                    Geometry="M296-93.85 253.85-136 516-398.77l140 140 207-207L905.77-423 656-173.85l-140-140-220 220ZM172.31-140Q142-140 121-161q-21-21-21-51.31v-535.38Q100-778 121-799q21-21 51.31-21h535.38Q738-820 759-799q21 21 21 51.31v168H160v367.38q0 4.62 3.85 8.46 3.84 3.85 8.46 3.85Z"/>
+
+            </DrawingGroup>
+        </DrawingImage.Drawing>
+    </DrawingImage>
+
 </ResourceDictionary>

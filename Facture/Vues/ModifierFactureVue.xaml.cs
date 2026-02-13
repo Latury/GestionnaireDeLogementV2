@@ -1,7 +1,7 @@
 ﻿/*
  * =============================================================
  *  Gestionnaire de Logement
- *  Module Chauffage
+ *  Module Factures - Modification
  *
  *  Copyright © 2026 Flo Latury
  *  Licence : CC BY-NC 4.0
@@ -21,13 +21,18 @@ using System.Windows.Media;
 
 namespace GestionnaireDeLogement.Vues
 {
-    /// <summary>
-    /// Logique d'interaction pour ModifierFactureVue.xaml
-    /// </summary>
     public partial class ModifierFactureVue : Page
     {
+        // ═══════════════════════════════════════════════════════════
+        // Module [1] VARIABLES PRIVÉES
+        // ═══════════════════════════════════════════════════════════
+
         private Facture factureAModifier;
         private List<Facture> toutesLesFactures;
+
+        // ═══════════════════════════════════════════════════════════
+        // Module [2] CONSTRUCTEUR
+        // ═══════════════════════════════════════════════════════════
 
         public ModifierFactureVue(Facture facture)
         {
@@ -36,28 +41,33 @@ namespace GestionnaireDeLogement.Vues
             factureAModifier = facture;
             toutesLesFactures = GestionnaireDonnees.Charger<Facture>("factures.json");
 
+            InitialiserVue();
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // Module [3] INITIALISATION GÉNÉRALE
+        // ═══════════════════════════════════════════════════════════
+
+        private void InitialiserVue()
+        {
             ChargerDonneesFacture();
             VerifierEcheanceRetard();
             MettreAJourStatistiques();
             AfficherAutresFactures();
         }
 
+        // ═══════════════════════════════════════════════════════════
+        // Module [4] CHARGEMENT DONNÉES FORMULAIRE
+        // ═══════════════════════════════════════════════════════════
+
         private void ChargerDonneesFacture()
         {
             switch (factureAModifier.Type)
             {
-                case "Eau":
-                    CmbType.SelectedIndex = 0;
-                    break;
-                case "Électricité":
-                    CmbType.SelectedIndex = 1;
-                    break;
-                case "Chauffage":
-                    CmbType.SelectedIndex = 2;
-                    break;
-                default:
-                    CmbType.SelectedIndex = 3;
-                    break;
+                case "Eau": CmbType.SelectedIndex = 0; break;
+                case "Électricité": CmbType.SelectedIndex = 1; break;
+                case "Chauffage": CmbType.SelectedIndex = 2; break;
+                default: CmbType.SelectedIndex = 3; break;
             }
 
             TxtMontant.Text = factureAModifier.Montant.ToString("F2");
@@ -66,6 +76,10 @@ namespace GestionnaireDeLogement.Vues
             ChkPayee.IsChecked = factureAModifier.EstPayee;
             TxtNotes.Text = factureAModifier.Notes;
         }
+
+        // ═══════════════════════════════════════════════════════════
+        // Module [5] VÉRIFICATION RETARD
+        // ═══════════════════════════════════════════════════════════
 
         private void VerifierEcheanceRetard()
         {
@@ -77,27 +91,34 @@ namespace GestionnaireDeLogement.Vues
                 BorderEcheance.BorderBrush = new SolidColorBrush(
                     (Color)ColorConverter.ConvertFromString(Couleurs.RougeUrgent)
                 );
-                BorderEcheance.BorderThickness = new Thickness(2);
             }
         }
 
+        // ═══════════════════════════════════════════════════════════
+        // Module [6] STATISTIQUES
+        // ═══════════════════════════════════════════════════════════
+
         private void MettreAJourStatistiques()
         {
-            var facturesNonPayees = toutesLesFactures.Where(f => !f.EstPayee).ToList();
-            var facturesRelance = facturesNonPayees.Where(f =>
+            var nonPayees = toutesLesFactures.Where(f => !f.EstPayee).ToList();
+
+            var relances = nonPayees.Where(f =>
                 f.DateEcheance.HasValue &&
                 f.DateEcheance.Value.Date < DateTime.Now.Date
             ).ToList();
 
-            TxtNbNonPayees.Text = facturesNonPayees.Count.ToString();
-            TxtNbRelances.Text = facturesRelance.Count.ToString();
-            TxtTotalMontant.Text = facturesNonPayees.Sum(f => f.Montant).ToString("F2");
+            TxtNbNonPayees.Text = nonPayees.Count.ToString();
+            TxtNbRelances.Text = relances.Count.ToString();
+            TxtTotalMontant.Text = nonPayees.Sum(f => f.Montant).ToString("F2");
         }
+
+        // ═══════════════════════════════════════════════════════════
+        // Module [7] AFFICHAGE AUTRES FACTURES
+        // ═══════════════════════════════════════════════════════════
 
         private void AfficherAutresFactures()
         {
-            if (ListeAutresFactures == null || MessageVide == null)
-                return;
+            if (ListeAutresFactures == null) return;
 
             List<Facture> facturesFiltrees;
 
@@ -120,69 +141,104 @@ namespace GestionnaireDeLogement.Vues
                     .ToList();
             }
 
-            if (facturesFiltrees.Count == 0)
-            {
-                ListeAutresFactures.Visibility = Visibility.Collapsed;
-                MessageVide.Visibility = Visibility.Visible;
-            }
-            else
-            {
-                ListeAutresFactures.ItemsSource = facturesFiltrees;
-                ListeAutresFactures.Visibility = Visibility.Visible;
-                MessageVide.Visibility = Visibility.Collapsed;
-            }
+            ListeAutresFactures.ItemsSource = facturesFiltrees;
+            ListeAutresFactures.Visibility = facturesFiltrees.Any()
+                ? Visibility.Visible
+                : Visibility.Collapsed;
+
+            MessageVide.Visibility = facturesFiltrees.Any()
+                ? Visibility.Collapsed
+                : Visibility.Visible;
         }
+
+        // ═══════════════════════════════════════════════════════════
+        // Module [8] NIVEAU D'URGENCE
+        // ═══════════════════════════════════════════════════════════
 
         private int ObtenirNiveauUrgence(Facture facture)
         {
             if (!facture.DateEcheance.HasValue)
                 return 4;
 
-            var joursRestants = (facture.DateEcheance.Value.Date - DateTime.Now.Date).Days;
+            int jours = (facture.DateEcheance.Value.Date - DateTime.Now.Date).Days;
 
-            if (joursRestants < 0)
-                return 0;
-            else if (joursRestants <= 7)
-                return 1;
-            else if (joursRestants <= 15)
-                return 2;
-            else
-                return 3;
+            if (jours < 0) return 0;
+            if (jours <= 7) return 1;
+            if (jours <= 15) return 2;
+
+            return 3;
         }
 
-        private string ObtenirCouleurUrgence(Facture facture)
+        // ═══════════════════════════════════════════════════════════
+        // Module [9] BOUTONS PRINCIPAUX
+        // ═══════════════════════════════════════════════════════════
+
+        private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
         {
-            int urgence = ObtenirNiveauUrgence(facture);
-
-            return urgence switch
+            if (MessageBox.Show("Annuler les modifications ?",
+                "Confirmation",
+                MessageBoxButton.YesNo,
+                MessageBoxImage.Question) == MessageBoxResult.Yes)
             {
-                0 => Couleurs.RougeUrgent,
-                1 => Couleurs.OrangeMoyen,
-                2 => Couleurs.Jaune,
-                3 => Couleurs.VertMoyen,
-                _ => Couleurs.Gris250
-            };
+                NavigationService?.GoBack();
+            }
         }
 
-        private (string texte, string couleurFond, string couleurTexte) ObtenirBadgeUrgence(Facture facture)
+        private void BtnEnregistrer_Click(object sender, RoutedEventArgs e)
         {
-            int urgence = ObtenirNiveauUrgence(facture);
-
-            return urgence switch
+            if (!double.TryParse(TxtMontant.Text, out double montant))
             {
-                0 => ("URGENT", Couleurs.FondRougeClair, Couleurs.RougeUrgent),
-                1 => ("7 jours", Couleurs.FondOrangeClair, Couleurs.OrangeSombre),
-                2 => ("15 jours", Couleurs.FondJauneClair, Couleurs.JauneSombre),
-                3 => ("OK", Couleurs.FondVertClair, Couleurs.VertSombre),
-                _ => ("", "", "")
-            };
+                MessageBox.Show("Montant invalide.",
+                                "Erreur",
+                                MessageBoxButton.OK,
+                                MessageBoxImage.Warning);
+                return;
+            }
+
+            factureAModifier.Type = ((ComboBoxItem)CmbType.SelectedItem)?.Content.ToString();
+            factureAModifier.Montant = montant;
+            factureAModifier.DateFacture = DateFacture.SelectedDate ?? DateTime.Now;
+            factureAModifier.DateEcheance = DateEcheance.SelectedDate;
+            factureAModifier.EstPayee = ChkPayee.IsChecked == true;
+            factureAModifier.Notes = TxtNotes.Text;
+
+            GestionnaireDonnees.Sauvegarder(toutesLesFactures, "factures.json");
+
+            MessageBox.Show("Facture modifiée avec succès.",
+                            "Succès",
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Information);
+
+            NavigationService?.GoBack();
         }
+
+        private void RbFiltreFactures_Checked(object sender, RoutedEventArgs e)
+        {
+            AfficherAutresFactures();
+        }
+
+        private void ChkPayee_Checked(object sender, RoutedEventArgs e)
+        {
+            // Réagir si besoin
+        }
+
+        // ═══════════════════════════════════════════════════════════
+        // Module [10] GESTION VISUELLE DES CARTES
+        // ═══════════════════════════════════════════════════════════
 
         private void CarteFacture_Loaded(object sender, RoutedEventArgs e)
         {
             if (sender is Border border && border.Tag is Facture facture)
             {
-                string couleur = ObtenirCouleurUrgence(facture);
+                string couleur = ObtenirNiveauUrgence(facture) switch
+                {
+                    0 => Couleurs.RougeUrgent,
+                    1 => Couleurs.OrangeMoyen,
+                    2 => Couleurs.Jaune,
+                    3 => Couleurs.VertMoyen,
+                    _ => Couleurs.Gris250
+                };
+
                 border.BorderBrush = new SolidColorBrush(
                     (Color)ColorConverter.ConvertFromString(couleur)
                 );
@@ -191,64 +247,29 @@ namespace GestionnaireDeLogement.Vues
 
         private void TxtBadgeUrgence_Loaded(object sender, RoutedEventArgs e)
         {
-            if (sender is TextBlock txtBadge && txtBadge.Tag is Facture facture)
+            if (sender is TextBlock txt && txt.Tag is Facture facture)
             {
-                var (texte, couleurFond, couleurTexte) = ObtenirBadgeUrgence(facture);
+                int urgence = ObtenirNiveauUrgence(facture);
 
-                if (!string.IsNullOrEmpty(texte))
+                if (urgence == 4) return;
+
+                var data = urgence switch
                 {
-                    var parent = txtBadge.Parent as Panel;
-                    if (parent != null)
-                    {
-                        var border = new Border
-                        {
-                            Background = new SolidColorBrush(
-                                (Color)ColorConverter.ConvertFromString(couleurFond)
-                            ),
-                            CornerRadius = new CornerRadius(10),
-                            Padding = new Thickness(8, 3, 8, 3),
-                            Margin = new Thickness(0, 0, 8, 0),
-                            Child = new TextBlock
-                            {
-                                Text = texte,
-                                FontSize = 11,
-                                FontWeight = FontWeights.Bold,
-                                Foreground = new SolidColorBrush(
-                                    (Color)ColorConverter.ConvertFromString(couleurTexte)
-                                )
-                            }
-                        };
+                    0 => ("URGENT", Couleurs.FondRougeClair, Couleurs.RougeUrgent),
+                    1 => ("7 jours", Couleurs.FondOrangeClair, Couleurs.OrangeSombre),
+                    2 => ("15 jours", Couleurs.FondJauneClair, Couleurs.JauneSombre),
+                    3 => ("OK", Couleurs.FondVertClair, Couleurs.VertSombre),
+                    _ => ("", "", "")
+                };
 
-                        int index = parent.Children.IndexOf(txtBadge);
-                        parent.Children.RemoveAt(index);
-                        parent.Children.Insert(index, border);
-                    }
-                }
+                txt.Text = data.Item1;
+                txt.Background = new SolidColorBrush(
+                    (Color)ColorConverter.ConvertFromString(data.Item2)
+                );
+                txt.Foreground = new SolidColorBrush(
+                    (Color)ColorConverter.ConvertFromString(data.Item3)
+                );
             }
-        }
-
-        private void RbFiltreFactures_Checked(object sender, RoutedEventArgs e)
-        {
-            AfficherAutresFactures();
-        }
-
-        private void BtnAnnuler_Click(object sender, RoutedEventArgs e)
-        {
-            var resultat = MessageBox.Show(
-                "Annuler les modifications ?",
-                "Confirmation",
-                MessageBoxButton.YesNo,
-                MessageBoxImage.Question
-            );
-
-            if (resultat == MessageBoxResult.Yes)
-            {
-                NavigationService?.GoBack();
-            }
-        }
-
-        private void ChkPayee_Checked(object sender, RoutedEventArgs e)
-        {
         }
     }
 }
