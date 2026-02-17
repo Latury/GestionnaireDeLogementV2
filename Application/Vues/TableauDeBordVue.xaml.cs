@@ -21,20 +21,18 @@ namespace GestionnaireDeLogement.Vues
     /// <summary>
     /// Page d'accueil avec statistiques et dernières factures
     /// </summary>
-    public partial class AccueilVue : Page
+    public partial class TableauDeBordVue : Page
     {
-        public AccueilVue()
+        public TableauDeBordVue()
         {
             InitializeComponent();
-
-            // Charger les données au démarrage
-            Loaded += AccueilVue_Loaded;
+            Loaded += TableauDeBordVue_Loaded;
         }
 
         /// <summary>
         /// Chargement des données de la page
         /// </summary>
-        private void AccueilVue_Loaded(object sender, RoutedEventArgs e)
+        private void TableauDeBordVue_Loaded(object sender, RoutedEventArgs e)
         {
             ChargerStatistiques();
             ChargerDernieresFactures();

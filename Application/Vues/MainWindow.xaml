@@ -1,5 +1,5 @@
 <Window
-    x:Class="GestionnaireDeLogement.MainWindow"
+    x:Class="GestionnaireDeLogement.Application.Vues.MainWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     Title="Gestionnaire de Logement"
@@ -11,18 +11,21 @@
     WindowStartupLocation="CenterScreen">
 
     <!--
-        =============================================================
-        Gestionnaire de Logement
-        Module Chauffage
-        Copyright © 2026 Flo Latury
-        Licence : CC BY-NC 4.0
-        Usage commercial interdit
-        =============================================================
+        *╔=============================================================╗
+        *║                   Gestionnaire de Logement                  ║
+        *║                       Module : Principal                    ║
+        *║                                                             ║
+        *║                   Usage commercial interdit                 ║
+        *║                    Licence : CC BY-NC  4.0                  ║
+        *║                  Copyright © 2026 Flo Latury                ║
+        *╚=============================================================╝
     -->
 
     <Window.Resources>
 
-        <!--  Bouton navigation standard  -->
+        <!--  ─────────────────────────────────────────────────────────────────  -->
+        <!--  Section 01 : Bouton navigation standardBouton navigation standard  -->
+        <!--  ─────────────────────────────────────────────────────────────────  -->
         <Style x:Key="BoutonNavigation" TargetType="Button">
             <Setter Property="Height" Value="50" />
             <Setter Property="Background" Value="Transparent" />
@@ -57,7 +60,9 @@
             </Setter>
         </Style>
 
-        <!--  Bouton actif  -->
+        <!--  ─────────────────────────  -->
+        <!--  Section 02 : Bouton Actif  -->
+        <!--  ─────────────────────────  -->
         <Style
             x:Key="BoutonNavigationActif"
             BasedOn="{StaticResource BoutonNavigation}"
@@ -85,27 +90,47 @@
             <ScrollViewer VerticalScrollBarVisibility="Auto">
                 <StackPanel>
 
-                    <!--  EN-TÊTE  -->
+                    <!--  ────────────────────  -->
+                    <!--  Section : 03 EN-TÊTE  -->
+                    <!--  ────────────────────  -->
                     <Border Height="80" Background="{DynamicResource BordurePrincipale}">
-                        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                            <TextBlock
-                                FontSize="22"
-                                FontWeight="Bold"
-                                Foreground="White">
-                                Gestionnaire
-                            </TextBlock>
-                            <TextBlock
-                                FontSize="17"
-                                Foreground="White"
-                                Opacity="0.95">
-                                de Logement
-                            </TextBlock>
+                        <StackPanel
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            Orientation="Horizontal">
+
+                            <!--  Icône Logement  -->
+                            <Path
+                                Width="28"
+                                Height="28"
+                                Margin="0,0,12,0"
+                                Data="{StaticResource IconeLogement}"
+                                Fill="White"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <StackPanel VerticalAlignment="Center">
+                                <TextBlock
+                                    FontSize="22"
+                                    FontWeight="Bold"
+                                    Foreground="White"
+                                    Text="Gestionnaire" />
+                                <TextBlock
+                                    FontSize="17"
+                                    Foreground="White"
+                                    Opacity="0.95"
+                                    Text="de Logement" />
+                            </StackPanel>
+
                         </StackPanel>
                     </Border>
 
+                    <!--  Bordure  -->
                     <Border Height="12" />
 
-                    <!--  SUIVI  -->
+                    <!--  ──────────────────  -->
+                    <!--  Section 04 : SUIVI  -->
+                    <!--  ──────────────────  -->
                     <TextBlock
                         Margin="20,0,0,6"
                         FontSize="13"
@@ -113,69 +138,155 @@
                         Foreground="{StaticResource TexteSecondaire}"
                         Text="SUIVI" />
 
-                    <!--  ACCUEIL  -->
+                    <!--  TABLEAU DE BORD  -->
                     <Button
                         x:Name="BtnAccueil"
                         Click="BtnAccueil_Click"
                         Style="{StaticResource BoutonNavigationActif}">
 
-                        <TextBlock
-                            FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
-                            FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
-                            Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}">
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
 
-                            <InlineUIContainer BaselineAlignment="Center">
-                                <Image
-                                    Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
-                                    Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
-                                    Margin="0,0,8,0"
-                                    Source="{StaticResource IconeAccueil}"
-                                    Stretch="Uniform">
-                                    <Image.RenderTransform>
-                                        <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
-                                    </Image.RenderTransform>
-                                </Image>
-                            </InlineUIContainer>
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeTableauDeBord}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
 
-                            <Run Text="Accueil" />
-                        </TextBlock>
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Tableau de bord" />
+
+                        </StackPanel>
                     </Button>
 
-                    <!--  AUTRES BOUTONS  -->
+                    <!--  FACTURES  -->
                     <Button
                         x:Name="BtnFactures"
                         Click="BtnFactures_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock Text="Factures" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeFacture}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Factures" />
+
+                        </StackPanel>
                     </Button>
 
+                    <!--  EAU  -->
                     <Button
                         x:Name="BtnEau"
                         Click="BtnEau_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock Text="Eau" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeEau}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Eau" />
+
+                        </StackPanel>
                     </Button>
 
+                    <!--  ÉLÉTRICITÉ  -->
                     <Button
                         x:Name="BtnElectricite"
                         Click="BtnElectricite_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock Text="Électricité" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeElectricite}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Électricité" />
+
+                        </StackPanel>
                     </Button>
 
+                    <!--  CHAUFFAGE  -->
                     <Button
                         x:Name="BtnChauffage"
                         Click="BtnChauffage_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock Text="Chauffage" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeChauffage}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Chauffage" />
+
+                        </StackPanel>
                     </Button>
 
+                    <!--  Bordure  -->
                     <Border
                         Height="1"
                         Margin="12,14"
                         Background="{StaticResource BordureClaire}" />
 
-                    <!--  ANALYSE  -->
+                    <!--  ────────────────────  -->
+                    <!--  Section 05 : ANALYSE  -->
+                    <!--  ────────────────────  -->
                     <TextBlock
                         Margin="20,0,0,6"
                         FontSize="13"
@@ -183,26 +294,71 @@
                         Foreground="{StaticResource TexteSecondaire}"
                         Text="ANALYSE" />
 
+                    <!--  ACHATS  -->
                     <Button
                         x:Name="BtnAchats"
                         Click="BtnAchats_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock Text="Achats" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeAchats}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Achats" />
+
+                        </StackPanel>
                     </Button>
 
+                    <!--  STATISTIQUES  -->
                     <Button
                         x:Name="BtnStatistiques"
                         Click="BtnStatistiques_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock Text="Statistiques" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeStatistiques}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Statistiques" />
+
+                        </StackPanel>
                     </Button>
 
+                    <!--  Bordure  -->
                     <Border
                         Height="1"
                         Margin="12,14"
                         Background="{StaticResource BordureClaire}" />
 
-                    <!--  APPLICATION  -->
+                    <!--  ────────────────────────  -->
+                    <!--  Section 06 : APPLICATION  -->
+                    <!--  ────────────────────────  -->
                     <TextBlock
                         Margin="20,0,0,6"
                         FontSize="13"
@@ -210,21 +366,60 @@
                         Foreground="{StaticResource TexteSecondaire}"
                         Text="APPLICATION" />
 
+                    <!--  PARAMETRES  -->
                     <Button
                         x:Name="BtnParametres"
                         Click="BtnParametres_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock Text="Paramètres" />
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeParametres}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Paramètres" />
+
+                        </StackPanel>
                     </Button>
 
-                    <!--  HISTORIQUE (RESTAURÉ)  -->
+                    <!--  HISTORIQUE  -->
                     <Button
-                        IsEnabled="False"
-                        Opacity="0.5"
+                        x:Name="BtnHistorique"
+                        Click="BtnHistorique_Click"
                         Style="{StaticResource BoutonNavigation}">
-                        <TextBlock>
-                            <Run Text="  Historique" />
-                        </TextBlock>
+
+                        <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                            <!--  Icône  -->
+                            <Path
+                                Width="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Height="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Margin="0,0,8,0"
+                                Data="{StaticResource IconeHistorique}"
+                                Fill="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Stretch="Uniform" />
+
+                            <!--  Texte  -->
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                FontSize="{Binding FontSize, RelativeSource={RelativeSource AncestorType=Button}}"
+                                FontWeight="{Binding FontWeight, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=Button}}"
+                                Text="Historique" />
+
+                        </StackPanel>
                     </Button>
 
                 </StackPanel>
@@ -238,22 +433,38 @@
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
+            <!--  Bordure haut  -->
             <Border
                 Grid.Row="0"
                 Padding="30,0"
                 Background="{StaticResource FondCarte}"
                 BorderBrush="{StaticResource BordureClaire}"
                 BorderThickness="0,0,0,1">
-                <TextBlock
-                    x:Name="TitrePage"
-                    VerticalAlignment="Center"
-                    FontSize="28"
-                    FontWeight="Bold"
-                    Foreground="{StaticResource TextePrincipal}">
-                    <Run x:Name="TexteTitre" Text="Tableau de bord" />
-                </TextBlock>
+                <StackPanel VerticalAlignment="Center" Orientation="Horizontal">
+
+                    <!--  Icône  -->
+                    <Path
+                        Width="28"
+                        Height="28"
+                        Margin="0,0,12,0"
+                        Data="{StaticResource IconeTableauDeBord}"
+                        Fill="{StaticResource TextePrincipal}"
+                        Stretch="Uniform" />
+
+                    <!--  Texte  -->
+                    <TextBlock
+                        x:Name="TitrePage"
+                        VerticalAlignment="Center"
+                        FontSize="28"
+                        FontWeight="Bold"
+                        Foreground="{StaticResource TextePrincipal}">
+                        <Run x:Name="TexteTitre" Text="Tableau de bord" />
+                    </TextBlock>
+                </StackPanel>
+
             </Border>
 
+            <!--  Cadre  -->
             <Frame
                 x:Name="FramePrincipal"
                 Grid.Row="1"

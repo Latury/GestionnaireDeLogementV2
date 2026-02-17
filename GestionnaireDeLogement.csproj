@@ -115,8 +115,8 @@
     <Compile Include="Outils\Notifications\BaseNotification.cs" />
     <Compile Include="Outils\Utilitaires\Couleurs.cs" />
     <Compile Include="Chauffage\VueModeles\ChauffageVueModele.cs" />
-    <Compile Include="Application\Vues\AccueilVue.xaml.cs">
-      <DependentUpon>AccueilVue.xaml</DependentUpon>
+    <Compile Include="Application\Vues\TableauDeBordVue.xaml.cs">
+      <DependentUpon>TableauDeBordVue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Facture\Vues\AjouterFactureVue.xaml.cs">
       <DependentUpon>AjouterFactureVue.xaml</DependentUpon>
@@ -182,7 +182,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Application\Vues\AccueilVue.xaml">
+    <Page Include="Application\Vues\TableauDeBordVue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -248,7 +248,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <None Include="CHANGELOG.md" />
     <None Include="Donnees\chauffage.json" />
     <None Include="EXEMPLES_COMMITS.md" />
     <None Include="FEUILLE_DE_ROUTE.md" />
@@ -273,19 +272,28 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".gitignore" />
+    <Content Include="Ressources\Icones\Svg\logement.svg" />
+    <Content Include="Ressources\Icones\Svg\achats.svg" />
     <Content Include="Ressources\Icones\Svg\ajouter.svg" />
+    <Content Include="Ressources\Icones\Svg\chauffage.svg" />
     <Content Include="Ressources\Icones\Svg\colonnes.svg" />
     <Content Include="Ressources\Icones\Svg\consommation.svg" />
     <Content Include="Ressources\Icones\Svg\cout_estime.svg" />
     <Content Include="Ressources\Icones\Svg\date.svg" />
     <Content Include="Ressources\Icones\Svg\dernier_releve.svg" />
     <Content Include="Ressources\Icones\Svg\eau.svg" />
+    <Content Include="Ressources\Icones\Svg\electricite.svg" />
+    <Content Include="Ressources\Icones\Svg\facture.svg" />
+    <Content Include="Ressources\Icones\Svg\historique.svg" />
     <Content Include="Ressources\Icones\Svg\historique_releve.svg" />
     <Content Include="Ressources\Icones\Svg\modifier.svg" />
     <Content Include="Ressources\Icones\Svg\moyenne_mensuelle.svg" />
     <Content Include="Ressources\Icones\Svg\notes.svg" />
+    <Content Include="Ressources\Icones\Svg\parametres.svg" />
+    <Content Include="Ressources\Icones\Svg\statistiques.svg" />
     <Content Include="Ressources\Icones\Svg\supprimer.svg" />
     <Content Include="Ressources\Icones\Svg\symbole_euro.svg" />
+    <Content Include="Ressources\Icones\Svg\tableau_de_bord.svg" />
     <Resource Include="LICENSE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

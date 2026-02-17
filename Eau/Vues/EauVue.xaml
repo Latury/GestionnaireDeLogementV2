@@ -11,10 +11,21 @@
     Background="{StaticResource FondSecondaire}"
     mc:Ignorable="d">
 
-    <!--  ============================================================= Gestionnaire de Logement Module Eau Copyright © 2026 Flo Latury Licence : CC BY-NC 4.0 Usage commercial interdit =============================================================  -->
-    <!--  ══════════════════════════════════════════════════════════  -->
+    <!--
+        *╔=============================================================╗
+        *║                   Gestionnaire de Logement                  ║
+        *║                       Module : EAU                          ║
+        *║                                                             ║
+        *║                   Usage commercial interdit                 ║
+        *║                    Licence : CC BY-NC  4.0                  ║
+        *║                  Copyright © 2026 Flo Latury                ║
+        *╚=============================================================╝
+    -->
+
+
+    <!--  ══════════════════  -->
     <!--  RESSOURCES LOCALES  -->
-    <!--  ══════════════════════════════════════════════════════════  -->
+    <!--  ══════════════════  -->
     <Page.Resources>
 
         <!--  Style pour les cartes  -->

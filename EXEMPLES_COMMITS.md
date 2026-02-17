@@ -583,4 +583,3 @@ Description: (vide)
 
 ---
 
-**Dernière mise à jour** : 21/01/2026

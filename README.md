@@ -67,7 +67,7 @@ La priorité est donnée à la clarté, à la cohérence et à l’apprentissage
 - **Versioning** : Git avec GitHub Desktop pour un suivi clair des modifications
 - **Stockage des données** : JSON local pour une gestion simple et transparente
 - **Assistance pédagogique** : Intelligence artificielle ChatGPT 5.2 (Alias Jarvis) utilisée comme outil d’apprentissage et de structuration du projet
-- **Documentation** : Rédaction continue (README, CHANGELOG, PATCH_NOTES, Roadmap)
+- **Documentation** : Rédaction continue (README, PATCH_NOTES, FEUILLE_DE_ROUTE)
 
 ### **🎓 Objectifs d'apprentissage**
 **Ce projet s’inscrit dans une démarche autodidacte structurée.**
@@ -219,7 +219,6 @@ GestionnaireDeLogement/
 ├── App.config
 ├── App.xaml
 ├── App.xaml.cs
-├── CHANGELOG.md
 ├── EXEMPLES_COMMITS.md
 ├── FEUILLE_DE_ROUTE.md
 ├── GestionnaireDeLogement.csproj
@@ -390,7 +389,6 @@ GestionnaireDeLogement/
 
 ### **📖 Documentation utilisateur**
 - **[README.md](README.md)** — Présentation complète du projet (vision, architecture, fonctionnalités).
-- **[CHANGELOG.md](CHANGELOG.md)** — Historique des évolutions fonctionnelles par version.
 - **GUIDE_UTILISATEUR.md** - (prévu en v1.0.1) — Guide d’utilisation simplifié destiné aux utilisateurs finaux.
 
 ### **🛠️ Documentation technique**
@@ -634,7 +632,7 @@ Les contributions sont les bienvenues ! Consultez [EXEMPLES_COMMITS.md](EXEMPLES
 - Modules structurés : Eau, Électricité, Chauffage, Factures, Historique
 - Stockage : JSON local (connexion en cours d’implémentation)
 - Validation UX avancée : module Chauffage
-- Documentation maintenue : README, CHANGELOG, PATCH_NOTES, FEUILLE_DE_ROUTE
+- Documentation maintenue : README, PATCH_NOTES, FEUILLE_DE_ROUTE
 
 📌 Projet structuré et stable sur le plan architectural.
 📌 Persistance et logique métier encore en cours d’implémentation.
@@ -662,7 +660,8 @@ Développé en France 🇫🇷
 
 ---
 
-Version : 1.0.0-dev  
-Dernière mise à jour : 12 Février 2026 23h44
+💾  **Version** : **1.0.0-dev**  
+📌 **Dernière mise à jour** : 17 Février 2026 19h00
+👤 **Auteur** : Flo Latury
 
 </div>

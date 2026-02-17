@@ -1,4 +1,8 @@
-﻿Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
+﻿This work is licensed under the Creative Commons
+Attribution-NonCommercial 4.0 International License.
+
+To view a copy of this license, visit:
+https://creativecommons.org/licenses/by-nc/4.0/
 
 Copyright (c) 2026 Latury
 
@@ -12,8 +16,7 @@ Vous êtes autorisé à :
 Sous les conditions suivantes :
 - Attribution obligatoire de l’auteur original
 - Interdiction formelle de toute utilisation commerciale
-- Interdiction de vendre le logiciel ou toute version dérivée,
-  gratuitement ou non, sans autorisation écrite préalable
+- Interdiction de toute utilisation commerciale conformément à la licence CC BY-NC 4.0.
 
 ATTRIBUTION OBLIGATOIRE :
 Toute utilisation, modification ou distribution de ce logiciel doit

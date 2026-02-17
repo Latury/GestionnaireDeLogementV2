@@ -68,7 +68,7 @@ mais de maintenir une progression cohérente et réaliste.**
 
 ## 📄 Pages principales
 
-- 🟢 Accueil (structure tableau de bord)
+- 🟢 Tableau de bord (anciennement Accueil)
 - 🟢 Factures (affichage + structure CRUD partielle)
 - 🟢 Eau (structure + filtres)
 - 🟢 Électricité (structure + statistiques de base)
@@ -207,7 +207,7 @@ Elle consolide, stabilise et fiabilise l’existant.**
 
 | Version   | Statut       | Progression estimée                       |
 | --------- | -----------  | ----------------------------------------- |
-| 1.0.0-dev | 🔵 En cours  | ~70–75 % structure / ~40 % logique métier |
+| 1.0.0-dev | 🔵 En cours  | ~80 % structure / ~45 % logique métier    |
 | 1.0.1     | ⚪ À faire   | 0 %                                       |
 | 1.1.0     | ⚪ À faire   | 0 %                                       |
 | 1.2.0     | ⚪ À faire   | 0 %                                       |
@@ -246,5 +246,7 @@ Elle consolide, stabilise et fiabilise l’existant.**
 
 ---
 
-**Dernière mise à jour** : 12 Février 2026  23h35
-**Auteur** : Latury
+💾  **Version** : **1.0.0-dev**  
+📌 **Dernière mise à jour** : 17 Février 2026 19h00
+👤 **Auteur** : Flo Latury
+

@@ -9,26 +9,23 @@
  * =============================================================
  */
 
+using GestionnaireDeLogement.Chauffage.Vues;
+using GestionnaireDeLogement.Configurations.Vues;
+using GestionnaireDeLogement.Vues;
 using System.Windows;
 using System.Windows.Controls;
 
-using GestionnaireDeLogement.Vues;
-using GestionnaireDeLogement.Chauffage.Vues;
-using GestionnaireDeLogement.Configurations.Vues;
-
-namespace GestionnaireDeLogement
+namespace GestionnaireDeLogement.Application.Vues
 {
-    /// <summary>
-    /// Fenêtre principale de l'application
-    /// </summary>
     public partial class MainWindow : Window
     {
+
         public MainWindow()
         {
             InitializeComponent();
 
             // Charger la page d'accueil au démarrage
-            FramePrincipal.Navigate(new AccueilVue());
+            FramePrincipal.Navigate(new TableauDeBordVue());
             BtnAccueil.Style = (Style)FindResource("BoutonNavigationActif");
         }
 
@@ -55,7 +52,7 @@ namespace GestionnaireDeLogement
 
         private void BtnAccueil_Click(object sender, RoutedEventArgs e)
         {
-            ChangerPage(new AccueilVue(), "Tableau de bord", BtnAccueil);
+            ChangerPage(new TableauDeBordVue(), "Tableau de bord", BtnAccueil);
         }
 
         private void BtnFactures_Click(object sender, RoutedEventArgs e)
@@ -104,6 +101,14 @@ namespace GestionnaireDeLogement
             fenetreParametres.ShowDialog();
         }
 
+        private void BtnHistorique_Click(object sender, RoutedEventArgs e)
+        {
+            // Page à venir
+            TexteTitre.Text = "Historique";
+            ResetBoutonsNavigation();
+            BtnHistorique.Style = (Style)FindResource("BoutonNavigationActif");
+        }
+
         // ═══════════════════════════════════════════════════════════
         // OUTILS
         // ═══════════════════════════════════════════════════════════
@@ -124,6 +129,8 @@ namespace GestionnaireDeLogement
             BtnAchats.Style = styleBouton;
             BtnStatistiques.Style = styleBouton;
             BtnParametres.Style = styleBouton;
+            BtnHistorique.Style = styleBouton;
         }
+
     }
 }

@@ -1,15 +1,19 @@
 ﻿# 📝 PATCH NOTES – Gestionnaire de Logement
 
-Ce fichier contient les **notes techniques détaillées** du projet  
-**Gestionnaire de Logement**.
+Ce fichier contient les notes techniques et fonctionnelles détaillées du projet
+Gestionnaire de Logement.
 
 ---
 
-## 📌 Différence avec les autres fichiers
+## 📌 Organisation de la documentation (Mise à jour)
 
-- **README.md** → Présentation générale (utilisateurs & contributeurs)
-- **CHANGELOG.md** → Résumé fonctionnel par version
-- **PATCH_NOTES.md** → Détails techniques (ce qui a été fait, comment, pourquoi)
+À partir de la version **1.0.0-dev**, le fichier **CHANGELOG.md** est supprimé.
+
+- **README.md** → Présentation générale du projet (utilisateurs & contributeurs)
+- **FEUILLE_DE_ROUTE.md** → Vision et plan d’évolution
+- **PATCH_NOTES.md** →Historique complet (fonctionnel + technique) - (ce qui a été fait, comment, pourquoi)
+
+🎯 Objectif : simplifier la maintenance et éviter la duplication d’informations.
 
 ---
 
@@ -25,127 +29,72 @@ Chaque version contient :
 
 ---
 
-# 🚀 Version 1.0.0-dev — Fondations, Restructuration & UX
+# 🚀 Version 1.0.0-dev
+
+**Fondations – Restructuration – UX Professionnalisée**
 
 📅 **Période** : Janvier – Février 2026  
 📌 **Statut** : 🟡 Développement actif  
-🎯 **Objectif** : Stabiliser l’architecture, professionnaliser l’interface et préparer la persistance des données
+🎯 **Objectif** : Stabiliser l’architecture, professionnaliser l’interface et préparer la persistance JSON complète.
 
 ---
 
-## 🏗️ Architecture & Structure
+### ✨ État Fonctionnel Actuel
 
-### 📁 Restructuration complète du projet
+## 🧭 Navigation
 
-Adoption d’une structure modulaire claire par domaine métier :
+Navigation principale fonctionnelle entre :
 
-- `Chauffage`
-- `Eau`
-- `Electricite`
-- `Facture`
-- `Historique`
-- `Configurations`
-- `Application`
-- `Outils`
-- `Ressources`
+- Tableau de bord
 
-Chaque module respecte la séparation :
+- Eau
 
-- `Modeles`
-- `Services`
-- `VueModeles`
-- `Vues`
+- Électricité
 
-### 🎯 Objectif technique
+- Chauffage
 
-- Éviter les dossiers génériques confus
-- Rendre le projet lisible pour un développeur débutant
-- Préparer une montée en puissance vers un MVVM plus strict
+- Factures
+
+- Historique
+
+- Paramètres
+
+- Navigation unifiée via MainWindow avec gestion du bouton actif.
 
 ---
 
-## ♻️ Suppression complète des emojis
+### 🔥 Module Chauffage
 
-### 🔧 Problème
+**Fonctionnalités**
 
-Les emojis étaient utilisés directement dans :
+   - Ajout de relevé
+   - Modification de relevé
+   - Filtrage par type :
+       - Gaz
+       - Fioul
+       - Bois
+       - Électrique
+   - Validation visuelle immédiate (bordures rouges)
+   - Adaptation automatique de l’unité
+   - Désactivation contextuelle de champs
+   - Résumé en temps réel avant validation
 
-- Titres de fenêtres
-- Boutons
-- Messages système
-- Commentaires
+**Rôle**
 
-### ✅ Solution
-
-- Suppression globale via scripts PowerShell
-- Nettoyage des chaînes C# et XAML
-- Remplacement par icônes vectorielles XAML centralisées
-
-### 🎨 Nouvelle approche
-
-Centralisation des icônes dans :
-
-```
-Ressources/Icones/
-```
-
-Organisation thématique :
-
-- actions_boutons_interactions
-- consommations
-- navigation_menu_principal
-- statuts_succes_erreur_info
-- etc.
-
-👉 Décision :  
-Interface professionnelle > décorations visuelles.
+Module le plus avancé UX → référence d’harmonisation des autres modules.
 
 ---
 
-## 🔥 Module Chauffage
-
-### ChauffageVue
-
-- Filtrage par type :
-  - Gaz
-  - Fioul
-  - Bois
-  - Électrique
-- Structure cohérente avec les autres modules
-
----
-
-### AjouterReleveChauffageVue
-
-#### UX implémentée
-
-- Validation visuelle immédiate (bordures rouges)
-- Adaptation automatique de l’unité :
-  - Gaz → m³
-  - Fioul → litres
-  - Électrique → kWh
-  - Bois → stères
-- Résumé en temps réel
-- Désactivation conditionnelle de champs
-
-#### Décisions techniques
-
-- Validation côté interface avant logique métier
-- Pas de calcul automatique du coût (volontaire)
-- Préparation à liaison future avec `Configurations`
-
----
-
-## 💧 Module Eau
+### 💧 Module Eau
 
 - Ajout de relevé
 - Modification de relevé
 - Structure MVVM partielle
-- Préparation pour persistance JSON
+- Préparation à la persistance JSON
 
 ---
 
-## ⚡ Module Électricité
+### ⚡ Module Électricité
 
 - Ajout de relevé
 - Modification de relevé
@@ -153,135 +102,176 @@ Interface professionnelle > décorations visuelles.
 
 ---
 
-## 🧾 Module Facture
+### 📄 Module Factures
 
 - Ajout
 - Modification
 - Suppression
-- Organisation modulaire propre
-- Préparation au suivi via Historique
+- Catégorisation
+- Préparation à l’intégration complète avec Historique
 
 ---
 
-## 📜 Module Historique
+### 📜 Module Historique
 
-### Structure
+**Fonctionnalités**
 
-- `HistoriqueModification.cs`
-- `GestionnaireHistorique.cs`
-- `HistoriqueVue`
+   - Enregistrement des actions :
+       - Ajout
+       - Modification
+       - Suppression
+   - Filtrage par catégorie
+   - Suppression ciblée
+   - Suppression complète
 
-### Fonctionnalités techniques
-
-- Enregistrement des actions :
-  - Ajout
-  - Modification
-  - Suppression
-- Filtrage par catégorie
-- Suppression ciblée
-- Suppression globale
-
-### Objectif
-
-Fournir une traçabilité pédagogique et transparente des actions utilisateur.
+Objectif : traçabilité pédagogique et transparence des actions.
 
 ---
 
-### 💾 Gestion des données (JSON)
+### 🏗️ Architecture & Structure
 
-## État actuel
+## 📁 Restructuration modulaire complète
 
-- Structure prête via `GestionnaireDonnees`
-- Services dédiés par module
-- Sérialisation JSON prévue
-- Persistance JSON partiellement connectée
-- Intégration complète prévue en 1.0.1
+Organisation par domaine métier :
+   - Chauffage
+   - Eau
+   - Electricite
+   - Facture
+   - Historique
+   - Configurations
+   - Application
+   - Outils
+   - Ressources
 
-## Décision stratégique
+Chaque module respecte :
+   - Modeles
+   - Services
+   - VueModeles
+   - Vues
 
-Stabiliser l’UX avant de connecter complètement la persistance.
+🎯 But : lisibilité, pédagogie, évolutivité.
+
+---
+
+### ♻️ Suppression des Emojis
+
+**Problème initial**
+
+Les emojis étaient présents dans :
+
+   - Boutons
+   - Titres
+   - Messages
+   - Commentaires
+
+**Solution**
+   - Suppression complète
+   - Remplacement par icônes vectorielles XAML
+
+---
+
+### 🎨 Système d’icônes vectorielles centralisé
+
+## Dossier :
+
+**Ressources/Icones/Icones.xaml**
+
+- Icônes en Path XAML
+- Centralisation complète
+- Réutilisation via StaticResource
+- Cohérence visuelle inter-modules
+
+🎯 Interface professionnelle > décoration visuelle.
+
+---
+
+### 💾 Persistance JSON
+
+**État actuel**
+   - GestionnaireDonnees prêt
+   - Services dédiés par module
+   - Sérialisation prévue
+   - Connexion partielle implémentée
+
+**Décision stratégique**
+   - Stabiliser l’UX avant connexion complète CRUD ↔ JSON.
+
+Finalisation prévue en **1.0.1.**
 
 ---
 
 ### 🎨 Système de styles
 
-## Couleurs.xaml
+**Couleurs.xaml**
+   - Centralisation complète
+   - Palette cohérente
+   - Contraste vérifié
+   - Préparation thème sombre
 
-- Centralisation complète
-- Palette cohérente
-- Préparation thème sombre
-- Contraste vérifié
+**Philosophie UI**
+   - Lisibilité prioritaire
+   - Feedback immédiat
+   - Pas de surcharge
+   - Comportements prévisibles
 
-## Philosophie UI
+   ---
 
-- Lisibilité prioritaire
-- Feedback immédiat
-- Pas de surcharge visuelle
-- Comportements prévisibles
+### 🧠 Décisions Techniques Importantes
+
+- MVVM hybride évolutif (transition progressive)
+- Validation UX avant validation métier stricte
+- Pas de sur-ingénierie
+- Modularité claire avant optimisation
+- Architecture pensée pour un développeur autodidacte
 
 ---
 
-## 📚 Documentation technique
+### ⚠️ Limitations actuelles
 
-Documents maintenus :
+- Persistance JSON non totalement connectée
+- Validation métier encore partielle
+- Pas de statistiques dynamiques
+- Pas d’export CSV / PDF
+- Pas de sauvegarde automatique globale
+- Paramètres avancés non finalisés
 
-- README.md
-- CHANGELOG.md
-- PATCH_NOTES.md
-- FEUILLE_DE_ROUTE.md
-- GUIDE_GITHUB_DESKTOP.md
-- EXEMPLES_COMMITS.md
-- LICENSE.txt
+---
 
-Objectif :
+### 📊 État global du projet
 
-> Un projet compréhensible même pour un développeur débutant.
+- Architecture : stable
+- Build : stable
+- Icônes : vectorielles centralisées
+- Emojis : 0
+- Modules métier : 6
+- Persistance : en cours
+- UX : avancée sur Chauffage
+
+---
+
+### ⏭️ Prochaine étape – Version 1.0.1
+
+Objectif : Stabilisation complète.
+   - Connexion CRUD ↔ JSON sur tous les modules
+   - Tests manuels systématiques
+   - Validation métier renforcée
+   - Harmonisation UX complète
+   - Création GUIDE_UTILISATEUR.md
+
+**⚠️ Aucune nouvelle fonctionnalité prévue.
+Stabilisation uniquement.**
 
 ---
 
 ### ⚖️ Licence & conformité
 
-- Licence : **CC BY-NC 4.0**
-- En-tête obligatoire ajouté dans :
-  - Tous les `.cs`
-  - Tous les `.xaml`
-- Attribution obligatoire
-- Usage commercial interdit
+Licence : **Creative Commons BY-NC 4.0**
+   - Attribution obligatoire
+   - Usage commercial interdit
+   - En-tête licence ajouté dans tous les .cs et .xaml
 
 ---
 
-## 📊 État technique global
-
-- Architecture : MVVM hybride évolutif
-- Modules métier : 6 (Eau, Électricité, Chauffage, Facture, Historique, Configurations)
-- Icônes : centralisées et vectorielles (XAML)
-- Emojis : 0
-- Build : Stable
-- Restructuration : stabilisée (évolutive)
-- Persistance JSON : partiellement connectée (finalisation prévue en 1.0.1)
-
----
-
-### ⏭️ Prochaines étapes (1.0.1)
-
-- Connexion complète aux fichiers JSON
-- CRUD totalement fonctionnel sur tous les modules
-- Validation métier renforcée
-- Paramètres avancés
-- Optimisation progressive
-
----
-
-### 🧭 Philosophie technique
-
-- Pas de sur-ingénierie
-- Code lisible avant tout
-- Modularité claire
-- Progression maîtrisée
-- Chaque étape validée avant la suivante
-
----
-
-📌 **Dernière mise à jour** : 12 Février 2026  23h49  
-👤 **Auteur** : Flo Latury  
-🤖 Assistance technique : IA pédagogique ChatGPT 5.2 (Alias : "Jarvis")
+💾  **Version** : **1.0.0-dev**  
+📌 **Dernière mise à jour** : 17 Février 2026 19h00
+👤 **Auteur** : Flo Latury
