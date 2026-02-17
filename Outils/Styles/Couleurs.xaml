@@ -12,18 +12,18 @@
     -->
 
     <!--  ═══════════════════════════════════════════════════════════════════════════════════════  -->
-    <!--   GESTIONNAIRE DE LOGEMENT - PALETTE DE COULEURS COMPLÈTE  -->
+    <!--  GESTIONNAIRE DE LOGEMENT - PALETTE DE COULEURS COMPLÈTE  -->
     <!--  ═══════════════════════════════════════════════════════════════════════════════════════  -->
-    <!--   Ce fichier contient TOUTES les couleurs utilisées dans TOUTES les pages  -->
-    <!--   Pour changer une couleur : modifier juste ici, tout le projet est mis à jour !  -->
-    <!--   Synchronisé avec : Utilitaires/Couleurs.cs  -->
+    <!--  Ce fichier contient TOUTES les couleurs utilisées dans TOUTES les pages  -->
+    <!--  Pour changer une couleur : modifier juste ici, tout le projet est mis à jour !  -->
+    <!--  Synchronisé avec : Utilitaires/Couleurs.cs  -->
     <!--  ═══════════════════════════════════════════════════════════════════════════════════════  -->
-    <!--   Développeur : Latury (latury57@gmail.com)  -->
-    <!--   Dernière mise à jour : 24/01/2026 01:00 AM  -->
+    <!--  Développeur : Latury (latury57@gmail.com)  -->
+    <!--  Dernière mise à jour : 24/01/2026 01:00 AM  -->
     <!--  ═══════════════════════════════════════════════════════════════════════════════════════  -->
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS PRINCIPALES (BLEU) - Utilisé dans tout le projet  -->
+    <!--  COULEURS PRINCIPALES (BLEU) - Utilisé dans tout le projet  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <!--  Utilisé dans : MainWindow, AccueilVue, FacturesVue, boutons  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
@@ -35,7 +35,7 @@
     <SolidColorBrush x:Key="FondInfoClaire" Color="#E3F2FD" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS DE SUCCÈS (VERT) - Utilisé pour validation, paiement  -->
+    <!--  COULEURS DE SUCCÈS (VERT) - Utilisé pour validation, paiement  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <!--  Utilisé dans : FacturesVue (payé), AccueilVue (statistiques)  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
@@ -47,7 +47,7 @@
     <SolidColorBrush x:Key="FondSuccesClaire" Color="#E8F5E9" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS D'ALERTE (ORANGE/JAUNE) - Utilisé pour avertissements  -->
+    <!--  COULEURS D'ALERTE (ORANGE/JAUNE) - Utilisé pour avertissements  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <!--  Utilisé dans : FacturesVue (proche échéance), ElectriciteVue  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
@@ -64,7 +64,7 @@
     <SolidColorBrush x:Key="FondAvertissementClaire" Color="#FFFDE7" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS D'ERREUR / URGENCE (ROUGE) - Utilisé pour erreurs  -->
+    <!--  COULEURS D'ERREUR / URGENCE (ROUGE) - Utilisé pour erreurs  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <!--  Utilisé dans : FacturesVue (impayé), messages d'erreur  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
@@ -76,7 +76,7 @@
     <SolidColorBrush x:Key="FondUrgenceClaire" Color="#FFEBEE" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS NEUTRES (GRIS) - Utilisé dans tout le projet  -->
+    <!--  COULEURS NEUTRES (GRIS) - Utilisé dans tout le projet  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <!--  Utilisé dans : Fonds, bordures, textes secondaires, cartes  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
@@ -94,22 +94,22 @@
     <SolidColorBrush x:Key="Gris900" Color="#111827" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS SPÉCIFIQUES PAR PAGE / FONCTIONNALITÉ  -->
+    <!--  COULEURS SPÉCIFIQUES PAR PAGE / FONCTIONNALITÉ  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
 
-    <!--   EAU - Utilisé dans EauVue.xaml  -->
+    <!--  EAU - Utilisé dans EauVue.xaml  -->
     <SolidColorBrush x:Key="CouleurEau" Color="#06B6D4" />
     <SolidColorBrush x:Key="CouleurEauFoncee" Color="#0891B2" />
     <SolidColorBrush x:Key="CouleurEauClaire" Color="#22D3EE" />
     <SolidColorBrush x:Key="FondEauClaire" Color="#CFFAFE" />
 
-    <!--   ÉLECTRICITÉ - Utilisé dans ElectriciteVue.xaml  -->
+    <!--  ÉLECTRICITÉ - Utilisé dans ElectriciteVue.xaml  -->
     <SolidColorBrush x:Key="CouleurElectricite" Color="#FBBF24" />
     <SolidColorBrush x:Key="CouleurElectriciteFoncee" Color="#F59E0B" />
     <SolidColorBrush x:Key="CouleurElectriciteClaire" Color="#FCD34D" />
     <SolidColorBrush x:Key="FondElectriciteClaire" Color="#FEF3C7" />
 
-    <!--   CHAUFFAGE - Utilisé dans ChauffageVue.xaml  -->
+    <!--  CHAUFFAGE - Utilisé dans ChauffageVue.xaml  -->
     <SolidColorBrush x:Key="CouleurChauffage" Color="#F97316" />
     <SolidColorBrush x:Key="CouleurChauffageFoncee" Color="#EA580C" />
     <SolidColorBrush x:Key="CouleurChauffageClaire" Color="#FB923C" />
@@ -117,19 +117,19 @@
     <SolidColorBrush x:Key="CouleurChauffageMarron" Color="#8B4513" />
     <SolidColorBrush x:Key="FondChauffageClaire" Color="#FFEDD5" />
 
-    <!--   FACTURES - Utilisé dans FacturesVue.xaml  -->
+    <!--  FACTURES - Utilisé dans FacturesVue.xaml  -->
     <SolidColorBrush x:Key="CouleurFacture" Color="#8B5CF6" />
     <SolidColorBrush x:Key="CouleurFactureFoncee" Color="#7C3AED" />
     <SolidColorBrush x:Key="CouleurFactureClaire" Color="#A78BFA" />
     <SolidColorBrush x:Key="FondFactureClaire" Color="#EDE9FE" />
 
-    <!--   ACHATS - Utilisé dans AchatsVue.xaml  -->
+    <!--  ACHATS - Utilisé dans AchatsVue.xaml  -->
     <SolidColorBrush x:Key="CouleurAchat" Color="#EC4899" />
     <SolidColorBrush x:Key="CouleurAchatFoncee" Color="#DB2777" />
     <SolidColorBrush x:Key="CouleurAchatClaire" Color="#F472B6" />
     <SolidColorBrush x:Key="FondAchatClaire" Color="#FCE7F3" />
 
-    <!--   STATISTIQUES - Utilisé dans StatistiquesVue.xaml  -->
+    <!--  STATISTIQUES - Utilisé dans StatistiquesVue.xaml  -->
     <SolidColorBrush x:Key="CouleurStatistique1" Color="#3B82F6" />
     <SolidColorBrush x:Key="CouleurStatistique2" Color="#10B981" />
     <SolidColorBrush x:Key="CouleurStatistique3" Color="#F59E0B" />
@@ -137,7 +137,7 @@
     <SolidColorBrush x:Key="CouleurStatistique5" Color="#8B5CF6" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS DE FOND - Utilisé dans toutes les pages  -->
+    <!--  COULEURS DE FOND - Utilisé dans toutes les pages  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <SolidColorBrush x:Key="FondPrincipal" Color="#FFFFFF" />
     <SolidColorBrush x:Key="FondSecondaire" Color="#F9FAFB" />
@@ -147,7 +147,7 @@
     <SolidColorBrush x:Key="FondMenu" Color="#FFFFFF" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS DE TEXTE - Utilisé dans toutes les pages  -->
+    <!--  COULEURS DE TEXTE - Utilisé dans toutes les pages  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <SolidColorBrush x:Key="TextePrincipal" Color="#111827" />
     <SolidColorBrush x:Key="TexteSecondaire" Color="#6B7280" />
@@ -156,7 +156,7 @@
     <SolidColorBrush x:Key="TexteNoir" Color="#000000" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS DE BORDURE - Utilisé dans cartes, inputs, séparateurs  -->
+    <!--  COULEURS DE BORDURE - Utilisé dans cartes, inputs, séparateurs  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <SolidColorBrush x:Key="BordureClaire" Color="#E5E7EB" />
     <SolidColorBrush x:Key="BordureMoyenne" Color="#D1D5DB" />
@@ -164,7 +164,7 @@
     <SolidColorBrush x:Key="BordurePrincipale" Color="#3B82F6" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   COULEURS SPÉCIALES & EFFETS  -->
+    <!--  COULEURS SPÉCIALES & EFFETS  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <Color x:Key="OmbreNoire">#000000</Color>
     <Color x:Key="OmbreGrise">#666666</Color>
@@ -173,7 +173,7 @@
     <SolidColorBrush x:Key="SemiTransparentBlanc" Color="#80FFFFFF" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   DÉGRADÉS (Pour futurs effets)  -->
+    <!--  DÉGRADÉS (Pour futurs effets)  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <LinearGradientBrush x:Key="DegradeBleu" StartPoint="0,0" EndPoint="1,1">
         <GradientStop Offset="0" Color="#3B82F6" />
@@ -198,7 +198,7 @@
     <SolidColorBrush x:Key="CouleurParametreAide" Color="#64748B" />
 
     <!--  ═══════════════════════════════════════════════════════════════  -->
-    <!--   NOTES D'UTILISATION  -->
+    <!--  NOTES D'UTILISATION  -->
     <!--  ═══════════════════════════════════════════════════════════════  -->
     <!--
          COMMENT UTILISER DANS XAML :
@@ -215,9 +215,15 @@
         - Ne jamais mettre de couleurs en dur dans les pages !
     -->
 
-    <!--   ChauffageVue.xaml (Relevés de chauffage)  -->
+    <!--  ChauffageVue.xaml (Relevés de chauffage)  -->
     <!--  • CouleurChauffage (Gaz), CouleurChauffageMarron (Bois)  -->
     <!--  • CouleurChauffageOrange (Fioul), CouleurElectricite (Électrique)  -->
     <!--  • FondChauffageClaire, FondCarte, BordureClaire  -->
 
+    <!--  Couleur par défaut des icônes  -->
+    <SolidColorBrush x:Key="CouleurIcone" Color="#111827" />
+
+
+
 </ResourceDictionary>
+

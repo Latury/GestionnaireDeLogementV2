@@ -1,4 +1,4 @@
-﻿<Application
+<Application
     x:Class="GestionnaireDeLogement.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -12,8 +12,7 @@
                 <ResourceDictionary Source="Outils/Styles/Couleurs.xaml" />
 
                 <!--  Icônes  -->
-                <ResourceDictionary Source="/GestionnaireDeLogement;component/Ressources/Icones/icones.xaml" />
-
+                <ResourceDictionary Source="Ressources/Icones/Dictionnaires/icones.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

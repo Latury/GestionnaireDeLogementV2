@@ -1,4 +1,4 @@
-﻿<Window
+<Window
     x:Class="GestionnaireDeLogement.Chauffage.Vues.RelevesChauffage.AjouterReleveChauffageVue"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -303,3 +303,4 @@
         </Grid>
     </Border>
 </Window>
+

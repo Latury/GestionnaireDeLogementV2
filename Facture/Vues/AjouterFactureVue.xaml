@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="GestionnaireDeLogement.Vues.AjouterFactureVue"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -440,3 +440,4 @@
         </Border>
     </Grid>
 </Page>
+

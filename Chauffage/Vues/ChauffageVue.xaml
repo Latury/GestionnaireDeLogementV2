@@ -1,4 +1,4 @@
-﻿<Page
+<Page
     x:Class="GestionnaireDeLogement.Chauffage.Vues.ChauffageVue"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -629,3 +629,4 @@
         </Grid>
     </ScrollViewer>
 </Page>
+

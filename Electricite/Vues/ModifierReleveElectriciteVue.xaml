@@ -1,4 +1,4 @@
-﻿<Window
+<Window
     x:Class="GestionnaireDeLogement.Electricite.VueModeles.ModifierReleveElectriciteVue"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
@@ -24,3 +24,4 @@
 
     </Grid>
 </Window>
+
